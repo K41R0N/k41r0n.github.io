@@ -3,13 +3,7 @@
 <head>
     <title>Kairon personal website</title>
     <style>
-        body {
-            font-family: 'Courier New', Courier, monospace;
-            background-color: white;
-            color: black;
-            text-align: center;
-            .limit{width:200px;}
-        }
+    
         .fading {
             animation: fade 1s infinite;
         }
@@ -18,6 +12,55 @@
             50% {opacity: 0.1;}
             100% {opacity: 1;}
         }
+        .over{ 
+ overflow: hidden;
+}
+#under{
+  text-decoration: underline;
+}
+
+   html, body {
+      width: 100%;
+      min-height: 100vh;
+      background-color: white;
+    }
+  .container {
+      position: absolute;
+      left: 90px;
+      top: 90px;
+      width: calc(100% - 90px);
+    }
+  .myLine{
+      width: 100%;
+      max-width: 538px;
+      height: 10px;
+      background-color: black;
+      margin-bottom: 15px;
+    }
+    h1, p, a{
+      text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+      font-family: 'Courier New', Courier, monospace;
+        color: black;
+    } 
+    h1 {
+      line-height: 88px;
+      font-size: 60px;
+      font-weight: 900;
+    }
+
+    p {
+      width: 100%;
+      max-width: 460px;
+      font-size: 18px;
+      line-height: 23px;
+    }
+    @media screen and (max-width: 768px) {
+      .container {
+        width: 86%;
+        left: 7%;
+        top: 11vw;
+      }
+
     </style>
 </head>
 <body>
@@ -29,14 +72,14 @@
     </p>
 
    <p>
-        <span class="fading">-</span> Chatting web3 and creator economy, hanging out on <a href="https://twitter.com/k41r0n">Twitter</a>, getting acquainted with <a href="https://github.com/k41r0n">Github</a><span class="fading">-</span>
+        <span class="fading">-</span> Chatting web3 and creator economy, hanging out on <a id="under" href="https://twitter.com/k41r0n">Twitter</a>, getting acquainted with <a id="under"  href="https://github.com/k41r0n">Github</a><span class="fading">-</span>
     </p>
 
     <p>
         Contact me at <a href="mailto:alejandro@kairon.xyz">alejandro@kairon.xyz</a>
     </p>
     <p>
-        I like to write about how <a href="https://kairon.mirror.xyz/g5mumhIKi_r06iYW-uGTQyKU-pRC3qg_wvpFJ1hhyR4">reputation can be more than just word of mouth</a>, how it can<a href="https://kairon.mirror.xyz/BHVXYwPAlhbuIIeb9294Fzs3cFU_iAPfVPNBNDG6qHA"> be used to build better recommendation engines</a> cause<a href="https://kairon.mirror.xyz/8MrhO4WJLSwe6mbQaNA98cUXLNJnI0gVzXDlUrle-tA"> our existing one aren't quite enough</a> and we need to find a way to<a href="https://kairon.mirror.xyz/JCPoCxz1sPzJsog-w_Jl-7h3gO71L8tD678A-nDgYhI"> scale individual contribution</a> for collective ownership to<a href="https://kairon.mirror.xyz/1C6Bixs7ebbMJ21o7_j8PWcMRftKWTjzEHOKsBqf-pg"> reach its full potential</a> 
+        I like to write about how <a id="under"  href="https://kairon.mirror.xyz/g5mumhIKi_r06iYW-uGTQyKU-pRC3qg_wvpFJ1hhyR4">reputation can be more than just word of mouth</a>, how it can<a id="under"  href="https://kairon.mirror.xyz/BHVXYwPAlhbuIIeb9294Fzs3cFU_iAPfVPNBNDG6qHA"> be used to build better recommendation engines</a> cause<a id="under"  href="https://kairon.mirror.xyz/8MrhO4WJLSwe6mbQaNA98cUXLNJnI0gVzXDlUrle-tA"> our existing one aren't quite enough</a> and we need to find a way to<a id="under"  href="https://kairon.mirror.xyz/JCPoCxz1sPzJsog-w_Jl-7h3gO71L8tD678A-nDgYhI"> scale individual contribution</a> for collective ownership to<a id="under"  href="https://kairon.mirror.xyz/1C6Bixs7ebbMJ21o7_j8PWcMRftKWTjzEHOKsBqf-pg"> reach its full potential</a> 
     </p>
     
 </body>
