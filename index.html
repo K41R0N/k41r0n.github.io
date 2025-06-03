@@ -3,66 +3,397 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="K41R0N's personal website. Chatting tech and creator economy.">
-    <meta name="keywords" content="K41R0N, creator economy, Mirror.xyz, Kairon, Alejandro Arango, technology writer">
-    <meta name="author" content="Kairon">
-    <title>Kairon personal website</title>
+    <title>Alejandro (Kairon) Arango Giraldo</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
-
-        html, body {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: white;
-            font-family: 'Roboto Mono', monospace;
-            color: black;
+        /* Typography */
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+        
+        /* Reset & Base */
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-        .container {
-            text-align: left;
-            max-width: 800px;
-            padding: 20px;
-            margin: 0 10%;
+        
+        body {
+            font-family: 'IBM Plex Serif', serif;
+            background-color: #F5F5F5;
+            color: #000000;
+            line-height: 1.4;
+            font-size: 18px;
+            font-weight: 400;
         }
-
-        h1 {
-            font-size: 2.5em;
-            color: red;
-            margin-bottom: 0.5em;
-        }
-
-        p {
-            font-size: 1.2em;
-            line-height: 1.5em;
-            margin-bottom: 1em;
-        }
-
+        
+        /* Links */
         a {
-            color: black;
-            text-decoration: underline;
+            color: #bf150f;
+            text-decoration: none;
+            transition: opacity 0.2s ease;
         }
-
-        .fading {
-            animation: fade 1s infinite;
+        
+        a:hover {
+            opacity: 0.7;
         }
-
-        @keyframes fade {
-            0% {opacity: 1;}
-            50% {opacity: 0.1;}
-            100% {opacity: 1;}
+        
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 8%;
+        }
+        
+        .section {
+            padding: 8vh 0;
+        }
+        
+        .section:first-child {
+            padding-top: 12vh;
+        }
+        
+        /* Typography Styles */
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 500;
+            line-height: 0.9;
+            margin-bottom: 4vh;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            line-height: 1.3;
+            margin-bottom: 4vh;
+        }
+        
+        .section-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 500;
+            line-height: 0.9;
+            margin-bottom: 4vh;
+            padding-bottom: 2rem;
+        }
+        
+        .thesis-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 500;
+            line-height: 1.1;
+            color: #800020;
+            margin-bottom: 2vh;
+        }
+        
+        .thesis-description {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            max-width: 70%;
+            margin-bottom: 2vh;
+        }
+        
+        /* Components */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1vh;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 1vh;
+        }
+        
+        .theses-grid {
+            display: grid;
+            gap: 6vh;
+        }
+        
+        .thesis-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5vh;
+        }
+        
+        .link-item {
+            border-left: 2px solid #800020;
+            padding-left: 20px;
+        }
+        
+        .link-label {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 0.9rem;
+            color: #800020;
+            font-style: italic;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .newsletter-form {
+            max-width: 480px;
+        }
+        
+        .newsletter-iframe {
+            width: 100%;
+            max-width: 480px;
+            height: 320px;
+            border: 2px solid #800020;
+            border-radius: 8px;
+            background: #F5F5F5;
+            box-shadow: 0 4px 12px rgba(128, 0, 32, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 2vh;
+        }
+        
+        .form-label {
+            font-family: 'IBM Plex Sans', sans-serif;
+            display: block;
+            margin-bottom: 1vh;
+            font-size: 0.9rem;
+            color: #800020;
+            font-style: italic;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 0;
+            border: none;
+            border-bottom: 2px solid #800020;
+            background-color: transparent;
+            font-family: 'IBM Plex Serif', serif;
+            font-size: 1.1rem;
+            color: #000000;
+            outline: none;
+        }
+        
+        .btn-primary {
+            background-color: #800020;
+            color: #F5F5F5;
+            border: none;
+            padding: 15px 40px;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            transition: opacity 0.2s ease;
+        }
+        
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+        
+        .footer {
+            border-top: 1px solid #800020;
+            padding: 4vh 0;
+            margin-top: 4vh;
+        }
+        
+        .footer-content {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+            
+            .container {
+                padding: 0 5%;
+            }
+            
+            .section {
+                padding: 6vh 0;
+            }
+            
+            .section:first-child {
+                padding-top: 8vh;
+            }
+            
+            .theses-grid {
+                gap: 4vh;
+            }
+            
+            .thesis-description {
+                max-width: 100%;
+            }
+            
+            .social-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .newsletter-iframe {
+                height: 280px;
+                max-width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>K41R0N</h1>
-        <p><span class="fading">-</span><i> read: Kairon.</i><span class="fading">-</span></p>
-        <p>Chatting tech and creator economy, hanging out on <a href="https://twitter.com/k41r0n">Twitter</a>, getting acquainted with <a href="https://github.com/k41r0n">Github.</a></p>
-        <p>Contact me at <a href="mailto:alejandro@kairon.xyz">alejandro@kairon.xyz</a></p>
-        <p>I like to write about how <a href="https://kairon.mirror.xyz/g5mumhIKi_r06iYW-uGTQyKU-pRC3qg_wvpFJ1hhyR4">reputation can be more than just word of mouth</a>, how it can <a href="https://kairon.mirror.xyz/BHVXYwPAlhbuIIeb9294Fzs3cFU_iAPfVPNBNDG6qHA">be used to build better recommendation engines</a> cause <a href="https://kairon.mirror.xyz/8MrhO4WJLSwe6mbQaNA98cUXLNJnI0gVzXDlUrle-tA">our existing one aren't quite enough</a> and we need to find a way to <a href="https://kairon.mirror.xyz/MEiTC7wooDPcDkZrv7twX2VxNkla7afBgCBAtxFdeRc"> compound our behaviour to build more human systems</a> and understand how culture <a href="https://kairon.mirror.xyz/NecN36PnnXcrY5Hw0mst5Ip0RdTFMG2PGEFaxeFyJSY"> plays a key role in shaping the internet of the future.</a> And, how it's the only thing that can ensure <a href="https://kairon.mirror.xyz/iXi6MhO9ggbW4L-jUciGemLNAl3MoEeVEB8K_IrDOjU"> any platform stands the test of time</a>
+    <!-- Hero Section -->
+    <section class="section">
+        <div class="container">
+            <h1 class="hero-title">
+                <em style="color: #800020; font-style: italic; font-weight: 400;">Alejandro Arango</em><br>
+                <span style="font-size: 0.7em; color: #800020; font-weight: 400;">(aka. Kairon)</span>
+            </h1>
+            
+            <p class="hero-subtitle">
+                I'm in tech<br>
+                I care about craftsmanship<br>
+                I don't like buzzwords<br>
+            </p>
+            
+            <div class="contact-info">
+                <p style="font-family: 'IBM Plex Sans', sans-serif; font-size: 1.1rem; color: #800020; font-style: italic;">
+                    Digital creator & writer based in Hamburg.
+                </p>
+                
+                <a href="mailto:alejandro@kairon.xyz" style="font-family: 'IBM Plex Serif', serif; font-size: 1.1rem; border-bottom: 1px solid #800020; padding-bottom: 2px; width: fit-content;">
+                    alejandro@kairon.xyz
+                </a>
+                
+                <div class="social-links">
+                    <a href="https://twitter.com/K41R0N" style="font-family: 'IBM Plex Sans', sans-serif; font-weight: 500;">Twitter</a>
+                    <a href="https://github.com/K41R0N" style="font-family: 'IBM Plex Sans', sans-serif; font-weight: 500;">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Theses Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">
+                Some of my latest<br>
+                <em style="color: #800020; font-style: italic; font-weight: 400;">_Theses_</em>
+            </h2>
+            
+            <div class="theses-grid">
+                <!-- Thesis 1: Digital Creation in the Age of AI -->
+                <article>
+                    <h3 class="thesis-title">Devices as Co-Creations</h3>
+                    
+                    <p class="thesis-description">
+                        There's power in opening up whatever you're building to the public. Memes, Open Source, CAD/CAM, etc.
+                    </p>
+                    
+                    <div class="thesis-links">
+                        <div class="link-item">
+                            <div class="link-label">Blog</div>
+                            <a href="#">The Creative Partnership: Humans and AI →</a>
+                        </div>
+                        <div class="link-item">
+                            <div class="link-label">Project</div>
+                            <a href="#">AI-Assisted Content Framework →</a>
+                        </div>
+                        <div class="link-item">
+                            <div class="link-label">Video</div>
+                            <a href="#">Future of Digital Creation →</a>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Thesis 2: Technology as a Medium for Storytelling -->
+                <article>
+                    <h3 class="thesis-title">The Future Belongs to the Storytellers</h3>
+                    
+                    <p class="thesis-description">
+                        The moment something becomes automated, so too does it become artisanal. When everything is made by AI, the funny, janky and obscene will stand out among the slop.
+                    </p>
+                    
+                    <div class="thesis-links">
+                        <div class="link-item">
+                            <div class="link-label">Blog</div>
+                            <a href="#">Platform-Native Storytelling →</a>
+                        </div>
+                        <div class="link-item">
+                            <div class="link-label">Project</div>
+                            <a href="#">Interactive Narrative Experience →</a>
+                        </div>
+                        <div class="link-item">
+                            <div class="link-label">Video</div>
+                            <a href="#">Technology-Enhanced Storytelling Workshop →</a>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Thesis 3: Building Brand Futures -->
+                <article>
+                    <h3 class="thesis-title">Better Discovery Algorithms for Digital Culture</h3>
+                    
+                    <p class="thesis-description">
+                       Engagement-based algorithms got us stuck in a loop, I believe we can build more efficient discovery if we lean on people's relationships to one another for our feeds.
+                    </p>
+                    
+                    <div class="thesis-links">
+                        <div class="link-item">
+                            <div class="link-label">Blog</div>
+                            <a href="#">Future-Proofing Digital Brand Identity →</a>
+                        </div>
+                        <div class="link-item">
+                            <div class="link-label">Project</div>
+                            <a href="#">Brand Evolution Framework →</a>
+                        </div>
+                        <div class="link-item">
+                            <div class="link-label">Video</div>
+                            <a href="#">Case Studies: Brands That Shaped the Future →</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">
+                Let's talk about<br>
+                <em style="color: #800020; font-style: italic; font-weight: 400;">_your inbox_</em>
+            </h2>
+            
+            <p style="font-size: 1.2rem; line-height: 1.4; max-width: 60%; margin-bottom: 3vh;">
+                Join my newsletter for insights on digital creation, technology, and thoughtful commentary on our digital future.
+            </p>
+            
+            <div class="newsletter-form">
+                <iframe src="https://k41r0n.substack.com/embed" 
+                        class="newsletter-iframe" 
+                        frameborder="0" 
+                        scrolling="no">
+                </iframe>
+                
+                <p style="font-family: 'IBM Plex Sans', sans-serif; font-size: 0.9rem; margin-top: 2vh; font-style: italic; color: #800020;">
+                    * Thoughtful content delivered when inspiration strikes
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p style="font-family: 'IBM Plex Sans', sans-serif; font-size: 0.9rem; color: #800020;">
+                    &copy; 2025 Alejandro (Kairon) Arango Giraldo
+                </p>
+                <a href="mailto:alejandro@kairon.xyz" style="font-size: 0.9rem;">
+                    alejandro@kairon.xyz
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
