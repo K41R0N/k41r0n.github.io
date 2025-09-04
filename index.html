@@ -50,34 +50,37 @@
             padding-top: 12vh;
         }
         
-        /* Typography Styles */
-        .hero-title {
+        /* Typography Styles - Standardized Titles */
+        h1, .hero-title {
             font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 400;
-            line-height: 0.9;
+            font-weight: 500;
+            line-height: 1.1;
             margin-bottom: 4vh;
+            font-family: 'IBM Plex Serif', serif;
         }
-        
+
+        h2, .section-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 500;
+            line-height: 1.1;
+            margin-bottom: 4vh;
+            padding-bottom: 2rem;
+            font-family: 'IBM Plex Serif', serif;
+        }
+
+        h3, .thesis-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 500;
+            line-height: 1.2;
+            color: #bf150f;
+            margin-bottom: 2vh;
+            font-family: 'IBM Plex Serif', serif;
+        }
+
         .hero-subtitle {
             font-size: clamp(1.2rem, 3vw, 1.8rem);
             line-height: 1.3;
             margin-bottom: 4vh;
-        }
-        
-        .section-title {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 500;
-            line-height: 0.9;
-            margin-bottom: 4vh;
-            padding-bottom: 2rem;
-        }
-        
-        .thesis-title {
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            font-weight: 500;
-            line-height: 1.1;
-            color: #bf150f;
-            margin-bottom: 2vh;
         }
         
         .thesis-description {
@@ -245,8 +248,8 @@
     <section class="section">
         <div class="container">
             <h1 class="hero-title">
-                <em style="color: #bf150f; font-style: italic; font-weight: 400;">Alejandro Arango</em><br>
-                <span style="font-size: 0.7em; color: #bf150f; font-weight: 400;">(aka. Kairon)</span>
+                Alejandro Arango<br>
+                <span style="font-size: 0.7em; color: #bf150f;">(aka. Kairon)</span>
             </h1>
             
             <p class="hero-subtitle">
@@ -278,7 +281,7 @@
         <div class="container">
             <h2 class="section-title">
                 Some of my latest<br>
-                <em style="color: #bf150f; font-style: italic; font-weight: 400;">_Theses_</em>
+                <span style="color: #bf150f;">Theses</span>
             </h2>
             
             <div class="theses-grid">
@@ -369,7 +372,7 @@
         <div class="container">
             <h2 class="section-title">
                 Let's talk about<br>
-                <em style="color: #bf150f; font-style: italic; font-weight: 400;">_your inbox_</em>
+                <span style="color: #bf150f;">your inbox</span>
             </h2>
             
             <p style="font-size: 1.2rem; line-height: 1.4; max-width: 60%; margin-bottom: 3vh;">
