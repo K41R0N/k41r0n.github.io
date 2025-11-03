@@ -174,5 +174,29 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Font loading detection and fade-in
+        function checkFontsLoaded() {
+            // Check if the custom fonts are loaded
+            if (document.fonts && document.fonts.ready) {
+                document.fonts.ready.then(function() {
+                    document.body.classList.add('fonts-loaded');
+                });
+            } else {
+                // Fallback for browsers without FontFace API
+                setTimeout(function() {
+                    document.body.classList.add('fonts-loaded');
+                }, 100);
+            }
+        }
+
+        // Run when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', checkFontsLoaded);
+        } else {
+            checkFontsLoaded();
+        }
+    </script>
 </body>
 </html>
