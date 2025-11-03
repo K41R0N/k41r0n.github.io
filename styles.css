@@ -1,22 +1,56 @@
-/* Typography */
+/* Typography - Updated with Best Practices */
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
 
 /* Reset & Base */
-* {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: antialiased;
+}
+
+/* Base font size on html element for rem calculations */
+html {
+    font-size: 14px;
+}
+
+/* Responsive base font size adjustments */
+@media (min-width: 1600px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 400px) {
+    html {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 320px) {
+    html {
+        font-size: 11px;
+    }
 }
 
 :root {
+    /* Typography Variables */
+    --text-block-width: 48rem;
+    --text-size: 1.5rem;
+    --line-height: 2rem;
+    
     /* Spacing Scale - Consistent vertical rhythm */
-    --space-xs: 0.5rem;    /* 8px */
-    --space-sm: 0.75rem;   /* 12px */
-    --space-md: 1rem;      /* 16px */
-    --space-lg: 1.5rem;    /* 24px */
-    --space-xl: 2rem;      /* 32px */
-    --space-2xl: 6rem;     /* 96px - Keep section spacing */
-    --space-3xl: 8rem;     /* 128px - Keep section spacing */
+    --space-xs: 0.5rem;
+    --space-sm: 0.75rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 6rem;
+    --space-3xl: 8rem;
     
     /* Section spacing */
     --section-padding: 6rem;
@@ -24,12 +58,26 @@
 }
 
 body {
-    font-family: 'IBM Plex Serif', serif;
+    /* Enhanced font stack with comprehensive fallbacks */
+    font-family: 'IBM Plex Serif', 'Times New Roman', serif;
     background-color: #F5F5F5;
     color: #000000;
-    line-height: 1.4;
-    font-size: 18px;
+    font-size: var(--text-size);
+    line-height: var(--line-height);
     font-weight: 400;
+    /* Improved font rendering */
+    font-variant-numeric: lining-nums;
+}
+
+/* Selection highlight for better visibility */
+::selection {
+    background-color: #bf150f;
+    color: #F5F5F5;
+}
+
+::-moz-selection {
+    background-color: #bf150f;
+    color: #F5F5F5;
 }
 
 /* Links */
@@ -43,11 +91,21 @@ a:hover {
     opacity: 0.7;
 }
 
-/* Layout */
+a:focus,
+button:focus,
+input:focus {
+    outline: 2px solid #bf150f;
+    outline-offset: 2px;
+}
+
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 8%;
+    display: grid;
+    grid-template-columns: 1fr min(var(--text-block-width), calc(100% - 16%)) 1fr;
+    padding: 0;
+}
+
+.container > * {
+    grid-column: 2;
 }
 
 .section {
@@ -62,44 +120,81 @@ a:hover {
     padding-bottom: var(--section-padding);
 }
 
-/* Typography Styles - Standardized Titles */
+/* Typography Styles - Following Best Practices */
 h1, .hero-title {
-    font-size: clamp(3rem, 8vw, 6rem);
+    font-size: 6rem;
     font-weight: 500;
-    line-height: 1.1;
-    margin-bottom: var(--space-xl);
-    font-family: 'IBM Plex Serif', serif;
+    line-height: 5rem;
+    margin: 2rem 0 1rem 0;
+    padding: 2rem 0;
+    text-align: center;
+    text-wrap: balance;
+    font-family: 'IBM Plex Serif', Georgia, serif;
 }
 
 h2, .section-title {
-    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-size: 1.5rem;
     font-weight: 500;
-    line-height: 1.1;
-    margin-bottom: var(--space-xl);
-    padding-bottom: var(--space-md);
-    font-family: 'IBM Plex Serif', serif;
+    line-height: var(--line-height);
+    margin: 0 0 2rem 0;
+    text-align: center;
+    text-wrap: balance;
+    font-family: 'IBM Plex Serif', Georgia, serif;
 }
 
 h3, .thesis-title {
-    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-size: var(--text-size);
     font-weight: 500;
-    line-height: 1.2;
+    line-height: var(--line-height);
+    margin: 0 auto 2rem auto;
+    text-align: left;
+    text-wrap: balance;
+    font-style: italic;
     color: #bf150f;
-    margin-bottom: var(--space-md);
-    font-family: 'IBM Plex Serif', serif;
+    font-family: 'IBM Plex Serif', Georgia, serif;
+}
+
+/* Paragraph styling with text-wrap: pretty */
+p {
+    margin: 0 0 2rem 0;
+    text-wrap: pretty;
+    hyphens: manual;
 }
 
 .hero-subtitle {
-    font-size: clamp(1.2rem, 3vw, 1.8rem);
-    line-height: 1.3;
+    font-size: 1.5rem;
+    line-height: var(--line-height);
     margin-bottom: var(--space-xl);
+    text-wrap: pretty;
 }
 
 .thesis-description {
-    font-size: 1.1rem;
-    line-height: 1.5;
+    font-size: 1.25rem;
+    line-height: var(--line-height);
     max-width: 70%;
     margin-bottom: var(--space-lg);
+    text-wrap: pretty;
+}
+
+/* Blockquote styling */
+blockquote {
+    margin: 0 0 0 2rem;
+    font-size: 1.25rem;
+    line-height: var(--line-height);
+}
+
+/* Code styling */
+code {
+    font-family: 'IBM Plex Mono', Menlo, Consolas, 'Courier New', monospace;
+    font-size: 1rem;
+}
+
+/* Figure caption styling */
+figcaption {
+    font-size: 1.0rem;
+    line-height: var(--line-height);
+    text-align: right;
+    text-wrap: balance;
 }
 
 /* Components */
@@ -113,6 +208,12 @@ h3, .thesis-title {
     display: flex;
     gap: var(--space-md);
     margin-top: var(--space-sm);
+    font-family: 'IBM Plex Sans', -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.social-links a {
+    font-size: 1.25rem;
+    line-height: var(--line-height);
 }
 
 .theses-grid {
@@ -133,7 +234,7 @@ h3, .thesis-title {
 }
 
 .link-label {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'IBM Plex Sans', -apple-system, system-ui, sans-serif;
     font-size: 0.9rem;
     color: #bf150f;
     font-style: italic;
@@ -160,7 +261,7 @@ h3, .thesis-title {
 }
 
 .form-label {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'IBM Plex Sans', -apple-system, system-ui, sans-serif;
     display: block;
     margin-bottom: var(--space-sm);
     font-size: 0.9rem;
@@ -177,7 +278,7 @@ h3, .thesis-title {
     border: none;
     border-bottom: 2px solid #bf150f;
     background-color: transparent;
-    font-family: 'IBM Plex Serif', serif;
+    font-family: 'IBM Plex Serif', 'Times New Roman', serif;
     font-size: 1.1rem;
     color: #000000;
     outline: none;
@@ -188,7 +289,7 @@ h3, .thesis-title {
     color: #F5F5F5;
     border: none;
     padding: var(--space-sm) var(--space-lg);
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'IBM Plex Sans', -apple-system, system-ui, sans-serif;
     font-size: 1rem;
     cursor: pointer;
     text-transform: uppercase;
@@ -214,35 +315,51 @@ h3, .thesis-title {
     flex-wrap: wrap;
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
-    :root {
-        /* Smaller spacing scale for mobile */
-        --section-padding: 4rem;
-        --section-padding-top: 5rem;
-        --space-xs: 0.375rem;  /* 6px */
-        --space-sm: 0.5rem;    /* 8px */
-        --space-md: 0.75rem;   /* 12px */
-        --space-lg: 1rem;      /* 16px */
-        --space-xl: 1.25rem;   /* 20px */
-        --space-2xl: 4rem;     /* Keep section spacing */
-        --space-3xl: 5rem;     /* Keep section spacing */
-    }
+/* Responsive Typography - Multiple Breakpoints */
 
-    body {
-        font-size: 16px;
+/* Medium screens (48rem ~ 768px at 16px base) */
+@media (max-width: 48rem) {
+    h1, .hero-title {
+        font-size: 5rem;
+        line-height: 4rem;
     }
     
-    .container {
-        padding: 0 5%;
-    }
-    
-    .theses-grid {
-        gap: var(--space-2xl);
+    p {
+        text-align: left;
+        word-spacing: calc(-1ch / 12.0);
     }
     
     .thesis-description {
         max-width: 100%;
+    }
+}
+
+/* Small screens */
+@media (max-width: 400px) {
+    :root {
+        --section-padding: 4rem;
+        --section-padding-top: 5rem;
+        --space-xs: 0.375rem;
+        --space-sm: 0.5rem;
+        --space-md: 0.75rem;
+        --space-lg: 1rem;
+        --space-xl: 1.25rem;
+        --space-2xl: 4rem;
+        --space-3xl: 5rem;
+    }
+    
+    h1, .hero-title {
+        font-size: 4rem;
+        line-height: 3.2rem;
+        margin: 0 0 0 0;
+    }
+    
+    .container {
+        grid-template-columns: 1fr min(var(--text-block-width), calc(100% - 10%)) 1fr;
+    }
+    
+    .theses-grid {
+        gap: var(--space-2xl);
     }
     
     .social-links {
@@ -258,5 +375,13 @@ h3, .thesis-title {
     .newsletter-iframe {
         height: 280px;
         max-width: 100%;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 320px) {
+    h1, .hero-title {
+        font-size: 3.5rem;
+        line-height: 3rem;
     }
 }
