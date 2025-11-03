@@ -1,5 +1,21 @@
 /* Typography - Updated with Best Practices */
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
+@font-face {
+    font-family: 'Kairon';
+    src: url('KaironFont.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kyrios';
+    src: url('AT-Kyrios-Variable.woff2') format('woff2-variations');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
 
 /* Reset & Base */
 *,
@@ -39,7 +55,7 @@ html {
 
 :root {
     /* Typography Variables */
-    --text-block-width: 48rem;
+    --text-block-width: 40rem;
     --text-size: 1.5rem;
     --line-height: 2rem;
     
@@ -59,7 +75,7 @@ html {
 
 body {
     /* Enhanced font stack with comprehensive fallbacks */
-    font-family: 'IBM Plex Serif', 'Times New Roman', serif;
+    font-family: 'Merriweather', 'Times New Roman', serif;
     background-color: #F5F5F5;
     color: #000000;
     font-size: var(--text-size);
@@ -67,6 +83,9 @@ body {
     font-weight: 400;
     /* Improved font rendering */
     font-variant-numeric: lining-nums;
+    /* Ensure proper centering */
+    margin: 0 auto;
+    max-width: 100%;
 }
 
 /* Selection highlight for better visibility */
@@ -102,6 +121,8 @@ input:focus {
     display: grid;
     grid-template-columns: 1fr min(var(--text-block-width), calc(100% - 16%)) 1fr;
     padding: 0;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .container > * {
@@ -110,6 +131,7 @@ input:focus {
 
 .section {
     padding: var(--section-padding) 0;
+    width: 100%;
 }
 
 .section:first-child {
@@ -121,6 +143,11 @@ input:focus {
 }
 
 /* Typography Styles - Following Best Practices */
+.kairon-font {
+    font-family: 'Kairon', Georgia, serif !important;
+    font-size: 1.3em;
+}
+
 h1, .hero-title {
     font-size: 6rem;
     font-weight: 500;
@@ -129,17 +156,17 @@ h1, .hero-title {
     padding: 2rem 0;
     text-align: center;
     text-wrap: balance;
-    font-family: 'IBM Plex Serif', Georgia, serif;
+    font-family: 'Kyrios', Georgia, serif;
 }
 
 h2, .section-title {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 500;
     line-height: var(--line-height);
     margin: 0 0 2rem 0;
     text-align: center;
     text-wrap: balance;
-    font-family: 'IBM Plex Serif', Georgia, serif;
+    font-family: 'Kyrios', Georgia, serif;
 }
 
 h3, .thesis-title {
@@ -151,7 +178,7 @@ h3, .thesis-title {
     text-wrap: balance;
     font-style: italic;
     color: #bf150f;
-    font-family: 'IBM Plex Serif', Georgia, serif;
+    font-family: 'Kyrios', Georgia, serif;
 }
 
 /* Paragraph styling with text-wrap: pretty */
@@ -185,7 +212,7 @@ blockquote {
 
 /* Code styling */
 code {
-    font-family: 'IBM Plex Mono', Menlo, Consolas, 'Courier New', monospace;
+    font-family: 'Merriweather', Menlo, Consolas, 'Courier New', monospace;
     font-size: 1rem;
 }
 
@@ -208,11 +235,11 @@ figcaption {
     display: flex;
     gap: var(--space-md);
     margin-top: var(--space-sm);
-    font-family: 'IBM Plex Sans', -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Merriweather', -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 .social-links a {
-    font-size: 1.25rem;
+    font-size: 1rem;
     line-height: var(--line-height);
 }
 
@@ -226,15 +253,26 @@ figcaption {
     flex-direction: column;
     gap: var(--space-sm);
     margin-top: var(--space-md);
+    max-width: 100%;
 }
 
 .link-item {
     border-left: 2px solid #bf150f;
     padding-left: var(--space-sm);
+    max-width: 100%;
+}
+
+.link-item a {
+    display: block;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    text-wrap: pretty;
+    line-height: 1.4;
 }
 
 .link-label {
-    font-family: 'IBM Plex Sans', -apple-system, system-ui, sans-serif;
+    font-family: 'Merriweather', -apple-system, system-ui, sans-serif;
     font-size: 0.9rem;
     color: #bf150f;
     font-style: italic;
@@ -243,17 +281,20 @@ figcaption {
 }
 
 .newsletter-form {
-    max-width: 480px;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .newsletter-iframe {
     width: 100%;
-    max-width: 480px;
-    height: 320px;
+    max-width: 600px;
+    height: 400px;
     border: 2px solid #bf150f;
     border-radius: 8px;
     background: #F5F5F5;
     box-shadow: 0 4px 12px rgba(128, 0, 32, 0.1);
+    display: block;
+    margin: 0 auto;
 }
 
 .form-group {
@@ -261,7 +302,7 @@ figcaption {
 }
 
 .form-label {
-    font-family: 'IBM Plex Sans', -apple-system, system-ui, sans-serif;
+    font-family: 'Merriweather', -apple-system, system-ui, sans-serif;
     display: block;
     margin-bottom: var(--space-sm);
     font-size: 0.9rem;
@@ -278,7 +319,7 @@ figcaption {
     border: none;
     border-bottom: 2px solid #bf150f;
     background-color: transparent;
-    font-family: 'IBM Plex Serif', 'Times New Roman', serif;
+    font-family: 'Merriweather', 'Times New Roman', serif;
     font-size: 1.1rem;
     color: #000000;
     outline: none;
@@ -289,7 +330,7 @@ figcaption {
     color: #F5F5F5;
     border: none;
     padding: var(--space-sm) var(--space-lg);
-    font-family: 'IBM Plex Sans', -apple-system, system-ui, sans-serif;
+    font-family: 'Merriweather', -apple-system, system-ui, sans-serif;
     font-size: 1rem;
     cursor: pointer;
     text-transform: uppercase;
@@ -332,6 +373,11 @@ figcaption {
     .thesis-description {
         max-width: 100%;
     }
+    
+    .link-item a {
+        font-size: 0.95rem;
+        line-height: 1.3;
+    }
 }
 
 /* Small screens */
@@ -356,6 +402,8 @@ figcaption {
     
     .container {
         grid-template-columns: 1fr min(var(--text-block-width), calc(100% - 10%)) 1fr;
+        width: 100%;
+        margin: 0 auto;
     }
     
     .theses-grid {
@@ -373,7 +421,7 @@ figcaption {
     }
     
     .newsletter-iframe {
-        height: 280px;
+        height: 350px;
         max-width: 100%;
     }
 }
