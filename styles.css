@@ -210,7 +210,7 @@ p {
 }
 
 .hero-subtitle {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     line-height: var(--line-height);
     margin-bottom: var(--space-xl);
     text-wrap: pretty;
