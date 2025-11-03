@@ -300,15 +300,14 @@ figcaption {
 }
 
 .newsletter-form {
-    margin: 0 auto;
-    width: fit-content;
+    margin: 10 auto;
+    width: 100%;
 }
 
 .newsletter-iframe {
-    width: 540px;
-    height: 320px;
+    width: 100%;
+    height: auto;
     border: 2px solid #bf150f;
-    border-radius: 8px;
     background: #F5F5F5;
     box-shadow: 0 4px 12px rgba(128, 0, 32, 0.1);
     display: block;
