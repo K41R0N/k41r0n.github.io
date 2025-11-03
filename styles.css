@@ -89,6 +89,8 @@ body {
     /* Font loading states */
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
+    /* Padding for fixed bottom button */
+    padding-bottom: 4rem;
 }
 
 body.fonts-loaded {
@@ -384,6 +386,41 @@ figcaption {
     line-height: 1;
 }
 
+/* Subscribe Button - Fixed Bottom */
+.subscribe-section {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #bf150f;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.subscribe-button {
+    display: block;
+    width: 100%;
+    background-color: #bf150f;
+    color: #F5F5F5;
+    font-family: 'Kyrios', Georgia, serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 1rem;
+    text-decoration: none;
+    border: none;
+    transition: opacity 0.2s ease;
+    text-transform: none;
+    letter-spacing: normal;
+    text-align: center;
+}
+
+.subscribe-button:hover {
+    opacity: 0.9;
+    color: #F5F5F5;
+}
+
 /* Responsive Typography - Multiple Breakpoints */
 
 /* Medium screens (48rem ~ 768px at 16px base) */
@@ -454,6 +491,11 @@ figcaption {
         height: 320px;
         max-width: none;
         min-width: 320px;
+    }
+    
+    .subscribe-button {
+        font-size: 1rem;
+        padding: 0.875rem;
     }
 }
 
