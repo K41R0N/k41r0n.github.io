@@ -200,11 +200,46 @@
             }
         }
 
+        // Subscribe button scroll behavior
+        function handleSubscribeButtonScroll() {
+            const subscribeSection = document.querySelector('.subscribe-section');
+            let lastScrollY = window.scrollY;
+            let ticking = false;
+
+            function updateSubscribeButton() {
+                const currentScrollY = window.scrollY;
+                
+                // Show button when at top (within 100px) or scrolling up
+                if (currentScrollY < 100 || currentScrollY < lastScrollY) {
+                    subscribeSection.classList.remove('hidden');
+                } else {
+                    // Hide button when scrolling down and not at top
+                    subscribeSection.classList.add('hidden');
+                }
+                
+                lastScrollY = currentScrollY;
+                ticking = false;
+            }
+
+            function requestTick() {
+                if (!ticking) {
+                    requestAnimationFrame(updateSubscribeButton);
+                    ticking = true;
+                }
+            }
+
+            window.addEventListener('scroll', requestTick, { passive: true });
+        }
+
         // Run when DOM is ready
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', checkFontsLoaded);
+            document.addEventListener('DOMContentLoaded', function() {
+                checkFontsLoaded();
+                handleSubscribeButtonScroll();
+            });
         } else {
             checkFontsLoaded();
+            handleSubscribeButtonScroll();
         }
     </script>
 </body>
