@@ -86,6 +86,13 @@ body {
     /* Ensure proper centering */
     margin: 0 auto;
     max-width: 100%;
+    /* Font loading states */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+body.fonts-loaded {
+    opacity: 1;
 }
 
 /* Selection highlight for better visibility */
@@ -444,9 +451,10 @@ figcaption {
     }
     
     .newsletter-iframe {
-        width: 90%;
-        height: 280px;
-        max-width: 500px;
+        width: 95%;
+        height: 320px;
+        max-width: none;
+        min-width: 320px;
     }
 }
 
@@ -455,5 +463,11 @@ figcaption {
     h1, .hero-title {
         font-size: 3.5rem;
         line-height: 3rem;
+    }
+    
+    .newsletter-iframe {
+        width: 98%;
+        min-width: 300px;
+        height: 300px;
     }
 }
