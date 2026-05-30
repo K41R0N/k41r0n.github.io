@@ -274,7 +274,7 @@ function renderHomePage(settings, about, theses) {
   // About intro-flow — from content/about.md body, with guarded dropcap
   const aboutHtml = about.body
     ? applyDropcap(marked.parse(about.body, { async: false }))
-    : `<p>I'm in tech. I care about craftsmanship. I don't like buzzwords.</p>`;
+    : `<p>${escHtml(settings.tagline)}</p>`;
 
   // Theses TOC — dot-leader list (exact Sky toc-ms structure)
   const tocItems = theses.map(t => {
@@ -316,7 +316,7 @@ function renderHomePage(settings, about, theses) {
     <header class="masthead">
       <div>
         <h1 class="sr-only">${escHtml(settings.full_name)}</h1>
-        <p class="wordmark" aria-hidden="true" style="margin:0;">Alejandro<br>Arango</p>
+        <p class="wordmark" aria-hidden="true" style="margin:0;">${escHtml(settings.wordmark_line1 || settings.full_name.split(' ')[0])}<br>${escHtml(settings.wordmark_line2 || settings.full_name.split(' ')[1] || '')}</p>
       </div>
       <div>
         ${metricsHtml}
@@ -361,8 +361,8 @@ ${tocItems}
       <div class="sec-label">${escHtml(settings.author_handle)} · subscribe</div>
     </div>
     <div class="intro-flow" style="margin-top:2rem;">
-      <p>Insights on digital creation, technology, and thoughtful commentary on our digital future. Delivered when inspiration strikes — never on a schedule.</p>
-      <p><a href="${escHtml(settings.substack)}" target="_blank" rel="noopener">Subscribe on Substack →</a></p>
+      <p>${escHtml(settings.newsletter_body || '')}</p>
+      <p><a href="${escHtml(settings.substack)}" target="_blank" rel="noopener">${escHtml(settings.newsletter_cta || 'Subscribe →')}</a></p>
     </div>
 
     <footer class="footer-ms">
