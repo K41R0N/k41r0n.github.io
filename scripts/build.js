@@ -332,7 +332,7 @@ function renderHomePage(settings, about, theses) {
     <div style="text-align:center; margin:6rem 0 2rem;">
       <img src="assets/img/kairon-logo.svg"
            alt="Kairon"
-           style="width:min(320px, 60%); height:auto; display:inline-block; filter:grayscale(1); mix-blend-mode:multiply;">
+           style="width:min(320px, 60%); height:auto; display:inline-block;">
     </div>
 
     <!-- Theses index -->
