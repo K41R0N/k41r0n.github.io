@@ -26,7 +26,9 @@ const CONTENT = path.join(ROOT, 'content');
 const SRC     = path.join(ROOT, 'src');
 const ASSETS  = path.join(SRC, 'assets');
 
-const SITE_URL          = (process.env.PUBLIC_SITE_URL || 'https://k41r0n.github.io').replace(/\/$/, '');
+// Ensure SITE_URL always has a protocol — Vercel env vars are sometimes set without https://
+const _rawSiteUrl = process.env.PUBLIC_SITE_URL || 'https://kairon.xyz';
+const SITE_URL    = (_rawSiteUrl.startsWith('http') ? _rawSiteUrl : `https://${_rawSiteUrl}`).replace(/\/$/, '');
 const GSC_VERIFICATION  = process.env.GOOGLE_SITE_VERIFICATION || '';
 const GA4_ID            = process.env.GA4_MEASUREMENT_ID || 'G-4E1LTHSFX8';
 
