@@ -1,0 +1,158 @@
+# =============================================================================
+# Kairon Portfolio — CMS Configuration (Sveltia CMS)
+# =============================================================================
+# This is a TEMPLATE file. admin/config.yml is generated from it at build time.
+# Only PUBLIC_SITE_URL needs to be set as a Vercel env var (your deployment URL).
+#
+# Known / hardcoded values:
+#   repo     = K41R0N/k41r0n.github.io
+#   base_url = https://sveltia-cms-auth.alejandro-057.workers.dev/
+# =============================================================================
+
+backend:
+  name: github
+  repo: K41R0N/k41r0n.github.io
+  branch: main
+  base_url: https://sveltia-cms-auth.alejandro-057.workers.dev/
+
+media_folder: src/assets/images
+public_folder: /assets/images
+
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: '-'
+
+collections:
+  # ==========================================================================
+  # THESES
+  # Each thesis is a standalone thought-leadership piece
+  # ==========================================================================
+  - name: theses
+    label: Theses
+    label_singular: Thesis
+    folder: content/theses
+    create: true
+    slug: '{{slug}}'
+    sortable_fields: ['order', 'title']
+    summary: '{{order}}. {{title}}'
+    fields:
+      - label: Title
+        name: title
+        widget: string
+        hint: "The thesis statement / headline"
+
+      - label: Slug
+        name: slug
+        widget: string
+        pattern: ['^[a-z0-9-]+$', "Lowercase letters, numbers, hyphens only"]
+        hint: "URL fragment identifier (e.g., 'devices-as-co-creations')"
+
+      - label: Order
+        name: order
+        widget: number
+        value_type: int
+        min: 1
+        hint: "Display order (1, 2, 3…)"
+
+      - label: Description
+        name: description
+        widget: text
+        hint: "One-sentence summary (used in llms.txt, SEO, and the card subtitle)"
+
+      - label: Body
+        name: body
+        widget: markdown
+        required: false
+        hint: "Optional expanded body text. Supports markdown."
+
+      - label: Links
+        name: links
+        widget: list
+        required: false
+        hint: "Supporting articles, tools, podcasts"
+        fields:
+          - label: Label
+            name: label
+            widget: string
+            hint: "Type tag: Article, Tool, Podcast, Project, etc."
+          - label: Title
+            name: title
+            widget: string
+            hint: "Display title of the linked piece"
+          - label: URL
+            name: url
+            widget: string
+            hint: "Full URL"
+
+  # ==========================================================================
+  # SETTINGS
+  # ==========================================================================
+  - name: settings
+    label: Settings
+    files:
+      - name: site
+        label: Site Settings
+        file: content/settings/site.json
+        fields:
+          - label: Site Title
+            name: title
+            widget: string
+            hint: "Short name (e.g., 'Kairon')"
+
+          - label: Full Name
+            name: full_name
+            widget: string
+            hint: "Legal / full display name"
+
+          - label: Tagline
+            name: tagline
+            widget: string
+            hint: "One-liner title (e.g., 'Creative Technologist and Martech Daylighter')"
+
+          - label: Description
+            name: description
+            widget: text
+            hint: "SEO meta description (1–2 sentences)"
+
+          - label: Author (for SEO/JSON-LD)
+            name: author
+            widget: string
+
+          - label: Author Handle
+            name: author_handle
+            widget: string
+            hint: "GitHub / handle (e.g., K41R0N)"
+
+          - label: Email
+            name: email
+            widget: string
+
+          - label: GitHub
+            name: github
+            widget: string
+
+          - label: Substack
+            name: substack
+            widget: string
+
+          - label: Instagram
+            name: instagram
+            widget: string
+            required: false
+
+          - label: Site URL
+            name: site_url
+            widget: string
+            hint: "Production URL (e.g., https://k41r0n.github.io)"
+
+          - label: Footer Text
+            name: footer_text
+            widget: string
+            required: false
+
+          - label: Substack Embed URL
+            name: substack_embed
+            widget: string
+            hint: "URL for the Substack embed iframe"
+            required: false

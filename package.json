@@ -1,0 +1,17 @@
+{
+  "name": "kairon-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal portfolio for Alejandro (Kairon) Arango Giraldo",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "prebuild": "node scripts/generate-cms-config.js && node scripts/validate-content.js",
+    "dev": "python3 server.py 8081",
+    "validate": "node scripts/validate-content.js"
+  },
+  "type": "module",
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "marked": "^17.0.1"
+  }
+}

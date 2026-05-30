@@ -1,0 +1,26 @@
+/* =============================================================================
+   Fonts — Kairon Portfolio
+   Self-hosted: Kyrios (variable sans-serif), Kairon (custom display)
+   Google Fonts: Merriweather (serif body)
+   ============================================================================= */
+
+/* Merriweather — served from Google Fonts, preconnect in HTML */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
+/* Kyrios — variable sans, the display voice */
+@font-face {
+  font-family: 'Kyrios';
+  src: url('../assets/fonts/AT-Kyrios-Variable.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Kairon — custom logotype / signature display */
+@font-face {
+  font-family: 'Kairon';
+  src: url('../assets/fonts/KaironFont.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

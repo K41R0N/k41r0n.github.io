@@ -1,0 +1,14 @@
+/* =============================================================================
+   Overrides — Kairon-specific deviations from source CSS CSS.
+   Loads last in the CSS_LINKS chain; same-specificity rules win by cascade order.
+   Keep this file minimal — one rule per deviation, with a comment explaining why.
+   ============================================================================= */
+
+/* Section headings use the editorial serif (Merriweather) rather than the
+   display font (Kyrios). The wordmark is the only element that should render
+   at Kyrios scale — section headings must read as subordinate structure. */
+.sec-head h3 {
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -.01em;
+}

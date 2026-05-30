@@ -1,0 +1,109 @@
+/* =============================================================================
+   Design Tokens — Kairon Portfolio
+   Sky token structure verbatim; brand scale swapped from blue → Kairon crimson.
+   Fonts: Kyrios (display) · Merriweather (body) · system mono (technical voice).
+   ============================================================================= */
+
+:root {
+  /* ---- Surface / paper -------------------------------------------------- */
+  --background:    #F5F5F5;
+  --color-white:   #fff;
+  --color-black:   #000;
+
+  /* ---- Brand — CRIMSON (replaces blue #1040ff) ---------------------- */
+  --crimson:         #bf150f;
+  --crimson-light:   #e8342e;
+  --crimson-mid:     #8a0e0a;
+  --crimson-dark:    #5c0908;
+  --crimson-purple:  #6b1515;  /* warm dark accent */
+  --crimson-warm:    #fff3cd;  /* highlight tint */
+
+  --accent:    var(--crimson);
+  --accent-2:  var(--crimson-dark);
+  --cobalt:    var(--accent);   /* compat alias — used across base/components/layout */
+
+  /* Illustration tint fills — crimson-ink-on-paper tones (replaces blue tints) */
+  --ink-fill-1: #fff8f8;   /* near-paper blush */
+  --ink-fill-2: #fde8e8;
+  --ink-fill-3: #f8b4b4;
+  --ink-fill-4: var(--crimson);
+  --ink-fill-p: #fbd0d0;   /* emphasis accent */
+
+  /* Cobalt ramp → Crimson ramp (compat aliases used in components.css) */
+  --color-cobalt-50:   #fff8f8;
+  --color-cobalt-100:  #ffecec;
+  --color-cobalt-300:  #f8b4b4;
+  --color-cobalt-400:  #e86060;
+  --color-cobalt-500:  #d42020;
+  --color-cobalt-600:  var(--crimson);
+
+  /* ---- Neutral gray ramp (Tailwind v4 oklch) ----------------------------- */
+  --color-gray-300:   oklch(87.2% .01  258.338);
+  --color-gray-500:   oklch(55.1% .027 264.364);
+  --color-gray-600:   oklch(44.6% .03  256.802);
+  --color-gray-700:   oklch(37.3% .034 259.733);
+  --color-gray-900:   oklch(21%   .034 264.665);
+  --color-stone-200:  oklch(92.3% .003 48.717);
+  --color-stone-300:  oklch(86.9% .005 56.366);
+  --color-stone-500:  oklch(55.3% .013 58.071);
+
+  /* ---- Accent / highlight colors ---------------------------------------- */
+  --color-amber-100:    oklch(96.2% .059 95.617);
+  --color-yellow-100:   oklch(97.3% .071 103.193);
+  --color-yellow-200:   oklch(94.5% .129 101.54);
+  --color-red-500:      oklch(63.7% .237 25.331);
+  --color-emerald-500:  oklch(69.6% .17  162.48);
+  --color-sky-400:      oklch(74.6% .16  232.661);
+
+  /* ---- Semantic roles --------------------------------------------------- */
+  --text-color:   var(--color-black);
+  --text-muted:   var(--color-gray-600);
+  --text-faint:   var(--color-gray-500);
+  --link-color:   var(--color-cobalt-600);
+  --rule-color:   color-mix(in srgb, var(--color-black) 12%, transparent);
+  --highlight:    var(--color-yellow-200);
+
+  /* ---- Typography — families ------------------------------------------- */
+  /* Two voices: Kyrios (display/headings) · Merriweather (serif body)
+     Mono: system monospace for the "technical label" voice */
+  --font-display: "Kyrios", "Georgia", serif;
+  --font-body:    "Merriweather", "Times New Roman", serif;
+  --font-mono:    ui-monospace, "SFMono-Regular", Menlo, "Courier New", monospace;
+  --font-kairon:  "Kairon", Georgia, serif;  /* custom logotype glyph */
+
+  /* compat aliases */
+  --font-serif: var(--font-display);
+  --font-sans:  var(--font-display);
+
+  --font-weight-normal:   400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:     700;
+
+  /* ---- Type scale (Tailwind v4 rem scale) -------------------------------- */
+  --text-xs:   .75rem;   --text-xs-lh:   calc(1 / .75);
+  --text-sm:   .875rem;  --text-sm-lh:   calc(1.25 / .875);
+  --text-base: 1rem;     --text-base-lh: calc(1.5 / 1);
+  --text-lg:   1.125rem; --text-lg-lh:   calc(1.75 / 1.125);
+  --text-xl:   1.25rem;  --text-xl-lh:   calc(1.75 / 1.25);
+  --text-2xl:  1.5rem;   --text-2xl-lh:  calc(2 / 1.5);
+  --text-4xl:  2.25rem;  --text-4xl-lh:  calc(2.5 / 2.25);
+  --text-6xl:  3.75rem;  --text-6xl-lh:  1.05;
+
+  /* ---- Spacing / layout ------------------------------------------------- */
+  --spacing:        .25rem;
+  --measure:        68ch;
+  --container-2xl:  1536px;
+  --gutter:         clamp(1rem, 4vw, 4rem);
+
+  /* ---- Radius ----------------------------------------------------------- */
+  --radius-xs: .125rem;
+  --radius-sm: .25rem;
+  --radius-md: .5rem;
+
+  /* ---- Shadows ---------------------------------------------------------- */
+  --drop-shadow-xs: 0 1px 1px #0000000d;
+  --drop-shadow-sm: 0 1px 2px #00000026;
+  --drop-shadow-md: 0 3px 3px #0000001f;
+  --shadow-card:    0 1px 2px #00000014, 0 8px 24px #0000000f;
+}

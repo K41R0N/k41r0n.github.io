@@ -1,0 +1,31 @@
+/* Blueprint figure animations — demonstrates how this class of asset can be
+   animated (for Sky assets later). All effects are CSS; figures.js only toggles
+   classes via IntersectionObserver so motion plays when a figure scrolls in.
+   Honors prefers-reduced-motion. */
+
+/* stroke-draw: a line "draws itself" */
+.blueprint .draw {
+  stroke-dasharray: var(--len, 1200);
+  stroke-dashoffset: var(--len, 1200);
+}
+.blueprint.in-view .draw {
+  transition: stroke-dashoffset 1.4s ease;
+  stroke-dashoffset: 0;
+}
+
+/* exploded view: parts separate along their data-dy when in view */
+.blueprint .explode-part {
+  transform: translateY(0);
+  transition: transform .9s cubic-bezier(.2,.7,.2,1);
+}
+.blueprint.in-view .explode-part { transform: translateY(var(--dy, 0)); }
+
+/* slow continuous spin (e.g. a platter) */
+.blueprint.in-view .spin { animation: bp-spin 14s linear infinite; }
+@keyframes bp-spin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .blueprint .draw { stroke-dashoffset: 0; }
+  .blueprint .explode-part, .blueprint.in-view .explode-part { transition: none; transform: none; }
+  .blueprint.in-view .spin { animation: none; }
+}
