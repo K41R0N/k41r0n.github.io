@@ -4,3 +4,7 @@ admin/config.yml
 .env
 .env.local
 .DS_Store
+
+# Specs and private exports
+docs/plans/*.txt
+kairon-export.xml
