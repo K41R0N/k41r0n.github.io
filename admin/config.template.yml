@@ -193,7 +193,7 @@ collections:
     slug: '{{date}}-{{slug}}'
     sortable_fields: ['date', 'title']
     summary: '{{date}} — {{title}}'
-    preview_path: 'blog/{{slug}}.html'
+    preview_path: 'blog/{{slug}}'
     fields:
 
       - label: Title
@@ -345,7 +345,7 @@ collections:
     slug: '{{slug}}'
     sortable_fields: ['order', 'title']
     summary: 'pr.{{order}} — {{title}}'
-    preview_path: 'project-{{slug}}.html'
+    preview_path: 'project-{{slug}}'
     fields:
 
       - label: Title
