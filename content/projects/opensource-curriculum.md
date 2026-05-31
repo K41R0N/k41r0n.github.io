@@ -1,12 +1,13 @@
 ---
-title: "Open Source Curriculum"
-slug: "opensource-curriculum"
+title: Open Source Curriculum
+slug: opensource-curriculum
 order: 1
-description: "A lightweight Svelte tool for creating self-guided curricula using Sveltia CMS for full content control and Netlify CDN."
-repository_url: "https://github.com/K41R0N/opensource-curriculum"
-language: "Svelte"
-version: "1.0.0"
-license: "MIT"
+description: A lightweight Svelte tool for creating self-guided curricula using Sveltia CMS for full content control and Netlify CDN.
+repository_url: https://github.com/K41R0N/opensource-curriculum
+live_url: https://byocurriculum.dev/
+language: Svelte
+version: 1.0.0
+license: MIT
 ---
 
 ## Overview
