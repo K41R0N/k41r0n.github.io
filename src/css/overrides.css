@@ -287,41 +287,61 @@
 }
 
 /* ---- Responsive --------------------------------------------------------- */
+
+/* Medium — between 768px and 1024px: reduce thumb column so text breathes */
 @media (max-width: 64rem) {
-  /* Constrain the archive block slightly less aggressively on medium screens */
   .blog-archive { max-width: 100%; }
+  .blog-archive-entry {
+    grid-template-columns: clamp(100px, 14vw, 160px) 1fr clamp(100px, 14vw, 160px);
+    column-gap: 1.5rem;
+  }
 }
 
+/* Mobile — below 768px */
 @media (max-width: 48rem) {
-  /* Featured: stack vertically, centre the cover, reduce title scale */
+
+  /* Featured: column stack, cover scales to viewport, smaller type */
   .blog-featured {
     padding: 2rem 0;
     border-top-width: 1px;
   }
   .blog-featured-cover {
-    width: clamp(140px, 55vw, 200px);
+    width: min(55vw, 200px);
     margin-bottom: 1.25rem;
   }
   .blog-featured-title { font-size: var(--text-4xl); }
-  .blog-featured-desc { font-size: var(--text-base); }
+  .blog-featured-desc  { font-size: var(--text-base); }
 
-  /* Intro text: full width, no max-width clipping */
-  .blog-intro-text {
-    font-size: var(--text-base);
-    max-width: 100%;
-  }
+  /* Publication intro: full width, slightly smaller */
+  .blog-intro-text { font-size: var(--text-base); max-width: 100%; }
 
-  /* Tag nav: wrap tighter */
-  .blog-tag-nav { gap: .25rem; }
+  /* Tag nav: wrap more tightly */
+  .blog-tag-nav { gap: .2rem; }
 
-  /* Archive: collapse to single row — thumb left (3.5rem), text fills rest, right slot hidden */
+  /* Archive: two-column layout — thumbnail always visible on the left.
+     FIX: use explicit grid-column placement so that:
+       - odd entries: left-slot(image) → col1, content → col2, right-slot(empty) → hidden
+       - even entries: left-slot(empty) → hidden, right-slot(image) → col1, content → col2
+     Previously we hid :last-child which incorrectly hid the IMAGE on even entries. */
   .blog-archive { max-width: 100%; }
   .blog-archive-entry {
     grid-template-columns: 3.5rem 1fr;
     column-gap: 1rem;
     padding: 1.5rem 0;
   }
-  /* Override even-entry reversal on mobile — always thumb left */
-  .blog-archive-slot:last-child { display: none; }
-  .blog-archive-content { grid-column: 2; }
+
+  /* Empty slots vanish; the image slot and content are explicitly placed */
+  .blog-archive-slot:not(.has-image) { display: none; }
+  .blog-archive-slot.has-image       { grid-column: 1; grid-row: 1; }
+  .blog-archive-content              { grid-column: 2; grid-row: 1; }
+
+  /* Scale archive title down slightly for narrow viewports */
+  .blog-archive-title { font-size: var(--text-xl); }
+}
+
+/* Extra-small — below 400px: tighten padding */
+@media (max-width: 25rem) {
+  .blog-featured-title { font-size: var(--text-3xl); }
+  .blog-archive-entry  { column-gap: .75rem; }
+  .blog-archive-title  { font-size: var(--text-lg); }
 }

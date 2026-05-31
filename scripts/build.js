@@ -612,13 +612,13 @@ function renderBlogListing(settings, posts, home, activeTag = null) {
 <body>
   <div class="page">
 
-    <nav class="site-nav">
-      <a href="/">← ${escHtml(settings.title)}</a>
-      <div style="display:flex;gap:1.5rem;align-items:center;">
-        <a href="/about.html" class="mono" style="font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);text-decoration:none;">About</a>
-        <span class="mono">${escHtml(settings.author_handle)} · ${escHtml(headingLabel)}</span>
-      </div>
-    </nav>
+     <nav class="site-nav blog-listing-nav">
+       <a href="/">← ${escHtml(settings.title)}</a>
+       <div style="display:flex;gap:1.25rem;align-items:center;flex-wrap:wrap;justify-content:flex-end;">
+         <a href="/about.html" class="mono" style="font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);text-decoration:none;">About</a>
+         <span class="mono">${escHtml(settings.author_handle)} · ${escHtml(headingLabel)}</span>
+       </div>
+     </nav>
 
     <hr class="rule-dotted">
 
