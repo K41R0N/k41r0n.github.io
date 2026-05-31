@@ -153,8 +153,6 @@ function applyDropcap(html) {
 function transformBody(markdown) {
   let md = markdown;
   // Margin notes: any blockquote (single or multi-line) → <aside class="margin-note">
-  // In Sveltia: use the blockquote button and type your annotation — no special prefix needed.
-  // Multi-line blockquotes (Sveltia wraps long text across multiple "> " lines) are joined.
   md = md.replace(/^(> [^\n]+(?:\n> [^\n]+)*)/gm, (match) => {
     const content = match
       .split('\n')
@@ -166,7 +164,21 @@ function transformBody(markdown) {
   // section breaks
   md = md.replace(/\n---\n/g, '\n<hr class="section-break">\n');
   // parse remaining markdown, then apply guarded dropcap
-  return applyDropcap(marked.parse(md, { async: false }));
+  let html = applyDropcap(marked.parse(md, { async: false }));
+
+  // Post-process img tags:
+  //   1. Add loading="lazy" to all body images (hero gets loading="eager" separately)
+  //   2. Request smaller versions of Substack CDN images (w_1456 → w_800)
+  //      Substack's CDN supports resize params in the URL — 800px is plenty for body images
+  html = html.replace(/<img([^>]*?)>/g, (tag, attrs) => {
+    // Add lazy loading if no loading attribute present
+    if (!attrs.includes('loading=')) attrs += ' loading="lazy"';
+    // Downsize Substack CDN images from 1456px to 800px
+    attrs = attrs.replace(/w_1456,c_limit/g, 'w_800,c_limit');
+    return `<img${attrs}>`;
+  });
+
+  return html;
 }
 
 // ============================================================================
