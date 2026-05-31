@@ -196,6 +196,10 @@ hr, .rule {
   text-decoration: none;
   padding: .15rem .4rem;
 }
+@media (max-width: 48rem) {
+  .chapter-nav { gap: .2rem; }
+  .chapter-nav a { padding: .4rem .5rem; }
+}
 .chapter-nav a[aria-current="true"] {
   color: var(--accent);
   border-bottom: 1px solid var(--accent);

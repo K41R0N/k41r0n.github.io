@@ -267,6 +267,7 @@ collections:
     slug: '{{slug}}'
     sortable_fields: ['order', 'title']
     summary: '§{{order}} — {{title}}'
+    preview_path: 'thesis-{{order}}-{{slug}}'
     fields:
 
       - label: Title

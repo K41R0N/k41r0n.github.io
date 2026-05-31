@@ -113,7 +113,10 @@
 .toc-ms .toc-group > a.group-title:hover { color: var(--accent); }
 .toc-ms .toc-group ul { margin-top: 1rem; list-style: disc; padding-left: 1.1rem; }
 .toc-ms .toc-row { display: grid; grid-template-columns: auto 1fr auto; align-items: baseline; gap: 0 .25rem;
-  text-decoration: none; line-height: 1.75; }       /* text-sm/7 */
+  text-decoration: none; line-height: 1.75; padding: .15rem 0; }       /* text-sm/7 */
+@media (max-width: 48rem) {
+  .toc-ms .toc-row { padding: .4rem 0; }
+}
 .toc-ms .toc-row .t { font-size: var(--text-sm); color: var(--text-color);
   text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--accent) 50%, transparent);
   text-decoration-thickness: 1px; text-underline-offset: 2px; }
