@@ -20,7 +20,18 @@ if not os.path.isdir(serve_dir):
 
 os.chdir(serve_dir)
 
+class CleanUrlHandler(SimpleHTTPRequestHandler):
+    def translate_path(self, path):
+        # Translate to actual file system path
+        translated = super().translate_path(path)
+        # If it doesn't exist and has no extension, try appending .html
+        if not os.path.exists(translated) and '.' not in os.path.basename(translated):
+            html_path = translated + '.html'
+            if os.path.exists(html_path):
+                return html_path
+        return translated
+
 print(f'Serving {serve_dir}')
 print(f'→ http://localhost:{port}\n')
 
-HTTPServer(('', port), SimpleHTTPRequestHandler).serve_forever()
+HTTPServer(('', port), CleanUrlHandler).serve_forever()

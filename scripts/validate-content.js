@@ -77,6 +77,7 @@ if (fs.existsSync(projectsDir)) {
   const files = fs.readdirSync(projectsDir).filter(f => f.endsWith('.md'));
 
   const seenSlugs  = new Set();
+  const seenOrders = new Set();
 
   for (const file of files) {
     const { data } = matter(fs.readFileSync(path.join(projectsDir, file), 'utf-8'));
@@ -84,12 +85,21 @@ if (fs.existsSync(projectsDir)) {
 
     const title = data.title || file.replace(/\.md$/, '');
     const slug = data.slug || String(title).toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+    const order = data.order;
 
     if (!slug) fail(`${id}: resulting slug is empty`);
     if (!/^[a-z0-9-]+$/.test(slug)) fail(`${id}: slug "${slug}" must match ^[a-z0-9-]+$`);
 
     if (seenSlugs.has(slug)) fail(`${id}: duplicate slug "${slug}"`);
     else seenSlugs.add(slug);
+
+    if (order === undefined || order === null || !Number.isFinite(order) || !Number.isInteger(order)) {
+      fail(`${id}: order must be a numeric integer`);
+    } else if (seenOrders.has(order)) {
+      fail(`${id}: duplicate order "${order}"`);
+    } else {
+      seenOrders.add(order);
+    }
 
     if (errors === 0) ok(file);
   }

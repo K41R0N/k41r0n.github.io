@@ -123,7 +123,7 @@ function loadProjects() {
       data.order = typeof data.order === 'number' ? data.order : 99;
       return { ...data, body: content.trim(), filename: f };
     })
-    .sort((a, b) => a.order - b.order);
+    .sort((a, b) => a.order === b.order ? a.title.localeCompare(b.title) : a.order - b.order);
 }
 
 function loadAboutPage() {
@@ -337,14 +337,21 @@ function projectSchema(project, settings) {
   if (project.repository_url) projectEntity.codeRepository = project.repository_url;
   if (project.language) projectEntity.programmingLanguage = project.language;
   if (project.license) {
-    if (project.license.startsWith('http')) {
-      projectEntity.license = project.license;
-    } else if (project.license.toUpperCase() === 'MIT') {
-      projectEntity.license = 'https://opensource.org/licenses/MIT';
+    if (typeof project.license === 'string') {
+      if (project.license.startsWith('http')) {
+        projectEntity.license = project.license;
+      } else if (project.license.toUpperCase() === 'MIT') {
+        projectEntity.license = 'https://opensource.org/licenses/MIT';
+      } else {
+        projectEntity.license = {
+          '@type': 'CreativeWork',
+          'name': project.license
+        };
+      }
     } else {
       projectEntity.license = {
         '@type': 'CreativeWork',
-        'name': project.license
+        'name': String(project.license)
       };
     }
   }
