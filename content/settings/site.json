@@ -1,7 +1,7 @@
 {
-  "full_name": "Alejandro Arango Giraldo",
-  "wordmark_line1": "Alejandro",
-  "wordmark_line2": "Arango",
+  "full_name": "Alejandro Arango",
+  "wordmark_line1": "Alejandro Arango",
+  "wordmark_line2": "-",
   "author_handle": "K41R0N",
   "tagline": "Creative Technologist and Martech Daylighter",
   "email": "alejandro@kairon.xyz",
@@ -11,11 +11,11 @@
   "title": "Kairon",
   "description": "Alejandro (Kairon) Arango Giraldo — Creative Technologist and Martech Daylighter. Theses on digital culture, devices as co-creations, and the future of storytelling.",
   "site_url": "https://kairon.xyz",
-  "author": "Alejandro Arango Giraldo",
   "thesis_nav_label": "Thesis",
   "thesis_links_heading": "Links",
   "thesis_links_label": "references",
   "thesis_next_label": "Next",
   "footer_text": "Made with Love",
-  "substack_embed": "https://k41r0n.substack.com/embed"
+  "substack_embed": "https://k41r0n.substack.com/embed",
+  "author": "Alejandro Arango Giraldo"
 }
