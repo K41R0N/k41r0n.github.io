@@ -190,14 +190,21 @@
 }
 
 /* ---- Archive entries — text fixed in centre column, images pivot L/R ---- */
-/* Three-column grid: [left-thumb] [centre-text] [right-thumb].
-   The text column never moves — images alternate slots via the build script. */
+/* The archive wrapper is narrower than the page and centred.
+   Three equal-width columns: [thumb-slot] [text] [thumb-slot].
+   Text is always in column 2 — the geometric centre of the block.
+   Images alternate left / right slots via the build script. */
+.blog-archive {
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+}
 .blog-archive-entry {
   display: grid;
   grid-template-columns: clamp(130px, 18vw, 210px) 1fr clamp(130px, 18vw, 210px);
   column-gap: 2rem;
   align-items: center;
-  padding: 2rem 0;
+  padding: 2.5rem 0;
   border-bottom: 1px solid var(--rule-color);
   text-decoration: none;
   color: inherit;
@@ -264,9 +271,25 @@
   text-wrap: pretty;
 }
 
+/* ---- Scroll progress bar ------------------------------------------------ */
+/* Fixed to the bottom of the viewport. Fills left→right as the reader
+   scrolls through the article. Width driven by inline JS in renderBlogPost(). */
+.scroll-progress {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: var(--accent);
+  z-index: 9999;
+  pointer-events: none;
+  transition: width 80ms linear;
+}
+
 /* Mobile: collapse to thumb-left, text-right */
 @media (max-width: 48rem) {
   .blog-featured-title { font-size: var(--text-4xl); }
+  .blog-archive { max-width: 100%; }
   .blog-archive-entry {
     grid-template-columns: 3.5rem 1fr 0;
     column-gap: 1rem;

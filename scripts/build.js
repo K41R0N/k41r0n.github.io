@@ -614,7 +614,10 @@ function renderBlogListing(settings, posts, home, activeTag = null) {
 
     <nav class="site-nav">
       <a href="/">← ${escHtml(settings.title)}</a>
-      <span class="mono">${escHtml(settings.author_handle)} · ${escHtml(headingLabel)}</span>
+      <div style="display:flex;gap:1.5rem;align-items:center;">
+        <a href="/about.html" class="mono" style="font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);text-decoration:none;">About</a>
+        <span class="mono">${escHtml(settings.author_handle)} · ${escHtml(headingLabel)}</span>
+      </div>
     </nav>
 
     <hr class="rule-dotted">
@@ -625,13 +628,15 @@ function renderBlogListing(settings, posts, home, activeTag = null) {
       <div class="sec-label">${escHtml(settings.author_handle)} · ${escHtml(headingLabel)}</div>
     </div>
 
-    ${intro ? `<p class="blog-intro-text">${escHtml(intro)} <a href="/about.html" style="font-style:normal;font-family:var(--font-mono);font-size:var(--text-xs);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;">About this publication →</a></p>` : ''}
+    ${intro ? `
+    <p class="blog-intro-text">${escHtml(intro)}</p>
+    <p style="margin-top:.75rem;"><a href="/about.html" class="mono" style="font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.06em;">About this publication →</a></p>` : ''}
 
     ${tagFilterHtml}
 
     ${featuredHtml}
 
-    ${archive.length ? `<div class="blog-archive" style="margin-top:0;">${archiveHtml}</div>` : ''}
+    ${archive.length ? `<div class="blog-archive">${archiveHtml}</div>` : ''}
 
     <footer class="footer-ms" style="margin-top:4rem;">
       <div class="stars">· · ·</div>
@@ -647,6 +652,11 @@ function renderBlogListing(settings, posts, home, activeTag = null) {
 </html>`;
 }
 
+function estimateReadTime(markdown) {
+  const words = (markdown || '').replace(/[#*_~`>\[\]()!+-]/g, ' ').split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.ceil(words / 220));
+}
+
 function renderBlogPost(post, settings) {
   const year       = new Date().getFullYear();
   const title      = `${post.title} — ${settings.title}`;
@@ -658,15 +668,14 @@ function renderBlogPost(post, settings) {
     ? new Date(post.date).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' }).toUpperCase()
     : '';
   const primaryTag = Array.isArray(post.tags) && post.tags.length ? post.tags[0] : null;
-  const eyebrowStr = [primaryTag, dateStr].filter(Boolean).join(' · ');
+  const readTime   = estimateReadTime(post.body);
+  const eyebrowStr = [primaryTag, dateStr, `${readTime} min read`].filter(Boolean).join(' · ');
   const navLabel   = [primaryTag, dateShort].filter(Boolean).join(' · ');
 
-  // Hero block: full-bleed, sits outside .page wrapper
   const coverHtml = post.cover_image
     ? `<img class="blog-hero-cover" src="${escHtml(post.cover_image)}" alt="${escHtml(post.title)}" loading="eager">`
     : '';
 
-  // Article body — same transform as thesis pages
   const bodyHtml = transformBody(post.body || '');
 
   return `<!DOCTYPE html>
@@ -678,15 +687,15 @@ function renderBlogPost(post, settings) {
 </head>
 <body>
 
-  <!-- Full-bleed hero: 1:1 cover image → Kyrios title (crimson) → italic subtitle.
-       Matches the Substack tile format. Sits outside .page for full width. -->
+  <!-- Scroll progress bar — fixed at viewport bottom, fills as reader scrolls -->
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
   <section class="blog-hero" aria-labelledby="post-title">
     ${coverHtml}
     <h1 class="blog-hero-title" id="post-title">${escHtml(post.title)}</h1>
     ${post.description ? `<p class="blog-hero-subtitle">${escHtml(post.description)}</p>` : ''}
   </section>
 
-  <!-- Thesis-identical chapter-page layout below the hero -->
   <div class="page chapter-page">
 
     <nav class="site-nav">
@@ -696,10 +705,6 @@ function renderBlogPost(post, settings) {
 
     <hr class="rule-dotted">
 
-    <!-- Three-column article grid — identical to thesis pages.
-         margin-label: rotated date in column 1.
-         eyebrow: tag · date in mono uppercase.
-         body: dropcap + margin notes as on thesis pages. -->
     <article class="article" id="${escHtml(post.slug)}">
       <span class="margin-label">${escHtml(dateShort)}</span>
       <p class="eyebrow">${escHtml(eyebrowStr)}</p>
@@ -721,6 +726,22 @@ function renderBlogPost(post, settings) {
     </footer>
 
   </div>
+
+  <script>
+    (function() {
+      var bar = document.getElementById('scroll-progress');
+      if (!bar) return;
+      function update() {
+        var h = document.documentElement;
+        var scrolled = h.scrollTop || document.body.scrollTop;
+        var total = h.scrollHeight - h.clientHeight;
+        bar.style.width = (total > 0 ? Math.min(100, (scrolled / total) * 100) : 0) + '%';
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+    })();
+  </script>
+
 </body>
 </html>`;
 }
