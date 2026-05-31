@@ -11,7 +11,7 @@
 
 /* ---- Wordmark (the masthead title) -------------------------------------- */
 .wordmark {
-  font-family: var(--font-display);       /* Sky display = Circular */
+  font-family: var(--font-display);       /* display font = Kyrios */
   font-weight: 500;
   font-size: clamp(2rem, 6vw, 3.75rem);
   line-height: .92;
@@ -116,9 +116,9 @@ a:hover, .toc-row:hover, .hover-cobalt:hover { color: var(--cobalt); }
 
 /* ---- Blueprint figure frame --------------------------------------------- */
 /*  Figures obey the spec in docs/infographics-spec.md:
-     monochrome paper + one Sky-blue accent + flat tints + black ink,
+     monochrome paper + one accent colour + flat tints + black ink,
      one stroke weight, dashed guides, ≤6 callouts, A5 motion only.
-     Any Sky asset is reduced into this world, not pasted on top.  */
+     Every asset is reduced into this world, not pasted on top.  */
 .blueprint { display: block; width: 100%; height: auto; }
 
 /*  Strokes — structure in cobalt (accent), guides dashed & muted  */
@@ -152,7 +152,7 @@ a:hover, .toc-row:hover, .hover-cobalt:hover { color: var(--cobalt); }
 
 /*  Moving capital — accent dots  */
 .blueprint .flow-dot     { fill: var(--accent); }
-.blueprint .flow-dot.alt { fill: var(--sky-dark-purple); }
+.blueprint .flow-dot.alt { fill: var(--accent-2); }
 
 /*  Wire hierarchy: solid spine, dashed branches  */
 .blueprint .wire.spine[data-stroke] { stroke-width: 2; opacity: 1; }

@@ -1,5 +1,5 @@
 /* Blueprint figure animations — demonstrates how this class of asset can be
-   animated (for Sky assets later). All effects are CSS; figures.js only toggles
+   animated (). All effects are CSS; figures.js only toggles
    classes via IntersectionObserver so motion plays when a figure scrolls in.
    Honors prefers-reduced-motion. */
 

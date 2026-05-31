@@ -1,6 +1,6 @@
 /* =============================================================================
    Design Tokens — Kairon Portfolio
-   Sky token structure verbatim; brand scale swapped from blue → Kairon crimson.
+   Design tokens — Kairon palette.
    Fonts: Kyrios (display) · Merriweather (body) · system mono (technical voice).
    ============================================================================= */
 
@@ -10,7 +10,7 @@
   --color-white:   #fff;
   --color-black:   #000;
 
-  /* ---- Brand — CRIMSON (replaces blue #1040ff) ---------------------- */
+  /* ---- Brand — CRIMSON ---------------------- */
   --crimson:         #bf150f;
   --crimson-light:   #e8342e;
   --crimson-mid:     #8a0e0a;
@@ -53,7 +53,7 @@
   --color-yellow-200:   oklch(94.5% .129 101.54);
   --color-red-500:      oklch(63.7% .237 25.331);
   --color-emerald-500:  oklch(69.6% .17  162.48);
-  --color-sky-400:      oklch(74.6% .16  232.661);
+  --color-blue-400:      oklch(74.6% .16  232.661);
 
   /* ---- Semantic roles --------------------------------------------------- */
   --text-color:   var(--color-black);

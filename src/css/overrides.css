@@ -1,5 +1,5 @@
 /* =============================================================================
-   Overrides — Kairon-specific deviations from source CSS CSS.
+   Overrides — Kairon-specific deviations from the editorial CSS.
    Loads last in the CSS_LINKS chain; same-specificity rules win by cascade order.
    Keep this file minimal — one rule per deviation, with a comment explaining why.
    ============================================================================= */

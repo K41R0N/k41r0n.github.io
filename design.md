@@ -1,6 +1,6 @@
 # Design System — Kairon Portfolio
 
-Adapted from the editorial layout (K41R0N / kairon-portfolio), which itself follows the layout grammar of kairon.xyz. This document is the living reference for design decisions in this project.
+This is the living reference for design decisions in this project.
 
 ---
 
@@ -38,7 +38,7 @@ One accent colour only. Never use more than one non-neutral colour at a time.
 
 ## Layout Grammar
 
-The Sky / kairon.xyz layout grammar, applied verbatim. CSS lives in `src/css/` — source CSS files are copied as-is; Kairon-specific deviations go in `src/css/overrides.css`.
+The editorial layout grammar. CSS lives in `src/css/` — source CSS files are not modified; Kairon-specific deviations go in `src/css/overrides.css`.
 
 ### Home page (`ms-main`)
 
@@ -74,22 +74,22 @@ footer-ms
 
 | File | Origin | Purpose |
 |------|--------|---------|
-| `src/css/tokens.css` | Kairon | Design tokens — swap blue → crimson throughout |
+| `src/css/tokens.css` | Kairon | Design tokens — Kairon crimson palette |
 | `src/css/fonts.css` | Kairon | Font face declarations |
-| `src/css/base.css` | source CSS | Reset, editorial type, hairline rules, dropcap, margin note |
-| `src/css/layout.css` | source CSS | ms-main, masthead, intro-flow, sec-head, toc-ms, footer-ms |
-| `src/css/components.css` | source CSS | wordmark, blueprint figures, TOC, signup, rotated margin label |
-| `src/css/animations.css` | source CSS | Blueprint figure entrance animations |
+| `src/css/base.css` | source | Reset, editorial type, hairline rules, dropcap, margin note |
+| `src/css/layout.css` | source | ms-main, masthead, intro-flow, sec-head, toc-ms, footer-ms |
+| `src/css/components.css` | source | wordmark, blueprint figures, TOC, signup, rotated margin label |
+| `src/css/animations.css` | source | Blueprint figure entrance animations |
 | `src/css/overrides.css` | Kairon | Kairon-specific deviations only — keep minimal |
 
-**Rule:** Never edit the source CSS files. Put all project-specific overrides in `overrides.css`.
+**Rule:** Never edit the source files. Put all project-specific overrides in `overrides.css`.
 
 ---
 
 ## Key Components
 
 ### Masthead metrics grid (`.live-metrics`)
-Three-column grid. In the Sky original: live protocol data. In this portfolio: social platform links.
+Three-column grid. Adapted from a protocol metrics pattern. In this portfolio: social platform links.
 - Label row: platform name in mono uppercase
 - Value row: handle as a link, `--text-4xl` size
 
@@ -185,5 +185,5 @@ Every build outputs:
 - No additional accent colours beyond crimson
 - No cards unless they are interactive units
 - No inline styles beyond what the build template already uses — put new rules in `overrides.css`
-- No changes to the source CSS CSS files — patch via `overrides.css`
+- No changes to the source CSS files — patch via `overrides.css`
 - Never edit `dist/` directly — it is build output

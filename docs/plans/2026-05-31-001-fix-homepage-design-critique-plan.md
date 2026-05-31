@@ -37,7 +37,7 @@ The critique scored the design 26/40 (Developing). The layout skeleton is correc
 - `src/css/layout.css` (source CSS) — `.sec-head h3` rule at line 99: `font-family: var(--font-serif)`
 - `src/css/tokens.css` — token chain: `--font-serif → --font-display → "Kyrios"` (display font); `--font-body → "Merriweather"` (editorial serif)
 - `src/css/base.css` (source CSS) — `h1–h4` base rule at line 96: `font-family: var(--font-serif)` — the section heading override must beat this specificity
-- Sky reference `dist/index.html` — the masthead's right panel uses `class="live-metrics"` with three `<div>` children each containing a `.metric-label` and `.metric-value`
+- the `.live-metrics` pattern — the masthead's right panel uses `class="live-metrics"` with three `<div>` children each containing a `.metric-label` and `.metric-value`
 
 ### Key Findings
 
@@ -51,7 +51,7 @@ The critique scored the design 26/40 (Developing). The layout skeleton is correc
 ## Key Technical Decisions
 
 - **Dropcap guard via regex lookahead, not content inspection:** Replace `/<p>/` with `/<p class="dropcap">` only when the first word has 3+ characters. Uses `/<p>([A-Za-z]{3})/` to match before applying the class. Avoids needing to parse the markdown content before HTML conversion.
-- **Section heading font override via `src/css/overrides.css`:** Rather than modifying the Sky `layout.css` verbatim copy, add a thin `overrides.css` that targets `.sec-head h3` with `font-family: var(--font-body)`. This isolates Kairon-specific deviations from the source CSS files, making future Sky upstream diffs easier to track.
+- **Section heading font override via `src/css/overrides.css`:** Add a thin `overrides.css` that targets `.sec-head h3` with `font-family: var(--font-body)`. This isolates Kairon-specific deviations from the source CSS files.
 - **Masthead metrics restructure stays in `renderHomePage()`:** The three metric slots become: `CREATIVE TECHNOLOGIST` (label) / name (value) · `MARTECH DAYLIGHTER` (label) / tagline (value) · `CONTACT` (label) / email link (value). This preserves the three-column structure while making each label a genuine descriptor.
 - **Social links move to masthead header:** The `<ul class="social-links">` moves inside the `<header class="masthead">` block, beneath the metrics panel. Renders on the same visual level as the contact info. Removed from `intro-flow` entirely.
 
@@ -60,7 +60,7 @@ The critique scored the design 26/40 (Developing). The layout skeleton is correc
 ### Resolved During Planning
 
 - *Should the about text dropcap be removed entirely, or guarded?* Guarded — the dropcap is correct for thesis pages (where text starts with full words). On the home page, the guard catches "I'm" and simply renders it as a normal paragraph.
-- *Should `layout.css` be modified directly?* No — keep Sky CSS verbatim; use `overrides.css` as a shim.
+- *Should `layout.css` be modified directly?* No — keep source CSS unmodified; use `overrides.css` as a shim.
 - *Where do the social links live in the masthead?* Below the metrics panel, inside `<header class="masthead">`, as a flat row using the existing `.social-links` CSS.
 
 ### Deferred to Implementation
@@ -150,7 +150,7 @@ This makes each slot a genuine label→value pair rather than an industry term s
 Social links — move the `<ul class="social-links">` from inside the `intro-flow` section into the `<header class="masthead">` block, as a third row beneath the metrics panel. Use the existing `.social-links` CSS (a flex row of mono uppercase links).
 
 **Patterns to follow:**
-- Existing `.live-metrics` / `.metric-label` / `.metric-value` structure in `dist/index.html` (Sky reference, lines 113–127)
+- Existing `.live-metrics` / `.metric-label` / `.metric-value` structure in the layout CSS
 - Existing `navLinks` list construction already in `renderHomePage()`
 
 **Test scenarios:**
@@ -177,7 +177,7 @@ Social links — move the `<ul class="social-links">` from inside the `intro-flo
 - Modify: `scripts/build.js` — add `overrides.css` to the `CSS_LINKS` constant
 
 **Approach:**
-- Create `src/css/overrides.css` as a thin shim for Kairon-specific deviations from the source CSS CSS
+- Create `src/css/overrides.css` as a thin shim for Kairon-specific deviations from the source CSS
 - Add one rule: `.sec-head h3 { font-family: var(--font-body); }` — Merriweather serif provides clear visual hierarchy below the Kyrios wordmark
 - Add `<link rel="stylesheet" href="css/overrides.css">` as the last CSS link in `CSS_LINKS` (must load after `layout.css` to win specificity)
 
@@ -228,7 +228,7 @@ Social links — move the `<ul class="social-links">` from inside the `intro-flo
 - **Thesis detail pages:** Units 1 guards the dropcap in `transformBody()` — thesis pages with body text starting with full words are unaffected
 - **CSS:** `overrides.css` only affects `.sec-head h3`; no other selectors touched
 - **LLM/SEO endpoints:** No changes to `llms.txt`, `sitemap.xml`, `feed.xml`, `robots.txt`, or `api/content.json`
-- **Unchanged invariants:** TOC dot-leader structure, footer, all Sky layout classes, all thesis page layouts
+- **Unchanged invariants:** TOC dot-leader structure, footer, all layout classes, all thesis page layouts
 
 ## Risks & Dependencies
 

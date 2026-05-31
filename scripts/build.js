@@ -3,8 +3,8 @@
 /**
  * Kairon Portfolio — Build Script
  *
- * Layout language: editorial layout / kairon.xyz grammar.
- * Colour palette:  Kairon crimson #bf150f in place of blue.
+ * Layout language: editorial layout grammar.
+ * Colour palette: Kairon crimson #bf150f.
  *
  * Outputs:
  *   dist/index.html                      — home  (ms-main, masthead, intro-flow, toc-ms)
@@ -276,7 +276,7 @@ function renderHomePage(settings, about, theses) {
     ? applyDropcap(marked.parse(about.body, { async: false }))
     : `<p>${escHtml(settings.tagline)}</p>`;
 
-  // Theses TOC — dot-leader list (exact Sky toc-ms structure)
+  // Theses TOC — dot-leader list
   const tocItems = theses.map(t => {
     const url   = thesisUrl(t);
     const label = `${String(t.order).padStart(2,'0')} · ${t.title}`;
@@ -381,7 +381,7 @@ ${tocItems}
 }
 
 // ============================================================================
-// Thesis Detail Page  (mirrors Sky chapter page exactly)
+// Thesis Detail Page
 // ============================================================================
 
 function renderThesisPage(thesis, allTheses, settings) {

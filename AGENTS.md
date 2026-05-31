@@ -13,7 +13,7 @@ Personal portfolio for **Alejandro (Kairon) Arango Giraldo** — Creative Techno
 | Hosting | Vercel (repo: `K41R0N/k41r0n.github.io`) |
 | CMS Auth | Cloudflare Worker — `https://sveltia-cms-auth.alejandro-057.workers.dev/` |
 | Content | Markdown files + JSON settings |
-| Design | Adapted from editorial layout (kairon.xyz grammar) |
+| Design | Editorial layout grammar |
 | Palette | Warm off-white `#F5F5F5` · black ink · crimson `#bf150f` accent |
 
 ### Key Architecture Principle
@@ -120,7 +120,7 @@ Design tokens in `src/css/tokens.css`. Only change variable **values**, never na
 - **Font mono:** Departure Mono / system monospace (technical label voice)
 - **Font kairon:** Kairon (custom display glyph — self-hosted)
 
-### Design Patterns (borrowed from Sky / kairon.xyz)
+### Design Patterns
 
 | Pattern | Class | Notes |
 |---------|-------|-------|

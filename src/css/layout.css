@@ -1,10 +1,8 @@
 /* =============================================================================
-   layout.css — EXACT layout of the kairon.xyz reference, translated
-   from its captured Tailwind classes into vanilla CSS. Values are 1-1:
+   layout.css — Editorial layout grammar translated into vanilla CSS.
    Tailwind spacing unit = .25rem  →  mt-8=2rem, mt-7=1.75rem, mt-10=2.5rem,
    mt-12=3rem, mt-24=6rem, mt-32=8rem, mt-64=16rem. Breakpoints: sm 640, md 768,
-   lg 1024, xl 1280. Only colors/content differ from the source; structure,
-   padding, gaps, columns and section rhythm match.
+   lg 1024, xl 1280.
    ============================================================================= */
 
 /* ---- Container: max-w-(--breakpoint-2xl) p-4 pb-20 sm:p-6 md:p-10 --------- */
