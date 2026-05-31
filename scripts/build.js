@@ -63,11 +63,11 @@ function escHtml(str) {
 function toRFC822(date) { return date.toUTCString(); }
 
 function thesisUrl(thesis) {
-  return `thesis-${String(thesis.order).padStart(2,'0')}-${thesis.slug}.html`;
+  return `thesis-${String(thesis.order).padStart(2,'0')}-${thesis.slug}`;
 }
 
 function projectUrl(project) {
-  return `project-${project.slug}.html`;
+  return `project-${project.slug}`;
 }
 
 // ============================================================================
@@ -118,9 +118,12 @@ function loadProjects() {
     .filter(f => f.endsWith('.md'))
     .map(f => {
       const { data, content } = matter(fs.readFileSync(path.join(dir, f), 'utf-8'));
+      data.title = data.title || f.replace(/\.md$/, '');
+      data.slug = data.slug || slugify(data.title);
+      data.order = typeof data.order === 'number' ? data.order : 99;
       return { ...data, body: content.trim(), filename: f };
     })
-    .sort((a, b) => (a.order || 99) - (b.order || 99));
+    .sort((a, b) => a.order - b.order);
 }
 
 function loadAboutPage() {
@@ -333,7 +336,18 @@ function projectSchema(project, settings) {
 
   if (project.repository_url) projectEntity.codeRepository = project.repository_url;
   if (project.language) projectEntity.programmingLanguage = project.language;
-  if (project.license) projectEntity.license = project.license;
+  if (project.license) {
+    if (project.license.startsWith('http')) {
+      projectEntity.license = project.license;
+    } else if (project.license.toUpperCase() === 'MIT') {
+      projectEntity.license = 'https://opensource.org/licenses/MIT';
+    } else {
+      projectEntity.license = {
+        '@type': 'CreativeWork',
+        'name': project.license
+      };
+    }
+  }
   if (project.version) projectEntity.softwareVersion = project.version;
 
   return jsonLd([
@@ -683,7 +697,7 @@ ${chapterNav}
 // ============================================================================
 
 function blogPostUrl(post) {
-  return `blog/${post.slug}.html`;
+  return `blog/${post.slug}`;
 }
 
 function renderBlogListing(settings, posts, home, activeTag = null) {
@@ -773,7 +787,7 @@ function renderBlogListing(settings, posts, home, activeTag = null) {
      <nav class="site-nav blog-listing-nav">
        <a href="/">← ${escHtml(settings.title)}</a>
        <div style="display:flex;gap:1.25rem;align-items:center;flex-wrap:wrap;justify-content:flex-end;">
-         <a href="/about.html" class="mono" style="font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);text-decoration:none;">About</a>
+         <a href="/about" class="mono" style="font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);text-decoration:none;">About</a>
          <span class="mono">${escHtml(settings.author_handle)} · ${escHtml(headingLabel)}</span>
        </div>
      </nav>
@@ -788,7 +802,7 @@ function renderBlogListing(settings, posts, home, activeTag = null) {
 
     ${intro ? `
     <p class="blog-intro-text">${escHtml(intro)}</p>
-    <p style="margin-top:.75rem;"><a href="/about.html" class="mono" style="font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.06em;">About this publication →</a></p>` : ''}
+    <p style="margin-top:.75rem;"><a href="/about" class="mono" style="font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.06em;">About this publication →</a></p>` : ''}
 
     ${tagFilterHtml}
 
@@ -922,7 +936,7 @@ function renderBlogPost(post, settings) {
         var h = document.documentElement;
         var scrolled = h.scrollTop || document.body.scrollTop;
         var total = h.scrollHeight - h.clientHeight;
-        bar.style.width = (total > 0 ? Math.min(100, (scrolled / total) * 100) : 0) + '%';
+        bar.style.transform = 'scaleX(' + (total > 0 ? Math.min(1, scrolled / total) : 0) + ')';
       }
       window.addEventListener('scroll', update, { passive: true });
       update();
@@ -940,7 +954,7 @@ function renderBlogPost(post, settings) {
 function renderAboutPage(page, settings) {
   const year  = new Date().getFullYear();
   const title = `${page.title} — ${settings.title}`;
-  const url   = `${SITE_URL}/about.html`;
+  const url   = `${SITE_URL}/about`;
   const bodyHtml = transformBody(page.body || '');
 
   return `<!DOCTYPE html>
@@ -1099,7 +1113,7 @@ function generateSitemap(theses, posts, projects) {
   const urls  = [
     { loc: `${SITE_URL}/`,           priority: '1.0', changefreq: 'monthly', lastmod: today },
     { loc: `${SITE_URL}/blog/`,      priority: '0.9', changefreq: 'weekly',  lastmod: today },
-    { loc: `${SITE_URL}/about.html`, priority: '0.7', changefreq: 'monthly', lastmod: today },
+    { loc: `${SITE_URL}/about`, priority: '0.7', changefreq: 'monthly', lastmod: today },
     ...theses.map(t => ({ loc: `${SITE_URL}/${thesisUrl(t)}`, priority: '0.8', changefreq: 'monthly', lastmod: today })),
     ...projects.map(p => ({ loc: `${SITE_URL}/${projectUrl(p)}`, priority: '0.8', changefreq: 'monthly', lastmod: today })),
     ...posts.map(p  => ({ loc: `${SITE_URL}/${blogPostUrl(p)}`, priority: '0.8', changefreq: 'monthly', lastmod: p.date || today }))
@@ -1181,14 +1195,14 @@ function main() {
 
   // Thesis detail pages
   for (const thesis of theses) {
-    const filename = thesisUrl(thesis);
+    const filename = `${thesisUrl(thesis)}.html`;
     fs.writeFileSync(path.join(DIST, filename), renderThesisPage(thesis, theses, settings));
     console.log(`  ${filename}`);
   }
 
   // Project detail pages
   for (const project of projects) {
-    const filename = projectUrl(project);
+    const filename = `${projectUrl(project)}.html`;
     fs.writeFileSync(path.join(DIST, filename), renderProjectPage(project, projects, settings));
     console.log(`  ${filename}`);
   }
@@ -1205,8 +1219,9 @@ function main() {
     fs.writeFileSync(path.join(DIST, 'blog', 'index.html'), renderBlogListing(settings, posts, home));
     console.log('  blog/index.html');
     for (const post of posts) {
-      fs.writeFileSync(path.join(DIST, 'blog', `${post.slug}.html`), renderBlogPost(post, settings));
-      console.log(`  blog/${post.slug}.html`);
+      const filename = `${post.slug}.html`;
+      fs.writeFileSync(path.join(DIST, 'blog', filename), renderBlogPost(post, settings));
+      console.log(`  blog/${filename}`);
     }
   }
 

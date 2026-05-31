@@ -94,26 +94,6 @@ a:hover, .toc-row:hover, .hover-cobalt:hover { color: var(--cobalt); }
 .bar { height: 8px; background: var(--ink-fill-2); border-radius: 2px; overflow: hidden; }
 .bar > span { display: block; height: 100%; background: var(--cobalt); }
 
-/* ---- Mailing-list signup ------------------------------------------------ */
-.signup { display: grid; gap: .5rem; max-width: 22rem; }
-.signup label { font-size: var(--text-xs); text-transform: uppercase; color: var(--text-faint); letter-spacing: .05em; }
-.signup-row { display: grid; grid-template-columns: 1fr auto; gap: .5rem; }
-.signup input {
-  height: 1.9rem; padding: 0 .5rem;
-  font-family: var(--font-mono); font-size: var(--text-sm); text-transform: uppercase; color: var(--text-color);
-  background: var(--background);
-  border: 1px solid color-mix(in srgb, var(--color-black) 50%, transparent);
-  border-radius: var(--radius-sm);
-  box-shadow: inset 0 0 0 2px rgba(0,0,0,.10);
-}
-.signup input::placeholder { color: color-mix(in srgb, var(--color-black) 30%, transparent); }
-.signup input:focus { outline: 1px solid var(--cobalt); color: var(--cobalt); }
-.signup button {
-  font-family: var(--font-mono); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: .04em;
-  padding: 0 .8rem; cursor: pointer; color: var(--background); background: var(--cobalt);
-  border: 0; border-radius: var(--radius-sm);
-}
-
 /* ---- Blueprint figure frame --------------------------------------------- */
 /*  Figures obey the spec in docs/infographics-spec.md:
      monochrome paper + one accent colour + flat tints + black ink,
