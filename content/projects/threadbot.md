@@ -1,10 +1,10 @@
 ---
 title: Threadbot
 slug: threadbot
-order: 5
+order: 3
 description: A publicly accessible, serverless instance of Threadbot for community deployment without heavy cloud infrastructure.
 repository_url: https://github.com/K41R0N/threadbot
-live_url: https://threadbot.dev/
+live_url: ''
 language: TypeScript
 version: 1.0.0
 license: MIT
