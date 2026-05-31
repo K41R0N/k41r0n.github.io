@@ -18,7 +18,7 @@
 /* ---- Masthead: grid items-center gap-[6%] pb-10 lg:grid-cols-2 ----------- */
 .masthead {
   display: grid;
-  align-items: center;
+  align-items: start;
   gap: 6%;
   padding-bottom: 2.5rem;
 }
@@ -64,6 +64,11 @@
 .intro-flow > p + p,
 .intro-flow > figure + p,
 .intro-flow > p.spaced { margin-top: 2rem; }            /* mt-8 paragraph rhythm */
+.hero-intro > p { margin: 0 0 1.5em 0; }
+.hero-intro .dropcap::first-letter {
+  -webkit-initial-letter: 2; initial-letter: 2;
+  font-family: var(--font-serif); font-weight: 600; padding-right: .12em; color: var(--text-color);
+}
 .intro-flow figure { break-inside: avoid; margin: 2rem 0; }
 /* drop cap: first-letter:[-webkit-initial-letter:2] */
 .intro-flow .dropcap::first-letter {
@@ -102,16 +107,15 @@
 .sec-head .sec-label { font-family: var(--font-mono); font-size: var(--text-xs); text-transform: uppercase;
   color: color-mix(in srgb, var(--color-black) 60%, transparent); }
 
-/* ---- Table of contents: ol columns md:2 xl:3 px-8 list-decimal ----------- */
-.toc-ms { margin-top: 6rem; columns: 1; column-gap: 6%; padding-inline: 2rem; list-style: decimal; }
+/* ---- Table of contents: columns md:2 xl:3 px-8 list-none ----------- */
+.toc-ms { margin-top: 6rem; columns: 1; column-gap: 6%; padding-inline: 0; list-style: none; }
 @media (min-width: 768px) { .toc-ms { columns: 2; } }
 @media (min-width: 1280px) { .toc-ms { columns: 3; } }
 .toc-ms > li { break-inside: avoid; }
-.toc-ms .toc-group { break-inside: avoid; }
-.toc-ms .toc-group:not(:first-child) { margin-top: 1.75rem; }   /* not-first:mt-7 */
+.toc-ms .toc-group { break-inside: avoid; margin-bottom: 2rem; }
 .toc-ms .toc-group > .group-title { font-family: var(--font-serif); font-size: var(--text-lg); color: var(--text-color); text-decoration: none; display: block; }
 .toc-ms .toc-group > a.group-title:hover { color: var(--accent); }
-.toc-ms .toc-group ul { margin-top: 1rem; list-style: disc; padding-left: 1.1rem; }
+.toc-ms .toc-group ul { margin-top: 1rem; list-style: none; padding-left: 0; }
 .toc-ms .toc-row { display: grid; grid-template-columns: auto 1fr auto; align-items: baseline; gap: 0 .25rem;
   text-decoration: none; line-height: 1.75; padding: .15rem 0; }       /* text-sm/7 */
 @media (max-width: 48rem) {

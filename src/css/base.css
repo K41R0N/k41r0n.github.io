@@ -144,7 +144,7 @@ hr, .rule {
   text-transform: uppercase;
   letter-spacing: .06em;
 }
-.site-nav { display: flex; gap: 1.5rem; align-items: center; justify-content: space-between; }
+.site-nav { display: flex; gap: 1.5rem; align-items: center; justify-content: space-between; flex-wrap: wrap; }
 .site-nav a, .site-footer a { color: var(--text-muted); text-decoration: none; }
 .site-nav a:hover, .site-footer a:hover { color: var(--text-color); }
 .site-footer { margin-top: 6rem; color: var(--text-muted); }
@@ -232,13 +232,18 @@ hr, .rule {
 
 /* ---- Live protocol metrics (masthead) --------------------------------- */
 .live-metrics {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  text-align: right;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2.5rem;
+  justify-content: flex-end;
+  text-align: left;
 }
 @media (max-width: 48rem) {
-  .live-metrics { grid-template-columns: 1fr; text-align: left; gap: 1rem; }
+  .live-metrics { justify-content: flex-start; }
+}
+.live-metrics > div {
+  display: flex;
+  flex-direction: column;
 }
 .live-metrics .metric-label {
   font-family: var(--font-mono);
@@ -246,18 +251,11 @@ hr, .rule {
   text-transform: uppercase;
   letter-spacing: .08em;
   color: var(--text-faint);
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: .4rem;
-}
-@media (max-width: 48rem) {
-  .live-metrics .metric-label { justify-content: flex-start; }
 }
 .live-metrics .metric-value {
   font-family: var(--font-serif);
-  font-size: var(--text-4xl);
-  line-height: 1.1;
+  font-size: var(--text-2xl);
+  line-height: 1.2;
   color: var(--text-color);
   margin-top: .2rem;
 }
