@@ -175,10 +175,10 @@ function transformBody(markdown) {
   md = md.replace(/^(> [^\n]+(?:\n> [^\n]+)*)/gm, (match) => {
     const content = match
       .split('\n')
-      .map(line => line.replace(/^> /, ''))
-      .join(' ')
+      .map(line => line.replace(/^> ?/, ''))
+      .join('\n')
       .trim();
-    return `<aside class="margin-note">\n  <p>${content}</p>\n</aside>`;
+    return `<aside class="margin-note">\n${marked.parse(content, { async: false })}\n</aside>`;
   });
   // section breaks
   md = md.replace(/\n---\n/g, '\n<hr class="section-break">\n');
@@ -374,7 +374,7 @@ function projectSchema(project, settings) {
 // Home Page
 // ============================================================================
 
-function renderHomePage(settings, about, theses, projects, home, writing) {
+function renderHomePage(settings, about, theses, projects, home, writing, posts) {
   const title       = `${settings.full_name} — ${settings.tagline}`;
   const year        = new Date().getFullYear();
   const thesisCount = String(theses.length).padStart(2, '0');
@@ -397,7 +397,7 @@ function renderHomePage(settings, about, theses, projects, home, writing) {
       </div>` : ''}
       <div>
         <div class="metric-label">Blog</div>
-        <div class="metric-value"><a href="/blog/">${escHtml(home.section_writing || 'Writing')} →</a></div>
+        <div class="metric-value"><a href="/blog/">${escHtml(home.section_blog || 'Writing')} →</a></div>
       </div>
     </div>`;
 
@@ -497,14 +497,33 @@ ${tocItems}
 ${projectItems}
     </ol>` : ''}
 
-    ${writingLinks ? `<!-- Writing links -->
-    <div class="sec-head" id="writing" style="margin-top:4rem;">
-      <h3>${escHtml(home.section_writing || 'Writing')}</h3>
+    ${writingLinks ? `<!-- Media links -->
+    <div class="sec-head" id="media" style="margin-top:4rem;">
+      <h3>${escHtml(home.section_media || 'Media')}</h3>
       <div class="rule-solid"></div>
-      <div class="sec-label">${escHtml(settings.author_handle)} · ${escHtml(home.section_writing_label || 'links')}</div>
+      <div class="sec-label">${escHtml(settings.author_handle)} · ${escHtml(home.section_media_label || 'appearances')}</div>
     </div>
-    <div class="intro-flow" style="margin-top:2rem;">${home.section_writing_intro ? `<p>${escHtml(home.section_writing_intro)}</p>` : ''}${writingLinks}
-    <p style="margin-top:2rem;"><a href="/blog/">Read all articles →</a></p></div>` : ''}
+    <div class="intro-flow" style="margin-top:2rem;">${home.section_media_intro ? `<p>${escHtml(home.section_media_intro)}</p>` : ''}${writingLinks}</div>` : ''}
+
+    ${posts.length ? `<!-- Blog/Writing links -->
+    <div class="sec-head" id="writing" style="margin-top:4rem;">
+      <h3>${escHtml(home.section_blog || 'Writing')}</h3>
+      <div class="rule-solid"></div>
+      <div class="sec-label">${escHtml(settings.author_handle)} · ${escHtml(home.section_blog_label || 'articles')}</div>
+    </div>
+    <div style="margin-top: 2rem;">
+      <ul style="list-style: none; padding: 0;">
+        ${posts.slice(0, 5).map(p => `
+          <li style="margin-bottom: 1rem;">
+            <a href="/${blogPostUrl(p)}" style="text-decoration: none; color: inherit; display: flex; align-items: baseline;">
+              <span class="mono" style="font-size: var(--text-xs); color: var(--text-faint); margin-right: 1rem; min-width: 6rem; flex-shrink: 0;">${p.date ? new Date(p.date).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' }).toUpperCase() : ''}</span>
+              <span style="text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px;">${escHtml(p.title)}</span>
+            </a>
+          </li>
+        `).join('')}
+      </ul>
+      <p style="margin-top:2rem;"><a href="/blog/">Read all articles →</a></p>
+    </div>` : ''}
 
     <!-- Newsletter -->
     <div class="sec-head" id="newsletter" style="margin-top:4rem;">
@@ -697,8 +716,8 @@ function blogPostUrl(post) {
 function renderBlogListing(settings, posts, home, activeTag = null) {
   const title        = `Writing — ${settings.title}`;
   const year         = new Date().getFullYear();
-  const heading      = home.section_writing || 'Writing';
-  const headingLabel = home.section_writing_label || 'articles';
+  const heading      = home.section_blog || 'Writing';
+  const headingLabel = home.section_blog_label || 'articles';
   const intro        = home.blog_intro || '';
 
   // Split: featured (most recent) + archive (the rest)
@@ -780,7 +799,6 @@ function renderBlogListing(settings, posts, home, activeTag = null) {
 
      <nav class="site-nav blog-listing-nav">
        <a href="/">← ${escHtml(settings.title)}</a>
-       <span class="mono" style="text-align: right;">${escHtml(settings.author_handle)} · ${escHtml(headingLabel)}</span>
      </nav>
 
     <div class="sec-head" id="writing" style="margin-top:4rem;">
@@ -1177,7 +1195,7 @@ function main() {
   console.log(`  Loaded ${theses.length} theses, ${projects.length} projects, ${posts.length} blog posts, ${(writing.links||[]).length} writing links`);
 
   // Home page
-  fs.writeFileSync(path.join(DIST, 'index.html'), renderHomePage(settings, about, theses, projects, home, writing));
+  fs.writeFileSync(path.join(DIST, 'index.html'), renderHomePage(settings, about, theses, projects, home, writing, posts));
   console.log('  index.html');
 
   // Thesis detail pages

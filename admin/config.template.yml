@@ -99,23 +99,35 @@ collections:
             default: "index"
             hint: "Mono label to the right of the rule. Displayed uppercase."
 
-          - label: "Writing — Section Heading"
-            name: section_writing
+          - label: "Media — Section Heading"
+            name: section_media
             widget: string
-            default: "Writing"
+            default: "Media"
             hint: "The h3 heading above the curated links section."
 
-          - label: "Writing — Sub-label"
-            name: section_writing_label
+          - label: "Media — Sub-label"
+            name: section_media_label
             widget: string
-            default: "links"
+            default: "appearances"
             hint: "Mono label to the right of the rule."
 
-          - label: "Writing — Intro Text"
-            name: section_writing_intro
+          - label: "Media — Intro Text"
+            name: section_media_intro
             widget: string
             required: false
-            hint: "Optional one-line intro above the writing links on the homepage. Leave blank to skip."
+            hint: "Optional one-line intro above the media links on the homepage. Leave blank to skip."
+
+          - label: "Writing — Section Heading"
+            name: section_blog
+            widget: string
+            default: "Writing"
+            hint: "The h3 heading above the blog links section."
+
+          - label: "Writing — Sub-label"
+            name: section_blog_label
+            widget: string
+            default: "articles"
+            hint: "Mono label to the right of the rule."
 
           - label: "Blog — Publication Statement"
             name: blog_intro
