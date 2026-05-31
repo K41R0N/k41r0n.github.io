@@ -648,6 +648,7 @@ function renderProjectPage(project, allProjects, settings) {
   const metaHtml = `
       <dl style="margin-bottom: 2rem; display: grid; grid-template-columns: auto 1fr; gap: 0.5rem 1rem; align-items: baseline;">
         ${project.repository_url ? `<dt class="eyebrow" style="margin:0;">Repository</dt><dd class="mono" style="margin:0;"><a href="${escHtml(project.repository_url)}" target="_blank" rel="noopener">${escHtml(project.repository_url)}</a></dd>` : ''}
+        ${project.live_url ? `<dt class="eyebrow" style="margin:0;">Live URL</dt><dd class="mono" style="margin:0;"><a href="${escHtml(project.live_url)}" target="_blank" rel="noopener">${escHtml(project.live_url)}</a></dd>` : ''}
         ${project.language ? `<dt class="eyebrow" style="margin:0;">Language</dt><dd class="mono" style="margin:0;">${escHtml(project.language)}</dd>` : ''}
         ${project.license ? `<dt class="eyebrow" style="margin:0;">License</dt><dd class="mono" style="margin:0;">${escHtml(project.license)}</dd>` : ''}
         ${project.version ? `<dt class="eyebrow" style="margin:0;">Version</dt><dd class="mono" style="margin:0;">${escHtml(project.version)}</dd>` : ''}
@@ -1014,7 +1015,7 @@ function generateLlmsTxt(settings, theses, posts, projects) {
     ? posts.map(p => `- **[${p.title}](/${blogPostUrl(p)})** (${p.date || 'n/d'}) — ${p.description}`).join('\n')
     : '(no articles yet)';
   const projectList = projects.length
-    ? projects.map(p => `- **[${p.title}](/${projectUrl(p)})** (${p.language || 'n/d'}) — ${p.description}\n  Repository: ${p.repository_url || 'n/a'}`).join('\n')
+    ? projects.map(p => `- **[${p.title}](/${projectUrl(p)})** (${p.language || 'n/d'}) — ${p.description}\n  Repository: ${p.repository_url || 'n/a'}${p.live_url ? `\n  Live URL: ${p.live_url}` : ''}`).join('\n')
     : '(no projects yet)';
 
   return `# ${settings.full_name}
@@ -1071,7 +1072,7 @@ function generateLlmsFullTxt(settings, theses, posts, projects) {
     out += `## Projects\n\n`;
     for (const p of projects) {
       out += `### Project ${String(p.order).padStart(2,'0')}: [${p.title}](/${projectUrl(p)})\n\n`;
-      out += `Repository: ${p.repository_url || 'n/a'}\nLanguage: ${p.language || 'n/a'}\nLicense: ${p.license || 'n/a'}\nVersion: ${p.version || 'n/a'}\n\n`;
+      out += `Repository: ${p.repository_url || 'n/a'}\nLive URL: ${p.live_url || 'n/a'}\nLanguage: ${p.language || 'n/a'}\nLicense: ${p.license || 'n/a'}\nVersion: ${p.version || 'n/a'}\n\n`;
       out += `${p.description}\n\n`;
       if (p.body) out += `${p.body}\n\n`;
       out += `---\n\n`;
@@ -1104,7 +1105,7 @@ function generateContentJson(settings, theses, posts, projects) {
     projects: projects.map(p => ({
       title: p.title, slug: p.slug, order: p.order,
       description: p.description, url: `/${projectUrl(p)}`,
-      repository_url: p.repository_url, language: p.language,
+      repository_url: p.repository_url, live_url: p.live_url, language: p.language,
       license: p.license, version: p.version
     })),
     posts: posts.map(p => ({

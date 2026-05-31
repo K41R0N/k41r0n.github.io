@@ -7,6 +7,8 @@ Instructions for AI agents working on this project. Read before making any chang
 > live-component automation foundations) built so an agent can edit this repo
 > without breaking the CMS. This file remains the quick reference; `agent/` is
 > the deeper, task-oriented guide.
+>
+> **⚠️ If you are the G14 Research Agent:** You operate under strict read-only constraints for this repo. Read `agent/README.md` to understand your specific boundaries.
 
 ## Project Overview
 

@@ -4,6 +4,9 @@ slug: "devices-as-co-creations"
 order: 1
 description: "There's power in opening up whatever you're building to the public. Memes, Open Source, CAD/CAM, etc."
 links:
+  - label: "Project"
+    title: "OpenClaw Personal Infrastructure"
+    url: "/project-openclaw-personal-infrastructure"
   - label: "Curated Compilation"
     title: "Awesome Flipper Zero"
     url: "https://k41r0n.notion.site/Flipper-Zero-cbe2af4d9ca648029f64c190a595c002?pvs=74"

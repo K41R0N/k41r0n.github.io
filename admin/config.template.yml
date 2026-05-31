@@ -376,6 +376,12 @@ collections:
         widget: string
         hint: "Full URL to the source code repository (e.g. GitHub URL)."
 
+      - label: Live URL
+        name: live_url
+        widget: string
+        required: false
+        hint: "Full URL to the live version of the app or website (e.g. https://...)."
+
       - label: Language
         name: language
         widget: string

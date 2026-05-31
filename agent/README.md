@@ -44,22 +44,30 @@ you. Do not edit files outside `content/` until you have read
 
 ---
 
-## The One Rule That Prevents Most Breakage
+## The One Rule That Prevents Most Breakage (For Coding Agents)
 
 **Content is the source of truth. You edit `content/`, you run `npm run build`,
 you verify, you ship. You never hand-edit `dist/` or `admin/config.yml` — those
 are generated.** Everything else in this folder is an elaboration of that rule.
 
+### ⚠️ Special Constraints for the G14 Research Agent
+If you are the Research Agent running on the G14, **you cannot execute the rule above.** Your `SOUL.md` restricts you from modifying files outside your workspace and running package installers (`npm install`, `npm run build`).
+
+**Your workflow is strictly advisory:**
+1. **Read-Only:** You may read the content and architecture to understand the portfolio.
+2. **Propose, Don't Execute:** When you have a structural update or a new essay link to add, **do not edit `content/` directly**.
+3. **Use the Outbox:** Format your proposed YAML/Markdown changes and write them to your outbox (`~/.openclaw/shared/outbox/staged-research/`). A coding agent or Alejandro will review and apply them.
+
 ---
 
 ## Scope
 
-- **Primary audience:** the Research agent, contributing edits via git and,
-  later, via automation flows that add live components to the site.
+- **Primary audience:** Coding agents (like OpenCode) executing changes, and the Research agent analyzing structure and proposing content updates.
 - **Boundary:** this folder governs contributions to *this repository only*. It
   does not grant any agent permission to write to the research brain, Qdrant,
   or any other agent's workspace. Those are governed by the agent's own
   boot files and `SHARED-INFRA-WRITE-GUARD-01`.
+- **Execution Boundary:** The Research Agent must not execute builds (`npm run build`), install packages, or modify this repo directly unless explicitly granted an exception. It must strictly use the outbox hand-off pattern to propose changes.
 - **Voice boundary still applies:** the Research agent supports writing; it does
   not ghostwrite Alejandro's essays. Publishing prose is a human decision. See
   `guidelines/contribution-workflow.md`.
