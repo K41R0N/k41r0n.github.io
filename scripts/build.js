@@ -370,9 +370,9 @@ function renderHomePage(settings, about, theses, home, writing) {
 
     <!-- Kairon logo mark -->
     <div style="text-align:center; margin:6rem 0 2rem;">
-      <img src="/assets/img/kairon-logo.svg"
-           alt="${escHtml(home.logo_alt || 'Kairon')}"
-           style="width:min(320px, 60%); height:auto; display:inline-block;">
+      ${home.logo_image ? `<img src="${escHtml(home.logo_image)}"
+           alt="${escHtml(home.logo_alt || '')}"
+           style="width:min(320px, 60%); height:auto; display:inline-block;">` : ''}
     </div>
 
     <!-- Theses index -->

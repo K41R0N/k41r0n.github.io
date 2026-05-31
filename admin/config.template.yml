@@ -63,11 +63,17 @@ collections:
         file: content/home.json
         fields:
 
+          - label: "Logo Image"
+            name: logo_image
+            widget: image
+            required: false
+            hint: "Upload the logo SVG shown between the hero text and the Theses section."
+
           - label: "Logo Alt Text"
             name: logo_alt
             widget: string
-            default: "Kairon"
-            hint: "Accessible alt text for the logo mark image."
+            required: false
+            hint: "Accessible alt text for the logo image above."
 
           - label: "Theses — Section Heading"
             name: section_theses
