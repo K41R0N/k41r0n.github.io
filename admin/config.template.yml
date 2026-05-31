@@ -75,6 +75,18 @@ collections:
             required: false
             hint: "Accessible alt text for the logo image above."
 
+          - label: "Projects — Section Heading"
+            name: section_projects
+            widget: string
+            default: "Projects"
+            hint: "The h3 heading above the projects index."
+
+          - label: "Projects — Sub-label"
+            name: section_projects_label
+            widget: string
+            default: "tools"
+            hint: "Mono label to the right of the rule."
+
           - label: "Theses — Section Heading"
             name: section_theses
             widget: string
@@ -318,6 +330,74 @@ collections:
             name: url
             widget: string
             hint: "Full URL including https://"
+
+  # ===========================================================================
+  # PROJECTS
+  # Open-source tools and projects. Displayed on home page and as detail pages.
+  # Heavily optimized for AI crawlers (GEO/AEO).
+  # ===========================================================================
+  - name: projects
+    label: Projects
+    label_singular: Project
+    folder: content/projects
+    create: true
+    slug: '{{slug}}'
+    sortable_fields: ['order', 'title']
+    summary: 'pr.{{order}} — {{title}}'
+    preview_path: 'project-{{slug}}.html'
+    fields:
+
+      - label: Title
+        name: title
+        widget: string
+        hint: "The project headline."
+
+      - label: Slug
+        name: slug
+        widget: string
+        pattern: ['^[a-z0-9-]+$', "Lowercase letters, numbers, and hyphens only"]
+        hint: "URL identifier — e.g. 'crowd-sniff'."
+
+      - label: Order
+        name: order
+        widget: number
+        value_type: int
+        min: 1
+        hint: "Display order (1, 2, 3…)."
+
+      - label: Description
+        name: description
+        widget: text
+        hint: "Short description. Used in llms.txt, API, and Schema.org."
+
+      - label: Repository URL
+        name: repository_url
+        widget: string
+        hint: "Full URL to the source code repository (e.g. GitHub URL)."
+
+      - label: Language
+        name: language
+        widget: string
+        hint: "Primary programming language (e.g. TypeScript, Python)."
+
+      - label: Version
+        name: version
+        widget: string
+        required: false
+        hint: "Current version (e.g. 1.0.0)."
+
+      - label: License
+        name: license
+        widget: string
+        required: false
+        default: 'MIT'
+        hint: "License URL or name (e.g. https://opensource.org/licenses/MIT)."
+
+      - label: Body
+        name: body
+        widget: markdown
+        required: false
+        hint: "Full project documentation or summary."
 
   # ===========================================================================
   # SETTINGS
