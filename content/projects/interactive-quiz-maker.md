@@ -1,10 +1,10 @@
 ---
 title: Interactive Quiz Maker
 slug: interactive-quiz-maker
-order: 9
+order: 7
 description: A frontend utility that transforms structured JSON into highly-styled, interactive study quizzes.
 repository_url: https://github.com/K41R0N/Interactive-Quiz-Maker
-live_url: http://practicequizz.app/
+live_url: ''
 language: CSS / JS
 version: 1.0.0
 license: MIT
