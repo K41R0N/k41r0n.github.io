@@ -521,36 +521,77 @@ function blogPostUrl(post) {
   return `blog/${post.slug}.html`;
 }
 
-function renderBlogListing(settings, posts, home) {
+function renderBlogListing(settings, posts, home, activeTag = null) {
   const title        = `Writing — ${settings.title}`;
   const year         = new Date().getFullYear();
   const heading      = home.section_writing || 'Writing';
   const headingLabel = home.section_writing_label || 'articles';
+  const intro        = home.blog_intro || '';
 
-  const entries = posts.map(p => {
-    const url  = `/${blogPostUrl(p)}`;
-    const date = p.date
-      ? new Date(p.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).toUpperCase()
-      : '';
-    const metaStr = [p.tags?.[0], date].filter(Boolean).join(' · ');
-    const thumbHtml = p.cover_image
-      ? `<div class="blog-entry-thumb"><img src="${escHtml(p.cover_image)}" alt="" aria-hidden="true" loading="lazy"></div>`
-      : `<div class="blog-entry-thumb"><div class="blog-entry-placeholder" aria-hidden="true">K</div></div>`;
+  // Split: featured (most recent) + archive (the rest)
+  const [featured, ...archive] = posts;
 
-    return `    <a class="blog-entry" href="${url}">
-      ${thumbHtml}
-      <div class="blog-entry-content">
-        <p class="blog-entry-meta">${escHtml(metaStr)}</p>
-        <h2 class="blog-entry-title">${escHtml(p.title)}</h2>
-        <p class="blog-entry-desc">${escHtml(p.description)}</p>
+  // Collect unique tags across all posts (for filter nav)
+  const allTags = [...new Set(posts.flatMap(p => p.tags || []).filter(Boolean))].sort();
+  const tagFilterHtml = allTags.length ? `
+    <nav class="blog-tag-nav" aria-label="Filter by topic">
+      <a href="/blog/"${!activeTag ? ' aria-current="page"' : ''}>All</a>
+      ${allTags.map(t => `<a href="/blog/tag/${slugify(t)}/"${activeTag === t ? ' aria-current="page"' : ''}>${escHtml(t)}</a>`).join('')}
+    </nav>` : '';
+
+  // Featured entry (most recent article, largest visual weight)
+  function coverBlock(p, cls, size) {
+    return p.cover_image
+      ? `<div class="${cls}"><img src="${escHtml(p.cover_image)}" alt="" aria-hidden="true" loading="${size === 'eager' ? 'eager' : 'lazy'}"></div>`
+      : `<div class="${cls}"><div class="blog-${cls.includes('featured') ? 'entry' : 'archive'}-placeholder" aria-hidden="true">K</div></div>`;
+  }
+
+  const featuredHtml = featured ? (() => {
+    const url     = `/${blogPostUrl(featured)}`;
+    const date    = featured.date ? new Date(featured.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).toUpperCase() : '';
+    const tag     = featured.tags?.[0] || '';
+    const metaStr = [tag, date].filter(Boolean).join(' · ');
+    const cover   = featured.cover_image
+      ? `<div class="blog-featured-cover"><img src="${escHtml(featured.cover_image)}" alt="" aria-hidden="true" loading="eager"></div>`
+      : `<div class="blog-featured-cover"><div class="blog-entry-placeholder" aria-hidden="true">K</div></div>`;
+    return `
+    <a class="blog-featured" href="${url}">
+      ${cover}
+      <div>
+        <p class="blog-featured-flag">Latest</p>
+        <p class="blog-featured-meta">${escHtml(metaStr)}</p>
+        <h2 class="blog-featured-title">${escHtml(featured.title)}</h2>
+        <p class="blog-featured-desc">${escHtml(featured.description)}</p>
       </div>
-    </a>`; 
+    </a>`;
+  })() : '';
+
+  // Archive entries — alternating cover left / right via CSS nth-child
+  const archiveHtml = archive.map(p => {
+    const url     = `/${blogPostUrl(p)}`;
+    const date    = p.date ? new Date(p.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).toUpperCase() : '';
+    const tag     = p.tags?.[0] || '';
+    const metaStr = [tag, date].filter(Boolean).join(' · ');
+    const cover   = p.cover_image
+      ? `<div class="blog-archive-cover"><img src="${escHtml(p.cover_image)}" alt="" aria-hidden="true" loading="lazy"></div>`
+      : `<div class="blog-archive-cover"><div class="blog-archive-placeholder" aria-hidden="true">K</div></div>`;
+    return `
+    <a class="blog-archive-entry" href="${url}">
+      ${cover}
+      <div class="blog-archive-content">
+        <p class="blog-archive-meta">${escHtml(metaStr)}</p>
+        <h2 class="blog-archive-title">${escHtml(p.title)}</h2>
+        <p class="blog-archive-desc">${escHtml(p.description)}</p>
+      </div>
+    </a>`;
   }).join('\n');
+
+  const listingDesc = `Essays on digital culture, devices, and creative technology by ${settings.full_name}`;
 
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
-  ${sharedHead({ title, description: `Essays and articles by ${settings.full_name}`, url: `${SITE_URL}/blog/`, type: 'website', settings })}
+  ${sharedHead({ title, description: listingDesc, url: `${SITE_URL}/blog/`, type: 'website', settings })}
 </head>
 <body>
   <div class="page">
@@ -568,11 +609,15 @@ function renderBlogListing(settings, posts, home) {
       <div class="sec-label">${escHtml(settings.author_handle)} · ${escHtml(headingLabel)}</div>
     </div>
 
-    <div class="blog-list">
-${entries}
-    </div>
+    ${intro ? `<p class="blog-intro-text">${escHtml(intro)}</p>` : ''}
 
-    <footer class="footer-ms">
+    ${tagFilterHtml}
+
+    ${featuredHtml}
+
+    ${archive.length ? `<div class="blog-archive" style="margin-top:0;">${archiveHtml}</div>` : ''}
+
+    <footer class="footer-ms" style="margin-top:4rem;">
       <div class="stars">· · ·</div>
       <div class="credits">
         <p>by <a href="${SITE_URL}">${escHtml(settings.author_handle)}</a></p>

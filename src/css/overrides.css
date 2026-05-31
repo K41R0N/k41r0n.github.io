@@ -70,28 +70,57 @@
   border-radius: var(--radius-sm);
 }
 
-/* ---- Blog listing — editorial index list -------------------------------- */
-/* Typography-first, publication-style. Small square thumbnail on the left,
-   mono date + Kyrios title + Merriweather description on the right.
-   Hairline rules between entries. No cards, no shadows. */
-.blog-list {
-  margin-top: var(--space-xl);
+/* ---- Blog listing -------------------------------------------------------- */
+
+/* Publication intro statement (above the article list) */
+.blog-intro-text {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: var(--text-lg);
+  line-height: 1.65;
+  color: var(--text-muted);
+  max-width: var(--measure);
+  margin: 2rem 0 2.5rem;
+  text-wrap: pretty;
 }
 
-.blog-entry {
+/* Tag filter — reuses chapter-nav visual language */
+.blog-tag-nav {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  padding: .75rem 0;
+  border-top: 1px dashed var(--rule-color);
+  border-bottom: 1px dashed var(--rule-color);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-bottom: 2.5rem;
+}
+.blog-tag-nav a {
+  color: var(--text-faint);
+  text-decoration: none;
+  padding: .15rem .4rem;
+}
+.blog-tag-nav a[aria-current],
+.blog-tag-nav a:hover { color: var(--accent); border-bottom: 1px solid var(--accent); }
+
+/* ---- Featured article (most recent) ------------------------------------- */
+/* Full-width, large cover image, dominant title — makes the most recent
+   article visually unmistakable. Top border is 2px solid to anchor the section. */
+.blog-featured {
   display: grid;
-  grid-template-columns: 5.5rem 1fr;
-  gap: 0 1.75rem;
-  align-items: start;
-  padding: 1.75rem 0;
+  grid-template-columns: clamp(180px, 28vw, 300px) 1fr;
+  gap: 2.5rem;
+  padding: 2.5rem 0;
+  border-top: 2px solid var(--color-black);
   border-bottom: 1px solid var(--rule-color);
+  align-items: center;
   text-decoration: none;
   color: inherit;
 }
-.blog-entry:first-child { border-top: 1px solid var(--rule-color); }
-
-/* Thumbnail: 1:1 square, same column as margin-label in the .article grid */
-.blog-entry-thumb {
+.blog-featured-cover {
   aspect-ratio: 1 / 1;
   overflow: hidden;
   display: flex;
@@ -100,36 +129,117 @@
   background: var(--ink-fill-1);
   flex-shrink: 0;
 }
-.blog-entry-thumb img {
+.blog-featured-cover img {
   width: 100%; height: 100%;
   object-fit: contain;
   display: block;
   transition: opacity .2s ease;
 }
-.blog-entry:hover .blog-entry-thumb img { opacity: .8; }
+.blog-featured:hover .blog-featured-cover img { opacity: .85; }
 
-/* Placeholder when no cover image */
-.blog-entry-placeholder {
+/* "Latest" dot-flag — mono uppercase in accent with a pulsing dot */
+.blog-featured-flag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  margin-bottom: .75rem;
+}
+.blog-featured-flag::before {
+  content: "";
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: live-pulse 2s ease-in-out infinite; /* reuses existing keyframe */
+}
+.blog-featured-meta {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--text-faint);
+  margin-bottom: .5rem;
+}
+.blog-featured-title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-4xl), 4.5vw, var(--text-6xl));
+  font-weight: var(--font-weight-medium);
+  color: var(--text-color);
+  line-height: 1.0;
+  letter-spacing: -.04em;
+  text-wrap: balance;
+  margin: 0 0 1rem;
+  transition: color .2s ease;
+}
+.blog-featured:hover .blog-featured-title { color: var(--accent); }
+.blog-featured-desc {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 48ch;
+  text-wrap: pretty;
+  margin: 0;
+}
+
+/* ---- Archive entries (alternating image left / right) ------------------- */
+/* Odd entries: image left. Even entries: image right.
+   Creates rhythm without becoming a uniform grid. */
+.blog-archive-entry {
+  display: grid;
+  grid-template-columns: clamp(120px, 18vw, 190px) 1fr;
+  gap: 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--rule-color);
+  text-decoration: none;
+  color: inherit;
+  align-items: start;
+}
+.blog-archive-entry:nth-child(even) {
+  grid-template-columns: 1fr clamp(120px, 18vw, 190px);
+}
+.blog-archive-entry:nth-child(even) .blog-archive-cover  { order: 2; }
+.blog-archive-entry:nth-child(even) .blog-archive-content { order: 1; }
+
+.blog-archive-cover {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ink-fill-1);
+  flex-shrink: 0;
+  transition: opacity .2s ease;
+}
+.blog-archive-cover img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.blog-archive-entry:hover .blog-archive-cover { opacity: .8; }
+
+.blog-archive-placeholder {
   width: 100%; height: 100%;
   display: flex; align-items: center; justify-content: center;
   font-family: var(--font-kairon);
-  font-size: 2rem;
+  font-size: 3rem;
   color: var(--accent);
-  opacity: .25;
-  user-select: none;
+  opacity: .2;
 }
-
-.blog-entry-content { display: flex; flex-direction: column; gap: .4rem; }
-
-.blog-entry-meta {
+.blog-archive-content { display: flex; flex-direction: column; gap: .4rem; }
+.blog-archive-meta {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   text-transform: uppercase;
   letter-spacing: .07em;
   color: var(--text-faint);
 }
-
-.blog-entry-title {
+.blog-archive-title {
   font-family: var(--font-display);
   font-size: var(--text-2xl);
   font-weight: var(--font-weight-medium);
@@ -140,9 +250,8 @@
   margin: 0;
   transition: color .2s ease;
 }
-.blog-entry:hover .blog-entry-title { color: var(--accent); }
-
-.blog-entry-desc {
+.blog-archive-entry:hover .blog-archive-title { color: var(--accent); }
+.blog-archive-desc {
   font-family: var(--font-body);
   font-size: var(--text-sm);
   color: var(--text-muted);
@@ -151,6 +260,19 @@
   text-wrap: pretty;
 }
 
+/* Mobile: stack everything; archive entries go back to small-thumb-left */
 @media (max-width: 48rem) {
-  .blog-entry { grid-template-columns: 4rem 1fr; gap: 0 1.25rem; }
+  .blog-featured {
+    grid-template-columns: 1fr;
+    border-top-width: 1px;
+  }
+  .blog-featured-cover { max-width: 180px; margin: 0 auto; }
+  .blog-featured-title { font-size: var(--text-4xl); }
+
+  .blog-archive-entry,
+  .blog-archive-entry:nth-child(even) {
+    grid-template-columns: 3.5rem 1fr;
+  }
+  .blog-archive-entry:nth-child(even) .blog-archive-cover  { order: 0; }
+  .blog-archive-entry:nth-child(even) .blog-archive-content { order: 0; }
 }
