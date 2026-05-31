@@ -235,24 +235,80 @@ collections:
             widget: string
             hint: "Production URL with protocol (e.g. https://kairon.xyz). Used to build canonical and sitemap URLs."
 
-          # ---- Section Headings -----------------------------------------------
-          - label: "Theses Section Heading"
+          # ---- Section Headings & Labels --------------------------------------
+          - label: "Theses — Section Heading"
             name: section_theses
             widget: string
             default: "Theses"
-            hint: "The h3 heading above the thesis index on the home page (e.g. 'Theses', 'Essays', 'Ideas')."
+            hint: "The h3 heading above the thesis index (e.g. 'Theses', 'Essays', 'Ideas')."
 
-          - label: "Writing Section Heading"
+          - label: "Theses — Section Sub-label"
+            name: section_theses_label
+            widget: string
+            default: "index"
+            hint: "The mono label to the right of the rule (e.g. 'index'). Displayed uppercase."
+
+          - label: "Writing — Section Heading"
             name: section_writing
             widget: string
             default: "Writing"
-            hint: "The h3 heading above the curated links section on the home page."
+            hint: "The h3 heading above the curated links section."
 
-          - label: "Newsletter Section Heading"
+          - label: "Writing — Section Sub-label"
+            name: section_writing_label
+            widget: string
+            default: "links"
+            hint: "The mono label to the right of the rule (e.g. 'links')."
+
+          - label: "Writing — Intro Text"
+            name: section_writing_intro
+            widget: string
+            required: false
+            hint: "Optional one-line intro above the writing links. Leave blank to show links immediately."
+
+          - label: "Newsletter — Section Heading"
             name: section_newsletter
             widget: string
             default: "Newsletter"
-            hint: "The h3 heading above the newsletter section on the home page."
+            hint: "The h3 heading above the newsletter section."
+
+          - label: "Newsletter — Section Sub-label"
+            name: section_newsletter_label
+            widget: string
+            default: "subscribe"
+            hint: "The mono label to the right of the rule (e.g. 'subscribe')."
+
+          # ---- Logo -----------------------------------------------------------
+          - label: "Logo Alt Text"
+            name: logo_alt
+            widget: string
+            default: "Kairon"
+            hint: "Accessible alt text for the logo mark image."
+
+          # ---- Thesis Pages ---------------------------------------------------
+          - label: "Thesis — Nav Label"
+            name: thesis_nav_label
+            widget: string
+            default: "Thesis"
+            hint: "The word used before the number in the thesis nav and eyebrow (e.g. 'Thesis', 'Essay')."
+
+          - label: "Thesis — Links Section Heading"
+            name: thesis_links_heading
+            widget: string
+            default: "Links"
+            hint: "The h3 heading above the links block on each thesis detail page."
+
+          - label: "Thesis — Links Section Sub-label"
+            name: thesis_links_label
+            widget: string
+            default: "references"
+            hint: "The mono label beside the links section rule (e.g. 'references')."
+
+          - label: "Thesis — Next Label"
+            name: thesis_next_label
+            widget: string
+            default: "Next"
+            hint: "The prefix on the next-thesis navigation link at the bottom of each thesis page."
 
           # ---- Newsletter -----------------------------------------------------
           - label: "Newsletter Body"

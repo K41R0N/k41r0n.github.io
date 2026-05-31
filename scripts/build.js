@@ -331,7 +331,7 @@ function renderHomePage(settings, about, theses) {
     <!-- Kairon logo mark -->
     <div style="text-align:center; margin:6rem 0 2rem;">
       <img src="assets/img/kairon-logo.svg"
-           alt="Kairon"
+           alt="${escHtml(settings.logo_alt || 'Kairon')}"
            style="width:min(320px, 60%); height:auto; display:inline-block;">
     </div>
 
@@ -339,7 +339,7 @@ function renderHomePage(settings, about, theses) {
     <div class="sec-head" id="theses" style="margin-top:2rem;">
       <h3>${escHtml(settings.section_theses || 'Theses')}<sup>${thesisCount}</sup></h3>
       <div class="rule-solid"></div>
-      <div class="sec-label">${escHtml(settings.author_handle)} · index</div>
+      <div class="sec-label">${escHtml(settings.author_handle)} · ${escHtml(settings.section_theses_label || 'index')}</div>
     </div>
 
     <ol class="toc-ms">
@@ -350,15 +350,15 @@ ${tocItems}
     <div class="sec-head" id="writing" style="margin-top:4rem;">
       <h3>${escHtml(settings.section_writing || 'Writing')}</h3>
       <div class="rule-solid"></div>
-      <div class="sec-label">${escHtml(settings.author_handle)} · links</div>
+      <div class="sec-label">${escHtml(settings.author_handle)} · ${escHtml(settings.section_writing_label || 'links')}</div>
     </div>
-    <div class="intro-flow" style="margin-top:2rem;">${writingLinks}</div>` : ''}
+    <div class="intro-flow" style="margin-top:2rem;">${settings.section_writing_intro ? `<p>${escHtml(settings.section_writing_intro)}</p>` : ''}${writingLinks}</div>` : ''}
 
     <!-- Newsletter -->
     <div class="sec-head" id="newsletter" style="margin-top:4rem;">
       <h3>${escHtml(settings.section_newsletter || 'Newsletter')}</h3>
       <div class="rule-solid"></div>
-      <div class="sec-label">${escHtml(settings.author_handle)} · subscribe</div>
+      <div class="sec-label">${escHtml(settings.author_handle)} · ${escHtml(settings.section_newsletter_label || 'subscribe')}</div>
     </div>
     <div class="intro-flow" style="margin-top:2rem;">
       <p>${escHtml(settings.newsletter_body || '')}</p>
@@ -404,9 +404,9 @@ function renderThesisPage(thesis, allTheses, settings) {
   // Links as references section within the article
   const linksHtml = thesis.links && thesis.links.length
     ? `<div class="sec-head" style="margin-top:3rem;">
-      <h3 style="font-size:var(--text-2xl);">Links</h3>
+      <h3 style="font-size:var(--text-2xl);">${escHtml(settings.thesis_links_heading || 'Links')}</h3>
       <div class="rule-solid"></div>
-      <div class="sec-label">th. ${num} · references</div>
+      <div class="sec-label">th. ${num} · ${escHtml(settings.thesis_links_label || 'references')}</div>
     </div>
     <ul style="margin-top:1.5rem;">
       ${thesis.links.map(l =>
@@ -419,7 +419,7 @@ function renderThesisPage(thesis, allTheses, settings) {
 
   // Next thesis link
   const nextLink = next
-    ? `    <p class="mono" style="font-size:var(--text-sm);text-transform:uppercase;margin-top:3rem;"><a href="${thesisUrl(next)}">Next: ${String(next.order).padStart(2,'0')} · ${escHtml(next.title)} →</a></p>`
+    ? `    <p class="mono" style="font-size:var(--text-sm);text-transform:uppercase;margin-top:3rem;"><a href="${thesisUrl(next)}">${escHtml(settings.thesis_next_label || 'Next')}: ${String(next.order).padStart(2,'0')} · ${escHtml(next.title)} →</a></p>`
     : '';
 
   // CSS path prefix — thesis pages are in root, same as index
@@ -436,7 +436,7 @@ function renderThesisPage(thesis, allTheses, settings) {
 
     <nav class="site-nav">
       <a href="index.html">← ${escHtml(settings.title)}</a>
-      <span class="mono">Thesis ${num} / ${escHtml(thesis.title)}</span>
+      <span class="mono">${escHtml(settings.thesis_nav_label || 'Thesis')} ${num} / ${escHtml(thesis.title)}</span>
     </nav>
 
     <hr class="rule-dotted">
@@ -447,7 +447,7 @@ ${chapterNav}
 
     <article class="article" id="${escHtml(thesis.slug)}">
       <span class="margin-label">§${thesis.order} — ${escHtml(shortTitle)}</span>
-      <p class="eyebrow">Thesis ${num} · §1</p>
+      <p class="eyebrow">${escHtml(settings.thesis_nav_label || 'Thesis')} ${num} · §1</p>
       <h1>${escHtml(thesis.title)}</h1>
       ${bodyHtml}
       ${linksHtml}
