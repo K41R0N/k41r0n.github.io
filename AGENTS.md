@@ -2,6 +2,12 @@
 
 Instructions for AI agents working on this project. Read before making any changes.
 
+> **New here?** Start with [`agent/README.md`](agent/README.md) — a dedicated
+> contributor brain (orientation, skills, guidelines, write-guard protocol, and
+> live-component automation foundations) built so an agent can edit this repo
+> without breaking the CMS. This file remains the quick reference; `agent/` is
+> the deeper, task-oriented guide.
+
 ## Project Overview
 
 Personal portfolio for **Alejandro (Kairon) Arango Giraldo** — Creative Technologist and Martech Daylighter.
