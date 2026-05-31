@@ -69,7 +69,7 @@ The current portfolio architecture correctly positions content as the source of 
 
 ## Implementation Units
 
-- [ ] **Unit 1: CMS Schema and Content Foundation**
+- [x] **Unit 1: CMS Schema and Content Foundation**
 
 **Goal:** Define the data model for Projects and update Sveltia CMS configuration.
 
@@ -92,7 +92,7 @@ The current portfolio architecture correctly positions content as the source of 
 **Test scenarios:**
 - Test expectation: none -- configuration only.
 
-- [ ] **Unit 2: Build Script - Content Loading and LLM Endpoints**
+- [x] **Unit 2: Build Script - Content Loading and LLM Endpoints**
 
 **Goal:** Load the new projects collection in the build pipeline and inject it into AEO/SEO endpoints.
 
@@ -119,7 +119,7 @@ The current portfolio architecture correctly positions content as the source of 
 - Happy path: `api/content.json` includes the projects array.
 - Edge case: Empty `content/projects` directory does not crash the build.
 
-- [ ] **Unit 3: Build Script - Schema.org and UI Generation**
+- [x] **Unit 3: Build Script - Schema.org and UI Generation**
 
 **Goal:** Render the new homepage section and individual project detail pages with rich JSON-LD.
 

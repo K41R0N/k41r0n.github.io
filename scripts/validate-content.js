@@ -71,6 +71,30 @@ if (!fs.existsSync(thesesDir)) {
   }
 }
 
+// ---- Projects ---------------------------------------------------------------
+const projectsDir = path.join(CONTENT, 'projects');
+if (fs.existsSync(projectsDir)) {
+  const files = fs.readdirSync(projectsDir).filter(f => f.endsWith('.md'));
+
+  const seenSlugs  = new Set();
+
+  for (const file of files) {
+    const { data } = matter(fs.readFileSync(path.join(projectsDir, file), 'utf-8'));
+    const id = `projects/${file}`;
+
+    const title = data.title || file.replace(/\.md$/, '');
+    const slug = data.slug || String(title).toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+
+    if (!slug) fail(`${id}: resulting slug is empty`);
+    if (!/^[a-z0-9-]+$/.test(slug)) fail(`${id}: slug "${slug}" must match ^[a-z0-9-]+$`);
+
+    if (seenSlugs.has(slug)) fail(`${id}: duplicate slug "${slug}"`);
+    else seenSlugs.add(slug);
+
+    if (errors === 0) ok(file);
+  }
+}
+
 // ---- Result -----------------------------------------------------------------
 if (errors > 0) {
   console.error(`\nValidation failed with ${errors} error(s).`);
