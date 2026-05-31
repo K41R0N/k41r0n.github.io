@@ -1,7 +1,13 @@
 ---
 title: "feat: Ghost CMS migration, blog page, and content syndication foundation"
 type: feat
-status: active
+status: superseded
+superseded_by: docs/plans/2026-05-31-003-feat-blog-syndication-agent-native-plan.md
+superseded_reason: >
+  Ghost migration evaluated and rejected. Ghost adds infrastructure complexity
+  with no benefit for an agent-driven site. Sveltia + Vercel retained.
+  See docs/solutions/best-practices/ghost-cms-rejected-2026-05-31.md for the
+  full decision record.
 date: 2026-05-31
 origin: docs/plans/syndication-spec.md
 ---
