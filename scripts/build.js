@@ -818,10 +818,13 @@ function renderBlogListing(settings, posts, home, activeTag = null) {
 <body>
   <div class="page">
 
-     <nav class="site-nav blog-listing-nav" style="align-items: flex-start;">
+     <nav class="site-nav blog-listing-nav" style="align-items: flex-start; border-bottom: 1px dashed var(--rule-color); padding-bottom: 1.5rem; margin-bottom: 2rem;">
        <a href="/">← ${escHtml(settings.title)}</a>
-       ${metricsHtml}
      </nav>
+     
+     <div style="margin-bottom: 4rem;">
+       ${metricsHtml}
+     </div>
 
     <div class="sec-head" id="writing" style="margin-top:4rem;">
       <h3>${escHtml(heading)}<span class="count">[ ${String(posts.length).padStart(2,'0')} articles ]</span></h3>
@@ -949,10 +952,13 @@ function renderBlogPost(post, settings) {
 
   <div class="page chapter-page">
 
-    <nav class="site-nav" style="align-items: flex-start; margin-bottom: 2rem;">
+    <nav class="site-nav" style="align-items: flex-start; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px dashed var(--rule-color);">
       <a href="/blog/">← Writing</a>
-      ${metricsHtml}
     </nav>
+
+    <div style="margin-bottom: 4rem;">
+      ${metricsHtml}
+    </div>
 
     <article class="article" id="${escHtml(post.slug)}">
       <span class="margin-label">${escHtml(dateShort)}</span>

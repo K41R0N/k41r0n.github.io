@@ -113,7 +113,6 @@
   align-items: center;
   text-align: center;
   padding: 3rem 0 2.5rem;
-  border-top: 2px solid var(--color-black);
   border-bottom: 1px solid var(--rule-color);
   text-decoration: none;
   color: inherit;
