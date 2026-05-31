@@ -1,128 +1,147 @@
 # Content Architecture — Kairon Portfolio
 
-Defines the content model. Front-end agnostic — any presentation layer can consume this content.
-
-## Design Principles
-
-1. **Semantic naming** — field names describe WHAT, not WHERE
-2. **Content completeness** — content is meaningful without a presentation layer
-3. **Single source of truth** — `content/` is the only source; `dist/` is derived
-4. **Flat hierarchy** — no nested collections needed
-5. **Progressive enhancement** — minimal required fields; optional fields add richness
+Source of truth is `content/`. Build script (`scripts/build.js`) generates `dist/`.
+Every visible string on the site traces back to one of three content files.
 
 ---
 
-## Content Types
-
-### 1. Site Settings
-
-Global metadata. One file: `content/settings/site.json`.
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `title` | string | yes | Short site name (e.g., "Kairon") |
-| `full_name` | string | yes | Full legal name |
-| `tagline` | string | yes | One-line title |
-| `description` | text | yes | SEO meta description |
-| `author` | string | yes | Name for JSON-LD |
-| `author_handle` | string | yes | GitHub handle / alias |
-| `email` | string | yes | Contact email |
-| `github` | string | yes | GitHub profile URL |
-| `substack` | string | yes | Substack URL |
-| `instagram` | string | no | Instagram URL |
-| `site_url` | string | yes | Production URL |
-| `footer_text` | string | no | Footer tagline |
-| `substack_embed` | string | no | Substack embed iframe URL |
-
-### 2. Thesis
-
-A thought-leadership card. Files: `content/theses/{slug}.md`.
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `title` | string | yes | Thesis statement / headline |
-| `slug` | string | yes | URL-safe anchor ID |
-| `order` | integer | yes | Display order (1, 2, 3…) |
-| `description` | text | yes | One-sentence summary (SEO + card subtitle) |
-| `body` | markdown | no | Expanded body text |
-| `links` | list | no | Supporting articles / tools / podcasts |
-
-#### Link Object
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `label` | string | yes | Type tag: Article, Tool, Podcast… |
-| `title` | string | yes | Display title |
-| `url` | string | yes | Full URL |
-
----
-
-## File Structure
+## Content Files
 
 ```
 content/
+├── about.md                        → hero intro copy (body only, no frontmatter)
 ├── settings/
-│   └── site.json         # Global metadata
-├── about.md              # Hero copy
+│   └── site.json                   → all site-wide copy and config
 └── theses/
     ├── devices-as-co-creations.md
     ├── future-belongs-to-storytellers.md
     └── better-discovery-engines.md
+```
 
-admin/
-├── index.html            # Sveltia CMS entry point
-└── config.template.yml   # CMS schema template (→ config.yml at build)
+---
 
-scripts/
-├── build.js              # Main build
-└── generate-cms-config.js
+## Complete Content Map
 
-src/
-└── css/
-    ├── tokens.css
-    ├── fonts.css
-    ├── base.css
-    ├── layout.css
-    └── components.css
+### `index.html` (home page)
+
+| Section | Element | Content file | Field |
+|---------|---------|--------------|-------|
+| Masthead | Wordmark line 1 | `settings/site.json` | `wordmark_line1` |
+| Masthead | Wordmark line 2 | `settings/site.json` | `wordmark_line2` |
+| Masthead metrics | Instagram URL + handle | `settings/site.json` | `instagram` |
+| Masthead metrics | GitHub URL + handle | `settings/site.json` | `github` + `author_handle` |
+| Masthead metrics | Substack URL | `settings/site.json` | `substack` |
+| Hero intro | Body copy | `about.md` | body (no frontmatter) |
+| Theses index | Section heading | `settings/site.json` | `section_theses` |
+| Theses index | Each entry title | `theses/*.md` | `title` |
+| Theses index | Each entry description | `theses/*.md` | `description` |
+| Writing | Section heading | `settings/site.json` | `section_writing` |
+| Writing | All links (auto-aggregated) | `theses/*.md` | `links[]` |
+| Newsletter | Section heading | `settings/site.json` | `section_newsletter` |
+| Newsletter | Body paragraph | `settings/site.json` | `newsletter_body` |
+| Newsletter | CTA link text | `settings/site.json` | `newsletter_cta` |
+| Newsletter | Subscribe URL | `settings/site.json` | `substack` |
+| Footer | Tagline | `settings/site.json` | `tagline` |
+| Footer | Email | `settings/site.json` | `email` |
+| Footer | Copyright name | `settings/site.json` | `full_name` |
+| `<head>` | Browser tab title | `settings/site.json` | `title` |
+| `<head>` | Meta description | `settings/site.json` | `description` |
+
+### `thesis-NN-{slug}.html` (each thesis detail page)
+
+| Section | Element | Content file | Field |
+|---------|---------|--------------|-------|
+| Nav | ← back link text | `settings/site.json` | `title` |
+| Nav | "Thesis NN / Title" | `theses/*.md` | `order` + `title` |
+| Chapter nav | All thesis nav links | `theses/*.md` | `title` × N |
+| Article | Thesis h1 | `theses/*.md` | `title` |
+| Article | Article body | `theses/*.md` | body (markdown) |
+| Article | Links block | `theses/*.md` | `links[]` |
+| `<head>` | Meta description | `theses/*.md` | `description` |
+| Footer | Handle | `settings/site.json` | `author_handle` |
+| Footer | Copyright name | `settings/site.json` | `full_name` |
+
+> **Note:** `description` in a thesis file is SEO-only. It appears as the dot-leader
+> description in the home page TOC and as `<meta name="description">` on the detail
+> page. It is NOT rendered as visible body text on the detail page — only `body` is.
+
+---
+
+## CMS Collections → Pages
+
+The CMS has three collections. Here is which pages each one controls:
+
+| CMS Collection | Controls |
+|---------------|---------|
+| **Home Page** → Hero · About | Hero intro text on `index.html` |
+| **Theses** | Every thesis row in the home TOC + every `thesis-NN-*.html` detail page |
+| **Settings** → Site Settings | Every page — masthead, nav, footer, section headings, newsletter, SEO |
+
+---
+
+## Thesis Frontmatter Schema
+
+```yaml
+---
+title: string       # required — display title
+slug: string        # required — kebab-case URL identifier
+order: integer      # required — 1-based, controls TOC order and URL prefix
+description: string # required — one sentence, TOC text + SEO meta only
+links:              # optional
+  - label: string   # Article | Tool | Podcast | Project | Video | Curated Compilation
+    title: string
+    url: string
+---
+
+Markdown body here — rendered as article content on the detail page.
+Supports:
+  > **Note:** text   →  margin note aside
+  ---                →  section break rule
+```
+
+---
+
+## `about.md` Format
+
+No frontmatter — plain markdown body only. The entire file content is rendered
+as the hero intro text on the home page.
+
+```markdown
+I'm in tech.
+I care about craftsmanship.
+I don't like buzzwords.
+```
+
+Do not add frontmatter to this file — the CMS Home Page collection only
+maps to the body, and any frontmatter would be stripped on the next CMS save.
+
+---
+
+## `site.json` Fields
+
+```
+Identity:    full_name, wordmark_line1, wordmark_line2, author_handle, tagline, email
+Social:      github, substack, instagram
+SEO:         title, description, site_url
+Headings:    section_theses, section_writing, section_newsletter
+Newsletter:  newsletter_body, newsletter_cta
+Footer:      footer_text, substack_embed
 ```
 
 ---
 
 ## Machine-Readable Endpoints
 
-| Endpoint | Format | Description |
-|----------|--------|-------------|
-| `/llms.txt` | Text | AI agent guidance (llmstxt.org) |
-| `/llms-full.txt` | Text | Full content dump |
-| `/api/content.json` | JSON | All theses + metadata, CORS-enabled |
-| `/sitemap.xml` | XML | Search engine sitemap |
-| `/feed.xml` | RSS 2.0 | Syndication feed |
-| `/robots.txt` | Text | Crawler guidance with AI bot allowances |
+Every build also outputs:
 
-### JSON API Response (`/api/content.json`)
-
-```json
-{
-  "$schema": "https://k41r0n.github.io/api/schema.json",
-  "version": "1.0",
-  "generated": "2026-05-31T00:00:00.000Z",
-  "site": {
-    "name": "Kairon",
-    "url": "https://k41r0n.github.io",
-    "description": "...",
-    "author": { "name": "...", "email": "...", "github": "..." }
-  },
-  "theses": [
-    {
-      "title": "Devices as Co-Creations",
-      "slug": "devices-as-co-creations",
-      "order": 1,
-      "description": "...",
-      "links": [...]
-    }
-  ]
-}
-```
+| File | Purpose |
+|------|---------|
+| `/llms.txt` | AI agent guidance (llmstxt.org standard) |
+| `/llms-full.txt` | Complete content dump |
+| `/api/content.json` | All theses with metadata, CORS-enabled |
+| `/sitemap.xml` | Search engine sitemap (home + all thesis pages) |
+| `/feed.xml` | RSS 2.0 |
+| `/robots.txt` | AI crawler allowances |
 
 ---
 
@@ -130,18 +149,17 @@ src/
 
 1. Create `content/theses/{slug}.md` with required frontmatter
 2. Run `npm run build`
-3. Verify it appears in `dist/index.html` and `dist/api/content.json`
+3. Verify it appears in `dist/index.html` TOC and `dist/thesis-NN-{slug}.html`
+4. Verify it appears in `dist/api/content.json`
 
-## Adding a New Field
-
-1. Document it in this file
-2. Add to `admin/config.template.yml` (mark `required: false` for existing content safety)
-3. Update `scripts/build.js` to read and render the new field
-4. Run `npm run build` to verify
+Or use the CMS: **Theses** → **New** → fill in all fields → Save → Vercel rebuilds automatically.
 
 ---
 
-## Versioning
+## Adding a New Configurable Field
 
-- **Schema Version:** 1.0
-- **Last Updated:** 2026-05-31
+1. Add the field to `content/settings/site.json` with a sensible default
+2. Add a corresponding entry to `admin/config.template.yml` under the Settings collection
+3. Update `scripts/build.js` to read the new field (with a fallback)
+4. Run `npm run build`
+5. Document it in this file under the appropriate section

@@ -337,7 +337,7 @@ function renderHomePage(settings, about, theses) {
 
     <!-- Theses index -->
     <div class="sec-head" id="theses" style="margin-top:2rem;">
-      <h3>Theses<sup>${thesisCount}</sup></h3>
+      <h3>${escHtml(settings.section_theses || 'Theses')}<sup>${thesisCount}</sup></h3>
       <div class="rule-solid"></div>
       <div class="sec-label">${escHtml(settings.author_handle)} · index</div>
     </div>
@@ -348,7 +348,7 @@ ${tocItems}
 
     ${writingLinks ? `<!-- Writing links -->
     <div class="sec-head" id="writing" style="margin-top:4rem;">
-      <h3>Writing</h3>
+      <h3>${escHtml(settings.section_writing || 'Writing')}</h3>
       <div class="rule-solid"></div>
       <div class="sec-label">${escHtml(settings.author_handle)} · links</div>
     </div>
@@ -356,7 +356,7 @@ ${tocItems}
 
     <!-- Newsletter -->
     <div class="sec-head" id="newsletter" style="margin-top:4rem;">
-      <h3>Newsletter</h3>
+      <h3>${escHtml(settings.section_newsletter || 'Newsletter')}</h3>
       <div class="rule-solid"></div>
       <div class="sec-label">${escHtml(settings.author_handle)} · subscribe</div>
     </div>

@@ -137,19 +137,47 @@ Design tokens in `src/css/tokens.css`. Only change variable **values**, never na
 
 - **Backend:** GitHub (`K41R0N/k41r0n.github.io`)
 - **Auth:** `https://sveltia-cms-auth.alejandro-057.workers.dev/` (hardcoded in template)
-- **Collections:** `theses` + `settings`
 - **Admin URL:** `/admin`
+- **Schema source:** `admin/config.template.yml` → generates `admin/config.yml` at build time
+
+### Collections and What They Control
+
+| Collection | File(s) | Controls |
+|-----------|---------|---------|
+| **Home Page → Hero · About** | `content/about.md` | Hero intro copy on `index.html` |
+| **Theses** | `content/theses/*.md` | Home page TOC rows + every `thesis-NN-*.html` detail page |
+| **Settings → Site Settings** | `content/settings/site.json` | Everything else on all pages — masthead, nav, footer, section headings, newsletter, SEO |
+
+### What Each Thesis Field Controls
+
+| Field | Home page | Thesis detail page |
+|-------|-----------|-------------------|
+| `title` | TOC group heading | h1 heading + nav breadcrumb |
+| `description` | TOC dot-leader description | SEO `<meta>` only — NOT visible body text |
+| `body` | — | Article content (the prose) |
+| `links` | "Writing" section list | "Links" block at bottom of article |
+| `slug` | URL of detail page | URL of detail page |
+| `order` | TOC sequence | Chapter nav order + URL prefix |
 
 ### Environment Variables (Vercel dashboard)
 
-Only one variable needs to be set. The rest are hardcoded in `admin/config.template.yml`.
-
 | Variable | Value |
 |----------|-------|
-| `PUBLIC_SITE_URL` | Your Vercel URL or custom domain |
+| `PUBLIC_SITE_URL` | Production URL with https:// (e.g. `https://kairon.xyz`) |
 | `GOOGLE_SITE_VERIFICATION` | Google Search Console token (optional) |
 
-> `CMS_REPO` and `CMS_AUTH_URL` are **hardcoded** — no Vercel env vars needed for them.
+> `CMS_REPO` and `CMS_AUTH_URL` are hardcoded in `admin/config.template.yml` — no extra Vercel env vars needed.
+
+### `about.md` Format
+
+**No frontmatter.** Plain markdown body only. Do not add frontmatter — the CMS only maps to the body and will strip any frontmatter on the next save.
+
+### Adding a New Configurable Field
+
+1. Add to `content/settings/site.json` with a default value
+2. Add to `admin/config.template.yml` Settings collection with a `hint:`
+3. Update `scripts/build.js` to read the field (always include a fallback)
+4. Document in `CONTENT_ARCHITECTURE.md`
 
 ---
 

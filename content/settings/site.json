@@ -15,5 +15,8 @@
   "footer_text": "Built with clarity, not breadth.",
   "substack_embed": "https://k41r0n.substack.com/embed",
   "newsletter_body": "Insights on digital creation, technology, and thoughtful commentary on our digital future. Delivered when inspiration strikes — never on a schedule.",
-  "newsletter_cta": "Subscribe on Substack →"
+  "newsletter_cta": "Subscribe on Substack →",
+  "section_theses": "Theses",
+  "section_writing": "Writing",
+  "section_newsletter": "Newsletter"
 }
