@@ -1,12 +1,13 @@
 ---
-title: "reMarkable Quickshare Bot"
-slug: "rm-quickshare-bot"
-order: 6
-description: "A Telegram-based automation tool to instantly fetch, format, and push web articles to the reMarkable tablet."
-repository_url: "https://github.com/K41R0N/RM-quickshare-bot"
-language: "Python"
-version: "1.1.0"
-license: "MIT"
+title: reMarkable Quickshare Bot
+slug: rm-quickshare-bot
+order: 4
+description: A Telegram-based automation tool to instantly fetch, format, and push web articles to the reMarkable tablet.
+repository_url: https://github.com/K41R0N/RM-quickshare-bot
+live_url: ''
+language: Python
+version: 1.1.0
+license: MIT
 ---
 
 ## Overview
