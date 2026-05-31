@@ -8,21 +8,17 @@
 #   repo     = K41R0N/k41r0n.github.io
 #   base_url = https://sveltia-cms-auth.alejandro-057.workers.dev/
 #
-# HOW THIS MAPS TO PAGES
-# ──────────────────────
-# index.html (home page)
-#   wordmark, socials, tagline, email       → Settings → Site Settings
-#   hero intro copy                         → Home Page → Hero · About
-#   section headings (Theses/Writing/…)     → Settings → Site Settings
-#   thesis TOC entries                      → Theses collection
-#   newsletter body + CTA                   → Settings → Site Settings
-#   footer                                  → Settings → Site Settings
+# COLLECTION STRUCTURE
+# ──────────────────────────────────────────────────────────────────────────────
+# Home Page    → everything that appears only on index.html
+#   Hero · About      → content/about.md
+#   Home Sections     → content/home.json  (headings, labels, newsletter copy)
+#   Writing Links     → content/writing.json
 #
-# thesis-NN-*.html (each thesis detail page)
-#   ← nav title, footer, handle            → Settings → Site Settings
-#   chapter nav labels                      → Theses collection (all titles)
-#   thesis title, body, links               → Theses collection (that entry)
-#   description (SEO only, not on page)     → Theses collection (that entry)
+# Theses       → content for home TOC rows + individual thesis detail pages
+#
+# Settings     → global config that appears on every page
+#   Site Settings     → content/settings/site.json
 # =============================================================================
 
 backend:
@@ -43,13 +39,13 @@ collections:
 
   # ===========================================================================
   # HOME PAGE
-  # Hero intro copy — content/about.md (body only, no frontmatter)
-  # Everything else on the home page comes from the Theses collection or
-  # Site Settings below.
+  # Three files — all specific to index.html
   # ===========================================================================
   - name: home
     label: Home Page
     files:
+
+      # ---- Hero intro copy --------------------------------------------------
       - name: about
         label: Hero · About
         file: content/about.md
@@ -58,25 +54,119 @@ collections:
             name: body
             widget: markdown
             hint: >
-              The introduction text in the hero section below the wordmark.
-              Plain text or markdown. Keep it short and direct — this is your
-              statement, not a bio. Example: "I'm in tech. I care about
-              craftsmanship. I don't like buzzwords."
+              The intro text in the hero section below the wordmark. Plain text
+              or markdown. Keep it short — this is your statement, not a bio.
+
+      # ---- Section headings, labels, newsletter copy -----------------------
+      - name: home_sections
+        label: Home · Sections & Newsletter
+        file: content/home.json
+        fields:
+
+          - label: "Logo Alt Text"
+            name: logo_alt
+            widget: string
+            default: "Kairon"
+            hint: "Accessible alt text for the logo mark image."
+
+          - label: "Theses — Section Heading"
+            name: section_theses
+            widget: string
+            default: "Theses"
+            hint: "The h3 heading above the thesis index (e.g. 'Theses', 'Essays')."
+
+          - label: "Theses — Sub-label"
+            name: section_theses_label
+            widget: string
+            default: "index"
+            hint: "Mono label to the right of the rule. Displayed uppercase."
+
+          - label: "Writing — Section Heading"
+            name: section_writing
+            widget: string
+            default: "Writing"
+            hint: "The h3 heading above the curated links section."
+
+          - label: "Writing — Sub-label"
+            name: section_writing_label
+            widget: string
+            default: "links"
+            hint: "Mono label to the right of the rule."
+
+          - label: "Writing — Intro Text"
+            name: section_writing_intro
+            widget: string
+            required: false
+            hint: "Optional one-line intro above the writing links. Leave blank to skip."
+
+          - label: "Newsletter — Section Heading"
+            name: section_newsletter
+            widget: string
+            default: "Newsletter"
+            hint: "The h3 heading above the newsletter section."
+
+          - label: "Newsletter — Sub-label"
+            name: section_newsletter_label
+            widget: string
+            default: "subscribe"
+            hint: "Mono label to the right of the rule."
+
+          - label: "Newsletter Body"
+            name: newsletter_body
+            widget: text
+            hint: "The paragraph above the subscribe link."
+
+          - label: "Newsletter CTA Text"
+            name: newsletter_cta
+            widget: string
+            hint: "Subscribe link text (e.g. 'Subscribe on Substack →')."
+
+      # ---- Writing links — curated, independently editable -----------------
+      - name: writing
+        label: Writing Links
+        file: content/writing.json
+        fields:
+          - label: Links
+            name: links
+            widget: list
+            label_singular: Link
+            hint: >
+              Curated list of articles, podcasts, tools, and projects shown
+              in the Writing section on the home page. Edit freely — these are
+              independent of the thesis link lists.
+            fields:
+              - label: Type
+                name: label
+                widget: select
+                options:
+                  - { label: "Article", value: "Article" }
+                  - { label: "Tool", value: "Tool" }
+                  - { label: "Podcast", value: "Podcast" }
+                  - { label: "Project", value: "Project" }
+                  - { label: "Video", value: "Video" }
+                  - { label: "Curated Compilation", value: "Curated Compilation" }
+                hint: "Content type — shown as a label."
+              - label: Title
+                name: title
+                widget: string
+                hint: "Display title."
+              - label: URL
+                name: url
+                widget: string
+                hint: "Full URL including https://"
 
   # ===========================================================================
   # THESES
-  # Each thesis drives two places on the site:
-  #   1. A dot-leader row in the Theses index on the home page
-  #   2. A full detail page at thesis-NN-{slug}.html
+  # Each thesis drives: a dot-leader row on the home page TOC
+  #                     + a full detail page at thesis-NN-{slug}.html
   #
-  # Field → where it appears:
-  #   title       → TOC group heading (home) + h1 + nav label (detail page)
-  #   description → TOC description text (home) + SEO meta (detail page only)
-  #                 NOTE: description does NOT render as visible text on the
-  #                 detail page — only as the SEO <meta> tag.
-  #   body        → Article content on the detail page (dropcap applied to
-  #                 first paragraph if it starts with 3+ letters)
-  #   links       → "Writing" section on home page + Links block on detail page
+  # Field guide:
+  #   title       → TOC heading (home) + h1 + nav breadcrumb (detail page)
+  #   description → TOC description text (home) + SEO <meta> (detail page)
+  #                 NOTE: description is NOT rendered as visible text on the
+  #                 detail page. Only the body is shown there.
+  #   body        → Article content on the detail page
+  #   links       → "Links" block at the bottom of the detail page
   # ===========================================================================
   - name: theses
     label: Theses
@@ -91,7 +181,7 @@ collections:
       - label: Title
         name: title
         widget: string
-        hint: "The thesis headline. Appears in the home page TOC and as the h1 on the detail page."
+        hint: "The thesis headline. Appears in the home TOC and as the h1 on the detail page."
 
       - label: Slug
         name: slug
@@ -104,38 +194,32 @@ collections:
         widget: number
         value_type: int
         min: 1
-        hint: "Display order (1, 2, 3…). Controls the TOC sequence, URL prefix, and chapter navigation."
+        hint: "Display order (1, 2, 3…). Controls TOC sequence, URL prefix, and chapter nav."
 
       - label: Description
         name: description
         widget: text
         hint: >
-          One-sentence summary. Appears as the dot-leader description in the home
-          page TOC and as the SEO meta description on the detail page.
-          It does NOT render as visible body text on the detail page — use Body for that.
+          One-sentence summary. Appears as the dot-leader description in the
+          home TOC and as the SEO meta description on the detail page.
+          It does NOT appear as visible body text on the detail page — use Body for that.
 
       - label: Body
         name: body
         widget: markdown
         required: false
         hint: >
-          The article content shown on the thesis detail page. This is what
-          visitors read when they click through from the home page TOC.
-          Supports custom syntax:
-            > **Note:** your text   →  renders as a margin note aside
-            ---                     →  renders as a section break rule
-          The first paragraph gets a drop cap automatically (if it starts
-          with a word of 3+ letters).
+          Article content shown on the thesis detail page. Supports:
+            > **Note:** text   →  margin note aside
+            ---                →  section break rule
+          First paragraph gets a drop cap if it starts with 3+ letters.
 
       - label: Links
         name: links
         widget: list
         required: false
         label_singular: Link
-        hint: >
-          Supporting articles, tools, podcasts, and projects. These appear in
-          two places: a "Writing" section on the home page and a "Links" block
-          on the thesis detail page.
+        hint: "Supporting links shown in the Links block on the thesis detail page."
         fields:
           - label: Type
             name: label
@@ -147,11 +231,10 @@ collections:
               - { label: "Project", value: "Project" }
               - { label: "Video", value: "Video" }
               - { label: "Curated Compilation", value: "Curated Compilation" }
-            hint: "Content type — displayed as a label above the link."
+            hint: "Content type label."
           - label: Title
             name: title
             widget: string
-            hint: "Display title of the linked piece."
           - label: URL
             name: url
             widget: string
@@ -159,8 +242,7 @@ collections:
 
   # ===========================================================================
   # SETTINGS
-  # Site-wide copy and configuration — content/settings/site.json
-  # These values appear across both the home page and all thesis detail pages.
+  # Global config — appears on every page (home + all thesis pages)
   # ===========================================================================
   - name: settings
     label: Settings
@@ -175,7 +257,7 @@ collections:
           - label: "Full Name"
             name: full_name
             widget: string
-            hint: "Legal / full name — used in copyright notice and JSON-LD schema."
+            hint: "Legal name — used in copyright and JSON-LD schema."
 
           - label: "Wordmark — Line 1"
             name: wordmark_line1
@@ -185,151 +267,90 @@ collections:
           - label: "Wordmark — Line 2"
             name: wordmark_line2
             widget: string
-            hint: "Second line of the large display name (e.g. 'Arango')."
+            hint: "Second line (e.g. 'Arango')."
 
           - label: "Handle / Alias"
             name: author_handle
             widget: string
-            hint: "Your alias — shown in section labels, nav breadcrumbs, and the GitHub metric (e.g. K41R0N)."
+            hint: "Your alias — used in section labels, nav breadcrumbs, and the GitHub metric."
 
           - label: "Tagline"
             name: tagline
             widget: string
-            hint: "One-liner role title — shown in the footer."
+            hint: "One-liner role — shown in the footer."
 
           - label: "Email"
             name: email
             widget: string
-            hint: "Contact email — shown as a clickable link in the masthead metrics and footer."
+            hint: "Contact email — shown in the masthead and footer."
 
           # ---- Social ---------------------------------------------------------
           - label: "GitHub URL"
             name: github
             widget: string
-            hint: "Full URL — e.g. https://github.com/K41R0N. Shown as handle in the masthead metrics."
+            hint: "e.g. https://github.com/K41R0N"
 
           - label: "Substack URL"
             name: substack
             widget: string
-            hint: "Full URL — e.g. https://k41r0n.substack.com. Used in masthead, newsletter CTA, and RSS feed."
+            hint: "e.g. https://k41r0n.substack.com"
 
           - label: "Instagram URL"
             name: instagram
             widget: string
             required: false
-            hint: "Full URL — e.g. https://www.instagram.com/device.economies/. Shown as handle in masthead."
+            hint: "e.g. https://www.instagram.com/device.economies/"
 
           # ---- SEO ------------------------------------------------------------
           - label: "Site Title"
             name: title
             widget: string
-            hint: "Short name — appears in browser tab, RSS feed title, and the ← nav on thesis pages (e.g. 'Kairon')."
+            hint: "Short name — appears in browser tab, RSS, and ← nav on thesis pages."
 
           - label: "Site Description"
             name: description
             widget: text
-            hint: "SEO meta description — 1–2 sentences. Used in <meta name='description'> and og:description."
+            hint: "SEO meta description — 1–2 sentences."
 
           - label: "Site URL"
             name: site_url
             widget: string
-            hint: "Production URL with protocol (e.g. https://kairon.xyz). Used to build canonical and sitemap URLs."
-
-          # ---- Section Headings & Labels --------------------------------------
-          - label: "Theses — Section Heading"
-            name: section_theses
-            widget: string
-            default: "Theses"
-            hint: "The h3 heading above the thesis index (e.g. 'Theses', 'Essays', 'Ideas')."
-
-          - label: "Theses — Section Sub-label"
-            name: section_theses_label
-            widget: string
-            default: "index"
-            hint: "The mono label to the right of the rule (e.g. 'index'). Displayed uppercase."
-
-          - label: "Writing — Section Heading"
-            name: section_writing
-            widget: string
-            default: "Writing"
-            hint: "The h3 heading above the curated links section."
-
-          - label: "Writing — Section Sub-label"
-            name: section_writing_label
-            widget: string
-            default: "links"
-            hint: "The mono label to the right of the rule (e.g. 'links')."
-
-          - label: "Writing — Intro Text"
-            name: section_writing_intro
-            widget: string
-            required: false
-            hint: "Optional one-line intro above the writing links. Leave blank to show links immediately."
-
-          - label: "Newsletter — Section Heading"
-            name: section_newsletter
-            widget: string
-            default: "Newsletter"
-            hint: "The h3 heading above the newsletter section."
-
-          - label: "Newsletter — Section Sub-label"
-            name: section_newsletter_label
-            widget: string
-            default: "subscribe"
-            hint: "The mono label to the right of the rule (e.g. 'subscribe')."
-
-          # ---- Logo -----------------------------------------------------------
-          - label: "Logo Alt Text"
-            name: logo_alt
-            widget: string
-            default: "Kairon"
-            hint: "Accessible alt text for the logo mark image."
+            hint: "Production URL with protocol (e.g. https://kairon.xyz)."
 
           # ---- Thesis Pages ---------------------------------------------------
           - label: "Thesis — Nav Label"
             name: thesis_nav_label
             widget: string
             default: "Thesis"
-            hint: "The word used before the number in the thesis nav and eyebrow (e.g. 'Thesis', 'Essay')."
+            hint: "Word before the number in thesis nav and eyebrow (e.g. 'Thesis', 'Essay')."
 
           - label: "Thesis — Links Section Heading"
             name: thesis_links_heading
             widget: string
             default: "Links"
-            hint: "The h3 heading above the links block on each thesis detail page."
+            hint: "h3 heading above the links block on each thesis detail page."
 
-          - label: "Thesis — Links Section Sub-label"
+          - label: "Thesis — Links Sub-label"
             name: thesis_links_label
             widget: string
             default: "references"
-            hint: "The mono label beside the links section rule (e.g. 'references')."
+            hint: "Mono label beside the links section rule."
 
           - label: "Thesis — Next Label"
             name: thesis_next_label
             widget: string
             default: "Next"
-            hint: "The prefix on the next-thesis navigation link at the bottom of each thesis page."
-
-          # ---- Newsletter -----------------------------------------------------
-          - label: "Newsletter Body"
-            name: newsletter_body
-            widget: text
-            hint: "The paragraph below the Newsletter heading and above the subscribe link."
-
-          - label: "Newsletter CTA Text"
-            name: newsletter_cta
-            widget: string
-            hint: "The subscribe link text (e.g. 'Subscribe on Substack →')."
+            hint: "Prefix on the next-thesis link at the bottom of each detail page."
 
           # ---- Footer ---------------------------------------------------------
           - label: "Footer Text"
             name: footer_text
             widget: string
             required: false
-            hint: "Optional tagline in the footer credits block."
+            hint: "Tagline in the footer credits block."
 
           - label: "Substack Embed URL"
             name: substack_embed
             widget: string
             required: false
-            hint: "Substack embed iframe URL if used (e.g. https://k41r0n.substack.com/embed)."
+            hint: "Substack embed iframe URL if used."

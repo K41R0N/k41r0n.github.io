@@ -10,8 +10,10 @@ Every visible string on the site traces back to one of three content files.
 ```
 content/
 ├── about.md                        → hero intro copy (body only, no frontmatter)
+├── home.json                       → home-page section headings, labels, newsletter
+├── writing.json                    → curated writing links (independently editable)
 ├── settings/
-│   └── site.json                   → all site-wide copy and config
+│   └── site.json                   → global identity, social, SEO, thesis page labels
 └── theses/
     ├── devices-as-co-creations.md
     ├── future-belongs-to-storytellers.md
@@ -69,13 +71,13 @@ content/
 
 ## CMS Collections → Pages
 
-The CMS has three collections. Here is which pages each one controls:
-
-| CMS Collection | Controls |
-|---------------|---------|
-| **Home Page** → Hero · About | Hero intro text on `index.html` |
-| **Theses** | Every thesis row in the home TOC + every `thesis-NN-*.html` detail page |
-| **Settings** → Site Settings | Every page — masthead, nav, footer, section headings, newsletter, SEO |
+| CMS Collection | File | Controls |
+|---------------|------|---------|
+| **Home Page → Hero · About** | `content/about.md` | Hero intro text |
+| **Home Page → Home · Sections & Newsletter** | `content/home.json` | Section headings, sub-labels, newsletter body + CTA, logo alt |
+| **Home Page → Writing Links** | `content/writing.json` | Curated writing section links (independent of thesis links) |
+| **Theses** | `content/theses/*.md` | Home TOC rows + every `thesis-NN-*.html` detail page |
+| **Settings → Site Settings** | `content/settings/site.json` | Every page — identity, social, SEO, thesis page labels, footer |
 
 ---
 

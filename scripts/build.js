@@ -83,6 +83,18 @@ function loadAbout() {
   return { ...data, body: content.trim() };
 }
 
+function loadHome() {
+  const p = path.join(CONTENT, 'home.json');
+  if (!fs.existsSync(p)) return {};
+  return JSON.parse(fs.readFileSync(p, 'utf-8'));
+}
+
+function loadWriting() {
+  const p = path.join(CONTENT, 'writing.json');
+  if (!fs.existsSync(p)) return { links: [] };
+  return JSON.parse(fs.readFileSync(p, 'utf-8'));
+}
+
 function loadTheses() {
   const dir = path.join(CONTENT, 'theses');
   if (!fs.existsSync(dir)) return [];
@@ -247,13 +259,12 @@ function thesisSchema(thesis, settings) {
 // Home Page
 // ============================================================================
 
-function renderHomePage(settings, about, theses) {
+function renderHomePage(settings, about, theses, home, writing) {
   const title       = `${settings.full_name} — ${settings.tagline}`;
   const year        = new Date().getFullYear();
   const thesisCount = String(theses.length).padStart(2, '0');
 
   // Masthead right panel — social links in the live-metrics grid.
-  // Platform name as label, handle/link as value. Clean and scannable.
   const instagramHandle = settings.instagram ? settings.instagram.split('/').filter(Boolean).pop() : '';
   const metricsHtml = `
     <div class="live-metrics" aria-label="Social links">
@@ -289,11 +300,11 @@ function renderHomePage(settings, about, theses) {
       </li>`;
   }).join('\n');
 
-  // Writing links — all links labelled "Article" / "Podcast" / "Tool" across all theses
-  const allLinks = theses.flatMap(t => (t.links || []).map(l => ({ ...l, thesis: t.title })));
-  const writingLinks = allLinks.length
-    ? `<ul>\n${allLinks.map(l =>
-        `<li><a href="${escHtml(l.url)}" target="_blank" rel="noopener">${escHtml(l.title)}</a> — <em>${escHtml(l.label)}</em> · from <em>${escHtml(l.thesis)}</em></li>`
+  // Writing links — from content/writing.json (curated, independently editable)
+  const writingList = writing.links || [];
+  const writingLinks = writingList.length
+    ? `<ul>\n${writingList.map(l =>
+        `<li><a href="${escHtml(l.url)}" target="_blank" rel="noopener">${escHtml(l.title)}</a> — <em>${escHtml(l.label)}</em></li>`
       ).join('\n')}\n</ul>`
     : '';
 
@@ -331,15 +342,15 @@ function renderHomePage(settings, about, theses) {
     <!-- Kairon logo mark -->
     <div style="text-align:center; margin:6rem 0 2rem;">
       <img src="assets/img/kairon-logo.svg"
-           alt="${escHtml(settings.logo_alt || 'Kairon')}"
+           alt="${escHtml(home.logo_alt || 'Kairon')}"
            style="width:min(320px, 60%); height:auto; display:inline-block;">
     </div>
 
     <!-- Theses index -->
     <div class="sec-head" id="theses" style="margin-top:2rem;">
-      <h3>${escHtml(settings.section_theses || 'Theses')}<sup>${thesisCount}</sup></h3>
+      <h3>${escHtml(home.section_theses || 'Theses')}<sup>${thesisCount}</sup></h3>
       <div class="rule-solid"></div>
-      <div class="sec-label">${escHtml(settings.author_handle)} · ${escHtml(settings.section_theses_label || 'index')}</div>
+      <div class="sec-label">${escHtml(settings.author_handle)} · ${escHtml(home.section_theses_label || 'index')}</div>
     </div>
 
     <ol class="toc-ms">
@@ -348,21 +359,21 @@ ${tocItems}
 
     ${writingLinks ? `<!-- Writing links -->
     <div class="sec-head" id="writing" style="margin-top:4rem;">
-      <h3>${escHtml(settings.section_writing || 'Writing')}</h3>
+      <h3>${escHtml(home.section_writing || 'Writing')}</h3>
       <div class="rule-solid"></div>
-      <div class="sec-label">${escHtml(settings.author_handle)} · ${escHtml(settings.section_writing_label || 'links')}</div>
+      <div class="sec-label">${escHtml(settings.author_handle)} · ${escHtml(home.section_writing_label || 'links')}</div>
     </div>
-    <div class="intro-flow" style="margin-top:2rem;">${settings.section_writing_intro ? `<p>${escHtml(settings.section_writing_intro)}</p>` : ''}${writingLinks}</div>` : ''}
+    <div class="intro-flow" style="margin-top:2rem;">${home.section_writing_intro ? `<p>${escHtml(home.section_writing_intro)}</p>` : ''}${writingLinks}</div>` : ''}
 
     <!-- Newsletter -->
     <div class="sec-head" id="newsletter" style="margin-top:4rem;">
-      <h3>${escHtml(settings.section_newsletter || 'Newsletter')}</h3>
+      <h3>${escHtml(home.section_newsletter || 'Newsletter')}</h3>
       <div class="rule-solid"></div>
-      <div class="sec-label">${escHtml(settings.author_handle)} · ${escHtml(settings.section_newsletter_label || 'subscribe')}</div>
+      <div class="sec-label">${escHtml(settings.author_handle)} · ${escHtml(home.section_newsletter_label || 'subscribe')}</div>
     </div>
     <div class="intro-flow" style="margin-top:2rem;">
-      <p>${escHtml(settings.newsletter_body || '')}</p>
-      <p><a href="${escHtml(settings.substack)}" target="_blank" rel="noopener">${escHtml(settings.newsletter_cta || 'Subscribe →')}</a></p>
+      <p>${escHtml(home.newsletter_body || '')}</p>
+      <p><a href="${escHtml(settings.substack)}" target="_blank" rel="noopener">${escHtml(home.newsletter_cta || 'Subscribe →')}</a></p>
     </div>
 
     <footer class="footer-ms">
@@ -581,11 +592,13 @@ function main() {
   const settings = loadSettings();
   const about    = loadAbout();
   const theses   = loadTheses();
+  const home     = loadHome();
+  const writing  = loadWriting();
 
-  console.log(`  Loaded ${theses.length} theses`);
+  console.log(`  Loaded ${theses.length} theses, ${(writing.links||[]).length} writing links`);
 
   // Home page
-  fs.writeFileSync(path.join(DIST, 'index.html'), renderHomePage(settings, about, theses));
+  fs.writeFileSync(path.join(DIST, 'index.html'), renderHomePage(settings, about, theses, home, writing));
   console.log('  index.html');
 
   // Thesis detail pages
