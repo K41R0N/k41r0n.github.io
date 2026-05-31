@@ -12,3 +12,145 @@
   font-weight: var(--font-weight-semibold);
   letter-spacing: -.01em;
 }
+
+/* =============================================================================
+   Blog — Hero, article body, listing tiles
+   ============================================================================= */
+
+/* ---- Article hero (full-bleed, sits outside .page wrapper) --------------- */
+.blog-hero {
+  width: 100%;
+  padding: clamp(3rem, 8vw, 6rem) var(--gutter) clamp(2.5rem, 6vw, 5rem);
+  text-align: center;
+  border-bottom: 1px dashed var(--rule-color);
+}
+
+.blog-hero-cover {
+  width: min(300px, 55%);
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 2.5rem;
+}
+
+/* Title uses Kyrios display at large scale in crimson — matches the Substack
+   tile format (blackletter title centred below the 1:1 cover image). */
+.blog-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-4xl), 5vw, var(--text-6xl));
+  font-weight: var(--font-weight-medium);
+  color: var(--accent);
+  line-height: 1.05;
+  letter-spacing: -.03em;
+  margin: 0 auto 1rem;
+  max-width: 22ch;
+  text-wrap: balance;
+}
+
+/* Subtitle: italic Merriweather, muted — the description/tagline */
+.blog-hero-subtitle {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: var(--text-xl);
+  color: var(--text-muted);
+  margin: 0 auto;
+  max-width: 45ch;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+/* ---- Article body: images stay in the reading column -------------------- */
+.blog-content .gh-content img,
+.blog-content img,
+.article img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 2.5rem auto;
+  border-radius: var(--radius-sm);
+}
+
+/* ---- Blog listing — tile grid ------------------------------------------- */
+/* Replaces toc-ms for the /blog/ listing page.
+   Each tile: 1:1 cover → meta → title → description. */
+.blog-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-2xl) var(--space-xl);
+  margin-top: var(--space-2xl);
+}
+
+.blog-tile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* 1:1 cover square */
+.blog-tile-cover {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--ink-fill-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blog-tile-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity .2s ease;
+}
+
+.blog-tile:hover .blog-tile-cover img { opacity: .88; }
+
+/* Placeholder shown when no cover_image is set */
+.blog-tile-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-kairon);
+  font-size: 5rem;
+  color: var(--accent);
+  opacity: .2;
+  user-select: none;
+}
+
+.blog-tile-meta {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--text-faint);
+  margin-top: var(--space-sm);
+}
+
+.blog-tile-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-color);
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: -.01em;
+  text-wrap: balance;
+  transition: color .2s ease;
+}
+
+.blog-tile:hover .blog-tile-title { color: var(--accent); }
+
+.blog-tile-desc {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+  text-wrap: pretty;
+}

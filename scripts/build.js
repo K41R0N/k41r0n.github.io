@@ -515,20 +515,26 @@ function blogPostUrl(post) {
 }
 
 function renderBlogListing(settings, posts, home) {
-  const title = `Writing — ${settings.title}`;
-  const year  = new Date().getFullYear();
+  const title        = `Writing — ${settings.title}`;
+  const year         = new Date().getFullYear();
   const heading      = home.section_writing || 'Writing';
   const headingLabel = home.section_writing_label || 'articles';
 
-  const listItems = posts.map(p => {
-    const url  = blogPostUrl(p);
-    const date = p.date ? new Date(p.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
-    return `      <li class="toc-group">
-        <a class="group-title" href="/${url}">${escHtml(p.title)}</a>
-        <ul>
-          <li><a class="toc-row" href="/${url}"><span class="t">${escHtml(p.description)}</span><span class="dots"></span><span class="pg">${escHtml(date)}</span></a></li>
-        </ul>
-      </li>`;
+  const tiles = posts.map(p => {
+    const url  = `/${blogPostUrl(p)}`;
+    const date = p.date
+      ? new Date(p.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
+      : '';
+    const coverHtml = p.cover_image
+      ? `<div class="blog-tile-cover"><img src="${escHtml(p.cover_image)}" alt="${escHtml(p.title)}" loading="lazy"></div>`
+      : `<div class="blog-tile-cover"><div class="blog-tile-placeholder" aria-hidden="true">K</div></div>`;
+
+    return `    <a class="blog-tile" href="${url}">
+      ${coverHtml}
+      <p class="blog-tile-meta">${escHtml(date)}</p>
+      <h2 class="blog-tile-title">${escHtml(p.title)}</h2>
+      <p class="blog-tile-desc">${escHtml(p.description)}</p>
+    </a>`;
   }).join('\n');
 
   return `<!DOCTYPE html>
@@ -552,9 +558,9 @@ function renderBlogListing(settings, posts, home) {
       <div class="sec-label">${escHtml(settings.author_handle)} · ${escHtml(headingLabel)}</div>
     </div>
 
-    <ol class="toc-ms">
-${listItems}
-    </ol>
+    <div class="blog-tiles">
+${tiles}
+    </div>
 
     <footer class="footer-ms">
       <div class="stars">· · ·</div>
@@ -579,7 +585,13 @@ function renderBlogPost(post, settings) {
     ? new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
     : '';
   const primaryTag = Array.isArray(post.tags) && post.tags.length ? post.tags[0] : null;
-  const eyebrow = [primaryTag, dateStr].filter(Boolean).join(' · ');
+  const eyebrowStr = [primaryTag, dateStr].filter(Boolean).join(' · ');
+
+  // Hero: cover image (1:1 square) + title + subtitle/description
+  // Sits outside .page so it's full-bleed against the page background
+  const coverHtml = post.cover_image
+    ? `<img class="blog-hero-cover" src="${escHtml(post.cover_image)}" alt="${escHtml(post.title)}" loading="eager">`
+    : '';
 
   const bodyHtml = transformBody(post.body || '');
 
@@ -591,21 +603,31 @@ function renderBlogPost(post, settings) {
   ${post.tags?.length ? `<meta property="article:tag" content="${escHtml(post.tags.join(', '))}">` : ''}
 </head>
 <body>
+
+  <!-- Full-bleed article hero: cover image → title → subtitle -->
+  <section class="blog-hero" aria-labelledby="post-title">
+    ${coverHtml}
+    <h1 class="blog-hero-title" id="post-title">${escHtml(post.title)}</h1>
+    ${post.description ? `<p class="blog-hero-subtitle">${escHtml(post.description)}</p>` : ''}
+  </section>
+
+  <!-- Article content — uses the same chapter-page layout as thesis pages -->
   <div class="page chapter-page">
 
     <nav class="site-nav">
       <a href="/blog/">← Writing</a>
-      <span class="mono">${escHtml(post.title)}</span>
+      <span class="mono">${escHtml(eyebrowStr)}</span>
     </nav>
 
     <hr class="rule-dotted">
 
-    <article class="article" id="${escHtml(post.slug)}">
-      <p class="eyebrow">${escHtml(eyebrow)}</p>
-      <h1>${escHtml(post.title)}</h1>
-      ${bodyHtml}
-      <hr class="section-break">
-    </article>
+    <div class="blog-content">
+      <article class="article" id="${escHtml(post.slug)}">
+        <p class="eyebrow">${escHtml(eyebrowStr)}</p>
+        ${bodyHtml}
+        <hr class="section-break">
+      </article>
+    </div>
 
     <div class="chapter-marker" style="margin-top:4rem;"><span>${escHtml(settings.title)} · ${escHtml(dateStr)}</span></div>
 
