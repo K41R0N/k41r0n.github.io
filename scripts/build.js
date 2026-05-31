@@ -107,6 +107,13 @@ function loadTheses() {
     .sort((a, b) => (a.order || 99) - (b.order || 99));
 }
 
+function loadAboutPage() {
+  const p = path.join(CONTENT, 'pages', 'about.md');
+  if (!fs.existsSync(p)) return null;
+  const { data, content } = matter(fs.readFileSync(p, 'utf-8'));
+  return { ...data, body: content.trim() };
+}
+
 function loadBlog() {
   const dir = path.join(CONTENT, 'blog');
   if (!fs.existsSync(dir)) return [];
@@ -609,7 +616,7 @@ function renderBlogListing(settings, posts, home, activeTag = null) {
       <div class="sec-label">${escHtml(settings.author_handle)} · ${escHtml(headingLabel)}</div>
     </div>
 
-    ${intro ? `<p class="blog-intro-text">${escHtml(intro)}</p>` : ''}
+    ${intro ? `<p class="blog-intro-text">${escHtml(intro)} <a href="/about.html" style="font-style:normal;font-family:var(--font-mono);font-size:var(--text-xs);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;">About this publication →</a></p>` : ''}
 
     ${tagFilterHtml}
 
@@ -693,6 +700,56 @@ function renderBlogPost(post, settings) {
 
     <div class="chapter-marker" style="margin-top:4rem;">
       <span>${escHtml(settings.title)} · ${escHtml(dateShort)}</span>
+    </div>
+
+    <footer class="footer-ms">
+      <div class="stars">· · ·</div>
+      <div class="credits">
+        <p>by <a href="${SITE_URL}">${escHtml(settings.author_handle)}</a></p>
+        <p class="disclaimer">&copy; ${year} ${escHtml(settings.full_name)}</p>
+      </div>
+      <div class="band"></div>
+    </footer>
+
+  </div>
+</body>
+</html>`;
+}
+
+// ============================================================================
+// About Page
+// ============================================================================
+
+function renderAboutPage(page, settings) {
+  const year  = new Date().getFullYear();
+  const title = `${page.title} — ${settings.title}`;
+  const url   = `${SITE_URL}/about.html`;
+  const bodyHtml = transformBody(page.body || '');
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  ${sharedHead({ title, description: page.description, url, type: 'website', settings })}
+</head>
+<body>
+  <div class="page chapter-page">
+
+    <nav class="site-nav">
+      <a href="/blog/">← Writing</a>
+      <span class="mono">${escHtml(settings.author_handle)} · about</span>
+    </nav>
+
+    <hr class="rule-dotted">
+
+    <article class="article" id="about">
+      <span class="margin-label">About</span>
+      <p class="eyebrow">${escHtml(settings.author_handle)} · device economies</p>
+      ${bodyHtml}
+      <hr class="section-break">
+    </article>
+
+    <div class="chapter-marker" style="margin-top:4rem;">
+      <span>${escHtml(settings.title)} · about</span>
     </div>
 
     <footer class="footer-ms">
@@ -802,6 +859,7 @@ function generateSitemap(theses, posts) {
   const urls  = [
     { loc: `${SITE_URL}/`,           priority: '1.0', changefreq: 'monthly', lastmod: today },
     { loc: `${SITE_URL}/blog/`,      priority: '0.9', changefreq: 'weekly',  lastmod: today },
+    { loc: `${SITE_URL}/about.html`, priority: '0.7', changefreq: 'monthly', lastmod: today },
     ...theses.map(t => ({ loc: `${SITE_URL}/${thesisUrl(t)}`, priority: '0.8', changefreq: 'monthly', lastmod: today })),
     ...posts.map(p  => ({ loc: `${SITE_URL}/${blogPostUrl(p)}`, priority: '0.8', changefreq: 'monthly', lastmod: p.date || today }))
   ];
@@ -862,12 +920,13 @@ function main() {
   if (fs.existsSync(DIST)) fs.rmSync(DIST, { recursive: true });
   ensureDir(DIST);
 
-  const settings = loadSettings();
-  const about    = loadAbout();
-  const theses   = loadTheses();
-  const home     = loadHome();
-  const writing  = loadWriting();
-  const posts    = loadBlog();
+  const settings  = loadSettings();
+  const about     = loadAbout();
+  const theses    = loadTheses();
+  const home      = loadHome();
+  const writing   = loadWriting();
+  const posts     = loadBlog();
+  const aboutPage = loadAboutPage();
 
   console.log(`  Loaded ${theses.length} theses, ${posts.length} blog posts, ${(writing.links||[]).length} writing links`);
 
@@ -880,6 +939,12 @@ function main() {
     const filename = thesisUrl(thesis);
     fs.writeFileSync(path.join(DIST, filename), renderThesisPage(thesis, theses, settings));
     console.log(`  ${filename}`);
+  }
+
+  // About page
+  if (aboutPage) {
+    fs.writeFileSync(path.join(DIST, 'about.html'), renderAboutPage(aboutPage, settings));
+    console.log('  about.html');
   }
 
   // Blog listing + post pages

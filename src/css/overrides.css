@@ -187,33 +187,37 @@
   margin: 0;
 }
 
-/* ---- Archive entries (alternating image left / right) ------------------- */
-/* Odd entries: image left. Even entries: image right.
-   Creates rhythm without becoming a uniform grid. */
+/* ---- Archive entries — whole block shifts left / right ------------------ */
+/* The ENTIRE component (image + text) moves as one unit.
+   Odd: block left-aligned, image leads. Even: block right-aligned via
+   margin-left:auto, image follows (flex row-reverse). Width capped at ~68%
+   so the opposite side stays open, creating the offset rhythm. */
 .blog-archive-entry {
-  display: grid;
-  grid-template-columns: clamp(120px, 18vw, 190px) 1fr;
-  gap: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1.75rem;
   padding: 2rem 0;
   border-bottom: 1px solid var(--rule-color);
   text-decoration: none;
   color: inherit;
-  align-items: start;
+  width: 68%;
 }
+/* Even: flip the row AND push the whole block rightward */
 .blog-archive-entry:nth-child(even) {
-  grid-template-columns: 1fr clamp(120px, 18vw, 190px);
+  flex-direction: row-reverse;
+  margin-left: auto;
 }
-.blog-archive-entry:nth-child(even) .blog-archive-cover  { order: 2; }
-.blog-archive-entry:nth-child(even) .blog-archive-content { order: 1; }
 
 .blog-archive-cover {
+  flex-shrink: 0;
+  width: clamp(120px, 18vw, 190px);
   aspect-ratio: 1 / 1;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--ink-fill-1);
-  flex-shrink: 0;
   transition: opacity .2s ease;
 }
 .blog-archive-cover img {
@@ -231,7 +235,7 @@
   color: var(--accent);
   opacity: .2;
 }
-.blog-archive-content { display: flex; flex-direction: column; gap: .4rem; }
+.blog-archive-content { flex: 1; display: flex; flex-direction: column; gap: .4rem; }
 .blog-archive-meta {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
@@ -260,19 +264,17 @@
   text-wrap: pretty;
 }
 
-/* Mobile: stack everything; archive entries go back to small-thumb-left */
+/* Mobile: full width, thumb left, no alternation */
 @media (max-width: 48rem) {
-  .blog-featured {
-    grid-template-columns: 1fr;
-    border-top-width: 1px;
-  }
+  .blog-featured { grid-template-columns: 1fr; border-top-width: 1px; }
   .blog-featured-cover { max-width: 180px; margin: 0 auto; }
   .blog-featured-title { font-size: var(--text-4xl); }
 
   .blog-archive-entry,
   .blog-archive-entry:nth-child(even) {
-    grid-template-columns: 3.5rem 1fr;
+    width: 100%;
+    flex-direction: row;
+    margin-left: 0;
   }
-  .blog-archive-entry:nth-child(even) .blog-archive-cover  { order: 0; }
-  .blog-archive-entry:nth-child(even) .blog-archive-content { order: 0; }
+  .blog-archive-cover { width: 3.5rem; }
 }
