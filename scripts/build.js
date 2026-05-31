@@ -465,9 +465,9 @@ function renderHomePage(settings, about, theses, projects, home, writing, posts)
           ${aboutHtml}
         </div>
       </div>
-      <div style="display: flex; flex-direction: column; gap: 4rem; align-items: flex-end;">
+      <div class="masthead-right">
         ${metricsHtml}
-        ${home.logo_image ? `<img src="${escHtml(home.logo_image)}" alt="${escHtml(home.logo_alt || '')}" style="width:min(280px, 80%); height:auto; mix-blend-mode: multiply; opacity: 0.95; margin-top: auto;">` : ''}
+        ${home.logo_image ? `<img class="hero-logo" src="${escHtml(home.logo_image)}" alt="${escHtml(home.logo_alt || '')}">` : ''}
       </div>
     </header>
 
@@ -477,7 +477,7 @@ function renderHomePage(settings, about, theses, projects, home, writing, posts)
 
     <!-- Theses index -->
     <div class="sec-head" id="theses" style="margin-top:2rem;">
-      <h3>${escHtml(home.section_theses || 'Theses')}<sup>${thesisCount}</sup></h3>
+      <h3>${escHtml(home.section_theses || 'Theses')}<span class="count">[ ${thesisCount} entries ]</span></h3>
       <div class="rule-solid"></div>
       <div class="sec-label">${escHtml(settings.author_handle)} · ${escHtml(home.section_theses_label || 'index')}</div>
     </div>
@@ -488,7 +488,7 @@ ${tocItems}
 
     ${projects.length ? `<!-- Projects index -->
     <div class="sec-head" id="projects" style="margin-top:4rem;">
-      <h3>${escHtml(home.section_projects || 'Projects')}<sup>${projectCount}</sup></h3>
+      <h3>${escHtml(home.section_projects || 'Projects')}<span class="count">[ ${projectCount} items ]</span></h3>
       <div class="rule-solid"></div>
       <div class="sec-label">${escHtml(settings.author_handle)} · ${escHtml(home.section_projects_label || 'tools')}</div>
     </div>
@@ -507,7 +507,7 @@ ${projectItems}
 
     ${posts.length ? `<!-- Blog/Writing links -->
     <div class="sec-head" id="writing" style="margin-top:4rem;">
-      <h3>${escHtml(home.section_blog || 'Writing')}</h3>
+      <h3>${escHtml(home.section_blog || 'Writing')}<span class="count">[ ${String(posts.length).padStart(2,'0')} articles ]</span></h3>
       <div class="rule-solid"></div>
       <div class="sec-label">${escHtml(settings.author_handle)} · ${escHtml(home.section_blog_label || 'articles')}</div>
     </div>
@@ -612,7 +612,7 @@ function renderThesisPage(thesis, allTheses, settings) {
 
     <article class="article" id="${escHtml(thesis.slug)}">
       <span class="margin-label">§${thesis.order} — ${escHtml(shortTitle)}</span>
-      <p class="eyebrow">${escHtml(settings.thesis_nav_label || 'Thesis')} ${num} · §1</p>
+      <p class="eyebrow">${escHtml(settings.thesis_nav_label || 'Thesis')} ${num}</p>
       <h1>${escHtml(thesis.title)}</h1>
       ${bodyHtml}
       ${linksHtml}
@@ -720,6 +720,27 @@ function renderBlogListing(settings, posts, home, activeTag = null) {
   const headingLabel = home.section_blog_label || 'articles';
   const intro        = home.blog_intro || '';
 
+  const instagramHandle = settings.instagram ? settings.instagram.split('/').filter(Boolean).pop() : '';
+  const metricsHtml = `
+    <div class="live-metrics" aria-label="Social links">
+      ${settings.instagram ? `<div>
+        <div class="metric-label">Instagram</div>
+        <div class="metric-value"><a href="${escHtml(settings.instagram)}" target="_blank" rel="noopener">${escHtml(instagramHandle)}</a></div>
+      </div>` : ''}
+      ${settings.github ? `<div>
+        <div class="metric-label">GitHub</div>
+        <div class="metric-value"><a href="${escHtml(settings.github)}" target="_blank" rel="noopener">${escHtml(settings.author_handle)}</a></div>
+      </div>` : ''}
+      ${settings.substack ? `<div>
+        <div class="metric-label">Substack</div>
+        <div class="metric-value"><a href="${escHtml(settings.substack)}" target="_blank" rel="noopener">${escHtml(settings.substack.replace('https://', ''))}</a></div>
+      </div>` : ''}
+      <div>
+        <div class="metric-label">Projects</div>
+        <div class="metric-value"><a href="/#projects">${escHtml(home.section_projects || 'Projects')} →</a></div>
+      </div>
+    </div>`;
+
   // Split: featured (most recent) + archive (the rest)
   const [featured, ...archive] = posts;
 
@@ -797,12 +818,13 @@ function renderBlogListing(settings, posts, home, activeTag = null) {
 <body>
   <div class="page">
 
-     <nav class="site-nav blog-listing-nav">
+     <nav class="site-nav blog-listing-nav" style="align-items: flex-start;">
        <a href="/">← ${escHtml(settings.title)}</a>
+       ${metricsHtml}
      </nav>
 
     <div class="sec-head" id="writing" style="margin-top:4rem;">
-      <h3>${escHtml(heading)}<sup>${String(posts.length).padStart(2,'0')}</sup></h3>
+      <h3>${escHtml(heading)}<span class="count">[ ${String(posts.length).padStart(2,'0')} articles ]</span></h3>
       <div class="rule-solid"></div>
       <div class="sec-label">${escHtml(settings.author_handle)} · ${escHtml(headingLabel)}</div>
     </div>
@@ -850,6 +872,27 @@ function renderBlogPost(post, settings) {
   const readTime   = estimateReadTime(post.body);
   const eyebrowStr = [primaryTag, dateStr, `${readTime} min read`].filter(Boolean).join(' · ');
   const navLabel   = [primaryTag, dateShort].filter(Boolean).join(' · ');
+
+  const instagramHandle = settings.instagram ? settings.instagram.split('/').filter(Boolean).pop() : '';
+  const metricsHtml = `
+    <div class="live-metrics" aria-label="Social links">
+      ${settings.instagram ? `<div>
+        <div class="metric-label">Instagram</div>
+        <div class="metric-value"><a href="${escHtml(settings.instagram)}" target="_blank" rel="noopener">${escHtml(instagramHandle)}</a></div>
+      </div>` : ''}
+      ${settings.github ? `<div>
+        <div class="metric-label">GitHub</div>
+        <div class="metric-value"><a href="${escHtml(settings.github)}" target="_blank" rel="noopener">${escHtml(settings.author_handle)}</a></div>
+      </div>` : ''}
+      ${settings.substack ? `<div>
+        <div class="metric-label">Substack</div>
+        <div class="metric-value"><a href="${escHtml(settings.substack)}" target="_blank" rel="noopener">${escHtml(settings.substack.replace('https://', ''))}</a></div>
+      </div>` : ''}
+      <div>
+        <div class="metric-label">Projects</div>
+        <div class="metric-value"><a href="/#projects">Projects →</a></div>
+      </div>
+    </div>`;
 
   const coverHtml = post.cover_image
     ? `<img class="blog-hero-cover" src="${escHtml(post.cover_image)}" alt="${escHtml(post.title)}" loading="eager">`
@@ -906,9 +949,9 @@ function renderBlogPost(post, settings) {
 
   <div class="page chapter-page">
 
-    <nav class="site-nav">
+    <nav class="site-nav" style="align-items: flex-start; margin-bottom: 2rem;">
       <a href="/blog/">← Writing</a>
-      <span class="mono" style="text-align: right;">${escHtml(navLabel || post.title)}</span>
+      ${metricsHtml}
     </nav>
 
     <article class="article" id="${escHtml(post.slug)}">

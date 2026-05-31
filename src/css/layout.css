@@ -23,6 +23,30 @@
   padding-bottom: 2.5rem;
 }
 @media (min-width: 1024px) { .masthead { grid-template-columns: 1fr 1fr; } }
+.masthead-right {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  align-items: flex-start;
+}
+@media (min-width: 1024px) {
+  .masthead-right {
+    align-items: flex-end;
+  }
+}
+.hero-logo {
+  width: min(280px, 80%);
+  height: auto;
+  mix-blend-mode: multiply;
+  opacity: 0.95;
+  margin-top: auto;
+  align-self: center;
+}
+@media (min-width: 1024px) {
+  .hero-logo {
+    align-self: flex-end;
+  }
+}
 .masthead .tagline { font-family: var(--font-mono); font-size: var(--text-xs); text-transform: uppercase;
   line-height: 1.6; color: var(--text-muted); }
 @media (min-width: 1024px) { .masthead .tagline { text-align: right; } }
@@ -96,13 +120,13 @@
 .section-row .span-2 { grid-column: auto; }
 @media (min-width: 1024px) { .section-row .span-2 { grid-column: span 2; } }
 
-/* ---- Section heading: serif h3 + sup count + full black rule + label ----- */
+/* ---- Section heading: serif h3 + inline count + full black rule + label ----- */
 .sec-head { margin-top: 6rem; display: grid; grid-template-columns: 1fr; align-items: center; gap: .5rem; }
 @media (min-width: 768px) { .sec-head { grid-template-columns: auto 1fr auto; gap: 0 1rem; } }
 .sec-head h3 { position: relative; font-family: var(--font-serif); font-weight: 400; font-size: var(--text-4xl);
-  margin: 0; width: fit-content; }
-.sec-head h3 sup { position: absolute; top: -.25rem; right: -1.25rem; font-family: var(--font-mono);
-  font-size: 10px; color: color-mix(in srgb, var(--color-black) 50%, transparent); }
+  margin: 0; width: fit-content; display: flex; align-items: baseline; gap: 0.75rem; }
+.sec-head h3 .count { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; font-weight: normal;
+  color: color-mix(in srgb, var(--color-black) 40%, transparent); letter-spacing: 0.06em; transform: translateY(-0.15em); }
 .sec-head .rule-solid { height: 1px; width: 100%; background: var(--color-black); }
 .sec-head .sec-label { font-family: var(--font-mono); font-size: var(--text-xs); text-transform: uppercase;
   color: color-mix(in srgb, var(--color-black) 60%, transparent); }
