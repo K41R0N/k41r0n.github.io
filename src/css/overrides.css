@@ -286,13 +286,42 @@
   transition: width 80ms linear;
 }
 
-/* Mobile: collapse to thumb-left, text-right */
+/* ---- Responsive --------------------------------------------------------- */
+@media (max-width: 64rem) {
+  /* Constrain the archive block slightly less aggressively on medium screens */
+  .blog-archive { max-width: 100%; }
+}
+
 @media (max-width: 48rem) {
+  /* Featured: stack vertically, centre the cover, reduce title scale */
+  .blog-featured {
+    padding: 2rem 0;
+    border-top-width: 1px;
+  }
+  .blog-featured-cover {
+    width: clamp(140px, 55vw, 200px);
+    margin-bottom: 1.25rem;
+  }
   .blog-featured-title { font-size: var(--text-4xl); }
+  .blog-featured-desc { font-size: var(--text-base); }
+
+  /* Intro text: full width, no max-width clipping */
+  .blog-intro-text {
+    font-size: var(--text-base);
+    max-width: 100%;
+  }
+
+  /* Tag nav: wrap tighter */
+  .blog-tag-nav { gap: .25rem; }
+
+  /* Archive: collapse to single row — thumb left (3.5rem), text fills rest, right slot hidden */
   .blog-archive { max-width: 100%; }
   .blog-archive-entry {
-    grid-template-columns: 3.5rem 1fr 0;
+    grid-template-columns: 3.5rem 1fr;
     column-gap: 1rem;
+    padding: 1.5rem 0;
   }
+  /* Override even-entry reversal on mobile — always thumb left */
   .blog-archive-slot:last-child { display: none; }
+  .blog-archive-content { grid-column: 2; }
 }

@@ -678,12 +678,41 @@ function renderBlogPost(post, settings) {
 
   const bodyHtml = transformBody(post.body || '');
 
+  // Article JSON-LD structured data
+  const articleSchema = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.description,
+    url,
+    datePublished: post.date || '',
+    dateModified:  post.date || '',
+    author: {
+      '@type': 'Person',
+      name: settings.full_name,
+      url: SITE_URL
+    },
+    publisher: {
+      '@type': 'Person',
+      name: settings.full_name,
+      url: SITE_URL
+    },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    ...(post.cover_image ? { image: post.cover_image.startsWith('http') ? post.cover_image : `${SITE_URL}${post.cover_image}` } : {})
+  }, null, 2);
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
   ${sharedHead({ title, description: post.description, url, type: 'article', settings })}
   <meta property="article:published_time" content="${post.date || ''}">
+  <meta property="article:author" content="${escHtml(settings.full_name)}">
   ${post.tags?.length ? `<meta property="article:tag" content="${escHtml(post.tags.join(', '))}">` : ''}
+  ${post.cover_image ? `<meta property="og:image" content="${post.cover_image.startsWith('http') ? escHtml(post.cover_image) : `${SITE_URL}${escHtml(post.cover_image)}`}">
+  <meta property="og:image:alt" content="${escHtml(post.title)}">
+  <meta name="twitter:image" content="${post.cover_image.startsWith('http') ? escHtml(post.cover_image) : `${SITE_URL}${escHtml(post.cover_image)}`}">
+  <meta name="twitter:card" content="summary_large_image">` : ''}
+  <script type="application/ld+json">${articleSchema}</script>
 </head>
 <body>
 
@@ -916,7 +945,10 @@ function generateFeed(settings, posts) {
   for (const p of posts) {
     const link    = `${SITE_URL}/${blogPostUrl(p)}`;
     const pubDate = p.date ? toRFC822(new Date(p.date)) : toRFC822(new Date());
-    const bodyHtml = p.body ? marked.parse(p.body, { async: false }) : '';
+    // Strip empty anchors left by Substack's cover-image export format (<a href="..."></a>)
+    const bodyHtml = p.body
+      ? marked.parse(p.body, { async: false }).replace(/<a[^>]+><\/a>/g, '')
+      : '';
 
     rss += `    <item>\n`;
     rss += `      <title>${escHtml(p.title)}</title>\n`;
