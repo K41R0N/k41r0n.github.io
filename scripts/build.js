@@ -382,22 +382,22 @@ function renderHomePage(settings, about, theses, projects, home, writing) {
   // Masthead right panel — social links + blog link in the live-metrics grid.
   const instagramHandle = settings.instagram ? settings.instagram.split('/').filter(Boolean).pop() : '';
   const metricsHtml = `
-    <div class="live-metrics" aria-label="Social links" style="grid-template-columns:repeat(4,1fr);">
+    <div class="live-metrics" aria-label="Social links">
       ${settings.instagram ? `<div>
         <div class="metric-label">Instagram</div>
-        <div class="metric-value" style="font-size:var(--text-lg);"><a href="${escHtml(settings.instagram)}" target="_blank" rel="noopener">${escHtml(instagramHandle)}</a></div>
+        <div class="metric-value"><a href="${escHtml(settings.instagram)}" target="_blank" rel="noopener">${escHtml(instagramHandle)}</a></div>
       </div>` : ''}
       ${settings.github ? `<div>
         <div class="metric-label">GitHub</div>
-        <div class="metric-value" style="font-size:var(--text-lg);"><a href="${escHtml(settings.github)}" target="_blank" rel="noopener">${escHtml(settings.author_handle)}</a></div>
+        <div class="metric-value"><a href="${escHtml(settings.github)}" target="_blank" rel="noopener">${escHtml(settings.author_handle)}</a></div>
       </div>` : ''}
       ${settings.substack ? `<div>
         <div class="metric-label">Substack</div>
-        <div class="metric-value" style="font-size:var(--text-lg);"><a href="${escHtml(settings.substack)}" target="_blank" rel="noopener">${escHtml(settings.substack.replace('https://', ''))}</a></div>
+        <div class="metric-value"><a href="${escHtml(settings.substack)}" target="_blank" rel="noopener">${escHtml(settings.substack.replace('https://', ''))}</a></div>
       </div>` : ''}
       <div>
         <div class="metric-label">Blog</div>
-        <div class="metric-value" style="font-size:var(--text-lg);"><a href="/blog/">${escHtml(home.section_writing || 'Writing')} →</a></div>
+        <div class="metric-value"><a href="/blog/">${escHtml(home.section_writing || 'Writing')} →</a></div>
       </div>
     </div>`;
 
@@ -461,22 +461,18 @@ function renderHomePage(settings, about, theses, projects, home, writing) {
       <div>
         <h1 class="sr-only">${escHtml(settings.full_name)}</h1>
         <p class="wordmark" aria-hidden="true" style="margin:0;">${escHtml(settings.wordmark_line1 || settings.full_name.split(' ')[0])}<br>${escHtml(settings.wordmark_line2 || settings.full_name.split(' ')[1] || '')}</p>
+        <div class="hero-intro" style="margin-top: 2.5rem; max-width: 38rem;">
+          ${aboutHtml}
+        </div>
       </div>
-      <div>
+      <div style="display: flex; flex-direction: column; gap: 4rem; align-items: flex-end;">
         ${metricsHtml}
+        ${home.logo_image ? `<img src="${escHtml(home.logo_image)}" alt="${escHtml(home.logo_alt || '')}" style="width:min(280px, 80%); height:auto; mix-blend-mode: multiply; opacity: 0.95; margin-top: auto;">` : ''}
       </div>
     </header>
 
-    <!-- Introduction -->
-    <section class="intro-flow" style="margin-top:2.5rem;">
-      ${aboutHtml}
-    </section>
-
     <!-- Kairon logo mark -->
-    <div style="text-align:center; margin:6rem 0 2rem;">
-      ${home.logo_image ? `<img src="${escHtml(home.logo_image)}"
-           alt="${escHtml(home.logo_alt || '')}"
-           style="width:min(320px, 60%); height:auto; display:inline-block;">` : ''}
+    <div style="text-align:center; margin:6rem 0 2rem; display:none;">
     </div>
 
     <!-- Theses index -->
@@ -525,7 +521,7 @@ ${projectItems}
       <div class="stars">· · ·</div>
       <div class="credits">
         <p>${escHtml(settings.tagline)}</p>
-        <p><a href="mailto:${escHtml(settings.email)}">${escHtml(settings.email)}</a></p>
+        <p><a href="/about">About</a> &nbsp;·&nbsp; <a href="mailto:${escHtml(settings.email)}">${escHtml(settings.email)}</a></p>
         <p class="disclaimer">&copy; ${year} ${escHtml(settings.full_name)}</p>
       </div>
       <div class="band"></div>
@@ -592,13 +588,7 @@ function renderThesisPage(thesis, allTheses, settings) {
 
     <nav class="site-nav">
       <a href="/">← ${escHtml(settings.title)}</a>
-      <span class="mono">${escHtml(settings.thesis_nav_label || 'Thesis')} ${num} / ${escHtml(thesis.title)}</span>
-    </nav>
-
-    <hr class="rule-dotted">
-
-    <nav class="chapter-nav" aria-label="Theses">
-${chapterNav}
+      <span class="mono" style="text-align: right;">${escHtml(settings.thesis_nav_label || 'Thesis')} ${num} / ${escHtml(thesis.title)}</span>
     </nav>
 
     <article class="article" id="${escHtml(thesis.slug)}">
@@ -617,7 +607,8 @@ ${nextLink}
     <footer class="footer-ms">
       <div class="stars">· · ·</div>
       <div class="credits">
-        <p>by <a href="${SITE_URL}">${escHtml(settings.author_handle)}</a></p>
+        <p>${escHtml(settings.tagline)}</p>
+        <p><a href="/about">About</a> &nbsp;·&nbsp; <a href="mailto:${escHtml(settings.email)}">${escHtml(settings.email)}</a></p>
         <p class="disclaimer">&copy; ${year} ${escHtml(settings.full_name)}</p>
       </div>
       <div class="band"></div>
@@ -666,13 +657,7 @@ function renderProjectPage(project, allProjects, settings) {
 
     <nav class="site-nav">
       <a href="/">← ${escHtml(settings.title)}</a>
-      <span class="mono">Project ${num} / ${escHtml(project.title)}</span>
-    </nav>
-
-    <hr class="rule-dotted">
-
-    <nav class="chapter-nav" aria-label="Projects">
-${chapterNav}
+      <span class="mono" style="text-align: right;">Project ${num} / ${escHtml(project.title)}</span>
     </nav>
 
     <article class="article" id="${escHtml(project.slug)}">
@@ -689,7 +674,8 @@ ${chapterNav}
     <footer class="footer-ms">
       <div class="stars">· · ·</div>
       <div class="credits">
-        <p>by <a href="${SITE_URL}">${escHtml(settings.author_handle)}</a></p>
+        <p>${escHtml(settings.tagline)}</p>
+        <p><a href="/about">About</a> &nbsp;·&nbsp; <a href="mailto:${escHtml(settings.email)}">${escHtml(settings.email)}</a></p>
         <p class="disclaimer">&copy; ${year} ${escHtml(settings.full_name)}</p>
       </div>
       <div class="band"></div>
@@ -794,13 +780,8 @@ function renderBlogListing(settings, posts, home, activeTag = null) {
 
      <nav class="site-nav blog-listing-nav">
        <a href="/">← ${escHtml(settings.title)}</a>
-       <div style="display:flex;gap:1.25rem;align-items:center;flex-wrap:wrap;justify-content:flex-end;">
-         <a href="/about" class="mono" style="font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);text-decoration:none;">About</a>
-         <span class="mono">${escHtml(settings.author_handle)} · ${escHtml(headingLabel)}</span>
-       </div>
+       <span class="mono" style="text-align: right;">${escHtml(settings.author_handle)} · ${escHtml(headingLabel)}</span>
      </nav>
-
-    <hr class="rule-dotted">
 
     <div class="sec-head" id="writing" style="margin-top:4rem;">
       <h3>${escHtml(heading)}<sup>${String(posts.length).padStart(2,'0')}</sup></h3>
@@ -809,8 +790,7 @@ function renderBlogListing(settings, posts, home, activeTag = null) {
     </div>
 
     ${intro ? `
-    <p class="blog-intro-text">${escHtml(intro)}</p>
-    <p style="margin-top:.75rem;"><a href="/about" class="mono" style="font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.06em;">About this publication →</a></p>` : ''}
+    <p class="blog-intro-text">${escHtml(intro)}</p>` : ''}
 
     ${tagFilterHtml}
 
@@ -821,7 +801,8 @@ function renderBlogListing(settings, posts, home, activeTag = null) {
     <footer class="footer-ms" style="margin-top:4rem;">
       <div class="stars">· · ·</div>
       <div class="credits">
-        <p>by <a href="${SITE_URL}">${escHtml(settings.author_handle)}</a></p>
+        <p>${escHtml(settings.tagline)}</p>
+        <p><a href="/about">About</a> &nbsp;·&nbsp; <a href="mailto:${escHtml(settings.email)}">${escHtml(settings.email)}</a></p>
         <p class="disclaimer">&copy; ${year} ${escHtml(settings.full_name)}</p>
       </div>
       <div class="band"></div>
@@ -909,10 +890,8 @@ function renderBlogPost(post, settings) {
 
     <nav class="site-nav">
       <a href="/blog/">← Writing</a>
-      <span class="mono">${escHtml(navLabel || post.title)}</span>
+      <span class="mono" style="text-align: right;">${escHtml(navLabel || post.title)}</span>
     </nav>
-
-    <hr class="rule-dotted">
 
     <article class="article" id="${escHtml(post.slug)}">
       <span class="margin-label">${escHtml(dateShort)}</span>
@@ -928,7 +907,8 @@ function renderBlogPost(post, settings) {
     <footer class="footer-ms">
       <div class="stars">· · ·</div>
       <div class="credits">
-        <p>by <a href="${SITE_URL}">${escHtml(settings.author_handle)}</a></p>
+        <p>${escHtml(settings.tagline)}</p>
+        <p><a href="/about">About</a> &nbsp;·&nbsp; <a href="mailto:${escHtml(settings.email)}">${escHtml(settings.email)}</a></p>
         <p class="disclaimer">&copy; ${year} ${escHtml(settings.full_name)}</p>
       </div>
       <div class="band"></div>
@@ -975,10 +955,8 @@ function renderAboutPage(page, settings) {
 
     <nav class="site-nav">
       <a href="/blog/">← Writing</a>
-      <span class="mono">${escHtml(settings.author_handle)} · about</span>
+      <span class="mono" style="text-align: right;">${escHtml(settings.author_handle)} · about</span>
     </nav>
-
-    <hr class="rule-dotted">
 
     <article class="article" id="about">
       <span class="margin-label">About</span>
@@ -994,7 +972,8 @@ function renderAboutPage(page, settings) {
     <footer class="footer-ms">
       <div class="stars">· · ·</div>
       <div class="credits">
-        <p>by <a href="${SITE_URL}">${escHtml(settings.author_handle)}</a></p>
+        <p>${escHtml(settings.tagline)}</p>
+        <p><a href="/about">About</a> &nbsp;·&nbsp; <a href="mailto:${escHtml(settings.email)}">${escHtml(settings.email)}</a></p>
         <p class="disclaimer">&copy; ${year} ${escHtml(settings.full_name)}</p>
       </div>
       <div class="band"></div>
