@@ -1015,7 +1015,8 @@ function renderAboutPage(page, settings) {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
-  ${sharedHead({ title, description: page.description, url, type: 'website', settings })}
+  ${sharedHead({ title, description: page.description, url, type: 'profile', settings })}
+  ${homeSchema(settings)}
 </head>
 <body>
   <div class="page chapter-page">
