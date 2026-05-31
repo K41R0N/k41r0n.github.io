@@ -1,10 +1,10 @@
 ---
 title: Notion as a CMS
 slug: notion-as-cms
-order: 4
+order: 2
 description: A serverless middleware library that transforms Notion databases into a high-performance, edge-cached headless CMS.
 repository_url: https://github.com/K41R0N/Notion-as-CMS
-live_url: https://notion-modular.netlify.app/
+live_url: ''
 language: JavaScript
 version: 2.0.0
 license: MIT
