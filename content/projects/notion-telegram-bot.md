@@ -1,12 +1,13 @@
 ---
-title: "Notion Telegram Bridge"
-slug: "notion-telegram-bot"
-order: 8
-description: "A fast, frictionless capture tool routing Telegram messages, images, and voice notes directly into Notion databases."
-repository_url: "https://github.com/K41R0N/Notion-Telegram-Bot"
-language: "Python"
-version: "1.0.0"
-license: "MIT"
+title: Notion Telegram Bridge
+slug: notion-telegram-bot
+order: 6
+description: A fast, frictionless capture tool routing Telegram messages, images, and voice notes directly into Notion databases.
+repository_url: https://github.com/K41R0N/Notion-Telegram-Bot
+live_url: ''
+language: Python
+version: 1.0.0
+license: MIT
 ---
 
 ## Overview
