@@ -1,6 +1,8 @@
 {
   "logo_image": "/assets/images/kairon-logo.svg",
   "logo_alt": "Kairon",
+  "section_projects": "Projects",
+  "section_projects_label": "tools",
   "section_theses": "Theses",
   "section_theses_label": "Ideas",
   "section_writing": "Writing",

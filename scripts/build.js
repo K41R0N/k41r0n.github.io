@@ -66,6 +66,10 @@ function thesisUrl(thesis) {
   return `thesis-${String(thesis.order).padStart(2,'0')}-${thesis.slug}.html`;
 }
 
+function projectUrl(project) {
+  return `project-${project.slug}.html`;
+}
+
 // ============================================================================
 // Content Loading
 // ============================================================================
@@ -97,6 +101,18 @@ function loadWriting() {
 
 function loadTheses() {
   const dir = path.join(CONTENT, 'theses');
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir)
+    .filter(f => f.endsWith('.md'))
+    .map(f => {
+      const { data, content } = matter(fs.readFileSync(path.join(dir, f), 'utf-8'));
+      return { ...data, body: content.trim(), filename: f };
+    })
+    .sort((a, b) => (a.order || 99) - (b.order || 99));
+}
+
+function loadProjects() {
+  const dir = path.join(CONTENT, 'projects');
   if (!fs.existsSync(dir)) return [];
   return fs.readdirSync(dir)
     .filter(f => f.endsWith('.md'))
@@ -299,11 +315,45 @@ function thesisSchema(thesis, settings) {
   ]);
 }
 
+function projectSchema(project, settings) {
+  const url = `${SITE_URL}/${projectUrl(project)}`;
+  
+  const projectEntity = {
+    '@type': ['SoftwareSourceCode', 'SoftwareApplication'],
+    '@id': `${url}#project`,
+    name: project.title,
+    description: project.description,
+    url: url,
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'Any',
+    author: { '@id': PERSON_ID },
+    maintainer: { '@id': PERSON_ID },
+    isPartOf: {'@id': WEBSITE_ID}
+  };
+
+  if (project.repository_url) projectEntity.codeRepository = project.repository_url;
+  if (project.language) projectEntity.programmingLanguage = project.language;
+  if (project.license) projectEntity.license = project.license;
+  if (project.version) projectEntity.softwareVersion = project.version;
+
+  return jsonLd([
+    projectEntity,
+    { '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: settings.title, item: `${SITE_URL}/` },
+        { '@type': 'ListItem', position: 2, name: project.title, item: url }
+      ]
+    },
+    websiteEntity(settings),
+    personEntity(settings)
+  ]);
+}
+
 // ============================================================================
 // Home Page
 // ============================================================================
 
-function renderHomePage(settings, about, theses, home, writing) {
+function renderHomePage(settings, about, theses, projects, home, writing) {
   const title       = `${settings.full_name} — ${settings.tagline}`;
   const year        = new Date().getFullYear();
   const thesisCount = String(theses.length).padStart(2, '0');
@@ -344,6 +394,20 @@ function renderHomePage(settings, about, theses, home, writing) {
         <a class="group-title" href="${url}">${escHtml(label)}</a>
         <ul>
           <li><a class="toc-row" href="${url}"><span class="t">${escHtml(t.description)}</span><span class="dots"></span><span class="pg">${pg}</span></a></li>
+        </ul>
+      </li>`;
+  }).join('\n');
+
+  // Projects TOC
+  const projectCount = String(projects.length).padStart(2, '0');
+  const projectItems = projects.map(p => {
+    const url   = `/${projectUrl(p)}`;
+    const label = `${String(p.order).padStart(2,'0')} · ${p.title}`;
+    const pg    = `pr. ${String(p.order).padStart(2,'0')}`;
+    return `      <li class="toc-group">
+        <a class="group-title" href="${url}">${escHtml(label)}</a>
+        <ul>
+          <li><a class="toc-row" href="${url}"><span class="t">${escHtml(p.description)}</span><span class="dots"></span><span class="pg">${pg}</span></a></li>
         </ul>
       </li>`;
   }).join('\n');
@@ -404,6 +468,17 @@ function renderHomePage(settings, about, theses, home, writing) {
     <ol class="toc-ms">
 ${tocItems}
     </ol>
+
+    ${projects.length ? `<!-- Projects index -->
+    <div class="sec-head" id="projects" style="margin-top:4rem;">
+      <h3>${escHtml(home.section_projects || 'Projects')}<sup>${projectCount}</sup></h3>
+      <div class="rule-solid"></div>
+      <div class="sec-label">${escHtml(settings.author_handle)} · ${escHtml(home.section_projects_label || 'tools')}</div>
+    </div>
+
+    <ol class="toc-ms">
+${projectItems}
+    </ol>` : ''}
 
     ${writingLinks ? `<!-- Writing links -->
     <div class="sec-head" id="writing" style="margin-top:4rem;">
@@ -517,6 +592,77 @@ ${chapterNav}
 ${nextLink}
 
     <div class="chapter-marker" style="margin-top:4rem;"><span>${escHtml(settings.title)} · th. ${num}</span></div>
+
+    <footer class="footer-ms">
+      <div class="stars">· · ·</div>
+      <div class="credits">
+        <p>by <a href="${SITE_URL}">${escHtml(settings.author_handle)}</a></p>
+        <p class="disclaimer">&copy; ${year} ${escHtml(settings.full_name)}</p>
+      </div>
+      <div class="band"></div>
+    </footer>
+
+  </div>
+</body>
+</html>`;
+}
+
+function renderProjectPage(project, allProjects, settings) {
+  const url     = `${SITE_URL}/${projectUrl(project)}`;
+  const title   = `Project ${String(project.order).padStart(2,'0')} · ${project.title} — ${settings.title}`;
+  const year    = new Date().getFullYear();
+  const num     = String(project.order).padStart(2, '0');
+  const shortTitle = project.title.split(' ').slice(0, 2).join(' ');
+
+  // Chapter nav — all projects
+  const chapterNav = allProjects.map(p => {
+    const isCurrent = p.slug === project.slug;
+    return `      <a href="/${projectUrl(p)}"${isCurrent ? ' aria-current="true"' : ''}>${String(p.order).padStart(2,'0')} · ${escHtml(p.title)}</a>`;
+  }).join('\n');
+
+  // Body HTML
+  const bodyHtml = transformBody(project.body || '');
+
+  // Technical metadata block
+  const metaHtml = `
+      <dl style="margin-bottom: 2rem; display: grid; grid-template-columns: auto 1fr; gap: 0.5rem 1rem; align-items: baseline;">
+        ${project.repository_url ? `<dt class="eyebrow" style="margin:0;">Repository</dt><dd class="mono" style="margin:0;"><a href="${escHtml(project.repository_url)}" target="_blank" rel="noopener">${escHtml(project.repository_url)}</a></dd>` : ''}
+        ${project.language ? `<dt class="eyebrow" style="margin:0;">Language</dt><dd class="mono" style="margin:0;">${escHtml(project.language)}</dd>` : ''}
+        ${project.license ? `<dt class="eyebrow" style="margin:0;">License</dt><dd class="mono" style="margin:0;">${escHtml(project.license)}</dd>` : ''}
+        ${project.version ? `<dt class="eyebrow" style="margin:0;">Version</dt><dd class="mono" style="margin:0;">${escHtml(project.version)}</dd>` : ''}
+      </dl>
+  `;
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  ${sharedHead({ title, description: project.description, url, type: 'article', settings })}
+  ${projectSchema(project, settings)}
+</head>
+<body>
+  <div class="page chapter-page">
+
+    <nav class="site-nav">
+      <a href="/">← ${escHtml(settings.title)}</a>
+      <span class="mono">Project ${num} / ${escHtml(project.title)}</span>
+    </nav>
+
+    <hr class="rule-dotted">
+
+    <nav class="chapter-nav" aria-label="Projects">
+${chapterNav}
+    </nav>
+
+    <article class="article" id="${escHtml(project.slug)}">
+      <span class="margin-label">§${project.order} — ${escHtml(shortTitle)}</span>
+      <p class="eyebrow">Project ${num}</p>
+      <h1>${escHtml(project.title)}</h1>
+      ${metaHtml}
+      ${bodyHtml}
+      <hr class="section-break">
+    </article>
+
+    <div class="chapter-marker" style="margin-top:4rem;"><span>${escHtml(settings.title)} · pr. ${num}</span></div>
 
     <footer class="footer-ms">
       <div class="stars">· · ·</div>
@@ -841,11 +987,14 @@ function renderAboutPage(page, settings) {
 // LLM + SEO Endpoints
 // ============================================================================
 
-function generateLlmsTxt(settings, theses, posts) {
-  const thesisList  = theses.map(t => `- **${t.title}** — ${t.description}`).join('\n');
+function generateLlmsTxt(settings, theses, posts, projects) {
+  const thesisList  = theses.map(t => `- **[${t.title}](/${thesisUrl(t)})** — ${t.description}`).join('\n');
   const writingList = posts.length
-    ? posts.map(p => `- **${p.title}** (${p.date || 'n/d'}) — ${p.description}`).join('\n')
+    ? posts.map(p => `- **[${p.title}](/${blogPostUrl(p)})** (${p.date || 'n/d'}) — ${p.description}`).join('\n')
     : '(no articles yet)';
+  const projectList = projects.length
+    ? projects.map(p => `- **[${p.title}](/${projectUrl(p)})** (${p.language || 'n/d'}) — ${p.description}\n  Repository: ${p.repository_url || 'n/a'}`).join('\n')
+    : '(no projects yet)';
 
   return `# ${settings.full_name}
 
@@ -858,6 +1007,10 @@ ${settings.full_name} is a Creative Technologist and Martech Daylighter. Alias: 
 ## Theses
 
 ${thesisList}
+
+## Projects
+
+${projectList}
 
 ## Writing
 
@@ -883,20 +1036,30 @@ Voice: direct, thoughtful, anti-buzzword.
 `;
 }
 
-function generateLlmsFullTxt(settings, theses, posts) {
+function generateLlmsFullTxt(settings, theses, posts, projects) {
   let out = `# ${settings.full_name}\n\n> ${settings.description}\n\nGenerated: ${new Date().toISOString()}\n\n---\n\n`;
   for (const t of theses) {
-    out += `## Thesis ${String(t.order).padStart(2,'0')}: ${t.title}\n\n${t.description}\n\n`;
+    out += `## Thesis ${String(t.order).padStart(2,'0')}: [${t.title}](/${thesisUrl(t)})\n\n${t.description}\n\n`;
     if (t.body) out += `${t.body}\n\n`;
     if (t.links?.length) {
       out += `### Links\n\n${t.links.map(l => `- [${l.label}] ${l.title}: ${l.url}`).join('\n')}\n\n`;
     }
     out += `---\n\n`;
   }
+  if (projects.length) {
+    out += `## Projects\n\n`;
+    for (const p of projects) {
+      out += `### Project ${String(p.order).padStart(2,'0')}: [${p.title}](/${projectUrl(p)})\n\n`;
+      out += `Repository: ${p.repository_url || 'n/a'}\nLanguage: ${p.language || 'n/a'}\nLicense: ${p.license || 'n/a'}\nVersion: ${p.version || 'n/a'}\n\n`;
+      out += `${p.description}\n\n`;
+      if (p.body) out += `${p.body}\n\n`;
+      out += `---\n\n`;
+    }
+  }
   if (posts.length) {
     out += `## Writing\n\n`;
     for (const p of posts) {
-      out += `### ${p.title} (${p.date || 'n/d'})\n\n${p.description}\n\n`;
+      out += `### [${p.title}](/${blogPostUrl(p)}) (${p.date || 'n/d'})\n\n${p.description}\n\n`;
       if (p.body) out += `${p.body}\n\n`;
       out += `---\n\n`;
     }
@@ -904,7 +1067,7 @@ function generateLlmsFullTxt(settings, theses, posts) {
   return out;
 }
 
-function generateContentJson(settings, theses, posts) {
+function generateContentJson(settings, theses, posts, projects) {
   return {
     version: '1.0',
     generated: new Date().toISOString(),
@@ -917,6 +1080,12 @@ function generateContentJson(settings, theses, posts) {
       description: t.description, url: `/${thesisUrl(t)}`,
       links: t.links || []
     })),
+    projects: projects.map(p => ({
+      title: p.title, slug: p.slug, order: p.order,
+      description: p.description, url: `/${projectUrl(p)}`,
+      repository_url: p.repository_url, language: p.language,
+      license: p.license, version: p.version
+    })),
     posts: posts.map(p => ({
       title: p.title, slug: p.slug, date: p.date,
       description: p.description, tags: p.tags || [],
@@ -925,13 +1094,14 @@ function generateContentJson(settings, theses, posts) {
   };
 }
 
-function generateSitemap(theses, posts) {
+function generateSitemap(theses, posts, projects) {
   const today = new Date().toISOString().split('T')[0];
   const urls  = [
     { loc: `${SITE_URL}/`,           priority: '1.0', changefreq: 'monthly', lastmod: today },
     { loc: `${SITE_URL}/blog/`,      priority: '0.9', changefreq: 'weekly',  lastmod: today },
     { loc: `${SITE_URL}/about.html`, priority: '0.7', changefreq: 'monthly', lastmod: today },
     ...theses.map(t => ({ loc: `${SITE_URL}/${thesisUrl(t)}`, priority: '0.8', changefreq: 'monthly', lastmod: today })),
+    ...projects.map(p => ({ loc: `${SITE_URL}/${projectUrl(p)}`, priority: '0.8', changefreq: 'monthly', lastmod: today })),
     ...posts.map(p  => ({ loc: `${SITE_URL}/${blogPostUrl(p)}`, priority: '0.8', changefreq: 'monthly', lastmod: p.date || today }))
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${
@@ -997,21 +1167,29 @@ function main() {
   const settings  = loadSettings();
   const about     = loadAbout();
   const theses    = loadTheses();
+  const projects  = loadProjects();
   const home      = loadHome();
   const writing   = loadWriting();
   const posts     = loadBlog();
   const aboutPage = loadAboutPage();
 
-  console.log(`  Loaded ${theses.length} theses, ${posts.length} blog posts, ${(writing.links||[]).length} writing links`);
+  console.log(`  Loaded ${theses.length} theses, ${projects.length} projects, ${posts.length} blog posts, ${(writing.links||[]).length} writing links`);
 
   // Home page
-  fs.writeFileSync(path.join(DIST, 'index.html'), renderHomePage(settings, about, theses, home, writing));
+  fs.writeFileSync(path.join(DIST, 'index.html'), renderHomePage(settings, about, theses, projects, home, writing));
   console.log('  index.html');
 
   // Thesis detail pages
   for (const thesis of theses) {
     const filename = thesisUrl(thesis);
     fs.writeFileSync(path.join(DIST, filename), renderThesisPage(thesis, theses, settings));
+    console.log(`  ${filename}`);
+  }
+
+  // Project detail pages
+  for (const project of projects) {
+    const filename = projectUrl(project);
+    fs.writeFileSync(path.join(DIST, filename), renderProjectPage(project, projects, settings));
     console.log(`  ${filename}`);
   }
 
@@ -1034,12 +1212,12 @@ function main() {
 
   // LLM + SEO endpoints
   console.log('\nGenerating LLM + SEO endpoints...');
-  fs.writeFileSync(path.join(DIST, 'llms.txt'),      generateLlmsTxt(settings, theses, posts));     console.log('  llms.txt');
-  fs.writeFileSync(path.join(DIST, 'llms-full.txt'), generateLlmsFullTxt(settings, theses, posts)); console.log('  llms-full.txt');
+  fs.writeFileSync(path.join(DIST, 'llms.txt'),      generateLlmsTxt(settings, theses, posts, projects));     console.log('  llms.txt');
+  fs.writeFileSync(path.join(DIST, 'llms-full.txt'), generateLlmsFullTxt(settings, theses, posts, projects)); console.log('  llms-full.txt');
   ensureDir(path.join(DIST, 'api'));
-  fs.writeFileSync(path.join(DIST, 'api', 'content.json'), JSON.stringify(generateContentJson(settings, theses, posts), null, 2));
+  fs.writeFileSync(path.join(DIST, 'api', 'content.json'), JSON.stringify(generateContentJson(settings, theses, posts, projects), null, 2));
   console.log('  api/content.json');
-  fs.writeFileSync(path.join(DIST, 'sitemap.xml'), generateSitemap(theses, posts)); console.log('  sitemap.xml');
+  fs.writeFileSync(path.join(DIST, 'sitemap.xml'), generateSitemap(theses, posts, projects)); console.log('  sitemap.xml');
   fs.writeFileSync(path.join(DIST, 'feed.xml'),    generateFeed(settings, posts));  console.log('  feed.xml');
   fs.writeFileSync(path.join(DIST, 'robots.txt'),  generateRobotsTxt());            console.log('  robots.txt');
 
