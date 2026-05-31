@@ -199,12 +199,11 @@ collections:
 
       - label: Cover Image
         name: cover_image
-        widget: string
+        widget: image
         required: false
         hint: >
-          URL or path to the 1:1 square cover image shown in the article hero
-          and on the /blog/ tile grid. Accepts external URLs (e.g. from Substack
-          or Paragraph CDN) or uploaded paths (/assets/images/filename.png).
+          Upload a 1:1 square SVG or image. Shown in the article hero and on the
+          /blog/ listing. SVGs work best — they scale perfectly at any size.
 
       - label: Tags
         name: tags
