@@ -282,22 +282,26 @@ function renderHomePage(settings, about, theses, home, writing) {
   const year        = new Date().getFullYear();
   const thesisCount = String(theses.length).padStart(2, '0');
 
-  // Masthead right panel — social links in the live-metrics grid.
+  // Masthead right panel — social links + blog link in the live-metrics grid.
   const instagramHandle = settings.instagram ? settings.instagram.split('/').filter(Boolean).pop() : '';
   const metricsHtml = `
-    <div class="live-metrics" aria-label="Social links">
+    <div class="live-metrics" aria-label="Social links" style="grid-template-columns:repeat(4,1fr);">
       ${settings.instagram ? `<div>
         <div class="metric-label">Instagram</div>
-        <div class="metric-value" style="font-size:var(--text-xl);"><a href="${escHtml(settings.instagram)}" target="_blank" rel="noopener">${escHtml(instagramHandle)}</a></div>
+        <div class="metric-value" style="font-size:var(--text-lg);"><a href="${escHtml(settings.instagram)}" target="_blank" rel="noopener">${escHtml(instagramHandle)}</a></div>
       </div>` : ''}
       ${settings.github ? `<div>
         <div class="metric-label">GitHub</div>
-        <div class="metric-value" style="font-size:var(--text-xl);"><a href="${escHtml(settings.github)}" target="_blank" rel="noopener">${escHtml(settings.author_handle)}</a></div>
+        <div class="metric-value" style="font-size:var(--text-lg);"><a href="${escHtml(settings.github)}" target="_blank" rel="noopener">${escHtml(settings.author_handle)}</a></div>
       </div>` : ''}
       ${settings.substack ? `<div>
         <div class="metric-label">Substack</div>
-        <div class="metric-value" style="font-size:var(--text-xl);"><a href="${escHtml(settings.substack)}" target="_blank" rel="noopener">${escHtml(settings.substack.replace('https://', ''))}</a></div>
+        <div class="metric-value" style="font-size:var(--text-lg);"><a href="${escHtml(settings.substack)}" target="_blank" rel="noopener">${escHtml(settings.substack.replace('https://', ''))}</a></div>
       </div>` : ''}
+      <div>
+        <div class="metric-label">Blog</div>
+        <div class="metric-value" style="font-size:var(--text-lg);"><a href="/blog/">${escHtml(home.section_writing || 'Writing')} →</a></div>
+      </div>
     </div>`;
 
   // About intro-flow — from content/about.md body, with guarded dropcap
@@ -307,7 +311,7 @@ function renderHomePage(settings, about, theses, home, writing) {
 
   // Theses TOC — dot-leader list
   const tocItems = theses.map(t => {
-    const url   = thesisUrl(t);
+    const url   = `/${thesisUrl(t)}`;
     const label = `${String(t.order).padStart(2,'0')} · ${t.title}`;
     const pg    = `th. ${String(t.order).padStart(2,'0')}`;
     return `      <li class="toc-group">
@@ -359,7 +363,7 @@ function renderHomePage(settings, about, theses, home, writing) {
 
     <!-- Kairon logo mark -->
     <div style="text-align:center; margin:6rem 0 2rem;">
-      <img src="assets/img/kairon-logo.svg"
+      <img src="/assets/img/kairon-logo.svg"
            alt="${escHtml(home.logo_alt || 'Kairon')}"
            style="width:min(320px, 60%); height:auto; display:inline-block;">
     </div>
@@ -381,7 +385,8 @@ ${tocItems}
       <div class="rule-solid"></div>
       <div class="sec-label">${escHtml(settings.author_handle)} · ${escHtml(home.section_writing_label || 'links')}</div>
     </div>
-    <div class="intro-flow" style="margin-top:2rem;">${home.section_writing_intro ? `<p>${escHtml(home.section_writing_intro)}</p>` : ''}${writingLinks}</div>` : ''}
+    <div class="intro-flow" style="margin-top:2rem;">${home.section_writing_intro ? `<p>${escHtml(home.section_writing_intro)}</p>` : ''}${writingLinks}
+    <p style="margin-top:2rem;"><a href="/blog/">Read all articles →</a></p></div>` : ''}
 
     <!-- Newsletter -->
     <div class="sec-head" id="newsletter" style="margin-top:4rem;">
@@ -424,7 +429,7 @@ function renderThesisPage(thesis, allTheses, settings) {
   // Chapter nav — all theses
   const chapterNav = allTheses.map(t => {
     const isCurrent = t.slug === thesis.slug;
-    return `      <a href="${thesisUrl(t)}"${isCurrent ? ' aria-current="true"' : ''}>${String(t.order).padStart(2,'0')} · ${escHtml(t.title)}</a>`;
+    return `      <a href="/${thesisUrl(t)}"${isCurrent ? ' aria-current="true"' : ''}>${String(t.order).padStart(2,'0')} · ${escHtml(t.title)}</a>`;
   }).join('\n');
 
   // Body HTML with margin-note transform + dropcap
@@ -448,7 +453,7 @@ function renderThesisPage(thesis, allTheses, settings) {
 
   // Next thesis link
   const nextLink = next
-    ? `    <p class="mono" style="font-size:var(--text-sm);text-transform:uppercase;margin-top:3rem;"><a href="${thesisUrl(next)}">${escHtml(settings.thesis_next_label || 'Next')}: ${String(next.order).padStart(2,'0')} · ${escHtml(next.title)} →</a></p>`
+    ? `    <p class="mono" style="font-size:var(--text-sm);text-transform:uppercase;margin-top:3rem;"><a href="/${thesisUrl(next)}">${escHtml(settings.thesis_next_label || 'Next')}: ${String(next.order).padStart(2,'0')} · ${escHtml(next.title)} →</a></p>`
     : '';
 
   // CSS path prefix — thesis pages are in root, same as index
@@ -464,7 +469,7 @@ function renderThesisPage(thesis, allTheses, settings) {
   <div class="page chapter-page">
 
     <nav class="site-nav">
-      <a href="index.html">← ${escHtml(settings.title)}</a>
+      <a href="/">← ${escHtml(settings.title)}</a>
       <span class="mono">${escHtml(settings.thesis_nav_label || 'Thesis')} ${num} / ${escHtml(thesis.title)}</span>
     </nav>
 
