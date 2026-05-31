@@ -41,11 +41,9 @@ We have the logistical capabilities of building a network of ML models so comple
 
 But I believe what we’ll find along the way will be much more groundbreaking, so much so it might even break us.
 
-Loading...
-
 To make true AI is to understand the human mind inside and out. I'm reminded of a famous Emerson Pugh quote.
 
-> “If the human brain were so simple that we could understand it, we would be so simple that we couldn’t.”**— Emerson M. Pugh, physicist (c. 1938)**
+> “If the human brain were so simple that we could understand it, we would be so simple that we couldn’t.”**—** Emerson M. Pugh, physicist (c. 1938)
 
 **Why do tech people want to bring on AGI in the first place?**
 
