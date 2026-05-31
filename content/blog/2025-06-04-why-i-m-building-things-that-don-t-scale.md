@@ -3,7 +3,7 @@ title: Why I'm Building Things That Don't Scale
 slug: why-im-building
 date: 2025-06-04
 description: '"Vibe" coding never struck a chord with me.'
-cover_image: ''
+cover_image: /assets/images/1.svg
 tags: []
 ---
 
