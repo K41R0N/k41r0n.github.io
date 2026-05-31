@@ -68,9 +68,7 @@ I can't speak definitively to what LLMs are directly doing to our mental capacit
 
 Wade Davis, one of my favorite writers of all time, has explored the idea of an Ethnosphere. In his book "[The Wayfinders](https://youtu.be/GWFjBmZg4o4?si=JIqE8vPGhs1Oq2YY)," he elaborates on the concept of different, yet equally valuable, ways different peoples of the world have developed different abilities, and shaped their own reality through those abilities.
 
-Davis defines the ethnosphere as:
-
-> "The sum total of all thoughts, dreams, ideas, intuitions, myths and memories brought into being by the human imagination since the dawn of consciousness."
+Davis defines the ethnosphere as: **"The sum total of all thoughts, dreams, ideas, intuitions, myths and memories brought into being by the human imagination since the dawn of consciousness."**
 
 It's his way of pointing out that just as we worry about biodiversity loss, we should be equally concerned about the erosion of cultural and cognitive diversity. His work is the most poignant example of how human intelligence isn't fixed.
 
