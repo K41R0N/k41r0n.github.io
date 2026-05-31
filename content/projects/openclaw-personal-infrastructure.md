@@ -1,13 +1,13 @@
 ---
-title: "OpenClaw Personal Infrastructure"
-slug: "openclaw-personal-infrastructure"
-order: 10
-description: "A headless, multi-agent AI server operating a digital product studio via local LLMs."
-repository_url: "https://github.com/K41R0N/openclaw-workspace"
-live_url: ""
-language: "Python/Bash"
-version: "1.0"
-license: "MIT"
+title: OpenClaw Personal Infrastructure
+slug: openclaw-personal-infrastructure
+order: 8
+description: A headless, multi-agent AI server operating a digital product studio via local LLMs.
+repository_url: https://github.com/K41R0N/openclaw-workspace
+live_url: ''
+language: Python/Bash
+version: '1.0'
+license: MIT
 ---
 
 Companies are incentivized to make their products bloated and hard to exit. There is a pull to spend the most possible on hardware and move into the cloud. 
