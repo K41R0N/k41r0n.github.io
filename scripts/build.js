@@ -107,6 +107,23 @@ function loadTheses() {
     .sort((a, b) => (a.order || 99) - (b.order || 99));
 }
 
+function loadBlog() {
+  const dir = path.join(CONTENT, 'blog');
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir)
+    .filter(f => f.endsWith('.md'))
+    .map(f => {
+      const { data, content } = matter(fs.readFileSync(path.join(dir, f), 'utf-8'));
+      return { ...data, body: content.trim(), filename: f };
+    })
+    // Sort newest-first by date field; fall back to filename for stability
+    .sort((a, b) => {
+      const da = a.date ? new Date(a.date) : new Date(0);
+      const db = b.date ? new Date(b.date) : new Date(0);
+      return db - da;
+    });
+}
+
 // ============================================================================
 // Markdown Transformations
 // ============================================================================
@@ -142,14 +159,15 @@ function transformBody(markdown) {
 // Shared <head>
 // ============================================================================
 
+// Root-relative paths so CSS loads correctly from any page depth (/, /blog/, etc.)
 const CSS_LINKS = `
-  <link rel="stylesheet" href="css/fonts.css">
-  <link rel="stylesheet" href="css/tokens.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="css/overrides.css">`.trim();
+  <link rel="stylesheet" href="/css/fonts.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/animations.css">
+  <link rel="stylesheet" href="/css/overrides.css">`.trim();
 
 function sharedHead({ title, description, url, type = 'website', settings }) {
   return `
@@ -178,7 +196,7 @@ function sharedHead({ title, description, url, type = 'website', settings }) {
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="assets/fonts/AT-Kyrios-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/AT-Kyrios-Variable.woff2" as="font" type="font/woff2" crossorigin>
   ${CSS_LINKS}
   <noscript><style>body{opacity:1!important}</style></noscript>
   <!-- Google Analytics -->
@@ -484,11 +502,132 @@ ${nextLink}
 }
 
 // ============================================================================
+// Blog Pages
+// ============================================================================
+
+function blogPostUrl(post) {
+  return `blog/${post.slug}.html`;
+}
+
+function renderBlogListing(settings, posts, home) {
+  const title = `Writing — ${settings.title}`;
+  const year  = new Date().getFullYear();
+  const heading      = home.section_writing || 'Writing';
+  const headingLabel = home.section_writing_label || 'articles';
+
+  const listItems = posts.map(p => {
+    const url  = blogPostUrl(p);
+    const date = p.date ? new Date(p.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
+    return `      <li class="toc-group">
+        <a class="group-title" href="/${url}">${escHtml(p.title)}</a>
+        <ul>
+          <li><a class="toc-row" href="/${url}"><span class="t">${escHtml(p.description)}</span><span class="dots"></span><span class="pg">${escHtml(date)}</span></a></li>
+        </ul>
+      </li>`;
+  }).join('\n');
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  ${sharedHead({ title, description: `Essays and articles by ${settings.full_name}`, url: `${SITE_URL}/blog/`, type: 'website', settings })}
+</head>
+<body>
+  <div class="page">
+
+    <nav class="site-nav">
+      <a href="/">← ${escHtml(settings.title)}</a>
+      <span class="mono">${escHtml(settings.author_handle)} · ${escHtml(headingLabel)}</span>
+    </nav>
+
+    <hr class="rule-dotted">
+
+    <div class="sec-head" id="writing" style="margin-top:4rem;">
+      <h3>${escHtml(heading)}<sup>${String(posts.length).padStart(2,'0')}</sup></h3>
+      <div class="rule-solid"></div>
+      <div class="sec-label">${escHtml(settings.author_handle)} · ${escHtml(headingLabel)}</div>
+    </div>
+
+    <ol class="toc-ms">
+${listItems}
+    </ol>
+
+    <footer class="footer-ms">
+      <div class="stars">· · ·</div>
+      <div class="credits">
+        <p>by <a href="${SITE_URL}">${escHtml(settings.author_handle)}</a></p>
+        <p class="disclaimer">&copy; ${year} ${escHtml(settings.full_name)}</p>
+      </div>
+      <div class="band"></div>
+    </footer>
+
+  </div>
+</body>
+</html>`;
+}
+
+function renderBlogPost(post, settings) {
+  const year  = new Date().getFullYear();
+  const title = `${post.title} — ${settings.title}`;
+  const url   = `${SITE_URL}/${blogPostUrl(post)}`;
+
+  const dateStr = post.date
+    ? new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+    : '';
+  const primaryTag = Array.isArray(post.tags) && post.tags.length ? post.tags[0] : null;
+  const eyebrow = [primaryTag, dateStr].filter(Boolean).join(' · ');
+
+  const bodyHtml = transformBody(post.body || '');
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  ${sharedHead({ title, description: post.description, url, type: 'article', settings })}
+  <meta property="article:published_time" content="${post.date || ''}">
+  ${post.tags?.length ? `<meta property="article:tag" content="${escHtml(post.tags.join(', '))}">` : ''}
+</head>
+<body>
+  <div class="page chapter-page">
+
+    <nav class="site-nav">
+      <a href="/blog/">← Writing</a>
+      <span class="mono">${escHtml(post.title)}</span>
+    </nav>
+
+    <hr class="rule-dotted">
+
+    <article class="article" id="${escHtml(post.slug)}">
+      <p class="eyebrow">${escHtml(eyebrow)}</p>
+      <h1>${escHtml(post.title)}</h1>
+      ${bodyHtml}
+      <hr class="section-break">
+    </article>
+
+    <div class="chapter-marker" style="margin-top:4rem;"><span>${escHtml(settings.title)} · ${escHtml(dateStr)}</span></div>
+
+    <footer class="footer-ms">
+      <div class="stars">· · ·</div>
+      <div class="credits">
+        <p>by <a href="${SITE_URL}">${escHtml(settings.author_handle)}</a></p>
+        <p class="disclaimer">&copy; ${year} ${escHtml(settings.full_name)}</p>
+      </div>
+      <div class="band"></div>
+    </footer>
+
+  </div>
+</body>
+</html>`;
+}
+
+// ============================================================================
 // LLM + SEO Endpoints
 // ============================================================================
 
-function generateLlmsTxt(settings, theses) {
-  const list = theses.map(t => `- **${t.title}** — ${t.description}`).join('\n');
+function generateLlmsTxt(settings, theses, posts) {
+  const thesisList  = theses.map(t => `- **${t.title}** — ${t.description}`).join('\n');
+  const writingList = posts.length
+    ? posts.map(p => `- **${p.title}** (${p.date || 'n/d'}) — ${p.description}`).join('\n')
+    : '(no articles yet)';
+
   return `# ${settings.full_name}
 
 > ${settings.description}
@@ -499,14 +638,18 @@ ${settings.full_name} is a Creative Technologist and Martech Daylighter. Alias: 
 
 ## Theses
 
-${list}
+${thesisList}
+
+## Writing
+
+${writingList}
 
 ## Machine-Readable Endpoints
 
 - **Full content**: /llms-full.txt
 - **Structured JSON**: /api/content.json
-- **Sitemap**: /sitemap.xml
 - **RSS feed**: /feed.xml
+- **Sitemap**: /sitemap.xml
 
 ## Contact
 
@@ -521,7 +664,7 @@ Voice: direct, thoughtful, anti-buzzword.
 `;
 }
 
-function generateLlmsFullTxt(settings, theses) {
+function generateLlmsFullTxt(settings, theses, posts) {
   let out = `# ${settings.full_name}\n\n> ${settings.description}\n\nGenerated: ${new Date().toISOString()}\n\n---\n\n`;
   for (const t of theses) {
     out += `## Thesis ${String(t.order).padStart(2,'0')}: ${t.title}\n\n${t.description}\n\n`;
@@ -531,10 +674,18 @@ function generateLlmsFullTxt(settings, theses) {
     }
     out += `---\n\n`;
   }
+  if (posts.length) {
+    out += `## Writing\n\n`;
+    for (const p of posts) {
+      out += `### ${p.title} (${p.date || 'n/d'})\n\n${p.description}\n\n`;
+      if (p.body) out += `${p.body}\n\n`;
+      out += `---\n\n`;
+    }
+  }
   return out;
 }
 
-function generateContentJson(settings, theses) {
+function generateContentJson(settings, theses, posts) {
   return {
     version: '1.0',
     generated: new Date().toISOString(),
@@ -546,32 +697,63 @@ function generateContentJson(settings, theses) {
       title: t.title, slug: t.slug, order: t.order,
       description: t.description, url: `/${thesisUrl(t)}`,
       links: t.links || []
+    })),
+    posts: posts.map(p => ({
+      title: p.title, slug: p.slug, date: p.date,
+      description: p.description, tags: p.tags || [],
+      url: `/${blogPostUrl(p)}`
     }))
   };
 }
 
-function generateSitemap(theses) {
+function generateSitemap(theses, posts) {
   const today = new Date().toISOString().split('T')[0];
   const urls  = [
-    { loc: `${SITE_URL}/`, priority: '1.0', changefreq: 'monthly' },
-    ...theses.map(t => ({ loc: `${SITE_URL}/${thesisUrl(t)}`, priority: '0.8', changefreq: 'monthly' }))
+    { loc: `${SITE_URL}/`,           priority: '1.0', changefreq: 'monthly', lastmod: today },
+    { loc: `${SITE_URL}/blog/`,      priority: '0.9', changefreq: 'weekly',  lastmod: today },
+    ...theses.map(t => ({ loc: `${SITE_URL}/${thesisUrl(t)}`, priority: '0.8', changefreq: 'monthly', lastmod: today })),
+    ...posts.map(p  => ({ loc: `${SITE_URL}/${blogPostUrl(p)}`, priority: '0.8', changefreq: 'monthly', lastmod: p.date || today }))
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${
-    urls.map(u => `  <url>\n    <loc>${u.loc}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${u.changefreq}</changefreq>\n    <priority>${u.priority}</priority>\n  </url>`).join('\n')
+    urls.map(u => `  <url>\n    <loc>${u.loc}</loc>\n    <lastmod>${u.lastmod}</lastmod>\n    <changefreq>${u.changefreq}</changefreq>\n    <priority>${u.priority}</priority>\n  </url>`).join('\n')
   }\n</urlset>`;
 }
 
-function generateFeed(settings, theses) {
-  const now = new Date();
-  let rss = `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0">\n  <channel>\n`;
-  rss += `    <title>${escHtml(settings.full_name)}</title>\n    <link>${SITE_URL}</link>\n`;
-  rss += `    <description>${escHtml(settings.description)}</description>\n    <lastBuildDate>${toRFC822(now)}</lastBuildDate>\n`;
-  for (const t of theses) {
-    const link = `${SITE_URL}/${thesisUrl(t)}`;
-    rss += `    <item>\n      <title>${escHtml(t.title)}</title>\n      <link>${link}</link>\n`;
-    rss += `      <guid isPermaLink="true">${link}</guid>\n      <description>${escHtml(t.description)}</description>\n`;
-    rss += `      <pubDate>${toRFC822(now)}</pubDate>\n    </item>\n`;
+function generateFeed(settings, posts) {
+  // posts = blog posts only, sorted newest-first
+  // theses are portfolio pieces, not articles — excluded from the syndication feed
+  const now = posts.length && posts[0].date ? new Date(posts[0].date) : new Date();
+
+  let rss = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+  rss += `<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">\n`;
+  rss += `  <channel>\n`;
+  rss += `    <title>${escHtml(settings.full_name)}</title>\n`;
+  rss += `    <link>${SITE_URL}</link>\n`;
+  rss += `    <description>${escHtml(settings.description)}</description>\n`;
+  rss += `    <language>en</language>\n`;
+  rss += `    <lastBuildDate>${toRFC822(new Date())}</lastBuildDate>\n`;
+  rss += `    <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml"/>\n`;
+
+  for (const p of posts) {
+    const link    = `${SITE_URL}/${blogPostUrl(p)}`;
+    const pubDate = p.date ? toRFC822(new Date(p.date)) : toRFC822(new Date());
+    const bodyHtml = p.body ? marked.parse(p.body, { async: false }) : '';
+
+    rss += `    <item>\n`;
+    rss += `      <title>${escHtml(p.title)}</title>\n`;
+    rss += `      <link>${link}</link>\n`;
+    rss += `      <guid isPermaLink="true">${link}</guid>\n`;
+    rss += `      <description>${escHtml(p.description)}</description>\n`;
+    rss += `      <pubDate>${pubDate}</pubDate>\n`;
+    if (p.tags?.length) {
+      rss += p.tags.map(tag => `      <category>${escHtml(tag)}</category>\n`).join('');
+    }
+    if (bodyHtml) {
+      rss += `      <content:encoded><![CDATA[${bodyHtml}]]></content:encoded>\n`;
+    }
+    rss += `    </item>\n`;
   }
+
   return rss + `  </channel>\n</rss>`;
 }
 
@@ -594,8 +776,9 @@ function main() {
   const theses   = loadTheses();
   const home     = loadHome();
   const writing  = loadWriting();
+  const posts    = loadBlog();
 
-  console.log(`  Loaded ${theses.length} theses, ${(writing.links||[]).length} writing links`);
+  console.log(`  Loaded ${theses.length} theses, ${posts.length} blog posts, ${(writing.links||[]).length} writing links`);
 
   // Home page
   fs.writeFileSync(path.join(DIST, 'index.html'), renderHomePage(settings, about, theses, home, writing));
@@ -608,16 +791,27 @@ function main() {
     console.log(`  ${filename}`);
   }
 
+  // Blog listing + post pages
+  if (posts.length) {
+    ensureDir(path.join(DIST, 'blog'));
+    fs.writeFileSync(path.join(DIST, 'blog', 'index.html'), renderBlogListing(settings, posts, home));
+    console.log('  blog/index.html');
+    for (const post of posts) {
+      fs.writeFileSync(path.join(DIST, 'blog', `${post.slug}.html`), renderBlogPost(post, settings));
+      console.log(`  blog/${post.slug}.html`);
+    }
+  }
+
   // LLM + SEO endpoints
   console.log('\nGenerating LLM + SEO endpoints...');
-  fs.writeFileSync(path.join(DIST, 'llms.txt'),      generateLlmsTxt(settings, theses));     console.log('  llms.txt');
-  fs.writeFileSync(path.join(DIST, 'llms-full.txt'), generateLlmsFullTxt(settings, theses)); console.log('  llms-full.txt');
+  fs.writeFileSync(path.join(DIST, 'llms.txt'),      generateLlmsTxt(settings, theses, posts));     console.log('  llms.txt');
+  fs.writeFileSync(path.join(DIST, 'llms-full.txt'), generateLlmsFullTxt(settings, theses, posts)); console.log('  llms-full.txt');
   ensureDir(path.join(DIST, 'api'));
-  fs.writeFileSync(path.join(DIST, 'api', 'content.json'), JSON.stringify(generateContentJson(settings, theses), null, 2));
+  fs.writeFileSync(path.join(DIST, 'api', 'content.json'), JSON.stringify(generateContentJson(settings, theses, posts), null, 2));
   console.log('  api/content.json');
-  fs.writeFileSync(path.join(DIST, 'sitemap.xml'), generateSitemap(theses)); console.log('  sitemap.xml');
-  fs.writeFileSync(path.join(DIST, 'feed.xml'),    generateFeed(settings, theses));    console.log('  feed.xml');
-  fs.writeFileSync(path.join(DIST, 'robots.txt'),  generateRobotsTxt());               console.log('  robots.txt');
+  fs.writeFileSync(path.join(DIST, 'sitemap.xml'), generateSitemap(theses, posts)); console.log('  sitemap.xml');
+  fs.writeFileSync(path.join(DIST, 'feed.xml'),    generateFeed(settings, posts));  console.log('  feed.xml');
+  fs.writeFileSync(path.join(DIST, 'robots.txt'),  generateRobotsTxt());            console.log('  robots.txt');
 
   // Static assets
   console.log('\nCopying static assets...');

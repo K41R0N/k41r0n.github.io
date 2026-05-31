@@ -156,6 +156,64 @@ collections:
                 hint: "Full URL including https://"
 
   # ===========================================================================
+  # BLOG
+  # Articles and essays — content/blog/*.md
+  # Renders at /blog/index.html (listing) and /blog/{slug}.html (posts)
+  # All posts appear in /feed.xml for RSS syndication (Paragraph auto-import)
+  # ===========================================================================
+  - name: blog
+    label: Blog
+    label_singular: Post
+    folder: content/blog
+    create: true
+    slug: '{{date}}-{{slug}}'
+    sortable_fields: ['date', 'title']
+    summary: '{{date}} — {{title}}'
+    preview_path: 'blog/{{slug}}.html'
+    fields:
+
+      - label: Title
+        name: title
+        widget: string
+        hint: "Post headline."
+
+      - label: Slug
+        name: slug
+        widget: string
+        pattern: ['^[a-z0-9-]+$', "Lowercase letters, numbers, and hyphens only"]
+        hint: "URL identifier — e.g. 'techno-feudalistic-quixote'. Used in /blog/{slug}.html."
+
+      - label: Date
+        name: date
+        widget: datetime
+        format: "YYYY-MM-DD"
+        hint: "Publication date. Used for ordering and RSS pubDate."
+
+      - label: Description
+        name: description
+        widget: text
+        hint: >
+          One-sentence summary. Appears in the blog listing, RSS feed,
+          SEO meta description, and llms.txt. This is what Paragraph and
+          RSS readers show as the article preview.
+
+      - label: Tags
+        name: tags
+        widget: list
+        required: false
+        hint: "Topic tags — optional. Shown in the article eyebrow."
+
+      - label: Body
+        name: body
+        widget: markdown
+        required: false
+        hint: >
+          Full article content. Supports:
+            > **Note:** text   →  renders as a margin note aside
+            ---                →  section break rule
+          The first paragraph gets a drop cap if it starts with 3+ letters.
+
+  # ===========================================================================
   # THESES
   # Each thesis drives: a dot-leader row on the home page TOC
   #                     + a full detail page at thesis-NN-{slug}.html
