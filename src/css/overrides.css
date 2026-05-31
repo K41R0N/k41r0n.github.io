@@ -106,28 +106,28 @@
 .blog-tag-nav a[aria-current],
 .blog-tag-nav a:hover { color: var(--accent); border-bottom: 1px solid var(--accent); }
 
-/* ---- Featured article (most recent) ------------------------------------- */
-/* Full-width, large cover image, dominant title — makes the most recent
-   article visually unmistakable. Top border is 2px solid to anchor the section. */
+/* ---- Featured article — centred stack (mirrors the blog-hero on article pages) */
 .blog-featured {
-  display: grid;
-  grid-template-columns: clamp(180px, 28vw, 300px) 1fr;
-  gap: 2.5rem;
-  padding: 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 3rem 0 2.5rem;
   border-top: 2px solid var(--color-black);
   border-bottom: 1px solid var(--rule-color);
-  align-items: center;
   text-decoration: none;
   color: inherit;
+  gap: 0;
 }
 .blog-featured-cover {
+  width: clamp(200px, 28%, 280px);
   aspect-ratio: 1 / 1;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--ink-fill-1);
-  flex-shrink: 0;
+  margin-bottom: 2rem;
 }
 .blog-featured-cover img {
   width: 100%; height: 100%;
@@ -137,7 +137,6 @@
 }
 .blog-featured:hover .blog-featured-cover img { opacity: .85; }
 
-/* "Latest" dot-flag — mono uppercase in accent with a pulsing dot */
 .blog-featured-flag {
   font-family: var(--font-mono);
   font-size: 10px;
@@ -146,6 +145,7 @@
   color: var(--accent);
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: .45rem;
   margin-bottom: .75rem;
 }
@@ -155,7 +155,7 @@
   width: 6px; height: 6px;
   border-radius: 50%;
   background: var(--accent);
-  animation: live-pulse 2s ease-in-out infinite; /* reuses existing keyframe */
+  animation: live-pulse 2s ease-in-out infinite;
 }
 .blog-featured-meta {
   font-family: var(--font-mono);
@@ -169,63 +169,57 @@
   font-family: var(--font-display);
   font-size: clamp(var(--text-4xl), 4.5vw, var(--text-6xl));
   font-weight: var(--font-weight-medium);
-  color: var(--text-color);
+  color: var(--accent);          /* crimson — matches blog-hero-title */
   line-height: 1.0;
   letter-spacing: -.04em;
   text-wrap: balance;
   margin: 0 0 1rem;
+  max-width: 22ch;
   transition: color .2s ease;
 }
-.blog-featured:hover .blog-featured-title { color: var(--accent); }
+.blog-featured:hover .blog-featured-title { opacity: .8; }
 .blog-featured-desc {
   font-family: var(--font-body);
-  font-size: var(--text-lg);
+  font-style: italic;
+  font-size: var(--text-xl);
   color: var(--text-muted);
-  line-height: 1.6;
-  max-width: 48ch;
+  line-height: 1.55;
+  max-width: 44ch;
   text-wrap: pretty;
   margin: 0;
 }
 
-/* ---- Archive entries — whole block shifts left / right ------------------ */
-/* The ENTIRE component (image + text) moves as one unit.
-   Odd: block left-aligned, image leads. Even: block right-aligned via
-   margin-left:auto, image follows (flex row-reverse). Width capped at ~68%
-   so the opposite side stays open, creating the offset rhythm. */
+/* ---- Archive entries — text fixed in centre column, images pivot L/R ---- */
+/* Three-column grid: [left-thumb] [centre-text] [right-thumb].
+   The text column never moves — images alternate slots via the build script. */
 .blog-archive-entry {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 1.75rem;
+  display: grid;
+  grid-template-columns: clamp(130px, 18vw, 210px) 1fr clamp(130px, 18vw, 210px);
+  column-gap: 2rem;
+  align-items: center;
   padding: 2rem 0;
   border-bottom: 1px solid var(--rule-color);
   text-decoration: none;
   color: inherit;
-  width: 68%;
-}
-/* Even: flip the row AND push the whole block rightward */
-.blog-archive-entry:nth-child(even) {
-  flex-direction: row-reverse;
-  margin-left: auto;
 }
 
-.blog-archive-cover {
-  flex-shrink: 0;
-  width: clamp(120px, 18vw, 190px);
+/* Image slots — present in every entry, empty in one side */
+.blog-archive-slot {
   aspect-ratio: 1 / 1;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--ink-fill-1);
-  transition: opacity .2s ease;
+  background: transparent;  /* no background when empty */
 }
-.blog-archive-cover img {
+.blog-archive-slot.has-image { background: var(--ink-fill-1); }
+.blog-archive-slot img {
   width: 100%; height: 100%;
   object-fit: contain;
   display: block;
+  transition: opacity .2s ease;
 }
-.blog-archive-entry:hover .blog-archive-cover { opacity: .8; }
+.blog-archive-entry:hover .blog-archive-slot img { opacity: .8; }
 
 .blog-archive-placeholder {
   width: 100%; height: 100%;
@@ -235,7 +229,13 @@
   color: var(--accent);
   opacity: .2;
 }
-.blog-archive-content { flex: 1; display: flex; flex-direction: column; gap: .4rem; }
+
+/* Centre text column */
+.blog-archive-content {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
 .blog-archive-meta {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
@@ -264,17 +264,12 @@
   text-wrap: pretty;
 }
 
-/* Mobile: full width, thumb left, no alternation */
+/* Mobile: collapse to thumb-left, text-right */
 @media (max-width: 48rem) {
-  .blog-featured { grid-template-columns: 1fr; border-top-width: 1px; }
-  .blog-featured-cover { max-width: 180px; margin: 0 auto; }
   .blog-featured-title { font-size: var(--text-4xl); }
-
-  .blog-archive-entry,
-  .blog-archive-entry:nth-child(even) {
-    width: 100%;
-    flex-direction: row;
-    margin-left: 0;
+  .blog-archive-entry {
+    grid-template-columns: 3.5rem 1fr 0;
+    column-gap: 1rem;
   }
-  .blog-archive-cover { width: 3.5rem; }
+  .blog-archive-slot:last-child { display: none; }
 }

@@ -573,23 +573,32 @@ function renderBlogListing(settings, posts, home, activeTag = null) {
     </a>`;
   })() : '';
 
-  // Archive entries — alternating cover left / right via CSS nth-child
-  const archiveHtml = archive.map(p => {
+  // Archive entries — text always in the centre column, images pivot L/R by index.
+  // Even index (0,2,4…) → image in LEFT slot. Odd index (1,3,5…) → image in RIGHT slot.
+  const archiveHtml = archive.map((p, i) => {
     const url     = `/${blogPostUrl(p)}`;
     const date    = p.date ? new Date(p.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).toUpperCase() : '';
     const tag     = p.tags?.[0] || '';
     const metaStr = [tag, date].filter(Boolean).join(' · ');
-    const cover   = p.cover_image
-      ? `<div class="blog-archive-cover"><img src="${escHtml(p.cover_image)}" alt="" aria-hidden="true" loading="lazy"></div>`
-      : `<div class="blog-archive-cover"><div class="blog-archive-placeholder" aria-hidden="true">K</div></div>`;
+
+    const thumbInner = p.cover_image
+      ? `<img src="${escHtml(p.cover_image)}" alt="" aria-hidden="true" loading="lazy">`
+      : `<div class="blog-archive-placeholder" aria-hidden="true">K</div>`;
+    const thumb = `<div class="blog-archive-slot has-image">${thumbInner}</div>`;
+    const empty = `<div class="blog-archive-slot"></div>`;
+
+    const leftSlot  = i % 2 === 0 ? thumb : empty;
+    const rightSlot = i % 2 === 0 ? empty : thumb;
+
     return `
     <a class="blog-archive-entry" href="${url}">
-      ${cover}
+      ${leftSlot}
       <div class="blog-archive-content">
         <p class="blog-archive-meta">${escHtml(metaStr)}</p>
         <h2 class="blog-archive-title">${escHtml(p.title)}</h2>
         <p class="blog-archive-desc">${escHtml(p.description)}</p>
       </div>
+      ${rightSlot}
     </a>`;
   }).join('\n');
 
