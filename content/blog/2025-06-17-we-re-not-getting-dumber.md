@@ -13,7 +13,7 @@ My gut instinct was to compare this to the time when teachers would tell you not
 
 But, I still want to give credence to this argument, in case it actually does bear some truth. After doing my due diligence and reading the papers, though, I've got some qualms with the methodology. Specifically, I don't agree with the way they're measuring our "intelligence."
 
-> Hello test
+> \*\*Note:\*\* The Flipper Zero community shipped 40+ firmware forks in its first year — none of them planned by the original team.
 
 Let’s get this out the way from the get-go: **I do take these concerns seriously** (who wouldn’t?). The impact of new technologies on our minds is significant and deserves attention. However, the current approach to reporting this issue looks to me more like media-chasing rather than actual research.
 
