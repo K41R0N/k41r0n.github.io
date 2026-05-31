@@ -145,10 +145,17 @@ function applyDropcap(html) {
  */
 function transformBody(markdown) {
   let md = markdown;
-  // margin notes
-  md = md.replace(/^> \*\*Note:\*\*\s*(.*?)(?=\n\n|\n>|\n#|$)/gms, (_, content) =>
-    `<aside class="margin-note">\n  <p>${content.trim()}</p>\n</aside>`
-  );
+  // Margin notes: any blockquote (single or multi-line) → <aside class="margin-note">
+  // In Sveltia: use the blockquote button and type your annotation — no special prefix needed.
+  // Multi-line blockquotes (Sveltia wraps long text across multiple "> " lines) are joined.
+  md = md.replace(/^(> [^\n]+(?:\n> [^\n]+)*)/gm, (match) => {
+    const content = match
+      .split('\n')
+      .map(line => line.replace(/^> /, ''))
+      .join(' ')
+      .trim();
+    return `<aside class="margin-note">\n  <p>${content}</p>\n</aside>`;
+  });
   // section breaks
   md = md.replace(/\n---\n/g, '\n<hr class="section-break">\n');
   // parse remaining markdown, then apply guarded dropcap

@@ -216,10 +216,11 @@ collections:
         widget: markdown
         required: false
         hint: >
-          Full article content. Supports:
-            > **Note:** text   →  renders as a margin note aside
-            ---                →  section break rule
-          The first paragraph gets a drop cap if it starts with 3+ letters.
+          Full article content. Margin notes (right-column annotations):
+          use the blockquote button (") and type your annotation — it renders
+          in the right margin beside the surrounding text. Multi-line notes
+          work automatically. Section breaks: type --- on its own line.
+          Drop cap applies to the first paragraph automatically.
 
   # ===========================================================================
   # THESES
