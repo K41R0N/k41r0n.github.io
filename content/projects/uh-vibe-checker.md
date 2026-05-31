@@ -1,12 +1,13 @@
 ---
-title: "Programmatic SEO: Vibe Checker"
-slug: "uh-vibe-checker"
-order: 7
-description: "A large-scale test implementation of Programmatic SEO generating data-rich pages for global travel destinations."
-repository_url: "https://github.com/K41R0N/UH-Vibe-Checker"
-language: "TypeScript"
-version: "1.0.0"
-license: "MIT"
+title: 'Programmatic SEO: Vibe Checker'
+slug: uh-vibe-checker
+order: 5
+description: A large-scale test implementation of Programmatic SEO generating data-rich pages for global travel destinations.
+repository_url: https://github.com/K41R0N/UH-Vibe-Checker
+live_url: ''
+language: TypeScript
+version: 1.0.0
+license: MIT
 ---
 
 ## Overview
