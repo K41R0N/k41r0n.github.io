@@ -1,0 +1,39 @@
+{
+ "features": 25,
+ "pieces": 9,
+ "outside_per_piece": {
+  "2025-06-04-why-im-building-things-that-dont.md": 1,
+  "2025-06-11-the-future-belongs-to-the-storytellers.md": 0,
+  "2025-06-17-were-not-getting-dumber.md": 0,
+  "2025-06-28-think-of-the-children.md": 0,
+  "2025-07-12-the-myth-of-10x.md": 1,
+  "2025-07-29-re-learning-to-trust-each-others.md": 1,
+  "2025-08-21-techno-feudalistic-quixotes.md": 1,
+  "2025-09-11-antitech.md": 1,
+  "2026-09-20-shadow-work.md": 0
+ },
+ "total_outside": 5,
+ "details": {
+  "2025-06-04-why-im-building-things-that-dont.md": [
+   "lex.first_person_I_per_1000"
+  ],
+  "2025-06-11-the-future-belongs-to-the-storytellers.md": [],
+  "2025-06-17-were-not-getting-dumber.md": [],
+  "2025-06-28-think-of-the-children.md": [],
+  "2025-07-12-the-myth-of-10x.md": [
+   "lex.disc_really_per_1000"
+  ],
+  "2025-07-29-re-learning-to-trust-each-others.md": [
+   "punct.question"
+  ],
+  "2025-08-21-techno-feudalistic-quixotes.md": [
+   "punct.oxford_comma_per_1000"
+  ],
+  "2025-09-11-antitech.md": [
+   "sent_lt8_share"
+  ],
+  "2026-09-20-shadow-work.md": []
+ },
+ "threshold": 3,
+ "pieces_at_or_over_threshold": 0
+}
