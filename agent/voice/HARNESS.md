@@ -23,7 +23,7 @@ Stylometry points the same way: the signal sits in habits writers do not control
 - Tier 3: hypothesis.
 
 ## 3. Folders
-canon/ (voice-spec, do-dont, lexicon) · corpus/raw (spec source) · corpus/holdout (test only, never used to build the spec) · corpus/excluded (AI-assisted, co-written, or authorship unverified) · thoughts/ (his raw ideas) · refs/ (evidence) · registers/ · drafts/ · reports/ · routines/ (copy-draft, copy-review, blind-test) · tools/ (measure and check, stdlib Python) · log/compound.md.
+canon/ (voice-spec, do-dont, lexicon) · corpus/raw (spec source) · corpus/holdout (test only, never used to build the spec) · corpus/excluded (AI-assisted, co-written, or authorship unverified) · thoughts/ (his raw ideas) · refs/ (evidence) · findings/ (dated findings and decisions, one file per finding, see findings/README.md) · registers/ · drafts/ · reports/ · routines/ (copy-draft, copy-review, blind-test) · tools/ (measure and check, stdlib Python) · log/compound.md.
 
 ## 4. Pipeline
 thought, brief, draft (five passes), deterministic checks (tools/checks.py, range checks against voice-spec), review (seven passes), checks again, he approves. Corpus, thoughts and refs stay in separate folders so form, content and evidence never contaminate each other.
