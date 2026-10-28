@@ -12,3 +12,4 @@ One dated markdown file per finding. Each states its source, date and status. Fi
 | 2026-10-28-06-standing-working-rules.md | Standing working rules (Harness Standard v0.3) | Relayed; standing rules |
 | 2026-10-28-07-open-items-awaiting-him.md | Open items awaiting him | Open |
 | 2026-10-28-08-sme-draft-v4-rejected.md | SME draft v4 rejected by him - structural checks did not catch what his ear catches | Decided by him (rejected). Revision waits for his marked lines |
+| 2026-10-28-09-texture-reread-and-counter-evidence.md | Texture re-read of his essays, and counter-evidence to the slop hypotheses | Candidate, engine reading, not confirmed |
