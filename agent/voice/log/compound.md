@@ -13,3 +13,6 @@ Append-only. One entry per learning: what happened, what rule or change it sugge
 - Range checks recalibrated: strict min-max over 57 features put every one of his own pieces 10 to 20 features out. Now 25 structural features, ranges widened 50%, WARN at 3+. Status: candidate.
 - Holdout is partly spent for rule-level decisions (dash budget, metronome, range calibration). Status: noted in HARNESS.md section 7b.
 - Authorship of kairon.xyz theses, about and project pages is unverified; excluded from the spec. Status: waiting on him.
+
+## 2026-10-28 findings area
+- Added findings/ (one dated file per finding, each with source and status; index in findings/README.md). log/compound.md stays the append-only list of build learnings and rule candidates. findings/ holds measurements, his decisions and steering, and open items. Status: candidate, needs his OK on the convention.
