@@ -16,3 +16,6 @@ Append-only. One entry per learning: what happened, what rule or change it sugge
 
 ## 2026-10-28 findings area
 - Added findings/ (one dated file per finding, each with source and status; index in findings/README.md). log/compound.md stays the append-only list of build learnings and rule candidates. findings/ holds measurements, his decisions and steering, and open items. Status: candidate, needs his OK on the convention.
+
+## 2026-10-29
+Added routines/writer-judge-loop.md and tools edit_rate, ledger, ban_list, placeholders, holdout_guard, corpus_clean_check (synthetic fixtures only). Tier 2. See finding 13.
