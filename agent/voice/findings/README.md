@@ -16,3 +16,4 @@ One dated markdown file per finding. Each states its source, date and status. Fi
 | 2026-10-28-10-v5-cycle-outcome-and-writing-paused.md | v5 cycle outcome, key learnings, and writing paused by him | Decided by him (paused). Learnings are candidates |
 | 2026-10-28-11-chat-answers-as-voice-samples.md | Chat answers are voice samples, not spec-eligible until he confirms, own register | Relayed rule. Design deferred |
 | 2026-10-28-12-his-mimicry-notes-read.md | His handwritten notes on copying someone's style, now read | Read. Outline only |
+| 2026-10-29-13-writer-judge-pipeline-folded-in.md | Writer/judge pipeline from the Eliason article folded into the engine | Tier 2 proposed. His yes covers folding in only |
