@@ -35,7 +35,7 @@ Since then, I've told that 8-year old kid that if he wants to save the world by 
 
 ## About me
 
-My name is Alejandro "Kairon" Arango. I'm a martech consultant by day and creative technologist by night. I've got the soul of an artist, the mind of a scholar and the heart of a craftsman. And I know full well how pretentious that sounds.
+My name is Alejandro "Kairon" Arango. [ALEJANDRO: your current one-line role. Today this says "martech consultant by day and creative technologist by night", which predates the practice.] I've got the soul of an artist, the mind of a scholar and the heart of a craftsman. And I know full well how pretentious that sounds.
 
 I build my own tools while traveling from Medellin, to Berlin, to New York. And I hope to one day build something that tangibly improves someone's life.
 
