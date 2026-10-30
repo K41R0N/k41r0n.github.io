@@ -16,6 +16,8 @@ def check(text):
             out.append(("FAIL", "P1-number-without-source", s[:50]))
         if re.search(r"\b(the first|the only|the best|never before)\b", s, re.I) and "[src:" not in s:
             out.append(("FAIL", "P1-superlative-without-source", s[:50]))
+        if re.search(r"\b(most powerful|world[- ]class|best[- ]in[- ]class|state[- ]of[- ]the[- ]art)\b", s, re.I) and "[src:" not in s:
+            out.append(("FAIL", "P1-slop-superlative", s[:50]))
         if len(s.split()) > 40:
             out.append(("WARN", "P4-long-sentence", s[:50]))
     if re.search(r"\b(TODO|TBD|XXX|lorem ipsum)\b|\[placeholder", text, re.I):
