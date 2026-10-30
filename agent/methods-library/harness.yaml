@@ -1,0 +1,10 @@
+name: methods
+version: 0.1.0
+owner: Alejandro Arango
+visibility: private
+default_branch_policy: pull_request_only
+pack_class_max: S1
+exports: packs/
+gates:
+  push_gate: scripts/local/push_gate.sh
+  eval_contract: evals/contract.md
