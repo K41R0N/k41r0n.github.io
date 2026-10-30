@@ -1,0 +1,12 @@
+name: verify-before-act
+kind: method
+version: 0.1.0
+status: draft
+summary: Never act on a claim. Check it against the live thing, name what each alarming signal is, confirm a scare a second way, investigate and change in separate turns, one change at a time, then verify.
+class_max: S1
+requires: { modules: [], secrets: [], egress: [] }
+provides:
+  skills: [verify-before-act]
+  evals: [evals/checks.py]
+attention: { verify-before-act: D2/E3 }
+source: The hard rules in his infrastructure harness (read in full) and the method lessons from his audience harness (method only). Fixtures are invented and generic. Matches ethos items 2, 20, 21 and 25.
