@@ -1356,6 +1356,7 @@ function main() {
   console.log('\nCopying static assets...');
   copyDir(path.join(SRC, 'css'), path.join(DIST, 'css'));   console.log('  css/');
   copyDir(ASSETS, path.join(DIST, 'assets'));                console.log('  assets/');
+  if (fs.existsSync(path.join(ROOT, '_headers'))) { fs.copyFileSync(path.join(ROOT, '_headers'), path.join(DIST, '_headers')); console.log('  _headers'); }
 
   // Admin
   const adminSrc = path.join(ROOT, 'admin');
