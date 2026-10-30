@@ -15,6 +15,7 @@ rules on it; drafts in flight are not evidence.
 | run | date | deliverable | surface | outcome | edit distance | cause | his minutes |
 |---|---|---|---|---|---|---|---|
 | wr-0000 | 2026-10-28 | voice-engine first test draft (site repo, agent/voice/findings) | site | rejected | n/a (full rewrite) | slop / does-not-sound-like-him ("not at all my style... reads like slop", WA 17:53:17) | n/a (predates log) |
+| wr-0002 | 2026-10-29 | task register (AGF 10.1) for the five live capabilities, built on his approval 9:25 PM | harness | pending his ruling (rides site PR #15) | n/a | n/a (self-assessed depths declared as such) | n/a |
 | wr-0001 | 2026-10-29 | site upkeep currency PR (Now section, meal-planner page, About line) | site | rejected | n/a (rewrite directed) | slop / adds-no-value ("well intentioned but they read like slop, the about change doesn't really add anything", WA 19:07) | n/a |
 
 ## Rolling summary
