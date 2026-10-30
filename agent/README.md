@@ -5,10 +5,10 @@ Economies **Research agent**) that contributes to this repository. It teaches an
 agent how the site is built, what is safe to touch, what will break the CMS, and
 how to lay down live components later without regressing the publishing pipeline.
 
-If you are an agent reading this for the first time, **read `ORIENTATION.md`
+If you are an agent reading this for the first time, **read `index.md`
 next**, then consult the routing table below for the specific task in front of
 you. Do not edit files outside `content/` until you have read
-`protocols/PORTFOLIO-WRITE-GUARD-01.md`.
+`routines/protocols/PORTFOLIO-WRITE-GUARD-01.md`.
 
 ---
 
@@ -27,24 +27,24 @@ you. Do not edit files outside `content/` until you have read
 
 | If you need to… | Read |
 |---|---|
-| Understand how the whole site works | `ORIENTATION.md` |
-| Know exactly what you may and may not edit | `protocols/PORTFOLIO-WRITE-GUARD-01.md` |
-| Make any content edit safely, end-to-end | `protocols/PORTFOLIO-CONTENT-EDIT-01.md` |
+| Understand how the whole site works | `index.md` |
+| Know exactly what you may and may not edit | `routines/protocols/PORTFOLIO-WRITE-GUARD-01.md` |
+| Make any content edit safely, end-to-end | `routines/protocols/PORTFOLIO-CONTENT-EDIT-01.md` |
 | Publish a new blog post / essay | `skills/add-blog-post.md` |
 | Add or edit a thesis | `skills/add-thesis.md` |
 | Change site-wide settings (name, links, SEO) | `skills/edit-site-settings.md` |
 | Change home-page section headings / newsletter copy | `skills/edit-home-sections.md` |
 | Expose a NEW field to the CMS without breaking it | `skills/add-configurable-field.md` |
 | Build the site and verify nothing broke | `skills/build-and-verify.md` |
-| Understand the content→build→deploy architecture | `guidelines/repo-architecture.md` |
-| Understand CMS invariants (do not break Sveltia) | `guidelines/cms-safety.md` |
-| Look up a frontmatter / settings schema | `guidelines/content-schemas.md` |
-| Know how to branch, commit, and ship | `guidelines/contribution-workflow.md` |
-| Plan future "live component" automation | `automation/live-components-foundations.md` |
-| Read the working agreement, standing rules, or writing run log | `operating-agreement.md`, `learnings.md`, `writing-runs.md` |
-| See live capabilities, their depth, and next gate | `task-register.md` |
-| Consult a documented methodology (explainer-ready) | `methodologies/` |
-| Consult his methods library (packs, evals, fixtures) | `methods-library/` |
+| Understand the content→build→deploy architecture | `knowledge/site/repo-architecture.md` |
+| Understand CMS invariants (do not break Sveltia) | `knowledge/site/cms-safety.md` |
+| Look up a frontmatter / settings schema | `knowledge/site/content-schemas.md` |
+| Know how to branch, commit, and ship | `knowledge/site/contribution-workflow.md` |
+| Plan future "live component" automation | `harness/specs/live-components-foundations.md` |
+| Read the working agreement, standing rules, or writing run log | `AGENTS.md`, `routines/learnings.md`, `routines/writing-runs.md` |
+| See live capabilities, their depth, and next gate | `harness/task-register.md` |
+| Consult a documented methodology (explainer-ready) | `knowledge/methodologies/` |
+| Consult his methods library (packs, evals, fixtures) | `packs/` |
 
 ---
 
@@ -74,4 +74,4 @@ If you are the Research Agent running on the G14, **you cannot execute the rule 
 - **Execution Boundary:** The Research Agent must not execute builds (`npm run build`), install packages, or modify this repo directly unless explicitly granted an exception. It must strictly use the outbox hand-off pattern to propose changes.
 - **Voice boundary still applies:** the Research agent supports writing; it does
   not ghostwrite Alejandro's essays. Publishing prose is a human decision. See
-  `guidelines/contribution-workflow.md`.
+  `knowledge/site/contribution-workflow.md`.
