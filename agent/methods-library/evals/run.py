@@ -18,7 +18,10 @@ def main(argv):
     for pack in sorted(glob.glob(os.path.join(ROOT, "packs", "*"))):
         name = os.path.basename(pack)
         if only and only != name: continue
-        mod = load(os.path.join(pack, "evals", "checks.py"))
+        try:
+            mod = load(os.path.join(pack, "evals", "checks.py"))
+        except Exception as e:
+            print(f"BLOCK {name} - checks failed to load: {e}"); bad += 1; continue
         fixtures = sorted(glob.glob(os.path.join(pack, "fixtures", "*.md")))
         has_fail = False
         if not fixtures:
@@ -26,8 +29,11 @@ def main(argv):
         for fx in fixtures:
             fname = os.path.basename(fx)
             text = open(fx, encoding="utf-8").read()
-            found = {i for (_lvl, i, _m) in mod.check(text)}
-            exp = {l.strip() for l in open(fx[:-3] + ".expect") if l.strip()}
+            try:
+                found = {i for (_lvl, i, _m) in mod.check(text)}
+                exp = {l.strip() for l in open(fx[:-3] + ".expect") if l.strip()}
+            except Exception as e:
+                print(f"BLOCK {name} {fname} - check errored or expectation unreadable: {e}"); bad += 1; continue
             exp = set() if exp == {"clean"} else exp
             if exp: has_fail = True
             if found == exp:
