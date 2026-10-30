@@ -1,0 +1,2 @@
+types: [Ethos, Method, Pack, Fixture, Decision, Learning]
+confidence: [operator_reported, confirmed, reference, inferred, conversation]
