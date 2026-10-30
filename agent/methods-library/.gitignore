@@ -1,4 +1,0 @@
-scripts/local/denylist.txt
-*.local
-.env
-.DS_Store

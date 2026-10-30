@@ -1,7 +1,7 @@
 # Skills Index
 
 Each skill is a self-contained runbook for one task. They assume you have read
-`../ORIENTATION.md` and `../protocols/PORTFOLIO-WRITE-GUARD-01.md`.
+`../index.md` and `../routines/protocols/PORTFOLIO-WRITE-GUARD-01.md`.
 
 | Skill | Task | Tier |
 |---|---|---|

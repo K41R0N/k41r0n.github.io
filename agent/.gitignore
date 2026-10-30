@@ -1,0 +1,10 @@
+# Never in the repo (Harness Standard v0.3, section 5.4)
+memory/
+state/
+.env
+.env.*
+*.local
+.DS_Store
+__pycache__/
+*.pyc
+scripts/local/denylist.txt
