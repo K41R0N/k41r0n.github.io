@@ -44,7 +44,7 @@ Nothing client-facing goes out without his yes on the exact thing. Approved need
 `python3 evals/run.py strategy-canvas`. Clean means the structure and tags are present. It does not mean the strategy is right.
 
 ## Compound step
-Log what he changed in routines/learnings.md. Three repeats become a rule.
+Log what he changed in routines/learnings.md. Two repeats make a rule.
 
 ## References
 packs/strategy-canvas/fixtures/
