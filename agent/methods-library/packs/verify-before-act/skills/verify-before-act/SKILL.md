@@ -45,7 +45,7 @@ Report findings and the one proposed change to the owner of the thing. Changes t
 `python3 evals/run.py verify-before-act`. Clean means the discipline is visible in the note, not that the diagnosis is right.
 
 ## Compound step
-Log corrections in routines/learnings.md. Three repeats become a rule.
+Log corrections in routines/learnings.md. Two repeats make a rule.
 
 ## References
 packs/verify-before-act/fixtures/, knowledge/ethos/ethos.md (items 2, 20, 21)
