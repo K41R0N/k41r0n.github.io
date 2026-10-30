@@ -28,17 +28,31 @@ const REPOS = {
 };
 
 const ENTRIES_PER_PROJECT = 5;
+const FETCH_PER_PROJECT = 12; // fetch extra so filtering still yields 5
+
+// Forward-looking filter (his rule 2026-10-29: describe what exists, never
+// what is planned). Subjects matching this are dropped, never rewritten -
+// rewriting his words would break the voice rule. Same standard as the
+// site-wide sweep.
+const FORWARD_LOOKING = /roadmap|coming soon|stay tuned|later work|in the works|upcoming|next release|planned feature|will be (available|added|launched|shipped)|work in progress|\bWIP\b/i;
+
+function cleanSubject(message) {
+  return (message || '').split('\n')[0].replace(/\s*\[skip ci\]\s*$/i, '').trim();
+}
 
 async function fetchCommits(repo) {
-  const url = `https://api.github.com/repos/K41R0N/${repo}/commits?per_page=${ENTRIES_PER_PROJECT}`;
+  const url = `https://api.github.com/repos/K41R0N/${repo}/commits?per_page=${FETCH_PER_PROJECT}`;
   const res = await fetch(url, { headers: { 'User-Agent': 'k41r0n-site-build', 'Accept': 'application/vnd.github+json' } });
   if (!res.ok) throw new Error(`${repo}: GitHub API ${res.status}`);
   const commits = await res.json();
   return commits.map(c => ({
     date:    (c.commit.committer.date || '').slice(0, 10),
-    subject: (c.commit.message || '').split('\n')[0],
+    subject: cleanSubject(c.commit.message),
     url:     c.html_url,
-  })).filter(e => e.date && e.subject && e.url);
+  }))
+  .filter(e => e.date && e.subject && e.url)
+  .filter(e => !FORWARD_LOOKING.test(e.subject))
+  .slice(0, ENTRIES_PER_PROJECT);
 }
 
 (async () => {
