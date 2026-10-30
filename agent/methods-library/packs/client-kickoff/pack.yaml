@@ -1,0 +1,12 @@
+name: client-kickoff
+kind: method
+version: 0.1.0
+status: draft
+summary: A 60-minute kickoff call plan that settles who decides, what success looks like in 90 days and who holds access, with a summary sent right after. Week one is audit and strategy, nothing publishes.
+class_max: S1
+requires: { modules: [], secrets: [], egress: [] }
+provides:
+  skills: [client-kickoff]
+  evals: [evals/checks.py]
+attention: { client-kickoff: D2/E3 }
+source: A kickoff-call template and a 6-month delivery cycle in his work account (read in full). Drive owner not shown. Method only. No client, employer or tool names. Fixtures invented. Matches ethos items 28 and 30. Provenance (his decision, WhatsApp 2026-10-29 8:59 AM, paraphrased): document it, ignore where it came from, he will edit it later into his own methodologies, and it is grounds to help his close circle, so there is no commercial sensitivity. Kept as grounds he will edit into his own methodology. Authorship is no longer an open question.
