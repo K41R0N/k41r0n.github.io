@@ -10,7 +10,7 @@ Calls made without asking. Each is overridable: say so and it changes.
 | 4 | Template additions kept and flagged: lay rendering, sourced anti-patterns, acceptance log | made, overridable |
 | 5 | Changes by pull request, never to the default branch | made, overridable |
 | 6 | His voice spec and corpus stay in the site repo | made, overridable |
-| 7 | A correction that recurs three times becomes a rule | made, overridable |
+| 7 | A correction that recurs twice becomes a rule (harmonized 2026-10-29: his work guide says two; his documented retro practice says anything that happened twice gets a fix) | made, overridable |
 | 8 | Evals are deterministic checks plus fixtures only | made, overridable |
 | 9 | Modules start at the lowest honest depth | made, overridable |
 | 10 | Ethos holds six principles he approved as a base; additions stay separate as candidates | made, overridable |
@@ -32,3 +32,6 @@ Calls made without asking. Each is overridable: say so and it changes.
 | 26 | campaign-basics: beginner version of a social strategy template whose authorship is unconfirmed; flagged in the pack so he can cut it | confirmed by him 2026-10-29 8:59 AM: keep, he will edit them into his own methods |
 | 27 | clear-message: structure adapted from a positioning template of unconfirmed authorship plus his confirmed ethos; flagged in the pack so he can cut it | confirmed by him 2026-10-29 8:59 AM: keep, he will edit them into his own methods |
 | 28 | Packs from day-job templates (client-kickoff, campaign-basics, clear-message) are kept as grounds he will edit into his own methodologies; his point is provenance, not loosening the push gate, denylist or no-employer/client-specifics rule | confirmed by him |
+| 29 | Impact ways-of-working compendium (142 methods, received 2026-10-29) mined for advice-harness patterns. Landed: under-informed gate, three output states, source ladder, contradiction rule, verdict-engine contract (evals/contract.md 8-13), fail-closed runner, immune-memory fixture (copy-five-pass slop-superlative), corrections cascade, ethos items 35-40, router ask-on-unplaceable. Dropped: the spec's third intake question (no support in the compendium). Landed on judgment under his 2026-10-29 calibration: no ruling asks on internal harness work | made, overridable |
+| 30 | Ethos items 35-40 added from the compendium, his verbatim lines, marked inferred until he confirms | made, overridable |
+| 31 | methods-library README rewritten (was stale: claimed private, phase 1 skeleton, packs pending) | made, overridable |
