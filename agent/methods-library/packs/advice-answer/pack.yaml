@@ -1,0 +1,12 @@
+name: advice-answer
+kind: method
+version: 0.1.0
+status: draft
+summary: Draft an answer to a question put to Alejandro, at the level the asker can use, saying what is sure, what was checked and what is not known, and sending money, legal and health questions to him.
+class_max: S1
+requires: { modules: [], secrets: [], egress: [] }
+provides:
+  skills: [advice-answer]
+  evals: [evals/checks.py]
+attention: { advice-answer: D1/E4 }
+source: Ethos items 1-6 and 17-18 (his approved base). Invented, generic fixtures only. No real family, friend or client question is used. His real answers in chat are voice samples and are not yet mined (a relayed rule). This pack drafts for him. It does not speak as him.
