@@ -105,6 +105,73 @@ if (fs.existsSync(projectsDir)) {
   }
 }
 
+
+// ---- Editor markers (no unreplaced placeholders in content) ------------------
+// Fails the build if any content file carries an unreplaced editor marker:
+// [ALEJANDRO: ...], [TODO], [TBD], [FIXME], [PLACEHOLDER], or any bracketed
+// ALL-CAPS note. Notes to Alejandro belong in the PR description, never in
+// rendered content. Added 2026-10-29 after a placeholder reached a preview.
+const MARKER_PATTERNS = [
+  /\[ALEJANDRO[^\]]*\]/i,
+  /\[(TODO|TBD|FIXME|PLACEHOLDER)[^\]]*\]/i,
+  /\[[A-Z][A-Z0-9 :_,.'-]{3,}\]/,
+];
+function scanForMarkers(dir) {
+  if (!fs.existsSync(dir)) return;
+  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+    const p = path.join(dir, e.name);
+    if (e.isDirectory()) { scanForMarkers(p); continue; }
+    if (!/\.(md|json)$/.test(e.name)) continue;
+    const text = fs.readFileSync(p, 'utf-8');
+    for (const re of MARKER_PATTERNS) {
+      const m = text.match(re);
+      if (m) fail(`${path.relative(CONTENT, p)}: unreplaced editor marker "${m[0].slice(0, 60)}" - notes to Alejandro belong in the PR description, not in content`);
+    }
+  }
+}
+scanForMarkers(CONTENT);
+if (errors === 0) ok('editor markers');
+
+
+// ---- Public-register check (no buzzwords in public-facing copy) --------------
+// Standing rule (Alejandro, WhatsApp 2026-10-29): nothing public-facing carries
+// meta commentary or buzzwords. List seeded from the documented voice work
+// (agent/voice/tools/checks.py: BANNED_AI, SOFT, FALSE_DEPTH), NOT invented.
+// 'harness' is deliberately excluded: it is his term of art for his core work.
+// Scope: public copy files agents edit. His published prose (blog/, theses/)
+// is excluded - it is owner-authored. The 8 legacy project pages predate this
+// rule and are exempt BY NAME until rewritten; any new or renamed file is
+// checked. Exempt list reviewed at every upkeep cycle.
+const BUZZ_WORDS = ['seamless','seamlessly','robust','unlock','leverage','leveraging','utilize','utilise','empower','streamline','delve','tapestry','realm','pivotal','crucial','testament','landmark','foster','elevate','bolster','underscore','underscores','underscoring'];
+const BUZZ_PHRASES = ['in essence','essentially',"it's worth noting","it’s worth noting",'at the end of the day',"it's important to note","it’s important to note","in today's fast-paced","in today’s fast-paced",'at its core','the real question is',"here's the thing","here’s the thing","let's dive in","let’s dive in"];
+const BUZZ_EXEMPT = new Set([
+  'projects/threadbot.md','projects/notion-as-cms.md','projects/uh-vibe-checker.md',
+  'projects/rm-quickshare-bot.md','projects/notion-telegram-bot.md',
+  'projects/opensource-curriculum.md','projects/interactive-quiz-maker.md',
+  'projects/openclaw-personal-infrastructure.md',
+]);
+const BUZZ_SKIP_DIRS = new Set(['blog','theses']);
+const buzzRe = new RegExp('\\b(' + BUZZ_WORDS.join('|') + ')\\b', 'i');
+function scanForBuzz(dir) {
+  if (!fs.existsSync(dir)) return;
+  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+    const p = path.join(dir, e.name);
+    if (e.isDirectory()) { if (!BUZZ_SKIP_DIRS.has(e.name)) scanForBuzz(p); continue; }
+    if (!/\.(md|json)$/.test(e.name)) continue;
+    const rel = path.relative(CONTENT, p);
+    if (BUZZ_EXEMPT.has(rel)) continue;
+    const text = fs.readFileSync(p, 'utf-8');
+    const w = text.match(buzzRe);
+    if (w) fail(`${rel}: buzzword-register word "${w[0]}" (standing rule 2026-10-29: no buzzwords in public-facing copy)`);
+    const lower = text.toLowerCase();
+    for (const ph of BUZZ_PHRASES) {
+      if (lower.includes(ph)) fail(`${rel}: buzzword-register phrase "${ph}"`);
+    }
+  }
+}
+scanForBuzz(CONTENT);
+if (errors === 0) ok('public register');
+
 // ---- Result -----------------------------------------------------------------
 if (errors > 0) {
   console.error(`\nValidation failed with ${errors} error(s).`);
