@@ -44,7 +44,7 @@ Return the canvas and proposals to him. A landing page or course is only a propo
 `python3 evals/run.py research-intake`. Clean means every entry has a source and a place, threads cite real entries, and nothing is marked published. It does not mean the threads are right.
 
 ## Compound step
-Log what he corrected about the threads in routines/learnings.md. Three repeats become a rule.
+Log what he corrected about the threads in routines/learnings.md. Two repeats make a rule.
 
 ## References
 packs/research-intake/fixtures/
