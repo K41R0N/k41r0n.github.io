@@ -78,8 +78,9 @@ agent/writing-runs.md (this repo).
 - PR SEPARATION (2026-10-29 7:01 PM): harness/process updates never share a
   PR with website content. In the site repo, agent/ docs (voice, site,
   agreement files) and tooling gates go in their own PRs, never mixed into
-  content/ changes. Methods-repo updates stay in the methods repo as their
-  own PRs.
+  content/ changes. The methods library lives in this repo under
+  agent/methods-library/ (consolidated 2026-10-29 8:35 PM, his call); library
+  updates get their own PRs here.
 - Notes to him live in PR descriptions and chat, never in content files.
   The build fails on unreplaced markers (see site repo,
   scripts/validate-content.js).
