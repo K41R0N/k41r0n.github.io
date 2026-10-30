@@ -1,0 +1,12 @@
+name: audience-listening
+kind: method
+version: 0.1.0
+status: draft
+summary: Map where a target audience speaks and which words and events are real signals, then run a short daily pass that records each hit with its source and reports changes, not volume.
+class_max: S1
+requires: { modules: [], secrets: [], egress: [] }
+provides:
+  skills: [audience-listening]
+  evals: [evals/checks.py]
+attention: { audience-listening: D3/E3 }
+source: A listening map he owns in his work account (read in full). Method only. No client, person or firm names, figures or text. Fixtures are invented and generic. Matches ethos items 22, 23, 25 and 33.
