@@ -10,8 +10,4 @@ version: '0.1'
 license: MIT
 ---
 
-A personal-first, Today-first recipe book, batch meal-prep planner, purchase-aware grocery list and actual-portion nutrition log. No accounts, no organization switcher, no cloud sync in this version.
-
-Four primary destinations: Today, My week, Recipe book and Shop. History, importing, goals and advanced organization stay secondary. Native Android packaging and multi-user support are later work.
-
-The documentation covers product truth, commercial strategy, decisions and production-readiness gates, plus an agent-friendly architecture with a future shared API/MCP path for users' own assistants.
+A personal-first, Today-first recipe book, batch meal-prep planner, purchase-aware grocery list and actual-portion nutrition log. Four primary destinations are Today, My week, Recipe book and Shop; history, importing, goals and advanced organization remain secondary. No accounts, organization switcher or cloud sync in this version. Native Android packaging and multi-user support are later work.
