@@ -3,28 +3,28 @@
   "entries": [
     {
       "date": "2026-10-27",
-      "subject": "Record verified agent-documentation integration [skip ci]",
+      "subject": "Record verified agent-documentation integration",
       "url": "https://github.com/K41R0N/meal-planner/commit/4e32465afe92ed70964476aa51730565bc3ee486"
     },
     {
       "date": "2026-10-27",
-      "subject": "Document agent-friendly Mealbook architecture and MCP roadmap [skip ci]",
-      "url": "https://github.com/K41R0N/meal-planner/commit/f6177eb515390449e3e37aeef85f6aeeee58c0f7"
-    },
-    {
-      "date": "2026-10-27",
-      "subject": "Finalize approved main source integration [skip ci]",
+      "subject": "Finalize approved main source integration",
       "url": "https://github.com/K41R0N/meal-planner/commit/e56d48c5db669fa0be14e337d9625bfaabc64f2e"
     },
     {
       "date": "2026-10-27",
-      "subject": "Document commercial product strategy, release architecture and research [skip ci]",
+      "subject": "Document commercial product strategy, release architecture and research",
       "url": "https://github.com/K41R0N/meal-planner/commit/d9b2f67a7c955c7693b73da07ae87b2f1fbd39a1"
     },
     {
       "date": "2026-10-27",
       "subject": "Implement the approved Today-first meal planning experience",
       "url": "https://github.com/K41R0N/meal-planner/commit/39d4abe0c27bf8656bde9a17415e144c5c4025a2"
+    },
+    {
+      "date": "2026-10-27",
+      "subject": "Add reviewed YouTube import and coherent recipe-to-shopping flows",
+      "url": "https://github.com/K41R0N/meal-planner/commit/c7e867d1da1a0c517d7ab2a0f66fcd295220f08b"
     }
   ]
 }
