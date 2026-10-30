@@ -2,18 +2,18 @@
   "updated": "2026-10-29",
   "lines": [
     {
-      "text": "Writing essays on technology, markets and digital culture. Latest: \"Shadow Work\", on why good people create harmful things.",
-      "source": "content/blog/2026-09-20-shadow-work.md in this repo",
+      "text": "Latest essay: \"Shadow Work\" - why do good people create harmful things?",
+      "source": "content/blog/2026-09-20-shadow-work.md (frontmatter description)",
       "date": "2026-09-20"
     },
     {
-      "text": "Building a personal meal-planning app: recipe book, batch meal-prep planning, a purchase-aware grocery list and a nutrition log. Public and in progress.",
+      "text": "Building a meal planner: \"a personal-first, Today-first recipe book, batch meal-prep planner, purchase-aware grocery list and actual-portion nutrition log.\" Public repo.",
       "source": "github.com/K41R0N/meal-planner README (public repo)",
       "date": "2026-10-27"
     },
     {
-      "text": "Running this site with an agent brain: content changes go through a write guard and build checks before they ship.",
-      "source": "agent/ directory in this repo",
+      "text": "This site is an agent-native digital garden, integrated into an ensemble of local AI agents.",
+      "source": "README.md in this repo",
       "date": "2026-10-29"
     }
   ]
