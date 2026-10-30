@@ -455,7 +455,7 @@ function renderHomePage(settings, about, theses, projects, home, writing, posts)
     const nowData = JSON.parse(fs.readFileSync(nowPath, 'utf-8'));
     nowBlock = `<!-- Now -->
     <div class="sec-head" id="now" style="margin-top:4rem;">
-      <h3>Now<span class="count">[ ${String(nowData.lines.length).padStart(2,'0')} items ]</span></h3>
+      <h3>Now</h3>
       <div class="rule-solid"></div>
     </div>
     <div class="intro-flow" style="margin-top:2rem;">
@@ -492,7 +492,7 @@ function renderHomePage(settings, about, theses, projects, home, writing, posts)
 
     <!-- Theses index -->
     <div class="sec-head" id="theses" style="margin-top:2rem;">
-      <h3>${escHtml(home.section_theses || 'Theses')}<span class="count">[ ${thesisCount} entries ]</span></h3>
+      <h3>${escHtml(home.section_theses || 'Theses')}</h3>
       <div class="rule-solid"></div>
     </div>
 
@@ -504,7 +504,7 @@ ${tocItems}
 
     ${projects.length ? `<!-- Projects index -->
     <div class="sec-head" id="projects" style="margin-top:4rem;">
-      <h3>${escHtml(home.section_projects || 'Projects')}<span class="count">[ ${projectCount} items ]</span></h3>
+      <h3>${escHtml(home.section_projects || 'Projects')}</h3>
       <div class="rule-solid"></div>
     </div>
 
@@ -521,7 +521,7 @@ ${projectItems}
 
     ${posts.length ? `<!-- Blog/Writing links -->
     <div class="sec-head" id="writing" style="margin-top:4rem;">
-      <h3>${escHtml(home.section_blog || 'Writing')}<span class="count">[ ${String(posts.length).padStart(2,'0')} articles ]</span></h3>
+      <h3>${escHtml(home.section_blog || 'Writing')}</h3>
       <div class="rule-solid"></div>
     </div>
     <div style="margin-top: 2rem;">
@@ -835,7 +835,7 @@ function renderBlogListing(settings, posts, home, activeTag = null) {
      </div>
 
     <div class="sec-head" id="writing" style="margin-top:4rem;">
-      <h3>${escHtml(heading)}<span class="count">[ ${String(posts.length).padStart(2,'0')} articles ]</span></h3>
+      <h3>${escHtml(heading)}</h3>
       <div class="rule-solid"></div>
     </div>
 
