@@ -993,7 +993,6 @@ function renderBlogPost(post, settings) {
     <article class="article" id="${escHtml(post.slug)}">
       <span class="margin-label">${escHtml(dateShort)}</span>
       ${bodyHtml}
-      ${activityHtml}
       <hr class="section-break">
     </article>
 
@@ -1059,7 +1058,6 @@ function renderAboutPage(page, settings) {
     <article class="article" id="about">
       <span class="margin-label">About</span>
       ${bodyHtml}
-      ${activityHtml}
       <hr class="section-break">
     </article>
 
