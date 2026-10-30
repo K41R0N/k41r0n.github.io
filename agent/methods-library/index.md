@@ -18,3 +18,5 @@
 | Everything else in the spec's pack list | see decisions/goals.md | planned |
 
 Run all checks: `python3 evals/run.py`. Draft means his review is pending; nothing is listed ready until he reviews it.
+
+If a request fits no pack, record it in `decisions/open-loops.md` and ask. Never pick the nearest pack by name.

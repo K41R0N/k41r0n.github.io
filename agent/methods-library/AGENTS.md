@@ -24,4 +24,4 @@ Read this first. This repo holds Alejandro Arango's methods as reusable packs, e
 - Check the real thing before saying anything about it.
 - Small calls you can undo: make them, log them as "made, overridable" in `decisions/log.md`.
 - Questions to him: plain words, one at a time, only when it needs his judgment.
-- A correction seen three times becomes a rule. Log it in `routines/learnings.md` first.
+- A correction seen twice becomes a rule. Log it in `routines/learnings.md` first.

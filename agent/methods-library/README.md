@@ -1,5 +1,5 @@
 # methods
 
-Alejandro Arango's methods as reusable packs with checks. Private.
+Alejandro Arango's methods as reusable packs with checks. Public-readable as part of the site repo's `agent/` area; never rendered on the site.
 
-Start with `AGENTS.md`, then `HOW-TO-USE-THIS-BRAIN.md`. Status: phase 1 skeleton. Packs arrive in phase 2.
+Start with `AGENTS.md`, then `HOW-TO-USE-THIS-BRAIN.md`, then `index.md` to route a task to a pack. 13 packs, all draft until he reviews them.
