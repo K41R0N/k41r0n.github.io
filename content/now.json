@@ -1,0 +1,20 @@
+{
+  "updated": "2026-10-29",
+  "lines": [
+    {
+      "text": "Latest essay: \"Shadow Work\" - why do good people create harmful things?",
+      "source": "content/blog/2026-09-20-shadow-work.md (frontmatter description)",
+      "date": "2026-09-20"
+    },
+    {
+      "text": "Building a meal planner: a recipe book, meal-prep planner, grocery list and nutrition log. Public repo.",
+      "source": "github.com/K41R0N/meal-planner README (public repo)",
+      "date": "2026-10-27"
+    },
+    {
+      "text": "This site is an agent-native digital garden, integrated into an ensemble of local AI agents.",
+      "source": "README.md in this repo",
+      "date": "2026-10-29"
+    }
+  ]
+}

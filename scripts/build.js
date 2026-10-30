@@ -448,6 +448,21 @@ function renderHomePage(settings, about, theses, projects, home, writing, posts)
     settings.substack  && `<li><a href="${escHtml(settings.substack)}"  target="_blank" rel="noopener" aria-label="Substack (opens in new tab)">Substack</a></li>`,
   ].filter(Boolean).join('\n      ');
 
+  // Now block — from content/now.json (optional; absent = no section)
+  let nowBlock = '';
+  const nowPath = path.join(CONTENT, 'now.json');
+  if (fs.existsSync(nowPath)) {
+    const nowData = JSON.parse(fs.readFileSync(nowPath, 'utf-8'));
+    nowBlock = `<!-- Now -->
+    <div class="sec-head" id="now" style="margin-top:4rem;">
+      <h3>Now</h3>
+      <div class="rule-solid"></div>
+    </div>
+    <div class="intro-flow" style="margin-top:2rem;">
+      ${nowData.lines.map(l => `<p>${escHtml(l.text)}</p>`).join('\n      ')}
+    </div>`;
+  }
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -477,20 +492,20 @@ function renderHomePage(settings, about, theses, projects, home, writing, posts)
 
     <!-- Theses index -->
     <div class="sec-head" id="theses" style="margin-top:2rem;">
-      <h3>${escHtml(home.section_theses || 'Theses')}<span class="count">[ ${thesisCount} entries ]</span></h3>
+      <h3>${escHtml(home.section_theses || 'Theses')}</h3>
       <div class="rule-solid"></div>
-      <div class="sec-label">${escHtml(settings.author_handle)} · ${escHtml(home.section_theses_label || 'index')}</div>
     </div>
 
     <ol class="toc-ms">
 ${tocItems}
     </ol>
 
+    ${nowBlock}
+
     ${projects.length ? `<!-- Projects index -->
     <div class="sec-head" id="projects" style="margin-top:4rem;">
-      <h3>${escHtml(home.section_projects || 'Projects')}<span class="count">[ ${projectCount} items ]</span></h3>
+      <h3>${escHtml(home.section_projects || 'Projects')}</h3>
       <div class="rule-solid"></div>
-      <div class="sec-label">${escHtml(settings.author_handle)} · ${escHtml(home.section_projects_label || 'tools')}</div>
     </div>
 
     <ol class="toc-ms">
@@ -501,15 +516,13 @@ ${projectItems}
     <div class="sec-head" id="media" style="margin-top:4rem;">
       <h3>${escHtml(home.section_media || 'Media')}</h3>
       <div class="rule-solid"></div>
-      <div class="sec-label">${escHtml(settings.author_handle)} · ${escHtml(home.section_media_label || 'appearances')}</div>
     </div>
     <div class="intro-flow" style="margin-top:2rem;">${home.section_media_intro ? `<p>${escHtml(home.section_media_intro)}</p>` : ''}${writingLinks}</div>` : ''}
 
     ${posts.length ? `<!-- Blog/Writing links -->
     <div class="sec-head" id="writing" style="margin-top:4rem;">
-      <h3>${escHtml(home.section_blog || 'Writing')}<span class="count">[ ${String(posts.length).padStart(2,'0')} articles ]</span></h3>
+      <h3>${escHtml(home.section_blog || 'Writing')}</h3>
       <div class="rule-solid"></div>
-      <div class="sec-label">${escHtml(settings.author_handle)} · ${escHtml(home.section_blog_label || 'articles')}</div>
     </div>
     <div style="margin-top: 2rem;">
       <ul style="list-style: none; padding: 0;">
@@ -529,7 +542,6 @@ ${projectItems}
     <div class="sec-head" id="newsletter" style="margin-top:4rem;">
       <h3>${escHtml(home.section_newsletter || 'Newsletter')}</h3>
       <div class="rule-solid"></div>
-      <div class="sec-label">${escHtml(settings.author_handle)} · ${escHtml(home.section_newsletter_label || 'subscribe')}</div>
     </div>
     <div class="intro-flow" style="margin-top:2rem;">
       <p>${escHtml(home.newsletter_body || '')}</p>
@@ -577,12 +589,10 @@ function renderThesisPage(thesis, allTheses, settings) {
     ? `<div class="sec-head" style="margin-top:3rem;">
       <h3 style="font-size:var(--text-2xl);">${escHtml(settings.thesis_links_heading || 'Links')}</h3>
       <div class="rule-solid"></div>
-      <div class="sec-label">th. ${num} · ${escHtml(settings.thesis_links_label || 'references')}</div>
     </div>
     <ul style="margin-top:1.5rem;">
       ${thesis.links.map(l =>
         `<li style="margin-bottom:.75rem;">
-          <span class="eyebrow" style="display:inline;">${escHtml(l.label)}</span>
           <a href="${escHtml(l.url)}" target="_blank" rel="noopener">${escHtml(l.title)} →</a>
         </li>`
       ).join('\n      ')}
@@ -612,7 +622,6 @@ function renderThesisPage(thesis, allTheses, settings) {
 
     <article class="article" id="${escHtml(thesis.slug)}">
       <span class="margin-label">§${thesis.order} — ${escHtml(shortTitle)}</span>
-      <p class="eyebrow">${escHtml(settings.thesis_nav_label || 'Thesis')} ${num}</p>
       <h1>${escHtml(thesis.title)}</h1>
       ${bodyHtml}
       ${linksHtml}
@@ -681,7 +690,6 @@ function renderProjectPage(project, allProjects, settings) {
 
     <article class="article" id="${escHtml(project.slug)}">
       <span class="margin-label">§${project.order} — ${escHtml(shortTitle)}</span>
-      <p class="eyebrow">Project ${num}</p>
       <h1>${escHtml(project.title)}</h1>
       ${metaHtml}
       ${bodyHtml}
@@ -827,9 +835,8 @@ function renderBlogListing(settings, posts, home, activeTag = null) {
      </div>
 
     <div class="sec-head" id="writing" style="margin-top:4rem;">
-      <h3>${escHtml(heading)}<span class="count">[ ${String(posts.length).padStart(2,'0')} articles ]</span></h3>
+      <h3>${escHtml(heading)}</h3>
       <div class="rule-solid"></div>
-      <div class="sec-label">${escHtml(settings.author_handle)} · ${escHtml(headingLabel)}</div>
     </div>
 
     ${intro ? `
@@ -962,7 +969,6 @@ function renderBlogPost(post, settings) {
 
     <article class="article" id="${escHtml(post.slug)}">
       <span class="margin-label">${escHtml(dateShort)}</span>
-      <p class="eyebrow">${escHtml(eyebrowStr)}</p>
       ${bodyHtml}
       <hr class="section-break">
     </article>
@@ -1028,7 +1034,6 @@ function renderAboutPage(page, settings) {
 
     <article class="article" id="about">
       <span class="margin-label">About</span>
-      <p class="eyebrow">${escHtml(settings.author_handle)} · device economies</p>
       ${bodyHtml}
       <hr class="section-break">
     </article>
