@@ -1,0 +1,12 @@
+name: research-intake
+kind: method
+version: 0.1.0
+status: draft
+summary: "Data binge mode": he sends a burst of messages on one topic. The agent keeps one shared canvas, finds the connecting threads (labels, topics, use cases, people, entities) and proposes next steps, more sources, an action plan, a landing page or a course.
+class_max: S1
+requires: { modules: [], secrets: [], egress: [] }
+provides:
+  skills: [research-intake]
+  evals: [evals/checks.py]
+attention: { research-intake: D1/E4 }
+source: His handwritten page on the research agent's data binge mode (read by eye from the page image). Fixtures are invented and generic. He wrote the idea, not the procedure, so the canvas format and checks here were designed in this repo. Feeds discovery-interview and claim-verification (the second is not built yet).
