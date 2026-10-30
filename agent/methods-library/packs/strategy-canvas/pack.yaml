@@ -1,0 +1,12 @@
+name: strategy-canvas
+kind: method
+version: 0.1.0
+status: draft
+summary: Build a client strategy on one canvas in seven steps (business model, value fit, who to pursue, empathy, positioning, positioning statement, story), with every claim tagged as sourced, inferred or a gap.
+class_max: S1
+requires: { modules: [], secrets: [], egress: [] }
+provides:
+  skills: [strategy-canvas]
+  evals: [evals/checks.py]
+attention: { strategy-canvas: D2/E3 }
+source: The shape of a strategy canvas he developed at his day job, read from his own filled and template versions. Built on public frameworks (Lean Canvas, Value Proposition Canvas, ICP definition, empathy map, Dunford positioning, Moore positioning statement, StoryBrand). Only the structure and tagging habit are carried. No client names, figures or text, and no employer branding. Fixtures are invented. He confirmed on 2026-10-28 that this method-only version stays in his own repo.
