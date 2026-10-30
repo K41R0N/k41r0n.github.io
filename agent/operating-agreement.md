@@ -49,12 +49,17 @@ Run before delivery, not after:
 
 - When he corrects the same thing twice, it becomes a fixed rule and applies
   everywhere from then on. Logged in agent/learnings.md (this repo).
-- Note: decisions/log.md #7 currently says three repetitions make a rule.
-  This agreement follows his work guide's two. Harmonization is flagged for
-  his next pack review; no answer needed now.
+- Harmonized 2026-10-29: two repetitions everywhere. His work guide says
+  two; his documented retro practice says "anything that happened twice gets
+  a fix; anything that blocked output gets a fix first." Logged as
+  decisions/log.md #7.
 - A rule he states explicitly is effective immediately (no repetitions
   needed). First such rule: nothing public-facing ever carries meta
   commentary or buzzwords (WhatsApp 2026-10-29 6:55 PM).
+- A correction cascades: the fix routes to every file carrying the old fact,
+  never patched only where it surfaced. Every rule keeps the incident that
+  produced it, so the reasoning stays checkable. A gate is never weakened
+  as a fix.
 
 ## 4. Voice and drafts (standing)
 
