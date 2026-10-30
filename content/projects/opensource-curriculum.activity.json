@@ -1,0 +1,30 @@
+{
+  "updated": "2026-10-30",
+  "entries": [
+    {
+      "date": "2026-07-02",
+      "subject": "Improve UX: left-aligned hero, cluster cards with arrows, mobile nav, AI assistant footer links",
+      "url": "https://github.com/K41R0N/opensource-curriculum/commit/b01f9e2be2689adda614d6f021a85a7fe1ded3b8"
+    },
+    {
+      "date": "2026-07-02",
+      "subject": "Update CMS config to enforce lesson body discipline",
+      "url": "https://github.com/K41R0N/opensource-curriculum/commit/e72b730a056d4699ecb3543ebe2e3e41eede4f4f"
+    },
+    {
+      "date": "2026-07-02",
+      "subject": "Add critical lesson body placement rules and agent crawlability docs",
+      "url": "https://github.com/K41R0N/opensource-curriculum/commit/87b9f788da797f8573dd93660bebb99274118a27"
+    },
+    {
+      "date": "2026-07-02",
+      "subject": "Backport improvements from Sky, Devices, and AI Process Lab curricula",
+      "url": "https://github.com/K41R0N/opensource-curriculum/commit/3535e5a6ebfc89ca51e88267c87a10dd1a413d8d"
+    },
+    {
+      "date": "2026-05-19",
+      "subject": "Add LLM-friendly patterns from Sky: CURRICULUM_OUTLINE.md, .impeccable.md, DESIGN_TRANSFORMATION.md, updated AGENTS.md with course structure table and pedagogy section",
+      "url": "https://github.com/K41R0N/opensource-curriculum/commit/52d1f1dc34c1287aba75679db8a55ac23ade2ada"
+    }
+  ]
+}

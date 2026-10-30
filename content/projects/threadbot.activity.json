@@ -1,0 +1,30 @@
+{
+  "updated": "2026-10-30",
+  "entries": [
+    {
+      "date": "2025-12-18",
+      "subject": "docs: clean up temporary and redundant documentation",
+      "url": "https://github.com/K41R0N/threadbot/commit/8d1a8f597a4eda0207bc3d7ffaf4a395dee55b93"
+    },
+    {
+      "date": "2025-12-17",
+      "subject": "Add START OVER function to prevent softlocks",
+      "url": "https://github.com/K41R0N/threadbot/commit/b14a5c2029f3a384fd6cf7ef6811978385f380d9"
+    },
+    {
+      "date": "2025-12-17",
+      "subject": "typo",
+      "url": "https://github.com/K41R0N/threadbot/commit/4230f890025f82788f6c99e9010e976e95e353b8"
+    },
+    {
+      "date": "2025-12-17",
+      "subject": "query type inference fixes",
+      "url": "https://github.com/K41R0N/threadbot/commit/9b0bbb88fac64f123bc2dabdcf62fe535508f315"
+    },
+    {
+      "date": "2025-12-17",
+      "subject": "Vercel fix",
+      "url": "https://github.com/K41R0N/threadbot/commit/bc1caa8ad175cade331d42f1703f081c2e6ee714"
+    }
+  ]
+}
