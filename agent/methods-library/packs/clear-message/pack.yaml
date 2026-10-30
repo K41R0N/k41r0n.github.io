@@ -1,0 +1,12 @@
+name: clear-message
+kind: method
+version: 0.1.0
+status: draft
+summary: How to say something so the listener gets it. One point in one sentence, who is listening and what they doubt, proof with a source instead of adjectives, a this-not-that, and a one-sentence version anyone could repeat.
+class_max: S1
+requires: { modules: [], contracts: [], secrets: [], egress: [] }
+provides:
+  skills: [clear-message]
+  evals: [evals/checks.py]
+attention: { clear-message: D2/E3 }
+source: Structure adapted from an account-positioning template in his work account (drive owner not shown) plus his confirmed ethos items 5, 14, 17 and 33. Built for the question "how do I communicate this clearly". Method only. Fixtures invented. Provenance (his decision, WhatsApp 2026-10-29 8:59 AM, paraphrased): document it, ignore where it came from, he will edit it later into his own methodologies, and it is grounds to help his close circle, so there is no commercial sensitivity. Kept as grounds he will edit into his own methodology. Authorship is no longer an open question.
