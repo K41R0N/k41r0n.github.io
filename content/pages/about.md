@@ -35,16 +35,8 @@ Since then, I've told that 8-year old kid that if he wants to save the world by 
 
 ## About me
 
-My name is Alejandro "Kairon" Arango. I run Kairon, a martech practice. I've got the soul of an artist, the mind of a scholar and the heart of a craftsman. And I know full well how pretentious that sounds.
+My name is Alejandro "Kairon" Arango. I run Studio Stupid, a martech practice. I've got the soul of an artist, the mind of a scholar and the heart of a craftsman. And I know full well how pretentious that sounds.
 
 I build my own tools while traveling from Medellin, to Berlin, to New York. And I hope to one day build something that tangibly improves someone's life.
 
 In the meantime, I write essays, research the unified theory of devices that I expect to become my life's work. And wait eagerly for your DMs and comments to reply to.
-
-## Housework
-
-There's no regular cadence to this publication, though I do push myself to publish at least monthly.
-
-While I am knowledgeable in agentic tools, I make a conscious effort to keep them away from this pub out of love for my craft. All illustrations are hand-drawn by me, all text is written by me, LLM-isms in my writing are my fault and no one else's.
-
-The best way to make my day is to make a question or leave your thoughts on my pieces.
