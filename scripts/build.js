@@ -34,7 +34,7 @@ const GSC_VERIFICATION  = process.env.GOOGLE_SITE_VERIFICATION || '';
 // two events itself through the first-party /ingest path (vercel.json rewrites it to PostHog).
 // The project key is a public write-only ingest key (safe in source, like the old GA4 ID was).
 // Without a key the site builds with analytics OFF - no script is emitted at all.
-const POSTHOG_KEY = process.env.PUBLIC_POSTHOG_KEY || '';
+const POSTHOG_KEY = process.env.PUBLIC_POSTHOG_KEY || 'phc_psFMygpjBSQcs6K9sfHoZKthFqwRBmRzkiV6GwxWNdZK';
 
 function analyticsScript() {
   if (!POSTHOG_KEY) return '';
