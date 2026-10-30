@@ -41,6 +41,9 @@ you. Do not edit files outside `content/` until you have read
 | Look up a frontmatter / settings schema | `guidelines/content-schemas.md` |
 | Know how to branch, commit, and ship | `guidelines/contribution-workflow.md` |
 | Plan future "live component" automation | `automation/live-components-foundations.md` |
+| Read the working agreement, standing rules, or writing run log | `operating-agreement.md`, `learnings.md`, `writing-runs.md` |
+| Consult a documented methodology (explainer-ready) | `methodologies/` |
+| Consult his methods library (packs, evals, fixtures) | `methods-library/` |
 
 ---
 

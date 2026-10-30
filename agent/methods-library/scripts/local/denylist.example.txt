@@ -1,0 +1,3 @@
+# Copy to denylist.txt (git-ignored) and add one term per line.
+# Terms are matched case-insensitively as whole words (so "sky-" will not match "risky-"). Never commit the real list.
+example-client-name

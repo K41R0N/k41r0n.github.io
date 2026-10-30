@@ -1,0 +1,12 @@
+name: discovery-interview
+kind: method
+version: 0.1.0
+status: draft
+summary: Learn what a person needs before planning anything. Few, sharp questions in depth order, plain words, stated gaps.
+class_max: S1
+requires: { modules: [], secrets: [], egress: [] }
+provides:
+  skills: [discovery-interview]
+  evals: [evals/checks.py]
+attention: { discovery-interview: D1/E4 }
+source: The depth ladder from the Attention Graduation Framework, his steering on questions (plain words, few and sharp), and the Studio Stupid onboarding notes (page 1). His Threadbot interview prompts were not read; this pack is at the lowest honest depth until they are.

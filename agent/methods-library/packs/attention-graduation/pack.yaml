@@ -1,0 +1,13 @@
+name: attention-graduation
+kind: method
+version: 0.1.0
+status: draft          # becomes ready only when he reviews the pack
+summary: Describe how someone works, rate each step by depth, and move repeatable parts to scripts without skipping levels.
+class_max: S1
+requires: { modules: [], secrets: [], egress: [] }
+provides:
+  skills: [attention-graduation]
+  scripts: []
+  evals: [evals/checks.py]
+attention: { attention-graduation: D2/E3 }
+source: His Attention Graduation Framework (read in full) and the Harness Standard section 9. Credit and framework names are removed in shareable builds (decision 3).

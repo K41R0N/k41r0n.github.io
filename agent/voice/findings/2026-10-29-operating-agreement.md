@@ -1,14 +1,14 @@
 # Operating agreement, voice-relevant parts (2026-10-29)
 
 Source: operating agreement approved by Alejandro on WhatsApp 2026-10-29 6:48 PM
-("Ok, proceed"). Canonical copy: methods repo, routines/operating-agreement.md.
+("Ok, proceed"). Canonical copy: agent/operating-agreement.md (this repo).
 
 - Everything written in his voice (site, X, LinkedIn, prompts) is an input for
   his line-by-line edit, never output. Published output passes him at every
   stage, permanently.
 - His edits are the training data. Metrics: acceptance rate, edit rate, his
-  minutes per deliverable. Tracked in the run log: methods repo,
-  routines/writing-runs.md.
+  minutes per deliverable. Tracked in the run log:
+  agent/writing-runs.md (this repo).
 - The same correction twice becomes a fixed rule (his work guide; this
   supersedes the three-repeat default for user-facing work).
 - Presentation rules: facts before explanation before options before

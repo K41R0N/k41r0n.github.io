@@ -1,0 +1,12 @@
+name: ai-coaching
+kind: method
+version: 0.1.0
+status: draft
+summary: Coaches someone to use AI better. Ask what they use it for and what is useful, find the tasks that need better research, more consistency or are repetitive, set up timers, checkers, formats and processes, and keep the 10 percent that is their insight and taste.
+class_max: S1
+requires: { modules: [], secrets: [], egress: [] }
+provides:
+  skills: [ai-coaching]
+  evals: [evals/checks.py]
+attention: { ai-coaching: D2/E3 }
+source: His chat answer of 2026-10-28 9:09 PM (knowledge/voice/chat-samples.md). Voice material, not spec, PENDING HIS CONFIRMATION. The structure follows his answer; the check names and fixture shapes are my design. Fixtures invented. Matches ethos items 10, 16 and 19.

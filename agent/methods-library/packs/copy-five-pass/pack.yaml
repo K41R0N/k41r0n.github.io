@@ -1,0 +1,12 @@
+name: copy-five-pass
+kind: method
+version: 0.1.0
+status: draft
+summary: Five deterministic passes over a draft (evidence, unresolved items, filler, plain reading, authority). Catches problems. Never certifies voice or quality.
+class_max: S1
+requires: { modules: [], secrets: [], egress: [] }
+provides:
+  skills: [copy-five-pass]
+  evals: [evals/checks.py]
+attention: { copy-five-pass: D1/E4 }
+source: Pattern from his copy-review layers (decontamination, creative, tone, compliance) and the method-only idea of deterministic gates with fail, warn and clean results. The five passes here were designed in this repo from that pattern. His own pass files were not read, so reconcile with them before marking ready. Client rules (word caps, banned lists) are not carried.

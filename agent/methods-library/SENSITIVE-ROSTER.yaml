@@ -1,0 +1,8 @@
+# Categories only. Actual terms live in scripts/local/denylist.txt, which is git-ignored.
+categories:
+  - client names and product names
+  - client figures and pricing
+  - client voice or brand rules
+  - credentials and tokens
+  - personal contacts
+rule: none of these appear in any file in this repo

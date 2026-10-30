@@ -1,0 +1,12 @@
+name: asker-fit
+kind: method
+version: 0.1.0
+status: draft
+summary: Makes an advice draft fit the person asking. Name their level, use plain words, short sentences, one next step, and say what is sure, checked and not known.
+class_max: S1
+requires: { modules: [], secrets: [], egress: [] }
+provides:
+  skills: [asker-fit]
+  evals: [evals/checks.py]
+attention: { asker-fit: D1/E3 }
+source: His 9:04 PM steer ("which of these ethos items will actually help make the harness useful to people asking me questions"). The format and checks are my design, not his words. He has not yet said how he answers family or friends, so this carries no voice. Fixtures are invented. Matches ethos items 2, 3, 5 and 25.
