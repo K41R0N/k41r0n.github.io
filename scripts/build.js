@@ -448,6 +448,22 @@ function renderHomePage(settings, about, theses, projects, home, writing, posts)
     settings.substack  && `<li><a href="${escHtml(settings.substack)}"  target="_blank" rel="noopener" aria-label="Substack (opens in new tab)">Substack</a></li>`,
   ].filter(Boolean).join('\n      ');
 
+  // Now block — from content/now.json (optional; absent = no section)
+  let nowBlock = '';
+  const nowPath = path.join(CONTENT, 'now.json');
+  if (fs.existsSync(nowPath)) {
+    const nowData = JSON.parse(fs.readFileSync(nowPath, 'utf-8'));
+    nowBlock = `<!-- Now -->
+    <div class="sec-head" id="now" style="margin-top:4rem;">
+      <h3>Now<span class="count">[ ${String(nowData.lines.length).padStart(2,'0')} items ]</span></h3>
+      <div class="rule-solid"></div>
+      <div class="sec-label">${escHtml(settings.author_handle)} · what I'm working on · updated ${escHtml(nowData.updated)}</div>
+    </div>
+    <div class="intro-flow" style="margin-top:2rem;">
+      ${nowData.lines.map(l => `<p>${escHtml(l.text)}</p>`).join('\n      ')}
+    </div>`;
+  }
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -485,6 +501,8 @@ function renderHomePage(settings, about, theses, projects, home, writing, posts)
     <ol class="toc-ms">
 ${tocItems}
     </ol>
+
+    ${nowBlock}
 
     ${projects.length ? `<!-- Projects index -->
     <div class="sec-head" id="projects" style="margin-top:4rem;">
