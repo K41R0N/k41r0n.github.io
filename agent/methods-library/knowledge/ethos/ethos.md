@@ -60,3 +60,13 @@ He answered "Good" (WhatsApp 2026-10-28 8:56 PM) after being shown these seven l
 34. Build strategy on named public frameworks in a fixed order, so a team works from one canvas.
 
 Sources for 28-34 are lines AA to AG in ethos-candidates-day-job.md.
+
+## From the Impact compendium (his ways of working, mined 2026-10-29)
+Items 35-40 are his verbatim lines from his own ways-of-working compendium, marked inferred until he confirms them.
+
+35. "A missing number reported honestly costs a minute. A wrong number reported confidently costs the account."
+36. "Counting beats judgment." A scripted check always keeps a hand procedure; the script is an accelerant, never a dependency.
+37. "Corrections beat cadence." A correction routes to every file carrying the old fact, and the rule keeps the incident that produced it.
+38. "You can't automate what you haven't defined."
+39. When sources disagree, report every value and which one was used; never resolve a contradiction silently in either direction.
+40. "The deadline is wrong, not the document." A gap stays marked; it is never filled to meet a date.
