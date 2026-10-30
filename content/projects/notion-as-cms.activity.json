@@ -1,0 +1,30 @@
+{
+  "updated": "2026-10-30",
+  "entries": [
+    {
+      "date": "2026-02-03",
+      "subject": "Merge pull request #6 from K41R0N/claude/agent-initialization-prompts-P8sM8",
+      "url": "https://github.com/K41R0N/Notion-as-CMS/commit/dcb42e7985506a35485f8a338f5afb17a48aa13a"
+    },
+    {
+      "date": "2026-02-02",
+      "subject": "Fix navigation and pages listing issues",
+      "url": "https://github.com/K41R0N/Notion-as-CMS/commit/321c20381f63c0a7f85b8addbac5f48c0b052c2c"
+    },
+    {
+      "date": "2026-02-02",
+      "subject": "Merge pull request #5 from K41R0N/claude/agent-initialization-prompts-P8sM8",
+      "url": "https://github.com/K41R0N/Notion-as-CMS/commit/2b404cfb6c1582015e56888a75e314d3bd991203"
+    },
+    {
+      "date": "2026-02-02",
+      "subject": "Fix switch default case lexical declaration lint error",
+      "url": "https://github.com/K41R0N/Notion-as-CMS/commit/e0fb2aebd56afc39912e241913252d854cae1d4b"
+    },
+    {
+      "date": "2026-02-02",
+      "subject": "Fix navigation draft filter and homepage security/pagination issues",
+      "url": "https://github.com/K41R0N/Notion-as-CMS/commit/768607f266e4ea295320b14686f032d580d1db0e"
+    }
+  ]
+}
