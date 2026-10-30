@@ -43,7 +43,7 @@ Report to the requester. Do not edit the draft unless asked.
 `python3 evals/run.py copy-five-pass`.
 
 ## Compound step
-When a person overrides a warning, log it in routines/learnings.md. Three repeats retune the pass.
+When a person overrides a warning, log it in routines/learnings.md. Two repeats retune the pass.
 
 ## References
 packs/copy-five-pass/fixtures/
