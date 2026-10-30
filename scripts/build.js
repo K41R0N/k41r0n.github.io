@@ -696,6 +696,28 @@ function renderProjectPage(project, allProjects, settings) {
   // Body HTML
   const bodyHtml = transformBody(project.body || '');
 
+  // Recent activity — plain data (dates, commit subjects, links), rendered
+  // only when content/projects/<slug>.activity.json exists. No prose.
+  let activityHtml = '';
+  const activityFile = path.join(CONTENT, 'projects', `${project.slug}.activity.json`);
+  if (fs.existsSync(activityFile)) {
+    try {
+      const activity = JSON.parse(fs.readFileSync(activityFile, 'utf8'));
+      if (Array.isArray(activity.entries) && activity.entries.length) {
+        const items = activity.entries.map(e =>
+          `          <li><span class="mono">${escHtml(e.date)}</span> &middot; <a href="${escHtml(e.url)}" target="_blank" rel="noopener">${escHtml(e.subject)}</a></li>`
+        ).join('\n');
+        activityHtml = `
+      <section class="project-activity" style="margin-top: 3rem;">
+        <h2>Recent activity</h2>
+        <ul style="list-style: none; padding: 0; display: grid; gap: 0.4rem;">
+${items}
+        </ul>
+      </section>`;
+      }
+    } catch (e) { /* malformed data file: render nothing */ }
+  }
+
   // Technical metadata block
   const metaHtml = `
       <dl style="margin-bottom: 2rem; display: grid; grid-template-columns: auto 1fr; gap: 0.5rem 1rem; align-items: baseline;">
@@ -726,6 +748,7 @@ function renderProjectPage(project, allProjects, settings) {
       <h1>${escHtml(project.title)}</h1>
       ${metaHtml}
       ${bodyHtml}
+      ${activityHtml}
       <hr class="section-break">
     </article>
 

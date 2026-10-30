@@ -1,0 +1,30 @@
+{
+  "updated": "2026-10-30",
+  "entries": [
+    {
+      "date": "2025-11-17",
+      "subject": "Merge pull request #3 from K41R0N/claude/incomplete-description-011CV47T2rEq5cPzRwGXMXEa",
+      "url": "https://github.com/K41R0N/UH-Vibe-Checker/commit/dde44d60ccedd1f7b9eef942158342a5b1e0f3d7"
+    },
+    {
+      "date": "2025-11-13",
+      "subject": "fix: Add optional chaining for all nested property accesses (TypeScript)",
+      "url": "https://github.com/K41R0N/UH-Vibe-Checker/commit/a8b86ad137386c67cf0f844d54723f89477fc15f"
+    },
+    {
+      "date": "2025-11-13",
+      "subject": "fix: Remove unused imports and improve data handling robustness",
+      "url": "https://github.com/K41R0N/UH-Vibe-Checker/commit/af0c08954b7f11506750175790b8bf9f390cd1ea"
+    },
+    {
+      "date": "2025-11-13",
+      "subject": "feat: Redesign with professional webapp UX and fix critical bugs",
+      "url": "https://github.com/K41R0N/UH-Vibe-Checker/commit/abc41bd671ec4c93955516657e1b15afbdde6a7b"
+    },
+    {
+      "date": "2025-11-13",
+      "subject": "fix: Complete site configuration and domain unification",
+      "url": "https://github.com/K41R0N/UH-Vibe-Checker/commit/5abfa313b8839b062201b3117fc381302c3bc547"
+    }
+  ]
+}
