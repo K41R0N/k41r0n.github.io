@@ -30,7 +30,47 @@ const ASSETS  = path.join(SRC, 'assets');
 const _rawSiteUrl = process.env.PUBLIC_SITE_URL || 'https://kairon.xyz';
 const SITE_URL    = (_rawSiteUrl.startsWith('http') ? _rawSiteUrl : `https://${_rawSiteUrl}`).replace(/\/$/, '');
 const GSC_VERIFICATION  = process.env.GOOGLE_SITE_VERIFICATION || '';
-const GA4_ID            = process.env.GA4_MEASUREMENT_ID || 'G-4E1LTHSFX8';
+// Analytics: PostHog EU (TRACKING.md). No library, no cookies, no IP, no geo - the page posts
+// two events itself through the first-party /ingest path (vercel.json rewrites it to PostHog).
+// The project key is a public write-only ingest key (safe in source, like the old GA4 ID was).
+// Without a key the site builds with analytics OFF - no script is emitted at all.
+const POSTHOG_KEY = process.env.PUBLIC_POSTHOG_KEY || 'phc_psFMygpjBSQcs6K9sfHoZKthFqwRBmRzkiV6GwxWNdZK';
+
+function analyticsScript() {
+  if (!POSTHOG_KEY) return '';
+  const cfg = JSON.stringify({ key: POSTHOG_KEY });
+  return `
+  <!-- Analytics (TRACKING.md): two events, nothing else -->
+  <script>
+  (function () {
+    var CFG = ${cfg};
+    var rid = function () { return Math.random().toString(36).slice(2, 10); };
+    var visitId = rid();
+    var path = location.pathname;
+    function send(event, props) {
+      var body = JSON.stringify({
+        api_key: CFG.key, event: event, distinct_id: rid(),
+        properties: Object.assign({}, props, { $process_person_profile: false, $geoip_disable: true })
+      });
+      var url = '/ingest/i/v0/e/';
+      try { if (navigator.sendBeacon(url, new Blob([body], { type: 'text/plain' }))) return; } catch (e) {}
+      fetch(url, { method: 'POST', body: body, keepalive: true, headers: { 'content-type': 'text/plain' } }).catch(function () {});
+    }
+    var visibleSince = document.visibilityState === 'visible' ? performance.now() : 0;
+    var visibleMs = 0;
+    var opened = false;
+    function open() { if (!opened) { opened = true; send('page_opened', { path: path, visit_id: visitId }); } }
+    function pause() { if (visibleSince) { visibleMs += performance.now() - visibleSince; visibleSince = 0; } }
+    function end() { pause(); send('visit_ended', { path: path, visit_id: visitId, visible_seconds: Math.round(visibleMs / 1000) }); }
+    if (document.visibilityState === 'visible') open();
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'hidden') end();
+      else { if (!visibleSince) visibleSince = performance.now(); open(); }
+    });
+    addEventListener('pagehide', end);
+  })();
+  </script>`;
+}
 
 // ============================================================================
 // Utilities
@@ -244,14 +284,7 @@ function sharedHead({ title, description, url, type = 'website', settings }) {
   <link rel="preload" href="/assets/fonts/AT-Kyrios-Variable.woff2" as="font" type="font/woff2" crossorigin>
   ${CSS_LINKS}
   <noscript><style>body{opacity:1!important}</style></noscript>
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=${GA4_ID}"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', '${GA4_ID}');
-  </script>`.trim();
+  ${analyticsScript()}`.trim();
 }
 
 // ============================================================================
