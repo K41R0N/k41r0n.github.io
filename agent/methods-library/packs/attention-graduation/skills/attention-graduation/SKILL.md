@@ -44,7 +44,7 @@ Return the profile to the person who asked. Nothing is changed or run without th
 Run `python3 evals/run.py attention-graduation`. A pass means the profile is consistent. It does not mean the ratings are right; that is a person's call.
 
 ## Compound step
-Log a correction in routines/learnings.md. Three repeats become a rule.
+Log a correction in routines/learnings.md. Two repeats make a rule.
 
 ## References
 packs/attention-graduation/fixtures/
