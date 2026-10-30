@@ -1,5 +1,6 @@
 {
   // Cloudflare Workers mirror of kairon.xyz (Phase 1: static mirror; no DNS change).
+  // Auto-deploy smoke test marker (comment-only; no behavioral change).
   // Parity target: vercel.json - static dist/ output, cleanUrls, /api CORS+cache,
   // llms content-type, /ingest reverse proxy to PostHog EU.
   "$schema": "node_modules/wrangler/config-schema.json",
