@@ -36,6 +36,10 @@ const FETCH_PER_PROJECT = 12; // fetch extra so filtering still yields 5
 // site-wide sweep.
 const FORWARD_LOOKING = /roadmap|coming soon|stay tuned|later work|in the works|upcoming|next release|planned feature|will be (available|added|launched|shipped)|work in progress|\bWIP\b/i;
 
+// Privacy filter (his rule 2026-10-29): his partner is never named in
+// public-facing copy. A subject naming her is dropped, never rewritten.
+const PRIVACY = /\bemily\b/i;
+
 function cleanSubject(message) {
   return (message || '').split('\n')[0].replace(/\s*\[skip ci\]\s*$/i, '').trim();
 }
@@ -52,6 +56,7 @@ async function fetchCommits(repo) {
   }))
   .filter(e => e.date && e.subject && e.url)
   .filter(e => !FORWARD_LOOKING.test(e.subject))
+  .filter(e => !PRIVACY.test(e.subject))
   .slice(0, ENTRIES_PER_PROJECT);
 }
 
