@@ -1,0 +1,12 @@
+name: process-standardization
+kind: method
+version: 0.1.0
+status: draft
+summary: Convert team interviews into traceable process comparisons, a stable action manifest, evidence-grounded SOPs, interviewee review, and a rollout playbook while preserving useful variants.
+class_max: S1
+requires: { modules: [], secrets: [], egress: [] }
+provides:
+  skills: [process-standardization]
+  evals: [evals/checks.py]
+attention: { process-standardization: D3/E4 }
+source: User-provided process-standardization method package containing the shared controller, pipeline guide, bootstrap, interview extraction, cross-interview synthesis, action manifest, SOP drafter, interviewee review summary, playbook assembler, and read-only audit. The complete substantive stage procedures, schemas, templates, quality rules, and handoffs are retained in one skill file; plugin-specific packaging and paths are generalized. Method-only content; no project-specific records or client data. Workflow implementation and delivery status are not independently established.
