@@ -1,6 +1,17 @@
+---
+id: 01M69AYGQXB0HS6MAES3K1T10Z
+type: Method
+title: "Operator profile: how Alejandro works"
+description: "Practical defaults synthesized from selected research, review, iteration, and planning samples; not item-by-item owner confirmation."
+confidence: inferred
+source: "00-compendium/alejandro-ways-of-working-2026-10-28.md@e2c6fcdacf32783a72f1ddca06ee0e4edc8038d4"
+updated: 2026-10-31
+class: S0
+tags: [verification, listening, copy]
+---
 # Operator profile: how Alejandro works
 
-This profile is a practical guide for anticipating Alejandro's working preferences. It summarizes recurring patterns from research, feedback, iteration, and planning. The detailed methods live in [research-method.md](research-method.md), [feedback-and-review.md](feedback-and-review.md), [iteration-protocol.md](iteration-protocol.md), and [briefing-and-work-planning.md](briefing-and-work-planning.md). It describes reusable working style, not any client, audience, campaign, or project instance.
+This profile is a practical guide for anticipating Alejandro's working preferences. It summarizes recurring patterns from research, feedback, iteration, and planning. The detailed methods live in [research-method.md](research-method.md), [feedback-and-review.md](feedback-and-review.md), [iteration-protocol.md](iteration-protocol.md), and [briefing-and-work-planning.md](briefing-and-work-planning.md). It describes reusable working style, not any client, audience, campaign, or project instance. This is an inferred profile assembled from a compiled methods inventory and selected samples, not a direct, item-by-item confirmation from Alejandro. Use the linked methods for the work; do not treat every bullet here as a standing instruction.
 
 Treat these as defaults, not as permission to act or publish in his name. A current direct instruction overrides this profile. Distinguish directly stated preferences from patterns inferred across work; when uncertain, say so rather than turning an inference into a fact.
 
@@ -56,4 +67,12 @@ Scale the number of lenses and rounds to the work. Do not use one generic review
 
 ## Evidence base and limits
 
-Patterns above were abstracted from personal research and audience-listening instruments, work-planning notes, review and feedback records, editorial iteration protocols, and process-design materials in the supplied archive. Client names, identifiers, audience details, project facts, legal positions, and examples tied to a particular engagement are intentionally omitted. Some defaults are repeated patterns rather than direct statements; treat them as working hypotheses and update them when Alejandro gives a newer or more specific instruction.
+| Profile claim | Supporting source | Confidence boundary |
+|---|---|---|
+| Fixed instruments, source ladders, hypotheses, disconfirmation, and comparable runs | `00-compendium/alejandro-ways-of-working-2026-10-28.md`, R1-R10; `detailed behavioral-search instrument in the supplied source archive (instance details omitted)` | Methods are evidenced in the compendium and one detailed instrument; task-specific details are not universal. |
+| Feedback triage, review stages, adjudication, and verification | Compendium E4/E9; `10-skills/sky-thought-piece/references/review-protocol.md` | Editorial methods, scaled by artifact; not every review needs every stage. |
+| Exact brief questions and one-page contract | `10-skills/project-brief-skill/SKILL.md` | Directly specified in the source skill; use the skill for the complete deliverable contract. |
+| Manual-first process design and explicit plan checks | Compendium H1, E2 | Source-derived principles; this profile's combined defaults are an inference. |
+| Terminology and visual/layout feedback examples | `50-reporting-docs/int-feedback-on-the-report.md` | Small sample only; does not justify a universal feedback taxonomy. |
+
+This is an inferred profile assembled from a compiled methods inventory and selected samples, not a direct, item-by-item owner-approved profile. The direct sources support specific procedures; the profile groups them into reusable defaults. The cited source archive includes engagement-specific material, intentionally not reproduced here. Follow current direct instruction over this profile. When a claimed preference has only one example or indirect support, treat it as provisional and ask only if it changes a consequential choice.

@@ -99,6 +99,17 @@ Three failure modes, all preventable:
 
 The rest of `agent/` exists to keep you out of all three.
 
+## Methodology lookup
+
+For working preferences and repeatable methods, use the routed guides in
+[`README.md`](README.md#routing-table): `knowledge/methodologies/operator-profile.md`
+for defaults and limits; `research-method.md` for evidence-led research;
+`feedback-and-review.md` for correction and review; `iteration-protocol.md`
+for revision and verification; and `briefing-and-work-planning.md` for briefs
+and plans. These are inferred procedural syntheses, not owner-approved universal
+rules; each file names its source basis and limits. Consult its cited source
+when a disputed detail or higher-stakes application depends on it.
+
 ## Next
 
 - For the rules on what you may touch: `routines/protocols/PORTFOLIO-WRITE-GUARD-01.md`
