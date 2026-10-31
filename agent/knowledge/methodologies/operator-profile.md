@@ -1,6 +1,6 @@
 # Operator profile: how Alejandro works
 
-This profile is a practical guide for anticipating Alejandro's working preferences. It distills repeated patterns from his research instruments, review and feedback rounds, thought-piece iterations, project workflows, and his direct instructions in this archive task. It describes reusable working style, not any client, audience, campaign, or project instance.
+This profile is a practical guide for anticipating Alejandro's working preferences. It summarizes recurring patterns from research, feedback, iteration, and planning. The detailed methods live in [research-method.md](research-method.md), [feedback-and-review.md](feedback-and-review.md), [iteration-protocol.md](iteration-protocol.md), and [briefing-and-work-planning.md](briefing-and-work-planning.md). It describes reusable working style, not any client, audience, campaign, or project instance.
 
 Treat these as defaults, not as permission to act or publish in his name. A current direct instruction overrides this profile. Distinguish directly stated preferences from patterns inferred across work; when uncertain, say so rather than turning an inference into a fact.
 
