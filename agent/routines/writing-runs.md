@@ -28,7 +28,7 @@ rules on it; drafts in flight are not evidence.
     cause histogram: slop 2 -> RULE: never paraphrase his work; lift his
     own words (READMEs, docs, essays) with light editing for length only;
     where his words don't exist, cut the entry (set 2026-10-29, logged in
-    agent/learnings.md)
+    `agent/routines/learnings.md`)
     his attention per run: not yet measured
     current gate: two consecutive deliverables accepted with at most minor
     edits (streak: 0/2)

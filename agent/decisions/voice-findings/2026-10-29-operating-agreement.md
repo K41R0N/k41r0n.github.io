@@ -1,14 +1,13 @@
 # Operating agreement, voice-relevant parts (2026-10-29)
 
-Source: operating agreement approved by Alejandro on WhatsApp 2026-10-29 6:48 PM
-("Ok, proceed"). Canonical copy: agent/operating-agreement.md (this repo).
+Source: working instructions in `agent/AGENTS.md`. The cited WhatsApp message says “Ok, proceed, are you ready to do your work properly?”; it does not specifically approve every clause here. Treat unsupported clauses as repo-local proposed safeguards until directly confirmed. Canonical copy: `agent/AGENTS.md` (this repo).
 
 - Everything written in his voice (site, X, LinkedIn, prompts) is an input for
   his line-by-line edit, never output. Published output passes him at every
   stage, permanently.
 - His edits are the training data. Metrics: acceptance rate, edit rate, his
   minutes per deliverable. Tracked in the run log:
-  agent/writing-runs.md (this repo).
+  `agent/routines/writing-runs.md` (this repo).
 - The same correction twice becomes a fixed rule (his work guide; this
   supersedes the three-repeat default for user-facing work).
 - Presentation rules: facts before explanation before options before

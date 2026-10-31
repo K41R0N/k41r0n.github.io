@@ -18,7 +18,7 @@ Find which `content/` file drives the thing you want to change. Use the routing
 table in `knowledge/site/repo-architecture.md` or `CONTENT_ARCHITECTURE.md`. If a
 visible string is *not* traceable to a `content/` file, it is hardcoded in
 `scripts/build.js` — that is a Tier 1 change, stop and read
-`skills/add-configurable-field.md`.
+`skills/add-configurable-field/SKILL.md`.
 
 ### 2. Check the schema before you write
 

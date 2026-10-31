@@ -10,7 +10,7 @@ go anywhere near `admin/`.
 - **Engine:** Sveltia CMS (a drop-in replacement for Decap/Netlify CMS; same
   config format).
 - **Backend:** GitHub, repo `K41R0N/k41r0n.github.io`, branch `main`. The CMS
-  commits content **directly to `main`**, which auto-deploys via Vercel.
+  commits content **directly to `main`**, which triggers the current Cloudflare Workers Build.
 - **Auth:** a Cloudflare Worker (`base_url` in the template). This and the `repo`
   line are identity-critical — breaking them logs Alejandro out of his CMS.
 - **Schema source:** `admin/config.template.yml`. The live
@@ -97,4 +97,4 @@ fails the build. If you restructure `site.json`, keep every required key.
 - Adding a new collection or `file:`/`folder:` entry.
 - Changing `backend`, `repo`, `branch`, or `base_url`.
 - Adding a new configurable string to the build — see
-  `skills/add-configurable-field.md` for the correct end-to-end procedure.
+  `skills/add-configurable-field/SKILL.md` for the correct end-to-end procedure.

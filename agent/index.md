@@ -5,17 +5,16 @@ Read this once, fully, before contributing. It is the mental model the rest of
 
 ## What this repo is
 
-The source for **kairon.xyz** — Alejandro (Kairon) Arango Giraldo's personal
-portfolio and the **Device Economies** publication. It is a static site with no
-runtime framework: Markdown and JSON files are compiled by a Node build script
-into plain HTML in `dist/`, which Vercel serves.
+The public source repo for **kairon.xyz**, the Device Economies publication, and its methods harness. The site is built to be agentic-first, dynamically updated, and readable by AEO engines. The site itself is statically generated: Markdown and JSON are compiled by a Node build script into plain HTML in `dist/`.
+
+Current architecture and hosting are documented in [`knowledge/site/repo-architecture.md`](knowledge/site/repo-architecture.md); this orientation is the entry point, not a second deployment source of truth.
 
 | Aspect | Detail |
 |---|---|
 | Type | Static HTML/CSS/JS — no client framework |
 | Build | `node scripts/build.js` (via `npm run build`) |
 | CMS | Sveltia CMS (Decap/Netlify-compatible), GitHub backend |
-| Hosting | Vercel — auto-deploys on push to `main` |
+| Hosting | Cloudflare Workers serves the `www` site; Vercel remains the bare-domain redirect and rollback path |
 | Content | Markdown + JSON under `content/` |
 
 ## The data flow (memorize this)
@@ -39,7 +38,7 @@ content/pages/about.md
         llms.txt · llms-full.txt · api/content.json
         sitemap.xml · feed.xml · robots.txt · css/ · assets/ · admin/
                                             │
-                                       Vercel serves dist/
+                                       Cloudflare Workers serves dist/
 ```
 
 Two facts follow from this diagram and they are the heart of everything:
@@ -57,7 +56,7 @@ There are two write lanes into this repo. Know which one you are in.
 
 - **CMS lane (Sveltia, `/admin`).** A human (Alejandro) edits content in a
   browser. Sveltia commits directly to `main` via the GitHub backend, which
-  triggers a Vercel rebuild. The CMS only knows about files declared in
+  triggers a Cloudflare Workers Build. The CMS only knows about files declared in
   `admin/config.template.yml`. If a content file or frontmatter field is not in
   that schema, the CMS cannot see it — and **on the next CMS save of that file,
   any field missing from the schema is silently stripped.** This is the single

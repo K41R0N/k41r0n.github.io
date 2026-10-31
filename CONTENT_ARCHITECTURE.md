@@ -154,7 +154,7 @@ Every build also outputs:
 3. Verify it appears in `dist/index.html` TOC and `dist/thesis-NN-{slug}.html`
 4. Verify it appears in `dist/api/content.json`
 
-Or use the CMS: **Theses** → **New** → fill in all fields → Save → Vercel rebuilds automatically.
+Or use the CMS: **Theses** → **New** → fill in all fields → Save → Cloudflare Workers Build and deploy run automatically.
 
 ---
 

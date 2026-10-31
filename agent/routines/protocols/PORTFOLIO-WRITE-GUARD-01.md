@@ -82,7 +82,7 @@ Content. This is where contribution normally happens.
 - Anything inside `agent/`, `docs/` — documentation.
 
 Tier 2 still requires: valid schema (see `knowledge/site/content-schemas.md`),
-a successful `npm run build`, and verification (see `skills/build-and-verify.md`).
+a successful `npm run build`, and verification (see `skills/build-and-verify/SKILL.md`).
 
 ---
 

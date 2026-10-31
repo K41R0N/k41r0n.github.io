@@ -7,10 +7,10 @@ How an agent ships a change to this repo without endangering production.
 | Lane | What | How it ships |
 |---|---|---|
 | **Content (Tier 2)** | `content/**`, images, `agent/`, `docs/` | Branch + PR, or — for pure content Alejandro would otherwise edit himself — a CMS commit. |
-| **Code / schema / config (Tier 1)** | `scripts/`, `admin/`, `vercel.json`, `package.json`, `src/css/tokens.css` names | **Always** branch + PR after the forcing-function approval. Never a direct push to `main`. |
+| **Code / schema / config (Tier 1)** | `scripts/`, `admin/`, `wrangler.jsonc`, `vercel.json`, `package.json`, `src/css/tokens.css` names | **Always** branch + PR after the forcing-function approval. Never a direct push to `main`. |
 
-`main` auto-deploys to Vercel. A broken build on `main` is a broken production
-site. Therefore: **agents do not push code directly to `main`.** Open a PR and
+`main` triggers the Cloudflare Workers Build for the current production site. A broken build on `main` is a broken production
+site. Vercel is retained as the bare-domain redirect and rollback path, not the current `www` host. Therefore: **agents do not push code directly to `main`.** Open a PR and
 let CI / Alejandro gate the merge.
 
 ## The standard sequence
@@ -22,7 +22,7 @@ let CI / Alejandro gate the merge.
    ```
 2. **Edit** the source files (Tier 2 freely; Tier 1 only after approval).
 3. **Build & verify** — `npm run build`, then confirm the change in `dist/`. See
-   `skills/build-and-verify.md`. A red build never ships.
+   `skills/build-and-verify/SKILL.md`. A red build never ships.
 4. **Commit** with a clear message describing *what changed and why*.
 5. **Push** the branch:
    ```bash

@@ -1,8 +1,6 @@
 # Guideline — Repository Architecture
 
-The complete, authoritative content map is repo-root `CONTENT_ARCHITECTURE.md`.
-This file is the agent-oriented summary: enough to navigate confidently, with
-pointers to depth.
+This is the current architecture and hosting source of truth for the site and attached methods harness. The field-by-field content map remains in repo-root `CONTENT_ARCHITECTURE.md`; it does not own deployment state. Live production state is the Cloudflare Workers configuration and current deployment record. Vercel is retained as a rollback path / bare-domain redirect, not the current `www` host.
 
 ## Layout
 
@@ -31,7 +29,8 @@ k41r0n.github.io/
 ├── docs/                    plans + documented solutions
 ├── agent/                   ← you are here
 ├── package.json             scripts + deps (Tier 1)
-├── vercel.json              deploy config (Tier 1)
+├── wrangler.jsonc           Cloudflare Workers config (Tier 1)
+├── vercel.json              legacy / rollback and bare-domain redirect config (Tier 1)
 └── server.py                local dev server (Tier 1)
 ```
 
@@ -84,8 +83,8 @@ When you build automation that *reads* published state, prefer
 `/api/content.json` over scraping HTML. See
 `harness/specs/live-components-foundations.md`.
 
-## Deploy
+## Deploy and rollback
 
-Vercel watches `main`. Any push (CMS commit or merged PR) triggers a rebuild and
-deploy. There is no manual deploy step. This is why direct pushes of *code* to
-`main` are disallowed — a broken build on `main` is a broken production deploy.
+Cloudflare Workers serves the `www` site. Workers Builds watches `main`; a push triggers the configured build and deployment. `wrangler.jsonc` is the current Worker configuration; `src/worker.js` serves the generated `dist/` assets and handles the analytics ingest route. The current deployment record is [`agent/decisions/2026-10-30-methodology-advice-and-site-infra.md`](../../decisions/2026-10-30-methodology-advice-and-site-infra.md).
+
+Vercel remains for the bare-domain redirect and as the rollback path. `vercel.json` documents that legacy/fallback configuration; do not describe it as the current `www` host. See also the historical CMS decision [`docs/solutions/best-practices/ghost-cms-rejected-2026-05-31.md`](../../../docs/solutions/best-practices/ghost-cms-rejected-2026-05-31.md), which records the earlier Sveltia + Vercel state.

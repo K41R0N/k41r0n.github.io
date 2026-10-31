@@ -133,4 +133,4 @@ About page is `content/pages/about.md`.
 If your task needs a *new* configurable value, you cannot just add a JSON key and
 expect it on the site — `build.js` has to read it and (for editability) the CMS
 schema has to expose it. That is the four-step procedure in
-`skills/add-configurable-field.md`, and it touches Tier 1 paths.
+`skills/add-configurable-field/SKILL.md`, and it touches Tier 1 paths.

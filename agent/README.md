@@ -30,12 +30,12 @@ you. Do not edit files outside `content/` until you have read
 | Understand how the whole site works | `index.md` |
 | Know exactly what you may and may not edit | `routines/protocols/PORTFOLIO-WRITE-GUARD-01.md` |
 | Make any content edit safely, end-to-end | `routines/protocols/PORTFOLIO-CONTENT-EDIT-01.md` |
-| Publish a new blog post / essay | `skills/add-blog-post.md` |
-| Add or edit a thesis | `skills/add-thesis.md` |
-| Change site-wide settings (name, links, SEO) | `skills/edit-site-settings.md` |
-| Change home-page section headings / newsletter copy | `skills/edit-home-sections.md` |
-| Expose a NEW field to the CMS without breaking it | `skills/add-configurable-field.md` |
-| Build the site and verify nothing broke | `skills/build-and-verify.md` |
+| Publish a new blog post / essay | `skills/add-blog-post/SKILL.md` |
+| Add or edit a thesis | `skills/add-thesis/SKILL.md` |
+| Change site-wide settings (name, links, SEO) | `skills/edit-site-settings/SKILL.md` |
+| Change home-page section headings / newsletter copy | `skills/edit-home-sections/SKILL.md` |
+| Expose a NEW field to the CMS without breaking it | `skills/add-configurable-field/SKILL.md` |
+| Build the site and verify nothing broke | `skills/build-and-verify/SKILL.md` |
 | Understand the content→build→deploy architecture | `knowledge/site/repo-architecture.md` |
 | Understand CMS invariants (do not break Sveltia) | `knowledge/site/cms-safety.md` |
 | Look up a frontmatter / settings schema | `knowledge/site/content-schemas.md` |
