@@ -1,0 +1,12 @@
+name: prospect-research
+kind: method
+version: 0.2.0
+status: draft
+summary: Research a named business and relevant people from public evidence, map goal-linked business context and operations, and produce bounded, evidence-backed improvement hypotheses.
+class_max: S1
+requires: { modules: [], secrets: [], egress: [] }
+provides:
+  skills: [prospect-research]
+  evals: [evals/checks.py]
+attention: { prospect-research: D2/E3 }
+source: Adapted from the owner's reusable public-source person-research method and generalized per his direct instruction on 2026-10-31. Incorporates only generalizable structure from the two original OSINT method samples supplied by the owner. No client facts or sector-specific scoring retained. Business-model, operations, team and goal-linked improvement analysis are new extensions, not a validated universal method. Fixtures and examples must be invented and generic.
