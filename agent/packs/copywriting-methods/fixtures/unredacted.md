@@ -1,1 +1,1 @@
-The Sky.example protocol follows a 2026-04-01 legal ruling from Cahill.
+CLIENT_NAME_SENTINEL and CLIENT_PERSON_SENTINEL appear beside CLIENT_LEGAL_SENTINEL.

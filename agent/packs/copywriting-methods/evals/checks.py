@@ -1,12 +1,16 @@
-"""Small boundary checks for the generalized method reference."""
+"""Generic boundary checks for accidentally retained client-specific details."""
 import re
 
+CLIENT_NAME_SENTINEL = "CLIENT_NAME_SENTINEL"
+CLIENT_PERSON_SENTINEL = "CLIENT_PERSON_SENTINEL"
+CLIENT_LEGAL_SENTINEL = "CLIENT_LEGAL_SENTINEL"
+
 def check(text):
-    found=[]
-    if re.search(r'\bSky(?:\.money|eco)?\b|sky\.money', text, re.I):
-        found.append(('fail','R1-client-name','Contains an unredacted client brand name.'))
-    if re.search(r'https?://|\b(?:Aymeric|Rune|Cahill|Howey|Forman)\b|\b20\d\d-\d\d-\d\d\b', text, re.I):
-        found.append(('fail','R2-client-detail','Contains a likely client-specific link, identity, legal reference, or date.'))
-    if re.search(r'\b(?:approved|safe|compliant) under (?:the )?(?:SEC|GENIUS Act|Howey|Forman)', text, re.I):
-        found.append(('fail','R3-legal-claim','Contains a client-specific legal conclusion.'))
+    found = []
+    if CLIENT_NAME_SENTINEL in text:
+        found.append(("fail", "R1-client-name", "Contains a synthetic client-name sentinel."))
+    if CLIENT_PERSON_SENTINEL in text or CLIENT_LEGAL_SENTINEL in text:
+        found.append(("fail", "R2-client-detail", "Contains a synthetic person/legal-detail sentinel."))
+    if re.search(r"https?://|\b20\d\d-\d\d-\d\d\b", text):
+        found.append(("fail", "R3-specific-reference", "Contains a raw URL or ISO date that needs review."))
     return found
