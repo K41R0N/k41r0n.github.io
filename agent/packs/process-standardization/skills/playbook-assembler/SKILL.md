@@ -37,7 +37,7 @@ Before assembling, confirm you have read:
    - Team name.
    - Team mission statement (one to three sentences).
    - Role-family list (the actual families this team uses; do not assume six).
-   - Any external reference framework the team is mapping against (this is optional and team-specific; one example is a domain-specific overlay such as a domain-specific social-content playbook, but accept any).
+   - Any external reference framework the team is mapping against (this is optional and team-specific; one example is a domain-specific social-content playbook, but accept any).
 
 If any required input is missing, ask for it before writing. Do not invent team metadata.
 

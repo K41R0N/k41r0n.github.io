@@ -59,11 +59,11 @@ Originals remain separate at the pack root using their original relative paths. 
 
 - Archive path: `kairon-methods/20-harnesses/process-standardization/skills/action-manifest/SKILL.md`
 - Source SHA-256: `f1792ad76f1da92ee6d65cd25f93149240ce0c08fe75719f281833d574042692`
-- Redacted SHA-256: `944de241cfa9aa2e5674fe08bcd64f1f2ead93781f698b2ef3215d8788bb5412`
+- Redacted SHA-256: `7991c438fd4d4361f95a41829045997db386c306266c814172925af5a973d0a2`
 - Lines: 133 source / 133 redacted
 - Changed spans:
   - Line 48: `- **id** — stable slug-style identifier (lowercase, hyphenated, short). Examples of the *form*: `daily-research`, `vp-request-lifecycle`, `weekly-kpi-reporting`. Once issued, an id is permanent. Downstream SOPs will reference it.` -> `- **id** — stable slug-style identifier (lowercase, hyphenated, short). Examples of the *form*: `daily-research`, `visual-request-lifecycle`, `weekly-kpi-reporting`. Once issued, an id is permanent. Downstream SOPs will reference it.`
-  - Line 90: `Do not hardcode any specific taxonomy. The six-family taxonomy used in one prior engagement (Research & Monitoring, Content Production, Visual Production / VP Workflow, Reporting & Optimization, Community & Engagement, Campaigns & Templates) is **one example**. Crypto, social media, and Web3 examples in the source archives are illustrative only. Accept whatever family list the user supplies.` -> `Do not hardcode any specific taxonomy. One example is a six-family taxonomy that includes research, content production, visual production, reporting, community, and campaign templates. is **one example**. Domain-specific examples in source archives are illustrative only. Accept whatever family list the user supplies.`
+  - Line 90: `Do not hardcode any specific taxonomy. The six-family taxonomy used in one prior engagement (Research & Monitoring, Content Production, Visual Production / VP Workflow, Reporting & Optimization, Community & Engagement, Campaigns & Templates) is **one example**. Crypto, social media, and Web3 examples in the source archives are illustrative only. Accept whatever family list the user supplies.` -> `Do not hardcode any specific taxonomy. One example is a six-family taxonomy that includes research, content production, visual production, reporting, community, and campaign templates. Domain-specific examples in source archives are illustrative only. Accept whatever family list the user supplies.`
 
 ## `skills/sop-drafter/SKILL.md`
 
@@ -78,10 +78,10 @@ Originals remain separate at the pack root using their original relative paths. 
 
 - Archive path: `kairon-methods/20-harnesses/process-standardization/skills/playbook-assembler/SKILL.md`
 - Source SHA-256: `14427fe6bb1debfd9a5869b418a449cd793b955d081930da3ee103d7fd520e3e`
-- Redacted SHA-256: `7128c6db867d295d3e79f6aceae0eaf56b6c0235fff96600a109d3998d8dc26b`
+- Redacted SHA-256: `bd84db9fc8e85dc01ba66cb723159d0393394db09c8880c308def46fb12c051f`
 - Lines: 179 source / 179 redacted
 - Changed spans:
-  - Line 40: `   - Any external reference framework the team is mapping against (this is optional and team-specific; one example is a domain-specific overlay such as a Web3 social playbook, but accept any).` -> `   - Any external reference framework the team is mapping against (this is optional and team-specific; one example is a domain-specific overlay such as a domain-specific social-content playbook, but accept any).`
+  - Line 40: `   - Any external reference framework the team is mapping against (this is optional and team-specific; one example is a domain-specific overlay such as a Web3 social playbook, but accept any).` -> `   - Any external reference framework the team is mapping against (this is optional and team-specific; one example is a domain-specific social-content playbook, but accept any).`
 
 ## `skills/process-standardization-audit/SKILL.md`
 

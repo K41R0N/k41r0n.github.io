@@ -87,7 +87,7 @@ For each family, include:
 - **family summary** — a short paragraph describing what the family covers and any cross-cutting prerequisites.
 - **unfit actions** — if a manifest row does not fit cleanly into any family the user supplied, do not force it. Note it under an "Actions that do not fit cleanly" section with a one-line note on why. Surface this back to the user as ambiguity rather than silently classifying it.
 
-Do not hardcode any specific taxonomy. One example is a six-family taxonomy that includes research, content production, visual production, reporting, community, and campaign templates. is **one example**. Domain-specific examples in source archives are illustrative only. Accept whatever family list the user supplies.
+Do not hardcode any specific taxonomy. One example is a six-family taxonomy that includes research, content production, visual production, reporting, community, and campaign templates. Domain-specific examples in source archives are illustrative only. Accept whatever family list the user supplies.
 
 ## Naming rules
 
