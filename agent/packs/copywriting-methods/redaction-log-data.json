@@ -1,0 +1,2076 @@
+{
+  "archive_sha256": "6e3e125a36ee078ff23569a9e1e9bbb7d5560206eb3c4d9aab54679ba0033f64",
+  "included": [
+    {
+      "source_label": "Five-pass routine",
+      "source_member_redacted": "20-harnesses/[source harness]/copy/five-pass.md",
+      "source_member_path_sha256": "baa57eca12c0f918525a4de3853f28cb1e4bac681bafad3ba217c682c3731baf",
+      "output_path": "agent/packs/copywriting-methods/sources/20-harnesses/harness-01/routines/copy/five-pass.md",
+      "source_sha256": "736504ecd45045316e52028dd8c096859b81d136f4f32d7ad76a997636f14c18",
+      "output_sha256": "33c4f172006f39988826417e1721650b04b796623c78c24ecf0ae9ef3fc9f4aa",
+      "archive_source_line_count": 162,
+      "published_line_count": 47,
+      "summary": "Workflow generalized throughout. Retained source gathering, sequential five passes, output contract, and format adaptation. Removed brand, project file paths, examples, product data sources, named approvers, dated rulings, and client-specific source hierarchy/legal interpretation.",
+      "changed_line_ranges": [
+        {
+          "source_lines": [
+            3,
+            7
+          ],
+          "output_lines": [
+            3,
+            4
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            9,
+            9
+          ],
+          "output_lines": [
+            6,
+            6
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            11,
+            11
+          ],
+          "output_lines": [
+            8,
+            8
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            13,
+            15
+          ],
+          "output_lines": [
+            10,
+            10
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            17,
+            17
+          ],
+          "output_lines": [
+            12,
+            12
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            19,
+            19
+          ],
+          "output_lines": [
+            14,
+            17
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            21,
+            21
+          ],
+          "output_lines": [
+            19,
+            19
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            23,
+            23
+          ],
+          "output_lines": [
+            21,
+            21
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            25,
+            25
+          ],
+          "output_lines": [
+            23,
+            23
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            27,
+            27
+          ],
+          "output_lines": [
+            25,
+            25
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            29,
+            29
+          ],
+          "output_lines": [
+            27,
+            27
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            31,
+            31
+          ],
+          "output_lines": [
+            29,
+            29
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            33,
+            37
+          ],
+          "output_lines": [
+            31,
+            31
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            39,
+            39
+          ],
+          "output_lines": [
+            33,
+            33
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            41,
+            41
+          ],
+          "output_lines": [
+            35,
+            35
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            43,
+            43
+          ],
+          "output_lines": [
+            37,
+            37
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            45,
+            45
+          ],
+          "output_lines": [
+            39,
+            39
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            47,
+            47
+          ],
+          "output_lines": [
+            41,
+            41
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            49,
+            49
+          ],
+          "output_lines": [
+            43,
+            43
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            51,
+            51
+          ],
+          "output_lines": [
+            45,
+            45
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            53,
+            162
+          ],
+          "output_lines": [
+            47,
+            47
+          ],
+          "change": "replace"
+        }
+      ],
+      "changed_output_text": [
+        {
+          "output_lines": [
+            3,
+            4
+          ],
+          "text": [
+            "title: \"Five-Pass Copywriting Method\"",
+            "source: \"original archive; content generalized and anonymized; see redaction log\""
+          ]
+        },
+        {
+          "output_lines": [
+            6,
+            6
+          ],
+          "text": [
+            "# Five-pass copywriting method"
+          ]
+        },
+        {
+          "output_lines": [
+            8,
+            8
+          ],
+          "text": [
+            "**Purpose:** A repeatable sequence for orienting, researching, drafting, checking voice and shaping copy. This is a method, not a source of facts or project policy."
+          ]
+        },
+        {
+          "output_lines": [
+            10,
+            10
+          ],
+          "text": [
+            "## Step 0: Orient and gather sources"
+          ]
+        },
+        {
+          "output_lines": [
+            12,
+            12
+          ],
+          "text": [
+            "Before drafting:"
+          ]
+        },
+        {
+          "output_lines": [
+            14,
+            17
+          ],
+          "text": [
+            "1. Read the current brief, approved positioning, voice guidance and any applicable legal or review guidance.",
+            "2. Identify the reader, their context, the channel, the goal and any required action.",
+            "3. Follow the project's current source hierarchy. Prefer primary, current evidence. Treat cached retrieval as a lead, not as authority.",
+            "4. Record missing or conflicting evidence. Do not invent facts or numbers, or resolve a source conflict by guessing."
+          ]
+        },
+        {
+          "output_lines": [
+            19,
+            19
+          ],
+          "text": [
+            "**No usable brief, no draft.** Ask for the missing direction. If essential guidance is absent, note the gap rather than making up a rule."
+          ]
+        },
+        {
+          "output_lines": [
+            21,
+            21
+          ],
+          "text": [
+            "## Pass 1: Big idea"
+          ]
+        },
+        {
+          "output_lines": [
+            23,
+            23
+          ],
+          "text": [
+            "Write one sentence that captures the central idea. It should be simple, relevant to the intended reader, distinctive for a substantiated reason, and useful beyond one isolated line. If it is unclear, revise before drafting the rest."
+          ]
+        },
+        {
+          "output_lines": [
+            25,
+            25
+          ],
+          "text": [
+            "## Pass 2: Factual anchoring"
+          ]
+        },
+        {
+          "output_lines": [
+            27,
+            27
+          ],
+          "text": [
+            "List the factual claims in the draft: numbers, product capabilities, people, dates, comparisons and other verifiable statements. Trace each claim to current evidence and cite it where a reviewer can check it. Mark unsupported claims as `[UNVERIFIED]`; resolve them before voice review. A citation does not make a disallowed claim acceptable."
+          ]
+        },
+        {
+          "output_lines": [
+            29,
+            29
+          ],
+          "text": [
+            "## Pass 3: Voice matching"
+          ]
+        },
+        {
+          "output_lines": [
+            31,
+            31
+          ],
+          "text": [
+            "Read the current voice guidance and define the intended reader from the brief. Revise for tone, rhythm and word choice. Avoid generic marketing, filler and mismatched register. Read the copy aloud and ask whether it feels precise, respectful and suited to the reader. Keep this judgment distinct from factual or legal review."
+          ]
+        },
+        {
+          "output_lines": [
+            33,
+            33
+          ],
+          "text": [
+            "## Pass 4: Storytelling structure"
+          ]
+        },
+        {
+          "output_lines": [
+            35,
+            35
+          ],
+          "text": [
+            "Make the copy a connected explanation rather than a list of claims. Give the reader a reason to care, establish the context, connect claims, and show the implication or next step. Vary sentence and paragraph shape. Explain why a figure changed only when evidence supports the explanation; otherwise ask a focused question instead of filling the gap."
+          ]
+        },
+        {
+          "output_lines": [
+            37,
+            37
+          ],
+          "text": [
+            "## Pass 5: Compliance gate"
+          ]
+        },
+        {
+          "output_lines": [
+            39,
+            39
+          ],
+          "text": [
+            "Check the approved terminology and claims guidance. Re-verify time-sensitive numbers against current sources. Check every quote against its original source and obtain any required permission. Flag legal, regulatory, performance, comparison or forward-looking claims for qualified review under the current project process. Remove unsupported claims, misleading implications and unresolved placeholders. A clean checklist is not approval."
+          ]
+        },
+        {
+          "output_lines": [
+            41,
+            41
+          ],
+          "text": [
+            "## Format adaptation"
+          ]
+        },
+        {
+          "output_lines": [
+            43,
+            43
+          ],
+          "text": [
+            "After the five passes, adapt the copy to the chosen format and its constraints. Do not let a format change alter the substantiated meaning. Apply current channel, length, accessibility and approval requirements."
+          ]
+        },
+        {
+          "output_lines": [
+            45,
+            45
+          ],
+          "text": [
+            "## Output"
+          ]
+        },
+        {
+          "output_lines": [
+            47,
+            47
+          ],
+          "text": [
+            "A draft with a one-sentence big idea, traceable claim sources, unresolved questions clearly marked, and notes on format-specific review. Publish or send only after the required human approval."
+          ]
+        }
+      ]
+    },
+    {
+      "source_label": "Pass 1: Big idea",
+      "source_member_redacted": "20-harnesses/[source harness]/copy-review/references/01-pass-1-big-idea.md",
+      "source_member_path_sha256": "5412e2108cd2c5d242513071be0f98dc4c0eba15e478916b1318c963c6482d2f",
+      "output_path": "agent/packs/copywriting-methods/sources/20-harnesses/harness-01/skills/copy-review/references/01-pass-1-big-idea.md",
+      "source_sha256": "3cb095ad5ae795eb6123fd73b741bb3083180c1c486a1914c1eea51193142870",
+      "output_sha256": "01eb0c73f36164959dc966e54614331422e5e7f5416c38e29d31da00794ffe74",
+      "archive_source_line_count": 88,
+      "published_line_count": 41,
+      "summary": "Retained single-idea method and brief, relevance, distinctiveness, and durability checks. Replaced product/brand examples and client claims with generic illustrations.",
+      "changed_line_ranges": [
+        {
+          "source_lines": [
+            3,
+            7
+          ],
+          "output_lines": [
+            3,
+            4
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            9,
+            9
+          ],
+          "output_lines": [
+            6,
+            6
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            11,
+            11
+          ],
+          "output_lines": [
+            8,
+            8
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            13,
+            13
+          ],
+          "output_lines": [
+            10,
+            10
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            15,
+            15
+          ],
+          "output_lines": [
+            12,
+            12
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            17,
+            17
+          ],
+          "output_lines": [
+            14,
+            14
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            19,
+            19
+          ],
+          "output_lines": [
+            16,
+            16
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            21,
+            24
+          ],
+          "output_lines": [
+            18,
+            18
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            26,
+            26
+          ],
+          "output_lines": [
+            20,
+            20
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            28,
+            28
+          ],
+          "output_lines": [
+            22,
+            22
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            30,
+            30
+          ],
+          "output_lines": [
+            24,
+            28
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            32,
+            37
+          ],
+          "output_lines": [
+            30,
+            30
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            39,
+            39
+          ],
+          "output_lines": [
+            32,
+            32
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            41,
+            41
+          ],
+          "output_lines": [
+            34,
+            34
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            43,
+            43
+          ],
+          "output_lines": [
+            36,
+            36
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            45,
+            88
+          ],
+          "output_lines": [
+            38,
+            41
+          ],
+          "change": "replace"
+        }
+      ],
+      "changed_output_text": [
+        {
+          "output_lines": [
+            3,
+            4
+          ],
+          "text": [
+            "title: \"Pass 1: Big Idea\"",
+            "source: \"original archive; content generalized and anonymized; see redaction log\""
+          ]
+        },
+        {
+          "output_lines": [
+            6,
+            6
+          ],
+          "text": [
+            "# Pass 1: Big Idea"
+          ]
+        },
+        {
+          "output_lines": [
+            8,
+            8
+          ],
+          "text": [
+            "**Purpose:** Identify the single idea that anchors the copy. A strong idea gives the reader a reason to continue and can support more than one expression without becoming vague."
+          ]
+        },
+        {
+          "output_lines": [
+            10,
+            10
+          ],
+          "text": [
+            "**When to use:** Before writing the draft."
+          ]
+        },
+        {
+          "output_lines": [
+            12,
+            12
+          ],
+          "text": [
+            "## How to find it"
+          ]
+        },
+        {
+          "output_lines": [
+            14,
+            14
+          ],
+          "text": [
+            "### 1. Read the brief"
+          ]
+        },
+        {
+          "output_lines": [
+            16,
+            16
+          ],
+          "text": [
+            "Confirm the topic, angle, format, audience and goal. If the brief is missing or unclear, stop and ask for what is needed."
+          ]
+        },
+        {
+          "output_lines": [
+            18,
+            18
+          ],
+          "text": [
+            "### 2. State the core message"
+          ]
+        },
+        {
+          "output_lines": [
+            20,
+            20
+          ],
+          "text": [
+            "Ask: \"What is the one thing I want the reader to remember after reading this?\" Write a single sentence. It should state a meaningful benefit or idea, not merely praise the organization or product."
+          ]
+        },
+        {
+          "output_lines": [
+            22,
+            22
+          ],
+          "text": [
+            "### 3. Test it"
+          ]
+        },
+        {
+          "output_lines": [
+            24,
+            28
+          ],
+          "text": [
+            "- **Clarity:** Can it be stated in one sentence, preferably 15 words or fewer?",
+            "- **Reader relevance:** Would the intended reader care?",
+            "- **Distinctiveness:** Is there a substantiated reason it differs from alternatives?",
+            "- **Fit:** Does it match the brief and approved positioning?",
+            "- **Durability:** Could it support more than one piece without losing its point?"
+          ]
+        },
+        {
+          "output_lines": [
+            30,
+            30
+          ],
+          "text": [
+            "If any answer is no, revise before continuing. Do not rely on an unsupported superlative, promise or comparative claim to make the idea sound distinctive."
+          ]
+        },
+        {
+          "output_lines": [
+            32,
+            32
+          ],
+          "text": [
+            "## Output"
+          ]
+        },
+        {
+          "output_lines": [
+            34,
+            34
+          ],
+          "text": [
+            "Put the one-sentence idea at the top of the draft. Every section should support it or be removed."
+          ]
+        },
+        {
+          "output_lines": [
+            36,
+            36
+          ],
+          "text": [
+            "## Common mistakes"
+          ]
+        },
+        {
+          "output_lines": [
+            38,
+            41
+          ],
+          "text": [
+            "- **Multiple ideas:** choose one; give supporting points subordinate roles.",
+            "- **Vagueness:** replace praise with a specific reader benefit and a verified reason to believe it.",
+            "- **Brief mismatch:** ensure the idea answers the brief, not a neighboring topic.",
+            "- **Unsupported difference:** do not turn an unverified claim into the central idea."
+          ]
+        }
+      ]
+    },
+    {
+      "source_label": "Pass 2: Factual anchoring",
+      "source_member_redacted": "20-harnesses/[source harness]/copy-review/references/02-pass-2-factual-anchoring.md",
+      "source_member_path_sha256": "51056145b99a98d32d9959bf8e23537a2482413fdc8c8d1237ec1e6e1f235f34",
+      "output_path": "agent/packs/copywriting-methods/sources/20-harnesses/harness-01/skills/copy-review/references/02-pass-2-factual-anchoring.md",
+      "source_sha256": "66988a6b7a47d6d333f7cf67cd9a61c8a78fadbbaf98352d8ed544c89bf2eea2",
+      "output_sha256": "245844abe02bd178a4b87e32d34d378a9b48b091aa5258512b59ebd9e7ed1814",
+      "archive_source_line_count": 92,
+      "published_line_count": 38,
+      "summary": "Retained claim inventory, trace-to-source, citation, unresolved-claim, and no-invention steps. Removed client source URLs, product facts, named people, specific time limits, and client-only rules.",
+      "changed_line_ranges": [
+        {
+          "source_lines": [
+            4,
+            7
+          ],
+          "output_lines": [
+            4,
+            4
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            11,
+            11
+          ],
+          "output_lines": [
+            8,
+            8
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            13,
+            13
+          ],
+          "output_lines": [
+            10,
+            10
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            15,
+            15
+          ],
+          "output_lines": [
+            12,
+            12
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            17,
+            17
+          ],
+          "output_lines": [
+            14,
+            14
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            19,
+            19
+          ],
+          "output_lines": [
+            16,
+            16
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            21,
+            27
+          ],
+          "output_lines": [
+            18,
+            18
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            29,
+            29
+          ],
+          "output_lines": [
+            20,
+            23
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            31,
+            31
+          ],
+          "output_lines": [
+            25,
+            25
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            33,
+            33
+          ],
+          "output_lines": [
+            27,
+            27
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            35,
+            35
+          ],
+          "output_lines": [
+            29,
+            34
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            37,
+            37
+          ],
+          "output_lines": [
+            36,
+            36
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            39,
+            92
+          ],
+          "output_lines": [
+            38,
+            38
+          ],
+          "change": "replace"
+        }
+      ],
+      "changed_output_text": [
+        {
+          "output_lines": [
+            4,
+            4
+          ],
+          "text": [
+            "source: \"original archive; content generalized and anonymized; see redaction log\""
+          ]
+        },
+        {
+          "output_lines": [
+            8,
+            8
+          ],
+          "text": [
+            "**Purpose:** Make factual claims traceable to evidence. This pass checks support; it does not decide whether a supported claim is allowed."
+          ]
+        },
+        {
+          "output_lines": [
+            10,
+            10
+          ],
+          "text": [
+            "**When to use:** After the big idea, across every factual claim in the draft."
+          ]
+        },
+        {
+          "output_lines": [
+            12,
+            12
+          ],
+          "text": [
+            "## The rule"
+          ]
+        },
+        {
+          "output_lines": [
+            14,
+            14
+          ],
+          "text": [
+            "Every factual claim needs a source a reviewer can inspect. If it cannot be verified, mark it `[UNVERIFIED]` and identify the source or person needed. Resolve unverified claims before voice review."
+          ]
+        },
+        {
+          "output_lines": [
+            16,
+            16
+          ],
+          "text": [
+            "Claims include numbers, capabilities, personnel and roles, timelines, comparisons, superlatives and statements about law or regulation."
+          ]
+        },
+        {
+          "output_lines": [
+            18,
+            18
+          ],
+          "text": [
+            "## How to anchor claims"
+          ]
+        },
+        {
+          "output_lines": [
+            20,
+            23
+          ],
+          "text": [
+            "1. **Identify claims.** Read each sentence and ask, \"Can I prove this?\"",
+            "2. **Trace evidence.** Use the project's current source hierarchy and prefer direct, current sources. Note the exact source, section and date where helpful.",
+            "3. **Cite clearly.** Put a source note beside each claim or in a linked review record. Ensure the reviewer can reach it.",
+            "4. **Flag gaps.** Use `[UNVERIFIED: source or reviewer needed]`. Do not proceed to voice review while a material claim remains unresolved."
+          ]
+        },
+        {
+          "output_lines": [
+            25,
+            25
+          ],
+          "text": [
+            "A source citation does not override approved claim restrictions, privacy limits, or the source hierarchy."
+          ]
+        },
+        {
+          "output_lines": [
+            27,
+            27
+          ],
+          "text": [
+            "## What not to do"
+          ]
+        },
+        {
+          "output_lines": [
+            29,
+            34
+          ],
+          "text": [
+            "- Do not invent or estimate a number.",
+            "- Recheck time-sensitive figures at the point of use.",
+            "- Do not paraphrase a quote as though it were exact.",
+            "- Do not attribute a statement to someone who did not make it.",
+            "- Do not claim a capability that current product evidence does not support.",
+            "- Do not use a source merely because it supports a preferred claim; check whether it is current and authoritative for that claim."
+          ]
+        },
+        {
+          "output_lines": [
+            36,
+            36
+          ],
+          "text": [
+            "## Output"
+          ]
+        },
+        {
+          "output_lines": [
+            38,
+            38
+          ],
+          "text": [
+            "A draft with traceable sources for each factual claim and explicit flags for unresolved items."
+          ]
+        }
+      ]
+    },
+    {
+      "source_label": "Pass 3: Voice matching",
+      "source_member_redacted": "20-harnesses/[source harness]/copy-review/references/03-pass-3-voice-matching.md",
+      "source_member_path_sha256": "ec93389b2efd9ef2ad5656c47bc3081113ecd04091fa3ea7d3bd13cb0a491224",
+      "output_path": "agent/packs/copywriting-methods/sources/20-harnesses/harness-01/skills/copy-review/references/03-pass-3-voice-matching.md",
+      "source_sha256": "4ceac57579d644f8b4253a14b97ec3de287c4f8cd1949db1fc9aee42f01d32c8",
+      "output_sha256": "ea7932c2d93d263de024022b9c7b31d68a5ec94de77f17ae1e337a081e4589aa",
+      "archive_source_line_count": 112,
+      "published_line_count": 46,
+      "summary": "Retained voice-guide reads, reader definition, tone revision, read-aloud and reader tests, and separation of voice from claim review. Removed client voice, audience assumptions, brand branches, named project examples, and unavailable source links.",
+      "changed_line_ranges": [
+        {
+          "source_lines": [
+            4,
+            7
+          ],
+          "output_lines": [
+            4,
+            4
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            11,
+            11
+          ],
+          "output_lines": [
+            8,
+            8
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            13,
+            23
+          ],
+          "output_lines": [
+            10,
+            10
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            27,
+            31
+          ],
+          "output_lines": [
+            14,
+            17
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            33,
+            33
+          ],
+          "output_lines": [
+            19,
+            19
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            35,
+            35
+          ],
+          "output_lines": [
+            21,
+            21
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            37,
+            37
+          ],
+          "output_lines": [
+            23,
+            23
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            39,
+            54
+          ],
+          "output_lines": [
+            25,
+            25
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            58,
+            84
+          ],
+          "output_lines": [
+            29,
+            34
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            88,
+            93
+          ],
+          "output_lines": [
+            38,
+            42
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            95,
+            95
+          ],
+          "output_lines": [
+            44,
+            44
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            97,
+            112
+          ],
+          "output_lines": [
+            46,
+            46
+          ],
+          "change": "replace"
+        }
+      ],
+      "changed_output_text": [
+        {
+          "output_lines": [
+            4,
+            4
+          ],
+          "text": [
+            "source: \"original archive; content generalized and anonymized; see redaction log\""
+          ]
+        },
+        {
+          "output_lines": [
+            8,
+            8
+          ],
+          "text": [
+            "**Purpose:** Make the copy sound like the intended speaker addressing the intended reader, rather than generic marketing or a mismatched audience register."
+          ]
+        },
+        {
+          "output_lines": [
+            10,
+            10
+          ],
+          "text": [
+            "**When to use:** After factual anchoring. Resolve material unsupported claims first."
+          ]
+        },
+        {
+          "output_lines": [
+            14,
+            17
+          ],
+          "text": [
+            "1. The current voice guide, including its register and approved or disallowed wording.",
+            "2. The project's voice principles, if maintained separately.",
+            "3. The brief and any approved audience profile.",
+            "4. The project's writing mechanics and editing guidance."
+          ]
+        },
+        {
+          "output_lines": [
+            19,
+            19
+          ],
+          "text": [
+            "If a required reference is missing, record the gap. Do not invent a voice rule."
+          ]
+        },
+        {
+          "output_lines": [
+            21,
+            21
+          ],
+          "text": [
+            "## The rule"
+          ]
+        },
+        {
+          "output_lines": [
+            23,
+            23
+          ],
+          "text": [
+            "Define the reader from the brief: what they know, need and are deciding. Read the draft aloud. If the language sounds generic, patronizing, overly familiar or too formal for that reader, revise it."
+          ]
+        },
+        {
+          "output_lines": [
+            25,
+            25
+          ],
+          "text": [
+            "Aim for clarity and specificity. Explain project-specific terms when readers may not know them; do not explain familiar basics without a reason. Use the approved tagline only after verifying its current wording. Prefer direct address when it fits the voice."
+          ]
+        },
+        {
+          "output_lines": [
+            29,
+            34
+          ],
+          "text": [
+            "1. Read the current register and vocabulary guidance before editing.",
+            "2. Remove generic phrases and filler. Replace them with specific, supported information.",
+            "3. Check whether the copy over-explains familiar concepts or assumes unexplained project terminology.",
+            "4. Check distance and familiarity: avoid needless institutional phrasing and insider slang.",
+            "5. Read aloud and apply the reader test: is it precise, respectful and worth the reader's attention?",
+            "6. Keep the voice judgment separate from claim-honesty and legal review. They answer different questions."
+          ]
+        },
+        {
+          "output_lines": [
+            38,
+            42
+          ],
+          "text": [
+            "- Empty phrases that sound polished but say little.",
+            "- Motivational language that adds no information.",
+            "- Unneeded hedges or confident wording that overstates the evidence.",
+            "- Over-explaining basics or leaving essential terms unexplained.",
+            "- Register drift toward formality or in-group slang."
+          ]
+        },
+        {
+          "output_lines": [
+            44,
+            44
+          ],
+          "text": [
+            "## Output"
+          ]
+        },
+        {
+          "output_lines": [
+            46,
+            46
+          ],
+          "text": [
+            "A revised draft that follows the project's current voice guidance and fits the reader defined in the brief."
+          ]
+        }
+      ]
+    },
+    {
+      "source_label": "Pass 4: Storytelling structure",
+      "source_member_redacted": "20-harnesses/[source harness]/copy-review/references/04-pass-4-storytelling-structure.md",
+      "source_member_path_sha256": "41cbac44fbb4d9c675cc41e4f8cf569e2b84d446a0e9191c101c29f373d5bab6",
+      "output_path": "agent/packs/copywriting-methods/sources/20-harnesses/harness-01/skills/copy-review/references/04-pass-4-storytelling-structure.md",
+      "source_sha256": "ceb5ab416ba7d8e9e0461e3638fad1e6a8520a42815b2f70c6d7323260dd7f8f",
+      "output_sha256": "25fabd2e68b65c2524b1582b08725eb4a4a0c80ab6f3cc7190b11520b5c4e34f",
+      "archive_source_line_count": 109,
+      "published_line_count": 34,
+      "summary": "Retained narrative arc, claim connection, causal caution, number-change verification, structural variation, and anti-filler method. Replaced client-specific product, metric, performance, and legal examples.",
+      "changed_line_ranges": [
+        {
+          "source_lines": [
+            4,
+            7
+          ],
+          "output_lines": [
+            4,
+            4
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            11,
+            11
+          ],
+          "output_lines": [
+            8,
+            8
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            13,
+            13
+          ],
+          "output_lines": [
+            10,
+            10
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            15,
+            15
+          ],
+          "output_lines": [
+            12,
+            12
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            17,
+            17
+          ],
+          "output_lines": [
+            14,
+            14
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            19,
+            19
+          ],
+          "output_lines": [
+            16,
+            16
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            21,
+            21
+          ],
+          "output_lines": [
+            18,
+            22
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            23,
+            23
+          ],
+          "output_lines": [
+            24,
+            24
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            25,
+            25
+          ],
+          "output_lines": [
+            26,
+            30
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            27,
+            27
+          ],
+          "output_lines": [
+            32,
+            32
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            29,
+            109
+          ],
+          "output_lines": [
+            34,
+            34
+          ],
+          "change": "replace"
+        }
+      ],
+      "changed_output_text": [
+        {
+          "output_lines": [
+            4,
+            4
+          ],
+          "text": [
+            "source: \"original archive; content generalized and anonymized; see redaction log\""
+          ]
+        },
+        {
+          "output_lines": [
+            8,
+            8
+          ],
+          "text": [
+            "**Purpose:** Connect the claims into an explanation, not a list. Show why a fact matters when evidence supports the explanation."
+          ]
+        },
+        {
+          "output_lines": [
+            10,
+            10
+          ],
+          "text": [
+            "**When to use:** After voice matching. Rework the structure without changing the substantiated meaning."
+          ]
+        },
+        {
+          "output_lines": [
+            12,
+            12
+          ],
+          "text": [
+            "## The rule"
+          ]
+        },
+        {
+          "output_lines": [
+            14,
+            14
+          ],
+          "text": [
+            "A reader should understand how the main idea, evidence and implications connect. Metrics without context are a report, not a story. When the evidence is thin, ask a focused question rather than adding generic prose."
+          ]
+        },
+        {
+          "output_lines": [
+            16,
+            16
+          ],
+          "text": [
+            "## How to build the narrative"
+          ]
+        },
+        {
+          "output_lines": [
+            18,
+            22
+          ],
+          "text": [
+            "1. **Find the arc.** Establish why the reader should care, the relevant context, the problem or tension, the supported response and the next step.",
+            "2. **Connect claims.** Explain the relationship between evidence and conclusion. Do not imply causation where the evidence only shows correlation.",
+            "3. **Explain changes.** If a number moved, identify the verified reason. If the reason is unknown, flag it for the person or source that can answer.",
+            "4. **Vary structure.** Mix sentence lengths and paragraph shapes. Avoid a uniform sequence of bullets or identically sized paragraphs.",
+            "5. **Close the loop.** End with a clear takeaway or appropriate action, if the format calls for one."
+          ]
+        },
+        {
+          "output_lines": [
+            24,
+            24
+          ],
+          "text": [
+            "## Common structural tells"
+          ]
+        },
+        {
+          "output_lines": [
+            26,
+            30
+          ],
+          "text": [
+            "- Equal-length paragraphs with the same shape.",
+            "- A string of bullets with no connection between them.",
+            "- A list of metrics without explaining what changed or why it matters.",
+            "- Generic filler in place of evidence.",
+            "- A hook or call to action that does not follow from the supporting claims."
+          ]
+        },
+        {
+          "output_lines": [
+            32,
+            32
+          ],
+          "text": [
+            "## Output"
+          ]
+        },
+        {
+          "output_lines": [
+            34,
+            34
+          ],
+          "text": [
+            "A draft with a clear narrative thread, supported explanation and no invented causal links."
+          ]
+        }
+      ]
+    },
+    {
+      "source_label": "Pass 5: Final review",
+      "source_member_redacted": "20-harnesses/[source harness]/copy-review/references/05-pass-5-compliance-gate.md",
+      "source_member_path_sha256": "c0f37ae908fb0cf5f1909915f78c845cc650f1d8eceb0e9038cb335e15a02279",
+      "output_path": "agent/packs/copywriting-methods/sources/20-harnesses/harness-01/skills/copy-review/references/05-pass-5-compliance-gate.md",
+      "source_sha256": "6ed2121b98baf56a562b0b870a85c94fe808053cb387c6326ac8a9d5f573765f",
+      "output_sha256": "ee72d7ebea4bf31d1734863664fdb67398c8d8738007cc0053cf4efa30b4b924",
+      "archive_source_line_count": 143,
+      "published_line_count": 52,
+      "summary": "Retained generic review mechanics for terminology, legal/expert review, substantiation, claims, quotations, numbers, and approval. Removed client-specific legal doctrine, entity relationships, named counsel/approvers, policy hierarchy, product architecture, current claims, and dated rulings.",
+      "changed_line_ranges": [
+        {
+          "source_lines": [
+            3,
+            7
+          ],
+          "output_lines": [
+            3,
+            4
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            9,
+            9
+          ],
+          "output_lines": [
+            6,
+            6
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            11,
+            11
+          ],
+          "output_lines": [
+            8,
+            8
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            13,
+            13
+          ],
+          "output_lines": [
+            10,
+            10
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            15,
+            15
+          ],
+          "output_lines": [
+            12,
+            12
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            17,
+            17
+          ],
+          "output_lines": [
+            14,
+            14
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            19,
+            19
+          ],
+          "output_lines": [
+            16,
+            16
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            21,
+            21
+          ],
+          "output_lines": [
+            18,
+            18
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            23,
+            23
+          ],
+          "output_lines": [
+            20,
+            24
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            25,
+            25
+          ],
+          "output_lines": [
+            26,
+            26
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            27,
+            27
+          ],
+          "output_lines": [
+            28,
+            28
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            29,
+            35
+          ],
+          "output_lines": [
+            30,
+            30
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            37,
+            38
+          ],
+          "output_lines": [
+            32,
+            32
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            40,
+            40
+          ],
+          "output_lines": [
+            34,
+            34
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            42,
+            42
+          ],
+          "output_lines": [
+            36,
+            36
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            44,
+            44
+          ],
+          "output_lines": [
+            38,
+            38
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            46,
+            46
+          ],
+          "output_lines": [
+            40,
+            40
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            48,
+            53
+          ],
+          "output_lines": [
+            42,
+            42
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            55,
+            55
+          ],
+          "output_lines": [
+            44,
+            44
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            57,
+            57
+          ],
+          "output_lines": [
+            46,
+            46
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            59,
+            59
+          ],
+          "output_lines": [
+            48,
+            48
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            61,
+            61
+          ],
+          "output_lines": [
+            50,
+            50
+          ],
+          "change": "replace"
+        },
+        {
+          "source_lines": [
+            63,
+            143
+          ],
+          "output_lines": [
+            52,
+            52
+          ],
+          "change": "replace"
+        }
+      ],
+      "changed_output_text": [
+        {
+          "output_lines": [
+            3,
+            4
+          ],
+          "text": [
+            "title: \"Pass 5: Final Review\"",
+            "source: \"original archive; content generalized and anonymized; see redaction log\""
+          ]
+        },
+        {
+          "output_lines": [
+            6,
+            6
+          ],
+          "text": [
+            "# Pass 5: Final Review"
+          ]
+        },
+        {
+          "output_lines": [
+            8,
+            8
+          ],
+          "text": [
+            "**Purpose:** Check terminology, substantiation, legal review triggers, quotations and approvals before submission. This checklist is a general review method, not project-specific legal advice."
+          ]
+        },
+        {
+          "output_lines": [
+            10,
+            10
+          ],
+          "text": [
+            "**When to use:** After story structure is complete and before submitting a draft for approval."
+          ]
+        },
+        {
+          "output_lines": [
+            12,
+            12
+          ],
+          "text": [
+            "## The rule"
+          ]
+        },
+        {
+          "output_lines": [
+            14,
+            14
+          ],
+          "text": [
+            "Do not submit copy with unresolved failures. Fix the issue or route it to the qualified reviewer. A clean automated check is not a legal review or approval."
+          ]
+        },
+        {
+          "output_lines": [
+            16,
+            16
+          ],
+          "text": [
+            "## Final checklist"
+          ]
+        },
+        {
+          "output_lines": [
+            18,
+            18
+          ],
+          "text": [
+            "### 1. Terminology and claims"
+          ]
+        },
+        {
+          "output_lines": [
+            20,
+            24
+          ],
+          "text": [
+            "- Check the current project terminology and claims guidance.",
+            "- Use financial, technical or regulated terms only with their approved meaning and context.",
+            "- Do not imply a legal or regulatory status without current approved substantiation.",
+            "- Do not rely on a past claim or wording as proof that it is allowed now.",
+            "- If the needed guide is missing, flag the gap; do not invent a ban or approved alternative."
+          ]
+        },
+        {
+          "output_lines": [
+            26,
+            26
+          ],
+          "text": [
+            "### 2. Legal review triggers"
+          ]
+        },
+        {
+          "output_lines": [
+            28,
+            28
+          ],
+          "text": [
+            "Route the draft through the current project process when it includes legal or regulatory interpretations, claims about risk or performance, forward-looking statements, commitments, or statements about relationships with other entities. Qualified reviewers determine the applicable requirements. Do not assert that a phrase or structure is legally safe based on this method."
+          ]
+        },
+        {
+          "output_lines": [
+            30,
+            30
+          ],
+          "text": [
+            "### 3. Context and substantiation"
+          ]
+        },
+        {
+          "output_lines": [
+            32,
+            32
+          ],
+          "text": [
+            "Check whether claims could imply services, guarantees, control or outcomes that the product does not provide. Compare each statement with current approved product facts and legal guidance. For short formats, identify where the reader can find essential context. Strong comparisons and superlatives need current evidence and any required review."
+          ]
+        },
+        {
+          "output_lines": [
+            34,
+            34
+          ],
+          "text": [
+            "### 4. Claim-honesty test"
+          ]
+        },
+        {
+          "output_lines": [
+            36,
+            36
+          ],
+          "text": [
+            "Ask: \"Can we substantiate and stand behind every sentence?\" Check accuracy, clarity and restraint. Keep this distinct from voice matching: a claim can be accurate but sound wrong, or sound right but lack support."
+          ]
+        },
+        {
+          "output_lines": [
+            38,
+            38
+          ],
+          "text": [
+            "### 5. Quotes and third parties"
+          ]
+        },
+        {
+          "output_lines": [
+            40,
+            40
+          ],
+          "text": [
+            "Verify quotations against their original source and preserve context. Never invent or silently paraphrase a quote as verbatim. Obtain required permission before using a quote or speaking for another person or organization. Treat outside organizations as independent unless an approved source establishes otherwise."
+          ]
+        },
+        {
+          "output_lines": [
+            42,
+            42
+          ],
+          "text": [
+            "### 6. Numbers and time-sensitive details"
+          ]
+        },
+        {
+          "output_lines": [
+            44,
+            44
+          ],
+          "text": [
+            "Re-check figures, dates, rates and other changing facts against current approved sources. Record the source and an as-of time where useful. Do not publish a stale figure simply because it appeared in an earlier draft."
+          ]
+        },
+        {
+          "output_lines": [
+            46,
+            46
+          ],
+          "text": [
+            "### 7. Approval and submission"
+          ]
+        },
+        {
+          "output_lines": [
+            48,
+            48
+          ],
+          "text": [
+            "Follow the current project approval process. Submit the draft with its central idea, source notes, unresolved questions and format-specific needs. Do not send or publish it until required approval is recorded."
+          ]
+        },
+        {
+          "output_lines": [
+            50,
+            50
+          ],
+          "text": [
+            "## Output"
+          ]
+        },
+        {
+          "output_lines": [
+            52,
+            52
+          ],
+          "text": [
+            "A draft with unresolved issues fixed or clearly routed, traceable sources, and the required review state. A clean check does not certify quality or replace human judgment."
+          ]
+        }
+      ]
+    }
+  ],
+  "excluded": [
+    {
+      "source_label": "protocol API specification",
+      "original_member_path_sha256": "2aa599af65b0f36757b35eede378df5c9938a1c4647f0e173bfaac3a68de9491",
+      "reason": "Excluded as client-instance technical implementation and endpoints. Methodology does not require publishing account, protocol, or service-specific integration details."
+    },
+    {
+      "source_label": "protocol endpoint specification",
+      "original_member_path_sha256": "8655922502f5635eb11b0bc4d85ab68c259d98426fb673862f0a3115193b156d",
+      "reason": "Excluded as client-instance endpoint, field, and service detail. The raw technical spec is not a general copywriting method."
+    },
+    {
+      "source_label": "embedded legal reasoning and regulatory analysis in Pass 5 source",
+      "reason": "Removed and replaced with a generic instruction to consult current approved legal guidance and qualified reviewers; the client-specific legal conclusions, rule citations, and product analysis are not generalized into advice."
+    }
+  ]
+}

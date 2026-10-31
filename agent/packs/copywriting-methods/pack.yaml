@@ -1,0 +1,9 @@
+name: copywriting-methods
+kind: reference
+version: 0.1.0
+status: draft
+summary: Source-derived five-pass writing and review methods, generalized from client material. This procedure is not project policy, legal advice, factual authority, or approval.
+provides:
+  references: [five-pass-copywriting-method]
+requires: { modules: [], secrets: [], egress: [] }
+source: Six anonymized source documents from the supplied methodology archive; exact source and output hashes and changed-line ranges in redaction-log.md. Client-instance API and endpoint specifications are excluded.
