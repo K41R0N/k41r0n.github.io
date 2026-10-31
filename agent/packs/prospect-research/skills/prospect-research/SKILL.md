@@ -117,8 +117,30 @@ Prioritize using explicit evidence of severity, frequency, affected people, dela
 
 For a confirmed relevant person, report only public professional facts that help explain their role in the business question: current remit, relevant prior roles or work, publicly stated priorities, and decision or delivery responsibilities when evidenced. Use the same claim labels and source rules. Do not infer authority, motives, personality, private relationships, private contact details or willingness to buy from title or social activity. Keep identity evidence separate from relevance inference. Report firm and person profiles separately: the organization’s model, scale indicators, customers, market, channels and operating context belong in its profile; professional background, role and public decision context belong in the person profile. Never fill an organization field with a person’s biography or vice versa.
 
-### 7. Review, refresh and hand off
+### 7. Review, check and improve the method
 
+Before any company-directed recommendation, run a check-before-recommendation loop:
+
+1. **Scope:** name the decision, stated goal, time boundary, allowed sources, and a bounded research budget (time or search/fetch limit). Do not start open-ended collection.
+2. **Research:** follow the recorded source plan; verify entity and relevant people; capture claims with evidence labels, sources, and dates. Log skipped steps and access failures.
+3. **Check-only:** run `python3 agent/packs/prospect-research/scripts/check_brief.py <brief.md>`. A `BLOCK` means fix the missing evidence or narrow/hold the affected conclusion. A `REVIEW` means a human must resolve the warning. The script marks both `BLOCK` and `REVIEW` as not recommendation-ready. Do not apply or recommend first and validate later.
+4. **Human review:** inspect source text, independence, entity match, goal source, counterevidence, privacy, freshness, and the specific claim-to-hypothesis chain. Script output cannot authenticate sources or decide whether an opportunity is painful or useful.
+5. **Close the loop:** deliver the checked brief with the decision, evidence, gaps, and next validation step. If the owner later supplies corrections or outcome evidence, use it to revise the method/eval fixtures; keep accepted and rejected changes distinguishable. Do not retain prospect records or schedule monitoring unless the task explicitly calls for them and its storage/cadence are authorized.
+
+Define and inspect six process gates in every substantial research run:
+
+- `G-SRC` source integrity: every material factual claim has an opened source and date; verified claims have genuinely independent support; no material claim rests on a snippet alone.
+- `G-ID` identity: business and any named person have a resolved identity status; collisions and unresolved matches remain separate, and no attributed person finding is made from an unresolved match.
+- `G-GOAL` goal fit: the company goal and source are recorded; no goal-dependent recommendation passes when the goal is missing or only guessed.
+- `G-COV` decision coverage: each research dimension needed for the stated decision is marked supported, searched-but-unknown, or not searched; no required dimension is silently omitted.
+- `G-COST` bounded effort: planned and actual searches, fetches, elapsed time, and blockers are recorded; work stays within its brief budget or stops for a scope decision.
+- `G-USE` validation value: each improvement hypothesis has a goal link, validation step, and disconfirming evidence; at least one next question could materially improve or reject the hypothesis.
+
+Use this bottleneck order for a failed run: `G-SRC` -> `G-ID` -> `G-GOAL` -> `G-COV` -> `G-COST` -> `G-USE`. Fix the earliest failure before increasing breadth or automation. These gates are currently a human-reviewed run checklist plus deterministic brief-format lint; the pack does not yet maintain a case database, measure real cost/precision, schedule collectors, or auto-accept research findings.
+
+### 8. Review, refresh and hand off
+
+- Capture for each run: decision and scope, stated goal/source, time or search/fetch budget, actual searches/fetches and elapsed effort where available, blockers, and status of each applicable process gate. This is a brief-level human record today; there is no collector, shared ledger or cost integration.
 - Check every material claim against its cited opened source. Recheck current roles, products, business status and recent events at the point they will be used.
 - Read for entity conflation, stale claims, unsupported causal explanations, privacy risk, missing counterevidence and facts drawn from snippets only.
 - Keep the report proportional to the decision; include a concise coverage/gaps list and the highest-value next evidence needed.
@@ -152,6 +174,20 @@ A reviewer should be able to answer:
 - Are current, role, product and operational claims fresh enough for the decision?
 
 A clean checklist means only that these checks found no listed problem. It does not prove the research is complete, the pain is real, or the proposed change is right.
+
+### Process eval and graduation path
+
+Current support is deliberately bounded to static fixture evals, a zero-dependency CLI linter, offline tests, and a human-run review loop. The six process gates above are criteria, not yet a metrics database or scheduled runner. Do not describe this pack as having automated monitoring, per-business spend telemetry, unattended research, or autonomous decision-making.
+
+Graduation path, only when repeated real cases justify it:
+
+1. **Baseline:** keep the present check-only script, expand fixtures for identity collisions, stale evidence, conflicting sources, missing goal, private data and false pain claims; have the owner review held-out cases.
+2. **Explain:** define a case record with scope, goal source, permitted sources, planned/actual budget, claims, gate outcomes, gaps, and owner corrections. Measure gate agreement and edit/reject reasons before setting thresholds.
+3. **Bounded workflow:** add optional local, explicit-input work packets with machine-checkable source/claim fields and a check-only/apply split; append run/audit events instead of overwriting prior decisions. Do not add prospect data retention by default.
+4. **Measured cadence:** only if asked, design a company-specific budget, source freshness window, review cadence, privacy/retention rules, and stop conditions. Any monitoring should emit candidate changes for review, not silently promote them into facts or advice.
+5. **Automation gate:** measure precision, missed changes, cost per decision, source health, coverage and human acceptance over multiple cases. Automate only the narrow checks that meet owner-approved thresholds; keep identity conflicts, pain judgments, strategic fit, and recommendations human-reviewed.
+
+This path is a proposal for future method development, not implemented capability or authorization to monitor companies.
 
 ## Hard boundaries
 
