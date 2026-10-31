@@ -18,6 +18,8 @@ tags:
   - do-not-revisit
 ---
 
+> Historical decision record (2026-05-31). It records the earlier Sveltia + Vercel deployment state. The site now serves `www` through Cloudflare Workers; Vercel remains the bare-domain redirect and rollback path. For current architecture, see [`agent/knowledge/site/repo-architecture.md`](../../../agent/knowledge/site/repo-architecture.md).
+
 # Ghost CMS evaluated and rejected — staying on Sveltia + Vercel
 
 ## Decision

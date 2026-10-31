@@ -48,7 +48,7 @@ Run before delivery, not after:
 ## 3. Corrections protocol
 
 - When he corrects the same thing twice, it becomes a fixed rule and applies
-  everywhere from then on. Logged in agent/learnings.md (this repo).
+  everywhere from then on. Logged in `routines/learnings.md` (this repo).
 - Harmonized 2026-10-29: two repetitions everywhere. His work guide says
   two; his documented retro practice says "anything that happened twice gets
   a fix; anything that blocked output gets a fix first." Logged as

@@ -8,7 +8,7 @@ Source: operating agreement approved by Alejandro on WhatsApp 2026-10-29 6:48 PM
   stage, permanently.
 - His edits are the training data. Metrics: acceptance rate, edit rate, his
   minutes per deliverable. Tracked in the run log:
-  agent/writing-runs.md (this repo).
+  `agent/routines/writing-runs.md` (this repo).
 - The same correction twice becomes a fixed rule (his work guide; this
   supersedes the three-repeat default for user-facing work).
 - Presentation rules: facts before explanation before options before
