@@ -1,0 +1,12 @@
+name: process-standardization
+kind: method
+version: 0.1.0
+status: draft
+summary: Follow a team-specific interview-to-playbook process, preserving evidence traceability, useful variants, review, and audit boundaries.
+class_max: S1
+requires: { modules: [], secrets: [], egress: [] }
+provides:
+  skills: [process-standardization-bootstrap, interview-extraction, cross-interview-synthesis, action-manifest, sop-drafter, interviewee-review-summary, playbook-assembler, process-standardization-audit]
+  evals: [evals/checks.py]
+attention: { process-standardization: D3/E4 }
+source: The ten source documents are preserved as separate files at the pack root, with only the in-place redactions listed in docs/redaction-log.md. pack.yaml, evals, fixtures, docs, and routing are new harness additions, not source content.
