@@ -5,6 +5,7 @@
 | Rate a way of working and decide what to automate | attention-graduation | draft (fixtures pass) |
 | Interview someone to find what they need | discovery-interview | draft (fixtures pass) |
 | Check a draft in five passes | copy-five-pass | draft (fixtures pass) |
+| Draft and review copy with the source-derived five-pass method | copywriting-methods | draft (generalized reference) |
 | Draft an answer to a question put to him | advice-answer | draft (fixtures pass) |
 | Take in a burst of notes on one topic and find the threads | research-intake | draft (fixtures pass) |
 | Build a client strategy on one canvas | strategy-canvas | draft (fixtures pass) |
