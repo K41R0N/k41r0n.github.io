@@ -30,7 +30,7 @@ Do not use it to decide a still-undefined offering by inventing buyer needs, to 
 1. Establish the reader, their organization and role, the decision the page should support, the intended channel, the requested next step, and whether this is an example, proposal, or live offer. Use current brief and direct evidence; do not infer a relationship or business need from the name alone.
 2. Read the site's contribution instructions and write guard before editing. Inspect current repository state, deploy path, branch rules, and any existing page or template. Never edit generated output.
 3. Read the actual canonical Harness Standard and Attention Graduation Framework before describing harness types or attention stages. Use current, relevant sources in the ICP harness for audience signals and audience understanding, and the marketing harness for offering, market, alternatives, positioning, and value. One agent may draw from multiple harnesses; keep those method sources distinct and route by the question being answered.
-4. Read the public methods repo's `clear-message`, `copywriting-methods`, `copy-five-pass`, and `strategy-canvas` guidance. Read audience-listening and attention-graduation methods when explaining those methods. Read any reader-relevant project evidence and design system. Say what was not available or read.
+4. Read the public methods repo's `clear-message`, `copywriting-methods`, `copy-five-pass`, and `strategy-canvas` guidance. Read audience-listening and attention-graduation methods when explaining those methods. Use `prospect-research` as standard pre-work before considering any service, offer, or advice for a company, and as the evidence feeder for reader-specific pitch tailoring. Do not treat it as optional reference material or turn its hypotheses into approved positioning. Read any reader-relevant project evidence and design system. Say what was not available or read.
 5. Maintain a claim/source ledger in working notes: sourced fact, owner-reported experience, inference, or open gap. A citation is evidence to check, not blanket permission to disclose it.
 
 ## Goals and completion test
@@ -96,7 +96,7 @@ The example is the explanation. Avoid leading with repository plumbing, a taxono
 
 Deployment is repository-specific. Read the target repo's current contribution and deploy instructions, and verify the current hosting source before acting. For this site, use `agent/knowledge/site/contribution-workflow.md` and `agent/knowledge/site/repo-architecture.md`:
 
-1. Make a descriptive branch from the current `main` and inspect the diff.
+1. Make a descriptive branch from the current `main` or the branch assigned to the task, then inspect the diff.
 2. For changes under `agent/` or other Tier 2 documentation, use the repository's prescribed branch/PR workflow unless the owner has explicitly assigned a different path. Never infer a push-to-main exception from the existence of a write permission. Tier 1 paths require the forcing function in the portfolio write guard and the approved PR route.
 3. For an actual public site page, use the approved content or code path. Run the required site build and validation; never bypass a failed check.
 4. Commit one logical change with a descriptive message, push to the authorized branch, and open a PR only when the workflow/request calls for it. Report the exact commit or PR URL and whether it has merged.
@@ -119,7 +119,7 @@ Run and report each applicable check separately; do not claim a pass that did no
 - Read every cited source. Verify every fact, number, product capability, outcome, quote, comparison, date, and person against its current primary source.
 - Mark sourced, owner-reported, inferred, illustrative, and unknown material distinctly in working notes. Remove or resolve unsupported public claims and placeholders.
 - Run `clear-message`, then the full five-pass copy method. Run `python3 evals/run.py copy-five-pass` as the separate deterministic checker; its clean result checks patterns only and is not an approval.
-- Check the words and intended recipient with the owner before sending or publishing in their name, unless a valid grant covers the exact case. A request to draft, review, or prepare a page is not permission to send or publish it.
+- Get the owner’s approval of the exact words and intended recipient before sending or publishing in their name. A request to draft, review, or prepare a page is not permission to send or publish it.
 
 ### Harness and method accuracy
 
@@ -169,6 +169,7 @@ Record material reader corrections and recurring failure patterns in the relevan
 - `packs/clear-message/`
 - `packs/copywriting-methods/`
 - `packs/copy-five-pass/`
+- `packs/prospect-research/`
 - `packs/strategy-canvas/`
 - `packs/audience-listening/`
 - `packs/attention-graduation/`

@@ -9,6 +9,7 @@
 | Draft an answer to a question put to him | advice-answer | draft (fixtures pass) |
 | Take in a burst of notes on one topic and find the threads | research-intake | draft (fixtures pass) |
 | Build a client strategy on one canvas | strategy-canvas | draft (fixtures pass) |
+| Research a business and its relevant people from public evidence to find goal-linked improvement hypotheses | prospect-research | draft (fixtures pass; method-source attribution included; broad validation pending) |
 | Check claims and change one thing at a time | verify-before-act | draft (fixtures pass) |
 | Map where an audience speaks and run a daily listening pass | audience-listening | draft (fixtures pass) |
 | Plan a client kickoff call and week one | client-kickoff | draft (fixtures pass) |
