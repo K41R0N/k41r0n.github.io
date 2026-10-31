@@ -4,6 +4,9 @@ Assess whether more research is needed.
 ## Business identity
 VERIFIED: Northstar Clinic is the business (Source: official site; retrieved 2026-10-01).
 
+## Stated goal and source
+UNKNOWN: No goal has been stated by the company or owner in the supplied brief; no goal-dependent claim is made.
+
 ## Business model
 The organization provides care.
 
