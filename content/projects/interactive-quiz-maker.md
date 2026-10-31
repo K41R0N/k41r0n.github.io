@@ -25,7 +25,7 @@ This project solves this by treating the quiz content as a simple JSON database.
 - **JSON-Driven Content:** All questions, multiple-choice options, correct answers, and post-answer explanations are stored in a single JSON schema.
 - **State Management:** Handles complex interactive states, including locking choices after selection, displaying immediate feedback, and calculating final scores.
 - **Responsive Design:** Fully fluid CSS styling that works perfectly on mobile devices, ensuring accessibility for students studying on the go.
-- **Zero-Dependency Architecture:** Built with pure vanilla JavaScript and CSS. No React, no Vue, no build step required—meaning it can be dropped into any existing webpage or CMS with zero configuration.
+- **Zero-Dependency Architecture:** Built with pure vanilla JavaScript and CSS. No React, no Vue, no build step required, so it can be dropped into any existing webpage or CMS with zero configuration.
 
 ## Technologies Used
 

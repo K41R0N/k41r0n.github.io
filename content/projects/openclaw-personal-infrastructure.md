@@ -20,4 +20,4 @@ People making analog software and hardware are onto something, but they haven't 
 
 In the future, I see this compounding and maturing. There's no need to replicate the tech of old, but using the same principles AI uses for on-demand software with on-demand specialized hardware is a powerful one. 
 
-My "OpenClaw" setup is a live execution of this: an ASUS ROG Zephyrus G14 operating as a headless server. It runs a network of specialized agents (Coordinator, Research, Setup, OSS) orchestrating my digital product studio. This is my localized personal infrastructure—a co-creation device completely detached from cloud-subscription dependency, feeding into my thesis of devices as true co-creations.
+My "OpenClaw" setup is a live execution of this: an ASUS ROG Zephyrus G14 operating as a headless server. It runs a network of specialized agents (Coordinator, Research, Setup, OSS) orchestrating my digital product studio. This is my localized personal infrastructure, a co-creation device completely detached from cloud-subscription dependency, feeding into my thesis of devices as true co-creations.
