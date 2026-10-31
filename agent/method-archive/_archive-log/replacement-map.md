@@ -39,9 +39,9 @@
 | `SSR` | `sample-rate` |
 | `MakerDAO` | `a competitor` |
 | `Comms Playbook` | `a source document` |
-| `Rune Christensen` | `a reviewer` |
-| `Rune` | `a reviewer` |
-| `rune` | `a reviewer` |
+| `Rune Christensen` | `a stakeholder` |
+| `Rune` | `a stakeholder` |
+| `rune` | `a stakeholder` |
 | `a reviewer-approved, verbatim` | `a verified source` |
 | `reviewer-approved` | `source-reviewed` |
 | `supreme authority` | `top-priority source` |
@@ -62,7 +62,7 @@
 | `Jeff` | `a collaborator` |
 | `Simon` | `a stakeholder` |
 | `Braham` | `a stakeholder` |
-| `Rune Christensen` | `a stakeholder` |
+| `Rune` | `a reviewer` |
 | `Kyle Reidhead` | `a stakeholder` |
 | `Kyle` | `a stakeholder` |
 | `Skybase` | `the client product` |

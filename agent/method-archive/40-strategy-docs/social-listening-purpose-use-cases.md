@@ -1,7 +1,0 @@
-  - How many times has Ethena posted over the past 6 months vs how many times have the two the client accounts? 
-  - What were the three highest engagement or reach dates for a service agent this quarter? What were their most successful launches?
-  - How did Ethena’s launches in the past month correlate with their their mindshare? What did the client do in comparison?
-  - How many the client posts got amplified by each the client agent in the past month?
-  - What was the main narrative a service agent used this month? What was Ethena’s? And the client’s on both Insights and Eco?
-  - Did any of the client’s launches this month correlate to higher reach, engagement or follower rise?
-  - What was the biggest driver of mentions for the client this month? And Ondo?

@@ -23,7 +23,7 @@ Added 2026-08-25. A new tell class emerged once the corpus grew past one set: **
 
 ## Owned anchors (one artifact each; never reuse)
 
-- Shipping container: a reviewer's, never take.
+- Shipping container: a stakeholder's, never take.
 - ISDA / standard-form documentation history: Laniakea pillar piece. (Capital Routes V3 keeps only an unnamed one-clause "master agreements" reference; if both publish, the pillar keeps the history.)
 - Dover Strait TSS + the Varne wreck, and the FERC oil-pipeline tariff: Capital Routes manifesto.
 - Edward Lloyd's coffee house, Henry Varnum Poor, Marcus Goldman's cellar, Bogle/"Strictly for Crapshooters", Dee Hock/Visa, Fink's workstation: Newcomers.

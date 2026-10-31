@@ -27,7 +27,7 @@ Read these when the step calls for them; don't front-load all four.
 These pieces are the client brand by default (institutional register). Before writing a word:
 
 1. Confirm there's a brief or direct instruction from the author. His **seed paragraphs are load-bearing**: each seed carries the piece's thesis and usually one or two phrases that must survive into the final draft (develop them, never quote-dump them, never relocate a seed's image to a different piece). If a reviewer later objects to something that came from a seed, the seed wins; the author's direct statements override all other sources.
-2. Fetch from the brain (the-client): `positioning.md`, `brand-voice.md`, `legal-guidelines.md`, `financial-terminology.md`, `storytelling-and-ai-discipline.md`. The a source document is supreme over everything, including this skill.
+2. Fetch from the brain (the-client): `positioning.md`, `brand-voice.md`, `legal-guidelines.md`, `financial-terminology.md`, `storytelling-and-ai-discipline.md`. The project’s current source documents should be checked alongside this method; this method does not establish authority or approval.
 3. Apply the confidence floor: external-facing claims come from `confirmed` sources; `reference` with caution; `operator_reported` and `conversation` material never appears as fact in a piece.
 4. Numbers: never invent, never hardcode a rate. Draft-stage convention is the author's own: a bracketed `[verify]` on any figure, plus a foot-note that figures verify against client-example.invalid and a protocol body quarterly reports at publish time. Prefer structural claims and historical events over live figures; a thought piece that needs few numbers ages better.
 
@@ -43,7 +43,7 @@ Each piece gets **one** concrete anchor: a historical episode, a profession, a d
 
 - Anchor types must vary across a set: a scene, a person, a lost skill, a document, an institution, a live moment inside the machine.
 - **Fact-check the anchor with real research before drafting.** Names, dates, causation. Session precedents: the Comet crashes were not all unexplained (only the 1954 pair); Goldman's 1999 IPO does not cause 2008; "ten weeks" between crashes was wrong. A finance-literate reader wincing once costs the whole piece.
-- Don't take an anchor already owned by the client canon (a reviewer owns the shipping container) or reuse one across pieces.
+- Don't take an anchor already owned by the client canon (a stakeholder owns the shipping container) or reuse one across pieces.
 - The anchor must survive a hostile reading. If the analogy proves the opposite on inspection (a flight recorder learns from its *own* crashes; the client's record is other people's), concede the asymmetry in one sentence rather than hoping nobody notices. The concession usually strengthens the piece.
 
 ## Step 3: Draft under structural budgets
@@ -65,7 +65,7 @@ Read `references/tell-registry.md` first and draft with the budgets in mind, bec
 
 The budgets above were calibrated on essays. Two other forms have since run through the method and differ:
 
-- **Byline op-ed** (John, a reviewer-adjacent): first person is the register, not an exception; authority claims must be the author's actual credential (a risk-room byline answers with the committee's questions, never an analyst's market data); the piece must contain a falsifiable test of its own thesis; and the anti-LLM pass matters most here, because a named human's prose gets read closest.
+- **Byline op-ed** (John, a stakeholder-adjacent): first person is the register, not an exception; authority claims must be the author's actual credential (a risk-room byline answers with the committee's questions, never an analyst's market data); the piece must contain a falsifiable test of its own thesis; and the anti-LLM pass matters most here, because a named human's prose gets read closest.
 - **Manifesto**: seed-heavy by design (the author's edited draft is verbatim seed and wins over every reviewer instinct); a deliberate anaphora set (the refusals) is legal and load-bearing; declaration density runs higher than essay budgets tolerate, so use the manifesto column in `references/structural-audit.md`; refusals must cost something real and be observable from outside, or they are marketing.
 
 When the author supplies a **beat outline plus his own edited draft**, the workflow inverts: his prose is the spine, new material fills the beats he names, and the only questions to ask up front are gate rulings (what is speakable) and target form. Do not restructure his paragraphs to fit the beats; place the beats around them.
@@ -76,7 +76,7 @@ After the draft stands, work the joints using `references/transition-catalog.md`
 
 ## Step 5: Mechanical sweep
 
-Grep the draft (case-insensitively where sensible) for the absolute bans before any human-judgment review: em dashes, "not just", Additionally/Furthermore/Moreover/In conclusion, hashtags, and the the client register bans (profit, AUM, assets under management, bank, deposits, interest, earnings call, tokenized fund, central-bank confirmation). Check no live rate or fluctuating figure is hardcoded. The full list with context is in `references/tell-registry.md`.
+Grep the draft (case-insensitively where sensible) for the absolute bans before any human-judgment review: em dashes, "not just", Additionally/Furthermore/Moreover/In conclusion, hashtags, and the client register bans (profit, AUM, assets under management, bank, deposits, interest, earnings call, tokenized fund, central-bank confirmation). Check no live rate or fluctuating figure is hardcoded. The full list with context is in `references/tell-registry.md`.
 
 ## Step 6: Adversarial review, then verification
 
