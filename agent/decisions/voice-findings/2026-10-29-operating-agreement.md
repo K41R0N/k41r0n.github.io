@@ -1,7 +1,6 @@
 # Operating agreement, voice-relevant parts (2026-10-29)
 
-Source: working instructions in `agent/AGENTS.md`; the 2026-10-29 6:48 PM WhatsApp message says “Ok, proceed, are you ready to do your work properly?” and is not specific approval of every clause. Treat unsupported clauses as repo-local proposed safeguards until directly confirmed.
-("Ok, proceed"). Canonical copy: agent/operating-agreement.md (this repo).
+Source: working instructions in `agent/AGENTS.md`. The cited WhatsApp message says “Ok, proceed, are you ready to do your work properly?”; it does not specifically approve every clause here. Treat unsupported clauses as repo-local proposed safeguards until directly confirmed. Canonical copy: `agent/AGENTS.md` (this repo).
 
 - Everything written in his voice (site, X, LinkedIn, prompts) is an input for
   his line-by-line edit, never output. Published output passes him at every
