@@ -14,6 +14,11 @@ REQUIRED_DOCS = [
     "skills/process-standardization-audit/SKILL.md",
     "skills/process-standardization-bootstrap/SKILL.md",
     "skills/sop-drafter/SKILL.md",
+    "skills/action-manifest/SKILL.md",
+    "skills/interview-extraction/SKILL.md",
+    "skills/interviewee-review-summary/SKILL.md",
+    "skills/playbook-assembler/SKILL.md",
+    "skills/process-standardization-audit/SKILL.md",
 ]
 
 
@@ -42,6 +47,17 @@ def check_source_tree(pack_dir):
             issues.append(f"missing:{relative}")
             continue
         digest = hashlib.sha256(path.read_bytes()).hexdigest()
-        if digest not in log:
-            issues.append(f"unlogged-hash:{relative}")
+        section = re.search(
+            rf"^## `{re.escape(relative)}`\s*$([\s\S]*?)(?=^## `|\Z)",
+            log,
+            re.M,
+        )
+        if not section:
+            issues.append(f"missing-redaction-record:{relative}")
+            continue
+        redacted = re.search(r"^- Redacted SHA-256: `([0-9a-f]{64})`$", section.group(1), re.M)
+        if not redacted:
+            issues.append(f"missing-redacted-hash:{relative}")
+        elif digest != redacted.group(1):
+            issues.append(f"redacted-hash-mismatch:{relative}")
     return issues

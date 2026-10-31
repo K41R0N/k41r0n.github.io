@@ -70,11 +70,13 @@ For each manifest row, produce a corresponding source-map entry. The source map 
 Each source-map entry must contain:
 
 - **manifest id** — the stable id of the action.
-- **per-extraction quotes** — for each extraction cited on the manifest row, include the verbatim or near-verbatim quote(s) from that extraction that ground the action. If the original extraction is long, quote only the load-bearing sentence(s).
-- **section/anchor reference** — which section, process card, or heading in the extraction the quote came from, so a reader can find the surrounding context.
+- **per-extraction evidence** — for each extraction cited on the manifest row, include either (a) the exact verbatim quote, preserving its words, or (b) a concise summary explicitly labeled `[PARAPHRASE]`. Do not call altered wording a quote.
+- **section/anchor reference** — the extraction section, process card, heading, timestamp, or line range supporting the quote or paraphrase, so a reader can find the surrounding context.
 - **inference markers** — when the manifest row makes a claim that is not directly stated in any extraction but is a reasonable inference from synthesis or recommendation, label it as such. Use a clear marker like `[INFERENCE]` or `[RECOMMENDATION]`. This restates controller rule 5: distinguish source-grounded fact from reasonable inference from recommendation.
 
 If a manifest row has no quotable evidence in any extraction (it exists only as a synthesis recommendation), say so explicitly in the source-map entry. Mark the row in the manifest as a recommendation rather than as observed practice. Do not retrofit an extraction quote that does not actually support the row.
+
+For every action that does not fit cleanly into a supplied family, record both the action and its specific reason for not fitting (for example, cross-cutting ownership or no supplied family covers its scope). Keep the reason with the action in the manifest/families output so downstream readers can review the classification without reconstructing it.
 
 ## Output 3: Action families
 

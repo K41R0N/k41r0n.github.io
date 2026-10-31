@@ -32,7 +32,7 @@ Operating constraints for `internal` mode:
 
 Take an existing v1 SOP set and a user-supplied EXTERNAL REFERENCE FRAMEWORK. Produce a v2 SOP per action that layers framework guidance on top of v1, clearly distinguishing what came from team practice (FACT) from what came from the framework (RECOMMENDATION).
 
-The external reference framework can be ANY external body of practice the user provides:
+The external reference framework can be ANY external body of practice the user provides. It is optional at bootstrap, but it is required to produce v2 overlay SOPs. If no framework is supplied, explicitly limit the work to v1/internal SOPs; do not draft or label a framework-free document as v2.
 
 - A methodology book or published framework
 - An industry standard or compliance regime
@@ -87,7 +87,7 @@ If the user names a framework but does not provide its contents or a path, stop 
 
 ## Output Structure
 
-Write outputs to the directory the user specifies. If unspecified, default to `/02_outputs/sop_v1/` for `internal` and `/02_outputs/sop_v2/` for `overlay`.
+Write outputs to the directory the user specifies. If unspecified, use the project-relative paths `02_outputs/sop_v1/` for `internal` and `02_outputs/sop_v2/` for `overlay`. Do not use a leading slash: output paths must remain within the project root.
 
 File granularity: one file per action family, with one SOP section per action inside that file. If the manifest is flat (no families), produce one file per action.
 
@@ -164,7 +164,8 @@ Canonical authority: `${CLAUDE_PLUGIN_ROOT}/CONTROLLER.md`. If the canonical fil
 
 After producing v2 SOPs, hand off in this order:
 
-1. Invoke `interviewee-review-summary` once per interviewee. Each interviewee should receive a personalized summary of which of their practices are preserved, upgraded, or marked as known limitations across the v2 SOP set.
-2. After review summaries are produced, invoke `playbook-assembler` to compile the SOPs and supporting artifacts into the final playbook.
+1. Invoke `interviewee-review-summary` once per person on the authoritative planned-interviewee roster. Each person should receive a personalized summary of which of their practices are preserved, upgraded, or marked as known limitations across the v2 SOP set.
+2. Wait until summaries have actually been returned. Reconcile each correction against the affected extraction/SOP; record each as `INCORPORATED` or `DEFERRED`, with the change or reason and artifact/version. Do not treat creation or delivery of summaries as returned feedback.
+3. Only when every required summary is returned and every correction has a recorded disposition, invoke `playbook-assembler` to compile the SOPs and supporting artifacts into the final playbook. If the review-return record is missing or incomplete, stop and report the unresolved interviews/corrections.
 
 After producing v1 SOPs (and not yet v2), hand off back to the orchestrator. Do not invoke `interviewee-review-summary` until v2 exists — review summaries should reflect the final state of each interviewee's contribution, not an intermediate one.

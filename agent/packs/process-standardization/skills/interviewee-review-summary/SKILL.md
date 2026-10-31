@@ -69,10 +69,11 @@ Frame it as "here is what we wrote down," not "here is what you do." The intervi
 
 ### Page 2 — "Here's how it shaped the standard"
 
-For each manifest action they own or materially contributed to, give the reader four pieces of information in a short row or paragraph:
+For each manifest action they own or materially contributed to, give the reader five pieces of information in a short row or paragraph:
 
 1. **Action name** (in plain language).
-2. **Boundary classification**: STANDARDIZE, TEMPLATIZE, or PRESERVE-VARIANT. Explain the classification in one sentence of plain English — for example, "We made your version the standard for the whole team," "We turned your structure into a template each role fills in," or "We kept your version as a [role-family] specific variant because it differs from how others do it."
+2. **Evidence status**: identify whether the supporting extraction passage is a verbatim quote or a paraphrase. Mark paraphrases explicitly as `[PARAPHRASE]`; do not put paraphrased language in quotation marks.
+3. **Boundary classification**: STANDARDIZE, TEMPLATIZE, or PRESERVE-VARIANT. Explain the classification in one sentence of plain English — for example, "We made your version the standard for the whole team," "We turned your structure into a template each role fills in," or "We kept your version as a [role-family] specific variant because it differs from how others do it."
 4. **Resulting SOP id** (or section reference) so they can find it in the playbook.
 5. **One-line note** on whether their version became the standard, was templatized, or was preserved as a role-specific variant. Where preserved as a variant (rule 6), say so plainly — name the variant, name the role family, and do not paper over the difference.
 
@@ -101,7 +102,7 @@ If you find yourself reaching for hedging language to make the document feel smo
 
 After the document is generated and reviewed by the interviewee:
 
-- Collect all corrections in one place.
+- Collect all corrections in one place. For each correction, record the interviewee's request (with source reference), the affected extraction/SOP and section, disposition (`INCORPORATED` or `DEFERRED`), the change made or reason deferred, and the resulting artifact/version. Do not assemble the playbook until every correction has a disposition.
 - Minor corrections (clarifying a quote, fixing a citation, renaming an action, adjusting a one-line note) are folded directly into the affected SOP/extraction before the playbook assembler runs.
 - Major corrections (you missed an action, you mis-classified a STANDARDIZE as a PRESERVE-VARIANT, an entire workflow was wrong) are escalated. This skill does not invoke patch flows. The user re-runs the affected pipeline stage with the corrected input.
 

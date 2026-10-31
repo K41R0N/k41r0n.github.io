@@ -189,9 +189,12 @@ Confirm the path with the user once before writing if more than one plausible lo
 
 ## Hand-off to the next skill
 
-After writing this extraction, check whether extractions now exist for ALL planned interviewees on this project.
+Before invoking `cross-interview-synthesis`, check whether synthesis, manifest, SOP, or playbook artifacts already exist. If downstream artifacts are present, do not invoke a build-only downstream skill that forbids patching; stop and report that a stage re-run or owner decision is needed.
 
-- If YES: invoke `cross-interview-synthesis` to begin comparing across people. Pass the directory containing the full set of extractions.
-- If NO: report which interviewees still need extractions and stop. Do not begin synthesis with a partial set.
+Before deciding whether the extraction set is complete, read the project's explicit planned-interviewee roster or another user-designated authoritative completeness source. A set of extracted files alone cannot establish who was planned or whether every planned interviewee is represented. If no authoritative roster/completeness source is available, report completeness as unknown and ask for it; do not treat the observed extraction count as complete.
 
+After writing this extraction, compare it against that source:
+
+- If every planned interviewee has an extraction: invoke `cross-interview-synthesis` to begin comparing across people. Pass the directory containing the full set of extractions.
+- If any planned interviewee lacks an extraction: report which ones still need extractions and stop. Do not begin synthesis with a partial set.
 Do not attempt to synthesize, draft SOPs, or build the action manifest from inside this skill. Those are downstream and depend on the full extraction set.

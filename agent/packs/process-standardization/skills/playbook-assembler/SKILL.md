@@ -18,8 +18,8 @@ Invoke this skill only when all of the following are true:
 
 - The action manifest exists and is stable.
 - The action-family grouping exists and is stable.
-- A complete set of v2 SOPs has been drafted, one per action family.
-- Interviewee review summaries have been returned and corrections have been incorporated into the v2 SOPs (or explicitly logged as deferred).
+- The complete SOP set for the selected path has been drafted, one per action family: v2 overlay SOPs when a framework was supplied, or an explicitly designated v1-only set when no framework was supplied.
+- Interviewee review summaries have been returned and corrections have been reconciled in the applicable SOPs (or explicitly logged as deferred).
 - The team is preparing for rollout, not still in interview or drafting cycles.
 
 If any of those conditions are missing, stop and route the user to the upstream skill (interview-extraction, cross-interview-synthesis, action-manifest, sop-drafter, or interviewee-review-summary). Do not assemble a playbook on top of unfinished inputs.
@@ -30,12 +30,13 @@ Before assembling, confirm you have read:
 
 1. The action manifest (canonical list of every team action).
 2. The action-families document (the grouping taxonomy).
-3. The full set of v2 SOPs, one file per action family.
+3. The full SOP set for the completed path: v2 SOPs when an external reference framework was supplied and overlay mode was run, or an explicitly designated v1-only set when no framework was supplied. Do not imply a framework overlay occurred when none was provided; state clearly in the playbook whether it is v1-only or framework-backed v2.
 4. The cross-interview synthesis (for evidence traceability and operating principles).
 5. The interviewee review summaries plus a record of which corrections were incorporated and which were deferred.
 6. User-supplied team metadata:
    - Team name.
    - Team mission statement (one to three sentences).
+   - Team scope statement: what the team is responsible for and what it is not responsible for, in user-supplied terms.
    - Role-family list (the actual families this team uses; do not assume six).
    - Any external reference framework the team is mapping against (this is optional and team-specific; one example is a third-party industry playbook, but accept any).
 

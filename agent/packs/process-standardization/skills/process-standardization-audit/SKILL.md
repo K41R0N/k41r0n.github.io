@@ -49,11 +49,12 @@ The audit recognizes exactly nine stages, in order. Use the first stage whose en
 6. **v1-drafted** — v1 SOP files are present, and no v2 SOP files exist yet.
    - Recommend: run `sop-drafter` in `overlay` mode. Ask the user to specify the external reference framework to overlay.
 
-7. **v2-drafted** — v2 SOP files are present, and no interviewee review summaries exist yet.
-   - Recommend: run `interviewee-review-summary` once per interviewee.
+7. **v2-drafted** — v2 SOP files are present, and review summaries have not all been returned/reconciled yet.
+   - Recommend: run `interviewee-review-summary` once per interviewee on the authoritative roster, then collect responses and dispositions.
 
-8. **reviewed** — review summaries have been returned and incorporated, and no final playbook is present.
+8. **reviewed** — a user/owner-provided review-completion record confirms that every required interviewee summary has been returned and all corrections are marked incorporated or deferred, and no final playbook is present.
    - Recommend: run `playbook-assembler`.
+   - Filesystem presence/counts/timestamps alone cannot establish that a person returned a review or that corrections were reconciled. If the explicit review-completion record is absent, report the stage as `v2-drafted` with review completion unverified; do not infer `reviewed` from file presence.
 
 9. **shipped** — final playbook is present.
    - No next pipeline step. Point the user to the maintenance section of the assembled playbook for ongoing upkeep.
@@ -62,7 +63,7 @@ If no stage condition is satisfied (for example the folder is empty, mis-shaped,
 
 ## Detection rules
 
-Make stage calls from folder structure, file presence, file counts, and timestamps. Do not open or parse the contents of SOPs, the playbook, transcripts, extractions, synthesis, manifests, or review summaries to decide stage. Folder-level signals are sufficient.
+Make stage calls from folder structure, file presence, file counts, timestamps, and an explicit user/owner-provided review-completion record for stage 8. Do not open or parse the contents of SOPs, the playbook, transcripts, extractions, synthesis, manifests, or review summaries to decide stage. Folder-level signals are sufficient for stages 1-7 and 9; stage 8 requires the explicit review-completion record described above.
 
 Use signals like the following. Treat exact filenames as illustrative — match by location, role, and naming pattern rather than literal strings.
 
@@ -72,8 +73,8 @@ Use signals like the following. Treat exact filenames as illustrative — match 
 - **Manifest, source map, families**: markdown or structured files under `01_working/` that play these roles. All three must be present to consider the project `manifested`.
 - **v1 SOPs**: files under `02_outputs/sop_v1/` (or an equivalent v1 folder).
 - **v2 SOPs**: files under `02_outputs/sop_v2/` (or an equivalent v2 folder).
-- **Review summaries**: per-interviewee review summary files in a clearly named reviews folder under `02_outputs/`. Compare count and names against the interviewee list inferred from extractions.
-- **Final playbook**: a single assembled playbook file (for example `final-team-process-playbook.md`) under `02_outputs/`.
+- **Review summaries**: per-interviewee review summary files in `01_working/review_summaries/`, `02_outputs/review_summaries/`, or another clearly named review folder. Compare coverage to the authoritative planned-interviewee roster, not only inferred extraction names.
+- **Final playbook**: a single assembled playbook file under `03_playbook/` or another clearly identified playbook output folder.
 
 When checking counts, prefer matching by base name (interviewee identifier) rather than raw count, so the audit can flag specific gaps.
 
@@ -88,6 +89,7 @@ Return a structured response with these fields:
 - **Gaps and anomalies**: anything that would block clean progression to the next stage, such as:
   - Transcripts without matching extractions, or extractions without matching transcripts.
   - Partial v2 SOP coverage relative to v1.
+  - Missing planned-interviewee roster or review-completion record, which prevents a completeness claim.
   - Review summaries missing for some interviewees.
   - Action families present without a manifest, or a manifest without a source map.
   - Files in unexpected locations.

@@ -36,7 +36,7 @@ Before writing any files, collect these from the user. Ask explicitly if any are
 1. **Team name** — short label used in the project root and in headings (e.g. "platform-ops", "growth-marketing", "client-services").
 2. **Project root path** — absolute path under `~/Projects/...` consistent with the workspace policy. If unspecified, propose `~/Projects/products/<team-name>-process-standardization` and confirm.
 3. **List of role-families to standardize** — any number of families, named by the user. Examples only: research, content, visual production, reporting, community, campaigns. Accept whatever the user provides; do not force the example taxonomy.
-4. **List of interviewees** — names and role-family for each person whose transcript will be processed. One person may map to one or more families.
+4. **List of interviewees** — names and role-family for each person whose transcript will be processed. One person may map to one or more families. Preserve this as the authoritative planned-interviewee roster and use it to determine extraction/review completeness.
 5. **Optional external reference framework** — a playbook, framework, or strategy doc that will be used as a v2 overlay (e.g. an internal best-practices guide). Optional. If supplied, capture title and source path.
 
 State assumptions back to the user before scaffolding. If the user is vague about role-families or interviewees, stop and ask.
@@ -52,6 +52,7 @@ Create the following structure under the chosen project root. Top-level folders 
 │   ├── transcripts/                  # raw interview transcripts (one file per interviewee)
 │   └── reference/                    # optional external framework, SOWs, OKRs, prior docs
 ├── 01_working/
+│   ├── planned-interviewees.md           # authoritative roster captured from user input
 │   ├── extractions/                  # per-interview structured extractions
 │   ├── synthesis/                    # cross-interview synthesis output
 │   ├── manifest/                     # action manifest, source map, action families
@@ -100,10 +101,12 @@ The canonical controller rules for every downstream skill. Restate the six contr
 A master prompt that any future Claude Code session can paste in to operate on the project holistically. It must:
 
 - Identify the project root and team.
+- Include the authoritative planned-interviewee roster (identity/label and role-family) so downstream steps can verify completeness.
 - Reference the six controller rules in `00_controller.md`.
-- Describe the pipeline (extract → synthesize → manifest → v1 SOPs → v2 overlay → review summaries → final playbook).
+- Describe the pipeline (extract → synthesize → manifest → v1 SOPs → optional v2 overlay when a framework is supplied → review and correction reconciliation → final playbook).
 - Tell the model to inspect folder state before recommending action.
-- Tell the model to prefer surgical edits over reruns.
+- Tell the model that v2 overlay requires an external framework; without one, it can produce only a clearly labeled v1-only path.
+- Tell the model not to prefer isolated edits for source corrections. Any correction must be reconciled across every downstream artifact that carries the corrected fact, or the affected stages must be rerun; stop if safe reconciliation is not available.
 - Tell the model to push back on standardizing role-specific behavior.
 - Keep the tone of a pragmatic staff operations consultant.
 
@@ -128,13 +131,13 @@ These rules apply to every skill in the pipeline, not just bootstrap. Write them
 
 The scaffolded project is designed to flow through these stages, in order. Each stage corresponds to a downstream skill in the same plugin.
 
-1. **Extract** — `interview-extraction` parses each transcript in `00_inputs/transcripts/` into a structured extraction in `01_working/extractions/`.
+1. **Extract** — compare transcripts and extractions against `01_working/planned-interviewees.md`; `interview-extraction` parses each transcript in `00_inputs/transcripts/` into a structured extraction in `01_working/extractions/`.
 2. **Synthesize** — `cross-interview-synthesis` rolls the extractions up into a single synthesis document in `01_working/synthesis/`.
 3. **Manifest** — `action-manifest` produces the action manifest, source map, and action-family grouping in `01_working/manifest/`.
 4. **SOP v1** — `sop-drafter` produces SOP v1 files in `02_outputs/sop_v1/`, grounded only in internal team practice from the extractions.
-5. **SOP v2 overlay** — `sop-drafter` (v2 mode) produces SOP v2 files in `02_outputs/sop_v2/` by selectively overlaying the reference framework.
-6. **Review summaries** — `interviewee-review-summary` produces per-person review summaries in `01_working/review_summaries/` so each interviewee can validate their input.
-7. **Final playbook** — `playbook-assembler` produces `03_playbook/final-team-process-playbook.md`.
+5. **Optional SOP v2 overlay** — only when an external framework was supplied, `sop-drafter` (v2 mode) produces SOP v2 files in `02_outputs/sop_v2/` by selectively overlaying it. Without a framework, stop at the v1/internal set and label it accordingly.
+6. **Review summaries** — `interviewee-review-summary` produces per-person review summaries in `01_working/review_summaries/` so each interviewee can validate their input. Wait for replies and record correction dispositions before assembly.
+7. **Final playbook** — after review responses are returned and reconciled, `playbook-assembler` produces `03_playbook/final-team-process-playbook.md`.
 
 Out of scope for this skill and the broader bootstrap flow: patch-mode flows on partial transcripts, v3 or v4 refactor passes, and mid-project re-extraction. If the user asks for those, stop and route them to a manual conversation rather than scaffolding around them.
 
