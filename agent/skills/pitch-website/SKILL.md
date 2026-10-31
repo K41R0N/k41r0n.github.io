@@ -71,7 +71,7 @@ The example is the explanation. Avoid leading with repository plumbing, a taxono
 - **Answer how the work helps this reader.** Explain the actual offering through the prospect's context and business goal. A generic description of the owner's capabilities is not enough.
 - **Make the proposal tangible.** Use the prospect research and relevant methods in the library to name the tools, processes, agent harnesses, recurring work and owner-visible outputs that fit this prospect. Separate a proposed setup from anything already deployed; never invent their workflow, priority or results.
 
-Before publish, check all four in the page itself: (1) no meta commentary; (2) clear reader-specific explanation of how the offering helps them; (3) concrete prospect-specific work and outputs, grounded in relevant methods; (4) no eyebrow components or superfluous decoration - every element must earn its place. If any check fails, do not publish.
+Before publish, check all five in the page itself: (1) lead with why this matters and the outcome for the prospect, before explaining how; keep implementation and infrastructure out of the prospect’s way unless they ask; (2) no meta commentary; (3) clear reader-specific explanation of how the offering helps them; (4) concrete prospect-specific work and outputs, grounded in relevant methods; (5) no eyebrow components or superfluous decoration - every element must earn its place. If any check fails, do not publish.
 
 ## Procedure
 
