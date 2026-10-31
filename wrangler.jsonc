@@ -7,6 +7,7 @@
   "name": "kairon-xyz",
   "compatibility_date": "2026-10-30",
   "main": "src/worker.js",
+  "previews": {},
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
