@@ -50,6 +50,7 @@ you. Do not edit files outside `content/` until you have read
 | Iterate and verify revisions | `knowledge/methodologies/iteration-protocol.md` |
 | Scope and plan work with a compact brief | `knowledge/methodologies/briefing-and-work-planning.md` |
 | Consult his methods library (packs, evals, fixtures) | `packs/` |
+| Prepare a reader-specific pitch website | [Pitch website skill](skills/pitch-website/SKILL.md); see [the worked-example learnings](knowledge/site/pitch-page-learnings-2026-10-31.md) and its limits |
 
 ---
 
