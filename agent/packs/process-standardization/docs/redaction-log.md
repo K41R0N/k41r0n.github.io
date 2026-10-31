@@ -2,7 +2,7 @@
 
 Archive SHA-256: `6e3e125a36ee078ff23569a9e1e9bbb7d5560206eb3c4d9aab54679ba0033f64`
 
-Originals remain separate at the pack root using their original relative paths. Source hashes are calculated from the resent archive before editing; redacted hashes are calculated from the copied files. Line counts are unchanged. No method sections or procedural steps were removed. Every changed line is shown verbatim below.
+Originals remain separate at the pack root under their original relative paths. Source hashes are calculated from the resent archive before editing; redacted hashes are calculated from the copied files. Line counts are unchanged. No method sections or procedural steps were removed. Every changed line is shown verbatim below.
 
 ## `CONTROLLER.md`
 
