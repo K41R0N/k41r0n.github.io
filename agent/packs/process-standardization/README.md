@@ -39,7 +39,7 @@ Every skill restates and enforces the six controller rules. The canonical text l
 The methodology generalizes — none of these are hardcoded:
 
 - **Role-family taxonomy** — any list. Example family labels are research, content, visual production, reporting, community, and campaigns; your team's list is supplied at bootstrap.
-- **External reference framework** — any methodology, book, industry standard, or third-party playbook the team wants to overlay in v2. One example framework could be a domain-specific social-content playbook; substitute your own.
+- **External reference framework** — any methodology, book, industry standard, or third-party playbook the team wants to overlay in v2. One example framework could be a third-party industry playbook; substitute your own.
 
 ## Setup
 

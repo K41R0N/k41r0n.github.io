@@ -39,7 +39,7 @@ The external reference framework can be ANY external body of practice the user p
 - Another company's playbook or operating manual
 - A consultant's deliverable, internal handbook, or research report
 
-The skill must not assume any specific framework. A domain-specific content playbook is one example — not a baked-in dependency. Treat whichever framework the user supplies as the reference, and do not bring in material from frameworks the user did not name.
+The skill must not assume any specific framework. A third-party content playbook is one example — not a baked-in dependency. Treat whichever framework the user supplies as the reference, and do not bring in material from frameworks the user did not name.
 
 Operating constraints for `overlay` mode:
 

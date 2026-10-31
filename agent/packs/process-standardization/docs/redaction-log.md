@@ -16,11 +16,11 @@ Originals remain separate at the pack root using their original relative paths. 
 
 - Archive path: `kairon-methods/20-harnesses/process-standardization/README.md`
 - Source SHA-256: `502a7000053e9cc1ae3d60a82486fc8e84fbb0d3ec707c5ff3bd9540699f1db1`
-- Redacted SHA-256: `4dc0d944329efe98d7986de7429fe610a2ac684436cb7070d63aae41cb58038c`
+- Redacted SHA-256: `710672fb0b13210aaff8290ab669c58b3bb5d2083d319f551b57a426d88d1b3d`
 - Lines: 46 source / 46 redacted
 - Changed spans:
   - Line 41: `- **Role-family taxonomy** — any list. The original project used six families (research, content, VP, reporting, community, campaigns); your team's list is supplied at bootstrap.` -> `- **Role-family taxonomy** — any list. Example family labels are research, content, visual production, reporting, community, and campaigns; your team's list is supplied at bootstrap.`
-  - Line 42: `- **External reference framework** — any methodology, book, industry standard, or third-party playbook the team wants to overlay in v2. The original project used a Web3 playbook; substitute your own.` -> `- **External reference framework** — any methodology, book, industry standard, or third-party playbook the team wants to overlay in v2. One example framework could be a domain-specific social-content playbook; substitute your own.`
+  - Line 42: `- **External reference framework** — any methodology, book, industry standard, or third-party playbook the team wants to overlay in v2. The original project used a Web3 playbook; substitute your own.` -> `- **External reference framework** — any methodology, book, industry standard, or third-party playbook the team wants to overlay in v2. One example framework could be a third-party industry playbook; substitute your own.`
 
 ## `skills/cross-interview-synthesis/SKILL.md`
 
@@ -69,19 +69,19 @@ Originals remain separate at the pack root using their original relative paths. 
 
 - Archive path: `kairon-methods/20-harnesses/process-standardization/skills/sop-drafter/SKILL.md`
 - Source SHA-256: `f11e8c6a29d1dee2ad4cade641aeadaa4579b00b6fc26c68782015eea4c16e62`
-- Redacted SHA-256: `0ce62cc289d7fc67e1117d3d094d5aefda6822f1538cf2e30474b05fa1876a74`
+- Redacted SHA-256: `0819c34293984ea07996235070b6e927fd93556acc93b7d7395f1c3a2f58416b`
 - Lines: 170 source / 170 redacted
 - Changed spans:
-  - Line 42: `The skill must not assume any specific framework. The Web3 Content Playbook used in the source repository is one example — not a baked-in dependency. Treat whichever framework the user supplies as the reference, and do not bring in material from frameworks the user did not name.` -> `The skill must not assume any specific framework. A domain-specific content playbook is one example — not a baked-in dependency. Treat whichever framework the user supplies as the reference, and do not bring in material from frameworks the user did not name.`
+  - Line 42: `The skill must not assume any specific framework. The Web3 Content Playbook used in the source repository is one example — not a baked-in dependency. Treat whichever framework the user supplies as the reference, and do not bring in material from frameworks the user did not name.` -> `The skill must not assume any specific framework. A third-party content playbook is one example — not a baked-in dependency. Treat whichever framework the user supplies as the reference, and do not bring in material from frameworks the user did not name.`
 
 ## `skills/playbook-assembler/SKILL.md`
 
 - Archive path: `kairon-methods/20-harnesses/process-standardization/skills/playbook-assembler/SKILL.md`
 - Source SHA-256: `14427fe6bb1debfd9a5869b418a449cd793b955d081930da3ee103d7fd520e3e`
-- Redacted SHA-256: `bd84db9fc8e85dc01ba66cb723159d0393394db09c8880c308def46fb12c051f`
+- Redacted SHA-256: `734fe16c782f0db27050b5f99a7306d719322a3c26e6d0182de7ae85020e332e`
 - Lines: 179 source / 179 redacted
 - Changed spans:
-  - Line 40: `   - Any external reference framework the team is mapping against (this is optional and team-specific; one example is a domain-specific overlay such as a Web3 social playbook, but accept any).` -> `   - Any external reference framework the team is mapping against (this is optional and team-specific; one example is a domain-specific social-content playbook, but accept any).`
+  - Line 40: `   - Any external reference framework the team is mapping against (this is optional and team-specific; one example is a domain-specific overlay such as a Web3 social playbook, but accept any).` -> `   - Any external reference framework the team is mapping against (this is optional and team-specific; one example is a third-party industry playbook, but accept any).`
 
 ## `skills/process-standardization-audit/SKILL.md`
 
