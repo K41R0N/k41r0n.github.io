@@ -44,6 +44,11 @@ you. Do not edit files outside `content/` until you have read
 | Read the working agreement, standing rules, or writing run log | `AGENTS.md`, `routines/learnings.md`, `routines/writing-runs.md` |
 | See live capabilities, their depth, and next gate | `harness/task-register.md` |
 | Consult a documented methodology (explainer-ready) | `knowledge/methodologies/` |
+| Anticipate Alejandro's working preferences | `knowledge/methodologies/operator-profile.md` |
+| Research with traceable, comparable evidence | `knowledge/methodologies/research-method.md` |
+| Diagnose and adjudicate feedback | `knowledge/methodologies/feedback-and-review.md` |
+| Iterate and verify revisions | `knowledge/methodologies/iteration-protocol.md` |
+| Scope and plan work with a compact brief | `knowledge/methodologies/briefing-and-work-planning.md` |
 | Consult his methods library (packs, evals, fixtures) | `packs/` |
 
 ---
