@@ -65,6 +65,14 @@ Adapt order and length to the reader; do not force a long framework glossary. In
 
 The example is the explanation. Avoid leading with repository plumbing, a taxonomy, or broad claims that the page body cannot substantiate. Add technical detail on portability only after showing what the method does; qualify compatibility as a goal or reported experience unless verified for the reader's specific setup.
 
+## Hard rules for every pitch page
+
+- **No meta commentary in reader-facing copy.** The page contains the pitch, not notes about drafting, review, research limits, internal process, or why the page was made. This is a publish-blocking gate, not a style preference.
+- **Answer how the work helps this reader.** Explain the actual offering through the prospect's context and business goal. A generic description of the owner's capabilities is not enough.
+- **Make the proposal tangible.** Use the prospect research and relevant methods in the library to name the tools, processes, agent harnesses, recurring work and owner-visible outputs that fit this prospect. Separate a proposed setup from anything already deployed; never invent their workflow, priority or results.
+
+Before publish, check all three in the page itself: (1) no meta commentary; (2) clear reader-specific explanation of how the offering helps them; (3) concrete prospect-specific tools, processes, harnesses, recurring work and outputs, grounded in relevant methods. If any check fails, do not publish.
+
 ## Procedure
 
 ### 1. Position the page

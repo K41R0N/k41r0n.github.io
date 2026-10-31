@@ -8,6 +8,7 @@ the next pack review. A rule he states explicitly applies immediately.
 | Date | Correction | Count |
 |---|---|---|
 | 2026-10-31 | RULE (owner’s explicit standing instruction): before considering applying services, an offer, or overall advice to a company, use `prospect-research` to understand who the company is, its business and operations, relevant people, and its core goal. Do not suggest anything until that research has established enough context; if evidence is insufficient, state the gap and hold recommendations that depend on it. | rule |
+| 2026-10-31 | RULE (pitch-page corrections; meta commentary is the second strike and is a hard pre-publish gate): reader-facing pitch pages contain no meta commentary; explain how the offering helps this specific reader using the actual pitch; and name concrete prospect-specific tools, processes, agent harnesses, recurring work and owner-visible outputs, grounded in the method library. Keep proposals distinct from work already deployed and never invent the prospect’s goal or results. Applied to `agent/skills/pitch-website/SKILL.md`. | rule |
 | 2026-10-29 | Propose the approach and methodology before executing (site work jumped to PRs without a proposed approach; he called it out 5:46 PM) | 1 |
 | 2026-10-29 | No framework machinery in user-facing chat (depth levels, register IDs, gates, run logs); he sees clear questions and orderly answers only (he called it out 6:43 PM) | 1 |
 | 2026-10-29 | Previews deep-link the changed pages, never just the site root (he opened an identical homepage 6:52 PM) | 1 |
