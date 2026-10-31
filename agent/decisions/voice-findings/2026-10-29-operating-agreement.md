@@ -1,6 +1,6 @@
 # Operating agreement, voice-relevant parts (2026-10-29)
 
-Source: operating agreement approved by Alejandro on WhatsApp 2026-10-29 6:48 PM
+Source: working instructions in `agent/AGENTS.md`; the 2026-10-29 6:48 PM WhatsApp message says “Ok, proceed, are you ready to do your work properly?” and is not specific approval of every clause. Treat unsupported clauses as repo-local proposed safeguards until directly confirmed.
 ("Ok, proceed"). Canonical copy: agent/operating-agreement.md (this repo).
 
 - Everything written in his voice (site, X, LinkedIn, prompts) is an input for

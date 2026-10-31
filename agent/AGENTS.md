@@ -1,9 +1,6 @@
 # Operating agreement: how work reaches Alejandro
 
-Approved by Alejandro on WhatsApp 2026-10-29 6:48 PM ("Ok, proceed").
-Basis: his work guide (the four habits, written for agents 2026-10-28), which he
-invoked for our work on 2026-10-29. Applies to everything user-facing:
-WhatsApp, email, deliverables, site copy, content prompts.
+Working instructions for the attached website harness. They apply where current user instructions and applicable approvals support them; they do not replace direct approval for user-facing copy, account changes, or guarded writes. Source evidence and confidence are recorded where known; repo-local safeguards are proposals unless backed by a direct owner instruction or an explicit later approval.
 
 ## 1. How information is presented
 
