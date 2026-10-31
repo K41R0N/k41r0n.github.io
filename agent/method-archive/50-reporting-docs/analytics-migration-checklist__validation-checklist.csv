@@ -1,0 +1,30 @@
+Pass?,Stage,Check,How to Verify
+STAGE A — WEBFLOW PREVIEW (webflow.io) — PRE-CUTOVER,,,
+☐,A,PostHog script initialises exactly once per page load,DevTools Console — check for duplicate init warnings
+☐,A,Network requests go to eu.i.posthog.com and return 200,DevTools Network — filter by posthog
+☐,A,Events carry site_platform: 'webflow' and site_version: 'cms-cutover-2026',PostHog Activity tab — inspect event properties
+☐,A,GA4 and Cookie3 do NOT load before consent is given,DevTools Network — check no gtag or cookie3 requests on fresh load
+☐,A,"After accepting consent, GA4 and Cookie3 load and fire correctly",DevTools Network — confirm scripts load after accept
+☐,A,"After rejecting consent, zero PostHog network requests are made",DevTools Network — filter by posthog after reject
+☐,A,$pageview fires on each page load,PostHog Activity tab
+☐,A,marketing_cta_click fires with correct cta_type and widget_param for each button,"Click each CTA, verify in PostHog Activity"
+☐,A,marketing_external_link_click fires for external links with correct link_category,"Click external links, verify in PostHog Activity"
+☐,A,marketing_external_link_click does NOT fire for app.the client product links,"Click app links, confirm no event in PostHog Activity"
+☐,A,marketing_external_link_modal_shown fires when modal opens,Test with a developers.the client product link
+☐,A,marketing_external_link_confirmed fires on confirm click,"Confirm in modal, verify in PostHog Activity"
+☐,A,marketing_scroll_depth fires at 25/50/75/100% thresholds,"Scroll through a long page, verify in PostHog Activity"
+☐,A,marketing_section_view fires as sections enter viewport,"Scroll through page, verify section events in PostHog Activity"
+☐,A,app_name: 'marketing' is present on every event,PostHog Activity tab — inspect any event
+☐,A,distinct_id is consistent across pages in the same session,"Navigate multiple pages, compare distinct_id"
+☐,A,Clicking app.the client product link appends __ph_id and __ph_session_id to URL,"Click app link, inspect URL in new tab"
+NO-GO CONDITIONS — BLOCK CUTOVER IF ANY ARE TRUE,,,
+☐,N/A,PostHog initialises more than once on a page,DevTools Console
+☐,N/A,Events missing site_platform or site_version,PostHog Activity tab
+☐,N/A,Critical events only firing via autocapture (not explicit posthog.capture()),PostHog Activity — check event source
+☐,N/A,app.the client product links not carrying __ph_id / __ph_session_id,"Click app link, inspect URL"
+STAGE B — POST-CUTOVER (first 48h on the client product),,,
+☐,B,sky_consent cookie is scoped to domain=.the client product,DevTools → Application → Cookies
+☐,B,Returning users who accepted on old site are NOT re-prompted,Test with a browser that has legacy localStorage consent
+☐,B,Returning accepted users skip banner and PostHog inits with persistence: 'localStorage+cookie',DevTools Console + Network
+☐,B,distinct_id is consistent for returning user across old → new site,PostHog person profile — compare IDs
+☐,B,Event volume comparable to pre-cutover baseline,PostHog dashboards — no unexpected drops or spikes

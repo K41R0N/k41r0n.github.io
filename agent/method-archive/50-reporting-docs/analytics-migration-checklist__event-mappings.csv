@@ -1,0 +1,11 @@
+Event Name,Trigger,Properties,Webflow Location,Phase,Notes
+$pageview,Automatic on each page load,"Standard PostHog properties + site_platform, site_version, app_name",Head Code (via posthog.init capture_pageview:true),Phase 2,"Fires once per full page load (Webflow is MPA, not SPA)"
+$pageleave,Automatic on page unload,Standard PostHog properties,Head Code (via posthog.init capture_pageleave:true),Phase 2,Built-in PostHog event
+marketing_cta_click,Click on [data-cta-type] element,"cta_type, cta_location, destination_url, widget_param, viewport",Footer Code — delegated click listener,Phase 4,See CTA Mappings tab for all cta_type values
+marketing_external_link_click,"Click on external link (not app.the client product, not allowed domains)","link_url, link_category, source_page, viewport",Footer Code — delegated click listener,Phase 4,link_category from inferLinkCategory()
+marketing_external_link_modal_shown,External link modal opens,"target_url, source_page",Footer Code — showExternalLinkModal(),Phase 4,Fires for restricted and non-allowed domains
+marketing_external_link_confirmed,User clicks confirm in modal,"target_url, source_page",Footer Code — confirm click handler,Phase 4,Opens target URL in new tab after fire
+marketing_scroll_depth,User scrolls past 25/50/75/100% threshold,"depth_percent, page_path, viewport",Footer Code — scroll listener IIFE,Phase 4,Each threshold fires once per page load
+marketing_section_view,Section enters viewport (30% visible),"section_name, page_path, viewport",Footer Code — IntersectionObserver IIFE,Phase 4,Requires data-section-name on section elements
+marketing_faq_search,FAQ search results update (if applicable),"results_count, has_results, page_path",Page Settings (FAQ page),Phase 4,Only if Webflow FAQ has search functionality
+marketing_faq_item_expand,FAQ accordion item clicked (if applicable),"faq_category, faq_question_id, page_path",Page Settings (FAQ page) or Footer Code,Phase 4,Requires data-faq-category and data-faq-question-id

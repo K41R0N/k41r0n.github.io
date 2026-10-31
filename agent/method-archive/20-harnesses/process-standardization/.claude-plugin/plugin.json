@@ -1,0 +1,16 @@
+{
+  "name": "process-standardization",
+  "version": "0.1.0",
+  "description": "Standardize how an operations team works: interview team members, synthesize across interviews, draft v1 SOPs from team practice, overlay v2 SOPs against an external reference framework, return review summaries to interviewees, and assemble a final 12-section rollout playbook.",
+  "author": {
+    "name": "Matthew Baggetta"
+  },
+  "keywords": [
+    "operations",
+    "sop",
+    "playbook",
+    "process-standardization",
+    "team-interviews",
+    "knowledge-work"
+  ]
+}

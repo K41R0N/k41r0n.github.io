@@ -1,0 +1,146 @@
+{
+  "_about": "Seed trusted-channel lists for the youtube-research skill. Matching is by @handle first, then by normalised channel name. Handles are best-effort — the report lists which entries matched in each run; fix any that never match. Add your own entries in ~/.config/youtube-research/trusted-channels.json (same shape) — that file is merged on top of this one and never overwritten by skill updates.",
+  "_tiers": {
+    "tier_a": "Authoritative: official project/institution channels, major media desks, widely-cited practitioners or educators. Authority floor 0.92.",
+    "tier_b": "Credible but opinionated or narrower: respected independent analysts, dev educators, niche podcasts. Authority floor 0.78.",
+    "blocked": "Channels you have decided never to surface (known shills, scrapers, misinformation). Authority cap 0.08. Keep this list to your own evidence-based decisions."
+  },
+  "shill_patterns": [],
+  "domains": {
+    "crypto_defi": {
+      "tier_a": [
+        {"handle": "@Bankless", "name": "Bankless", "why": "long-running Ethereum/DeFi media, primary-source interviews"},
+        {"handle": "@TheDefiant", "name": "The Defiant", "why": "DeFi news desk"},
+        {"handle": "@UnchainedCrypto", "name": "Unchained", "why": "Laura Shin — journalist-led interviews"},
+        {"handle": "@CoinBureau", "name": "Coin Bureau", "why": "large research-style explainers"},
+        {"handle": "@Blockworks_", "name": "Blockworks", "why": "institutional crypto media (Empire, 0xResearch, Lightspeed)"},
+        {"handle": "@BlockworksMacro", "name": "Blockworks Macro", "why": "Forward Guidance — macro × crypto"},
+        {"handle": "@Finematics", "name": "Finematics", "why": "canonical DeFi mechanism explainers"},
+        {"handle": "@WhiteboardCrypto", "name": "Whiteboard Crypto", "why": "beginner-friendly concept explainers"},
+        {"handle": "@a16zcrypto", "name": "a16z crypto", "why": "research + builder talks"},
+        {"handle": "@EthereumFoundation", "name": "Ethereum Foundation", "why": "official; Devcon talks"},
+        {"handle": "@ETHGlobal", "name": "ETHGlobal", "why": "hackathon + builder talks"},
+        {"handle": "@MessariCrypto", "name": "Messari", "why": "research house"},
+        {"handle": "@Delphi_Digital", "name": "Delphi Digital", "why": "research house"},
+        {"handle": "@CoinDesk", "name": "CoinDesk", "why": "news desk; Consensus talks"},
+        {"handle": "@RealVisionFinance", "name": "Real Vision", "why": "macro + crypto long-form"},
+        {"handle": "@the client", "name": "the client", "why": "official the client Protocol channel (verify handle)"},
+        {"handle": "@a competitor", "name": "a competitor", "why": "legacy official channel (governance calls)"},
+        {"handle": "@sparkdotfi", "name": "a service agent", "why": "official the client Star"},
+        {"handle": "@Uniswap", "name": "Uniswap", "why": "official"},
+        {"handle": "@aave", "name": "Aave", "why": "official"},
+        {"handle": "@chainlink", "name": "Chainlink", "why": "official; SmartCon talks"},
+        {"handle": "@Coinbase", "name": "Coinbase", "why": "official exchange channel"},
+        {"handle": "@Kraken", "name": "Kraken", "why": "official exchange channel"},
+        {"handle": "@circle", "name": "Circle", "why": "official stablecoin issuer"}
+      ],
+      "tier_b": [
+        {"handle": "@intothecryptoverse", "name": "Benjamin Cowen", "why": "data-driven market analysis"},
+        {"handle": "@MilkRoad", "name": "Milk Road", "why": "mainstream-friendly crypto media"},
+        {"handle": "@TheRollupCo", "name": "The Rollup", "why": "L2 / infra interviews"},
+        {"handle": "@zeroknowledgefm", "name": "Zero Knowledge", "why": "technical podcast"},
+        {"handle": "@EpicenterPodcast", "name": "Epicenter", "why": "long-running technical podcast"},
+        {"handle": "@PatrickAlphaC", "name": "Patrick Collins", "why": "smart-contract dev educator"},
+        {"handle": "@Cyfrin", "name": "Cyfrin", "why": "security / dev education"},
+        {"handle": "@smartcontractprogrammer", "name": "Smart Contract Programmer", "why": "dev tutorials"},
+        {"handle": "@BellCurvePod", "name": "Bell Curve", "why": "Blockworks DeFi podcast"}
+      ],
+      "blocked": []
+    },
+    "finance_markets": {
+      "tier_a": [
+        {"handle": "@markets", "name": "Bloomberg Television", "why": "major financial news desk"},
+        {"handle": "@BloombergPodcasts", "name": "Bloomberg Podcasts", "why": "Odd Lots etc."},
+        {"handle": "@CNBC", "name": "CNBC", "why": "major financial news desk"},
+        {"handle": "@FinancialTimes", "name": "Financial Times", "why": "major financial news desk"},
+        {"handle": "@TheEconomist", "name": "The Economist", "why": "major publication"},
+        {"handle": "@wsj", "name": "The Wall Street Journal", "why": "major publication"},
+        {"handle": "@Reuters", "name": "Reuters", "why": "wire service"},
+        {"handle": "@YahooFinance", "name": "Yahoo Finance", "why": "financial news desk"},
+        {"handle": "@AswathDamodaranonValuation", "name": "Aswath Damodaran", "why": "NYU Stern valuation lectures"},
+        {"handle": "@BenFelixCSI", "name": "Ben Felix", "why": "evidence-based investing"},
+        {"handle": "@ThePlainBagel", "name": "The Plain Bagel", "why": "CFA-led explainers"},
+        {"handle": "@PBoyle", "name": "Patrick Boyle", "why": "ex-hedge-fund manager, finance professor"},
+        {"handle": "@federalreserve", "name": "Federal Reserve", "why": "official central bank"},
+        {"handle": "@ecbeuro", "name": "European Central Bank", "why": "official central bank"},
+        {"handle": "@imf", "name": "IMF", "why": "official institution"},
+        {"handle": "@CFAInstitute", "name": "CFA Institute", "why": "professional body"},
+        {"handle": "@WhartonSchool", "name": "Wharton School", "why": "university"},
+        {"handle": "@ColumbiaBusiness", "name": "Columbia Business School", "why": "university"},
+        {"handle": "@MorningstarInc", "name": "Morningstar", "why": "research house"}
+      ],
+      "tier_b": [
+        {"handle": "@MacroVoices", "name": "MacroVoices", "why": "macro interviews"},
+        {"handle": "@HiddenForcesPod", "name": "Hidden Forces", "why": "long-form interviews"},
+        {"handle": "@MoneyMacro", "name": "Money & Macro", "why": "economist explainers"},
+        {"handle": "@EconomicsExplained", "name": "Economics Explained", "why": "popular econ explainers"},
+        {"handle": "@eurodollaruniversity", "name": "Eurodollar University", "why": "monetary plumbing analysis"},
+        {"handle": "@JosephCarlsonShow", "name": "Joseph Carlson", "why": "retail investing commentary"}
+      ],
+      "blocked": []
+    },
+    "tech_ai": {
+      "tier_a": [
+        {"handle": "@3blue1brown", "name": "3Blue1Brown", "why": "math/ML intuition"},
+        {"handle": "@AndrejKarpathy", "name": "Andrej Karpathy", "why": "practitioner lectures"},
+        {"handle": "@lexfridman", "name": "Lex Fridman", "why": "long-form interviews with researchers"},
+        {"handle": "@a16z", "name": "a16z", "why": "VC research + founder talks"},
+        {"handle": "@ycombinator", "name": "Y Combinator", "why": "startup school"},
+        {"handle": "@stanfordonline", "name": "Stanford Online", "why": "university lectures"},
+        {"handle": "@mitocw", "name": "MIT OpenCourseWare", "why": "university lectures"},
+        {"handle": "@Computerphile", "name": "Computerphile", "why": "CS explainers with academics"},
+        {"handle": "@TwoMinutePapers", "name": "Two Minute Papers", "why": "research summaries"},
+        {"handle": "@Fireship", "name": "Fireship", "why": "dev tooling overviews"},
+        {"handle": "@sequoiacapital", "name": "Sequoia Capital", "why": "VC talks"},
+        {"handle": "@NoPriorsPodcast", "name": "No Priors", "why": "AI founders/researchers"},
+        {"handle": "@LatentSpacePod", "name": "Latent Space", "why": "AI engineering podcast"},
+        {"handle": "@DwarkeshPatel", "name": "Dwarkesh Patel", "why": "deep research interviews"},
+        {"handle": "@Google_DeepMind", "name": "Google DeepMind", "why": "official lab"},
+        {"handle": "@OpenAI", "name": "OpenAI", "why": "official lab"},
+        {"handle": "@anthropic-ai", "name": "Anthropic", "why": "official lab"},
+        {"handle": "@MicrosoftResearch", "name": "Microsoft Research", "why": "official lab"},
+        {"handle": "@NVIDIA", "name": "NVIDIA", "why": "official; GTC talks"},
+        {"handle": "@TED", "name": "TED", "why": "curated talks"},
+        {"handle": "@TheVerge", "name": "The Verge", "why": "tech news desk"},
+        {"handle": "@mkbhd", "name": "Marques Brownlee", "why": "product reviews"}
+      ],
+      "tier_b": [
+        {"handle": "@t3dotgg", "name": "Theo - t3.gg", "why": "dev commentary"},
+        {"handle": "@ThePrimeTimeagen", "name": "ThePrimeagen", "why": "dev commentary"},
+        {"handle": "@aiexplained-official", "name": "AI Explained", "why": "careful AI news analysis"},
+        {"handle": "@YannicKilcher", "name": "Yannic Kilcher", "why": "paper walkthroughs"},
+        {"handle": "@MachineLearningStreetTalk", "name": "Machine Learning Street Talk", "why": "researcher interviews"},
+        {"handle": "@LennysPodcast", "name": "Lenny's Podcast", "why": "product/growth practitioners"},
+        {"handle": "@AcquiredFM", "name": "Acquired", "why": "company deep-dives"},
+        {"handle": "@allin", "name": "All-In Podcast", "why": "investor commentary"},
+        {"handle": "@20VC", "name": "20VC", "why": "VC interviews"}
+      ],
+      "blocked": []
+    },
+    "marketing_comms": {
+      "tier_a": [
+        {"handle": "@HubSpot", "name": "HubSpot", "why": "marketing education"},
+        {"handle": "@ThinkwithGoogle", "name": "Think with Google", "why": "official research"},
+        {"handle": "@GoogleSearchCentral", "name": "Google Search Central", "why": "official SEO guidance"},
+        {"handle": "@AhrefsCom", "name": "Ahrefs", "why": "SEO education"},
+        {"handle": "@semrush", "name": "Semrush", "why": "SEO/marketing education"},
+        {"handle": "@harvardbusinessreview", "name": "Harvard Business Review", "why": "management publication"},
+        {"handle": "@MarketingAgainsttheGrain", "name": "Marketing Against the Grain", "why": "HubSpot-backed practitioner podcast"},
+        {"handle": "@exitfive", "name": "Exit Five", "why": "B2B marketing community"}
+      ],
+      "tier_b": [
+        {"handle": "@garyvee", "name": "GaryVee", "why": "attention/brand commentary"},
+        {"handle": "@NeilPatel", "name": "Neil Patel", "why": "digital marketing"},
+        {"handle": "@Backlinko", "name": "Backlinko", "why": "SEO tactics"},
+        {"handle": "@MozHQ", "name": "Moz", "why": "SEO education"},
+        {"handle": "@AlexHormozi", "name": "Alex Hormozi", "why": "offers/growth"},
+        {"handle": "@thefutur", "name": "The Futur", "why": "brand/design business"},
+        {"handle": "@SocialMediaExaminer", "name": "Social Media Examiner", "why": "social marketing"},
+        {"handle": "@SproutSocial", "name": "Sprout Social", "why": "social listening/management"},
+        {"handle": "@Meltwater", "name": "Meltwater", "why": "media intelligence"},
+        {"handle": "@hootsuite", "name": "Hootsuite", "why": "social management"}
+      ],
+      "blocked": []
+    }
+  }
+}

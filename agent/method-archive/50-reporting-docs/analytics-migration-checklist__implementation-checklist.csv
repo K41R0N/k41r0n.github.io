@@ -1,0 +1,37 @@
+#,Phase,Step,Script / Action,Webflow Location,Dependencies,Notes
+PHASE 1 — CONSENT SYSTEM,,,,,,
+,Phase 1,"Add consent helper functions (_getCookieDomain, _readConsentCookieRaw, getSkyConsent, setSkyConsent, isConsentComplete)",Paste consent helpers JS block,Site Settings → Head Code,None — goes first,"Must be placed BEFORE PostHog init. Cookie name: sky_consent, domain: .the client product"
+,Phase 1,Wire consent banner — Accept All handler,"setSkyConsent({posthog:true, cookie3:true, google_analytics:true}); applyPostHogConsent(true); loadGA4(); loadCookie3();",Consent banner component onclick,Consent helpers + Phase 2 + Phase 3 functions,Also hides the banner
+,Phase 1,Wire consent banner — Reject All handler,"setSkyConsent({posthog:false, cookie3:false, google_analytics:false}); applyPostHogConsent(false);",Consent banner component onclick,Consent helpers + Phase 2 applyPostHogConsent,GA4 and Cookie3 never load
+,Phase 1,Implement banner show/hide logic,On page load: if getSkyConsent() === null OR isConsentComplete() === false → show banner,Site Settings → Footer Code or Head Code (after helpers),Consent helpers,"Banner must be a Webflow element, hidden by default"
+PHASE 2 — POSTHOG GLOBAL SNIPPET,,,,,,
+,Phase 2,Paste PostHog loader snippet from project settings,Copy from PostHog → Settings → Project → JS snippet,Site Settings → Head Code (after consent helpers),Phase 1 consent helpers,Do NOT rotate the project token
+,Phase 2,Add PostHog init block with consent-gated persistence,"posthog.init() block with before_send tagging, consent-aware persistence, cross_subdomain_cookie:true",Site Settings → Head Code (immediately after loader snippet),PostHog loader snippet + consent helpers,Token placeholder: YOUR_PRODUCTION_TOKEN. api_host: https://eu.i.posthog.com
+,Phase 2,Add applyPostHogConsent() function,Runtime consent toggle — accepts or rejects PostHog after banner interaction,Site Settings → Head Code (after init block),PostHog init block,"If user was previously rejected and now accepts, page reloads to re-init"
+PHASE 3 — GA4 AND COOKIE3,,,,,,
+,Phase 3,Add loadGA4() function,Consent-gated GA4 script injection with data-ga4 dedup attribute,Site Settings → Head Code (after PostHog block),Phase 2 PostHog block,Placeholder: YOUR_GA_MEASUREMENT_ID
+,Phase 3,Add loadCookie3() function,Consent-gated Cookie3 script injection with integrity hash and data-cookie3 dedup,Site Settings → Head Code (after loadGA4),Phase 2 PostHog block,Placeholder: YOUR_COOKIE3_SITE_ID. CDN version: 0.11.21
+,Phase 3,Add auto-load for returning accepted users,if (_skyConsent && _skyConsent.google_analytics) loadGA4(); if (_skyConsent && _skyConsent.cookie3) loadCookie3();,Site Settings → Head Code (after loader functions),loadGA4 + loadCookie3 + _skyConsent variable from Phase 2,Fires on page load for users who already consented
+PHASE 4 — CUSTOM EVENTS,,,,,,
+,Phase 4,Add getViewport() utility,"Returns 'mobile' / 'tablet' / 'desktop' based on innerWidth breakpoints (768, 1024)",Site Settings → Head Code or Footer Code (before event listeners),None,Used by all event captures
+,Phase 4,Add marketing_cta_click listener,Delegated click handler for [data-cta-type] elements,Site Settings → Footer Code,getViewport(),Webflow builder must add data-cta-type to every CTA. See CTA Mappings tab.
+,Phase 4,Add data-cta-type attributes to all CTA elements in Webflow,Apply data-cta-type and data-widget-param custom attributes per CTA Mappings tab,Webflow Designer — each CTA element,CTA type value list agreed upon,14 CTA types defined. See CTA Mappings tab.
+,Phase 4,"Add link classification helpers (inferLinkCategory, domain arrays, _isAppLink, _isSkyDomainLink, _requiresModal)",Domain classification logic for external links,Site Settings → Footer Code (before link listener),None,"Defines SOCIAL_DOMAINS, ALLOWED_DOMAINS, RESTRICTED_DOMAINS arrays"
+,Phase 4,Add marketing_external_link_click listener,"Delegated click handler for external links, skips app.the client product and allowed domains",Site Settings → Footer Code,Link classification helpers,Also triggers modal for restricted/external domains
+,Phase 4,Build external link modal in Webflow,"Hidden div with id='external-link-modal', confirm button [data-modal-confirm], cancel button [data-modal-cancel]",Webflow Designer — global component,None,Display: none by default. JS controls visibility. Do NOT use Webflow Interactions.
+,Phase 4,"Add modal JS (showExternalLinkModal, hideExternalLinkModal, confirm/cancel listeners)",Modal show/hide + marketing_external_link_modal_shown and marketing_external_link_confirmed events,Site Settings → Footer Code,External link modal element,Events 3 & 4
+,Phase 4,Add marketing_scroll_depth listener,IIFE tracking 25/50/75/100% scroll thresholds,Site Settings → Footer Code,getViewport(),Each threshold fires only once per page load
+,Phase 4,Add marketing_section_view IntersectionObserver,Observes [data-section-name] elements at 0.3 threshold,Site Settings → Footer Code,getViewport(),Webflow builder must add data-section-name to major sections
+,Phase 4,Add data-section-name attributes to sections in Webflow,Tag each major page section with data-section-name custom attribute,Webflow Designer — each section element,Section names agreed upon with builder,"e.g. hero, features, token-upgrade"
+,Phase 4,Add marketing_faq_search tracking (if applicable),trackFaqSearch(resultsCount) called after FAQ search results update,Page Settings → Custom Code (FAQ page),getViewport(),Only implement if Webflow FAQ has search
+,Phase 4,Add marketing_faq_item_expand tracking (if applicable),Delegated click handler for [data-faq-question-id] accordion triggers,Page Settings → Custom Code (FAQ page) or Footer Code,None,Also requires data-faq-category attributes. Only implement if FAQ has accordion.
+PHASE 5 — CROSS-DOMAIN ATTRIBUTION,,,,,,
+,Phase 5,Add appendPostHogParams() helper,Appends __ph_id and __ph_session_id to URLs for identity continuity,Site Settings → Footer Code,PostHog init (Phase 2),Skips if distinct_id is $posthog_cookieless
+,Phase 5,Add app.the client product link interceptor,Delegated click handler rewrites app.the client product hrefs with PostHog identity params,Site Settings → Footer Code,appendPostHogParams(),"Uses double-underscore prefix: __ph_id, __ph_session_id"
+PHASE 6 — VALIDATION,,,,,,
+,Phase 6,Run Stage A validation on webflow.io preview,Execute full Stage A checklist (see Validation tab),Browser DevTools + PostHog Activity,All Phases 1–5 implemented,Does NOT cover cookie domain scoping — that requires live domain
+PHASE 7 — CUTOVER,,,,,,
+,Phase 7,Schedule DNS cutover during low-traffic window,DNS change,DNS provider,Phase 6 Stage A passed,Do NOT rotate PostHog project token
+,Phase 7,Run Stage B validation (first 48h on the client product),Execute full Stage B checklist (see Validation tab),Browser DevTools + PostHog person profiles,DNS cutover complete,"Cookie scoping, legacy migration, identity continuity, volume baseline"
+,Phase 7,Monitor PostHog 24–48h post-cutover,"Watch for drops in marketing_cta_click, duplicate $pageview, missing site_platform",PostHog dashboards filtered by site_platform='webflow',DNS cutover complete,Filter by site_platform = 'webflow' to isolate new traffic
+,Phase 7,Decommission old Next.js analytics scripts,Remove analytics code from old site,Next.js codebase,48h stable monitoring,Only after confirming stable volume and no regressions

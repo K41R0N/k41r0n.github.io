@@ -1,0 +1,9 @@
+Category,Domains,Behaviour
+"Allowed (bypass modal, no external link event)","the client product, app.the client product, docs.the client product",No modal. No marketing_external_link_click. App links handled by CTA tracking + cross-domain attribution.
+Restricted (trigger modal),developers.the client product,Modal shown. marketing_external_link_click fires. marketing_external_link_modal_shown fires.
+Social,"twitter.com, x.com, discord.com, discord.gg, t.me, telegram.org, youtube.com, github.com",Modal shown. link_category = 'social'.
+Governance,"vote.the client product, forum.the client product",Modal shown. link_category = 'governance'.
+Docs,"developers.the client product, or pathname starts with /docs",Modal shown. link_category = 'docs'.
+Media,"*.notion.so, *.notion.site",Modal shown. link_category = 'media'.
+Ecosystem,"client-example.invalid, info.the client product",Modal shown. link_category = 'ecosystem'.
+Other (everything else),Any domain not listed above,Modal shown. link_category = 'other'.

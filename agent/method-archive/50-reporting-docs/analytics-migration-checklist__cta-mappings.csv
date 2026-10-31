@@ -1,0 +1,15 @@
+data-cta-type Value,Element Description,data-widget-param,Applied?
+launch_app_header,"Header nav ""Launch App""",,☐
+launch_app_hero,"Hero ""Launch App""",,☐
+launch_app_footer,"Footer ""Launch App""",,☐
+launch_app_faq,FAQ page bottom CTA,,☐
+launch_app_features,Features page bottom CTA,,☐
+token_upgrade_sky,the client upgrade card (MKR → the client),,☐
+token_upgrade_usds,sample-token upgrade card (DAI → sample-token),,☐
+feature_upgrade,Upgrade feature card,,☐
+feature_trade,Trade feature card,,☐
+feature_rewards,Rewards feature card,rewards,☐
+feature_vaults,Vaults feature card,vaults,☐
+feature_savings,Savings feature card,savings,☐
+feature_stake,Stake feature card,stake,☐
+feature_expert,sample-staked-token expert card,,☐

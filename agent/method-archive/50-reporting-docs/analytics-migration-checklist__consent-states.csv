@@ -1,0 +1,14 @@
+State,Condition,PostHog Behaviour,GA4,Cookie3
+Pending,No sky_consent cookie,"Init with persistence: 'memory' (no cookies, no localStorage)",Not loaded,Not loaded
+Accepted,posthog: true in cookie,"Init with persistence: 'localStorage+cookie', opt_in_capturing()",Load if google_analytics: true,Load if cookie3: true
+Rejected,posthog: false in cookie,Do not initialise at all,Do not load,Do not load
+,,,,
+COOKIE STRUCTURE,,,,
+Cookie name,sky_consent,,,
+Domain,.the client product (cross-subdomain),,,
+Path,/,,,
+Max-age,31536000 (1 year),,,
+SameSite,Lax,,,
+Format,"{""posthog"":true,""cookie3"":true,""google_analytics"":true}",,,
+Key behaviour,Each key independently true/false. Missing key = show banner again.,,,
+Legacy migration,"Reads cookie_consent_v2 and cookie_consent from localStorage (one-time), writes to cookie, removes localStorage entries",,,
