@@ -9,7 +9,7 @@ Look in this order and stop as soon as you have a sourced answer:
 1. `index.md`: the repo map - what the site is, how it builds, where things live.
 2. `AGENTS.md` and `CHARTER.md`: the rules and the scope. These override everything below.
 3. `decisions/`: what is decided (`log.md`), what we are aiming at (`goals.md`), what is still unknown (`open-loops.md`), and voice findings (`voice-findings/`). A decision beats a knowledge note that disagrees with it.
-4. `knowledge/`: `ethos/` (his principles), `methodologies/` (his ways of working), `site/` (the site itself), `voice/` (his voice canon).
+4. `knowledge/`: `ethos/` (his principles), `methodologies/` (his ways of working), `site/` (the site itself), `voice/` (his voice canon), `clients/` (durable public-source client research, one folder per client).
 5. `routines/`: how the recurring jobs run, `protocols/` (mandatory rules for multi-step operations), and `learnings.md` for what earlier runs taught us.
 6. `packs/`: his methods as importable modules, each with evals. `packs/index.md` routes a task to a pack.
 7. `assets/`: the voice corpus and draft workspaces.
