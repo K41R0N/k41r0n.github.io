@@ -20,7 +20,9 @@ case is how that claim gets checked.
   the interactive demonstration was added. Kept as evidence of what
   correction 7 (show, don't tell) changed.
 - `research-brief.md` - the prospect research brief behind the page (the
-  `prospect-research` method's output), recovered byte-for-byte.
+  `prospect-research` method's output). Public copy: the observations
+  derived from the owner's private visit photos are withheld here; the
+  byte-for-byte original lives only in the private Drive backup.
 - `corrections-record.md` - the verbatim, timestamped record of the nine
   owner corrections, the acceptance, and the storage correction, with the
   correction-to-gate and correction-to-method mappings.

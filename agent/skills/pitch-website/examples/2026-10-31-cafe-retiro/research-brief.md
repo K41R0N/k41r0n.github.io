@@ -1,6 +1,6 @@
 # Café Retiro | prospect research brief
 
-Research date: 31 October 2026. Scope: public sources plus owner-provided photos from a same-day visit. This is a first-pass public-source brief for Alejandro's private review, not an external prospect communication.
+Research date: 31 October 2026. Scope: public sources. The original brief also drew on owner-provided visit photos; those photo-derived observations are private and are withheld from this public copy. The byte-for-byte original is kept only in the private Drive backup.
 
 ## Decision
 Do not propose or send a service offer yet. Café Retiro has a broad, coherent farm-to-cup story and multiple visitor/customer pathways. A small discovery conversation could test whether one path deserves attention, but no stated near-term goal or evidence of a current problem was found. Any pitch is a concept for Alejandro to review, not an assertion that Café Retiro needs a fix.
@@ -14,7 +14,7 @@ UNKNOWN: No current business priority, specific decision, success metric, timeli
 
 ## Business model
 REPORTED: Source: official pages. The official site presents specialty coffee sourcing with local grower families, processing/roasting/packing at its town factory, a physical café/shop, an online store with coffee and related products, and tastings/classes/visitor experiences. Catalog pages also show institutional-format coffee. Official links: https://caferetiro.com/pages/nosotros ; https://caferetiro.com/pages/visitanos ; https://caferetiro.com/collections/all
-REPORTED: The official current collection lists multiple coffee sizes, microlots, gift/equipment items and classes. Same-day owner photos show a café menu with beverages, food, brew methods, take-home/subscription information, displayed packaged coffee and merchandise. Those photos establish what was displayed during this visit, not sales, stock, or repeat-purchase behavior. Source: owner-provided photos, 31 October 2026 (private context; not included in any public link preview).
+REPORTED: The official current collection lists multiple coffee sizes, microlots, gift/equipment items and classes.
 REPORTED: Sprudge named Café Retiro the 2025 winner of its Design Inclusivity Award. This supports public design recognition; it does not establish that the present customer experience has an accessibility problem. Source: https://sprudge.com/announcing-the-second-annual-sprudge-design-award-winners-269427.html
 
 ## Operations
@@ -32,7 +32,6 @@ These are conditional test questions, not discovered pain points or recommendati
 Primary: https://caferetiro.com/ ; https://caferetiro.com/pages/nosotros ; https://caferetiro.com/collections/all ; https://caferetiro.com/pages/visitanos ; https://caferetiro.com/pages/mujeres-luna-en-verde ; https://caferetiro.com/products/clase-introduccion-a-los-cafes-especiales ; https://caferetiro.com/products/clase-metodos-de-preparacion . Accessed 31 October 2026. Use live product page for price/availability at point of use.
 Independent local/regional sources: Comfama, https://www.comfama.com/cultura-y-ocio/postales-de-antioquia/oriente/relato-de-el-retiro/ (2021-09-02); El Tiempo, https://www.eltiempo.com/vida/viajar/turismo-en-antioquia-guia-para-visitar-el-municipio-de-el-retiro-625150 (2021-10-14, checked only through search excerpt); Teleantioquia, https://www.teleantioquia.co/estilo-de-vida/que-hacer-en-el-retiro-guia-para-descubrir-los-tesoros-de-un-destino-imperdible-519267 (2025-08-23).
 Design recognition: Sprudge, https://sprudge.com/announcing-the-second-annual-sprudge-design-award-winners-269427.html (2025-01-17); finalist/category details: https://sprudge.com/design-inclusivity-award-finalists-260529.html (2024-12-06).
-Owner-provided photos, 31 October 2026: six images of products/portfolio, menu, brand story, shelf and packaging. Private evidence only. A photo's written claims about origin/altitude/process remain unverified unless corroborated on a current public source.
 Search-only leads not relied on: TripAdvisor listing https://www.tripadvisor.com/Attraction_Review-g2079012-d11045966-Reviews-Cafe_Retiro-Retiro_Antioquia_Department.html ; El Retiro municipality page https://elretiro.gov.co/publicaciones/14858/historia-del-cafe/ (fetch unavailable; snippet only).
 
 ## Gaps
