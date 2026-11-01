@@ -4,7 +4,7 @@ Research date: 1 November 2026. Scope: public sources only, per `agent/packs/pro
 
 ## Executive summary
 
-ESTABLISHED: ESD is a riverside ecopark on the Santo Domingo river canyon at Km 6 of the San Francisco road, municipality of Cocorná, Oriente Antioqueño, about two hours from Medellín. It sells day visits ("día de sol"), camping, lodging, and restaurant/bar service, with direct river access. Its registered company ECO SANTO DOMINGO SAS (NIT 901498391) is active in RUES. Its strongest public asset is Instagram (@ecoparqueriosantodomingo, 14.8K followers). Its own website is currently unreachable, and Google Maps carries no website link.
+ESTABLISHED: ESD is a riverside ecopark on the Santo Domingo river canyon at Km 6 of the San Francisco road, municipality of Cocorná, Oriente Antioqueño, about two hours from Medellín. It sells day visits ("día de sol"), camping, lodging, and restaurant/bar service, with direct river access. A RUES mirror lists the registered company ECO SANTO DOMINGO SAS (NIT 901498391) as active (mirror report, not yet confirmed on the official registry). Its strongest public asset is Instagram (@ecoparqueriosantodomingo, 14.8K followers). Its own website was unreachable in our access checks today, and Google Maps carries no website link.
 
 PROVISIONAL: the business runs reservation-led operations through phone/WhatsApp and social channels; public evidence of a working digital booking channel was not confirmed in this run. The owned website is down and Maps carries no site link, so owned-channel presence is weak relative to third-party surfaces.
 
@@ -31,7 +31,7 @@ UNKNOWN: no current business goal, priority, success metric, or timeframe is pub
 
 ## Registry footprint
 
-REPORTED: ECO SANTO DOMINGO SAS, NIT 901498391, registered in Cocorná, Antioquia; RUES status active; size MICRO; activities listed as recreation n.e.c., prepared-food service, and other visitor lodging. Source: https://empresas.larepublica.co/colombia/antioquia/cocorna/eco-santo-domingo-sas-901498391 (RUES mirror, read 2026-11-01). One source group; confirm on rues.org.co before relying on it.
+REPORTED: ECO SANTO DOMINGO SAS, NIT 901498391, registered in Cocorná, Antioquia; RUES status active; size MICRO; activities listed as recreation n.e.c., prepared-food service, and other visitor lodging. Source: https://empresas.larepublica.co/colombia/antioquia/cocorna/eco-santo-domingo-sas-901498391 (RUES mirror, read 2026-11-01). This is a mirror's report, not official-registry confirmation; the current RUES state is unconfirmed until checked on rues.org.co.
 UNKNOWN: current Registro Nacional de Turismo (RNT) status for this specific establishment. Mincit's public RNT new-registrations listing for Cocorná was checked (https://servicios.mincit.gov.co/rnt-bi/nuevosmensual_list.php) without a confirmed entity-level match.
 
 ## Place and access
@@ -70,15 +70,17 @@ Observable operations, sources as shown: opens daily until 8 PM (live Maps, 2026
 - Facebook /EcoSantoDomingo: 985 followers, 90% recommend (7 reviews), last publicly visible post 2026-08-27 with low engagement (5 reactions); intro "Somos un ecoparque con un encanto natural; donde se alimenta la mente y el alma"; category Restaurant; price range $.
 - Google Maps: 4.7 (75 reviews), Restaurant category with hotel-booking surface, 204 photos, opens daily until 8 PM, "Identifies as women-owned", no website link shown ("Add website" prompt visible).
 - OTA lead, unverified: Google's hotel surface for this place carries a Booking.com-linked offer (Booking property id 7480291, native currency COP). Verification on 2026-11-01: the property page does not resolve on Booking.com and a Booking.com name/destination search returns zero matching properties, so an active OTA listing is NOT confirmed; treat as a lead (possibly a delisted property still in Google's hotel graph). Widget price/availability figures are deliberately not recorded as facts.
-- Website: currently DOWN. riosantodomingo.com returns a 301 to ecosantodomingo.com, which fails to load (browser "failed to reach target"; crawler 503/unknown error) on 2026-11-01.
+- Website: unreachable in our access checks on 2026-11-01 - riosantodomingo.com returned a 301 to ecosantodomingo.com, which failed to load from our browser and crawler (browser "failed to reach target"; crawler 503/unknown error). A same-day access result from our vantage, not proof the site is down for every visitor.
 - Historical handle: @ecosantodomingo (Instagram/Facebook) was the business's handle in 2022 (CES thesis; https://manadatravel.com/directorio/eco-parque-santo-domingo-cocorna). That handle is now dead on Instagram ("profile may have been removed", checked 2026-11-01). UNCERTAIN whether the current account is a rename or a new account; do not state either as fact.
 - Contact surfaces: phone +57 314 6774009 (listings, Facebook, Maps); second number 314 665 4100 (2022 blog); email admin@riosantodomingo.com (Facebook page). WhatsApp is the reservation channel referenced by the 2022 blog.
 
-## Website history (capture timeline, not page content)
+## Website history (capture timeline only; page content unexamined)
 
-Archive capture records (Internet Archive CDX, read 2026-11-01): riosantodomingo.com has captures from May-Sep 2019 (all 301 redirects at root), then Dec 2021, May 2024, Jul 2025. ecosantodomingo.com: 200 in Sep-Oct 2023, 404 across Mar-Dec 2024, 200 again Feb-Mar 2025. These are capture timestamps and status codes only; they do not establish year-round uptime or what the pages showed.
+Exact observed Internet Archive CDX capture records (read 2026-11-01). Each row is one point-in-time server response; nothing is established about continuity between captures, and no archived page content was examined:
+- riosantodomingo.com: 2019-05-01 (301), 2019-06-05 (301), 2019-07-05 (301), 2019-08-06 (301), 2019-09-06 (301), 2021-12-22 (301), 2024-05-18 (301), 2025-07-14 (301).
+- ecosantodomingo.com: 2023-09-25 (200), 2023-10-30 (200), 2024-03-29 (404), 2024-05-18 (404), 2024-09-21 (404), 2024-12-18 (404), 2025-02-22 (200), 2025-03-15 (200).
 Third-party citations establish that www.riosantodomingo.com was presented as the official site in 2021-2023 (CES bibliography 2021; viveysientecocorna 2022; Casacol 2022), and www.ecosantodomingo.com appears on the colombiabz listing.
-UNKNOWN: historical page content. Internet Archive replay was in an outage during this run ("Temporarily Offline", 2026-11-01), so snapshots could not be opened. Retry when the Archive recovers.
+UNKNOWN: historical page content and design iterations. Internet Archive replay was in an outage during this run ("Temporarily Offline", 2026-11-01), so no snapshot was opened. The requested Wayback-iteration review remains incomplete; retry when the Archive recovers.
 
 ## Reputation and demand signals
 
@@ -99,8 +101,8 @@ INFERRED (labeled, for later validation): ESD's differentiation against this set
 ## Improvement hypotheses
 
 Conditional candidates, not recommendations. Each needs the operator's goal and validation before any advice:
-1. Owned web channel: the official domain redirects to an unreachable site (verified 2026-11-01) while directories and Maps drive discovery. Hypothesis: restoring a minimal owned page with current prices and booking contact could reduce dependence on third-party listings. Validate: is the downtime known and intentional? Disconfirm: reservations are already at desired volume through WhatsApp.
-2. Booking channel: a Booking.com-linked offer exists in Google's hotel graph but the property does not resolve on Booking.com (verified 2026-11-01), while direct competitors (Cabañas Camino al Agua, Glamping Verde Melcocho, Rio Claro Reserva Natural) are live and bookable there. Hypothesis: a delisted or stale OTA property leaves demand capture to manual channels. Validate: does the operator know the listing's status, and do they want OTA distribution? Disconfirm: deliberate delisting.
+1. Owned web channel: the official domain redirected to a site unreachable from our vantage (observed 2026-11-01) while directories and Maps drive discovery. Hypothesis: restoring a minimal owned page with current prices and booking contact could reduce dependence on third-party listings. Validate: is the downtime known and intentional? Disconfirm: reservations are already at desired volume through WhatsApp.
+2. Booking channel: a Booking.com-linked offer exists in Google's hotel graph but the property did not resolve on Booking.com in our checks (observed 2026-11-01), while direct competitors (Cabañas Camino al Agua, Glamping Verde Melcocho, Rio Claro Reserva Natural) are live and bookable there. Hypothesis: a delisted or stale OTA property leaves demand capture to manual channels. Validate: does the operator know the listing's status, and do they want OTA distribution? Disconfirm: deliberate delisting.
 3. Legacy handle rot: 2022-2023 directories cite the dead @ecosantodomingo handle. Hypothesis: old citations leak discovery traffic. Validate: confirm what happened to the old account; check referral paths. Disconfirm: followers migrated fully and search resolves to the new handle.
 4. Conservation positioning: a 2022 university study produced an 86-species bird baseline, but recent social content centers camping. Hypothesis: aviturismo/environmental-education positioning is under-used relative to asset. Validate: does the operator want that segment? Disconfirm: deliberate focus on family camping.
 5. Reservation friction: public evidence shows phone/WhatsApp-only reservations with capacity restrictions at peaks. Hypothesis: peak-day triage could be systematized. Validate: actual arrival and inquiry flow from the operator. Disconfirm: current flow is preferred and manageable.

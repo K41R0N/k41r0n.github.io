@@ -9,8 +9,8 @@ Retrieval date for all sources: 2026-11-01. Format: source, publisher/date, what
 - https://www.instagram.com/ecoparqueriosantodomingo/ : official Instagram, 14.8K followers, 157 posts, recent content themes. Read via public /embed endpoint without login.
 - https://www.instagram.com/ecosantodomingo/ : legacy handle, returns "profile isn't available" (2026-11-01). Rename vs new account unresolved.
 - https://www.facebook.com/EcoSantoDomingo/ and /about: official page - 985 followers, 90% (7 reviews), intro text, phone, email, price range $, last public post 2026-08-27. Read unauthenticated.
-- https://www.riosantodomingo.com/ : live check - 301 redirect to http://ecosantodomingo.com/ which fails to load (browser "failed to reach target"; crawler 503). Website down.
-- https://www.ecosantodomingo.com/ : live check - unreachable.
+- https://www.riosantodomingo.com/ : access check 2026-11-01 - 301 redirect to http://ecosantodomingo.com/, which failed to load from our vantage (browser "failed to reach target"; crawler 503). Same-day access result, not proof of universal unavailability.
+- https://www.ecosantodomingo.com/ : access check 2026-11-01 - unreachable from our vantage.
 - Booking.com verification: property id 7480291 from Google's hotel surface; https://www.booking.com/index.html?hotel_id=7480291 does not resolve to a property page; name/destination search returns zero matches. Active OTA listing not confirmed.
 - Booking.com competitor reads (live): Cabañas Camino al Agua 9.5 (76), Glamping Verde Melcocho 8.4 (19), Rio Claro Reserva Natural 7.3 (7), "hermosa cabaña villa majo" 7.9 (7).
 
@@ -42,7 +42,7 @@ Retrieval date for all sources: 2026-11-01. Format: source, publisher/date, what
 
 ## Archive records
 
-- Internet Archive CDX (read 2026-11-01): riosantodomingo.com captures May-Sep 2019 (301s), 2021-12, 2024-05, 2025-07; ecosantodomingo.com 200 in 2023-09/10, 404 across 2024, 200 in 2025-02/03. Capture records only, not page content.
+- Internet Archive CDX (read 2026-11-01), exact capture records. riosantodomingo.com: 2019-05-01, 2019-06-05, 2019-07-05, 2019-08-06, 2019-09-06 (all 301), 2021-12-22 (301), 2024-05-18 (301), 2025-07-14 (301). ecosantodomingo.com: 2023-09-25 (200), 2023-10-30 (200), 2024-03-29 (404), 2024-05-18 (404), 2024-09-21 (404), 2024-12-18 (404), 2025-02-22 (200), 2025-03-15 (200). Point-in-time responses only; no continuity inferred; page content unexamined.
 - Wayback replay unavailable: Internet Archive "Temporarily Offline" outage during this run; historical page content not extracted. Retry when the Archive recovers.
 
 ## Not found in checked sources (absence, not proof)
