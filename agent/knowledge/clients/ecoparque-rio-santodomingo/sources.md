@@ -111,3 +111,9 @@ Area, corridor and market context (added 2026-11-01, second pass):
 - https://www.andes-antioquia.gov.co/Ciudadanos/PortaldeNinos/Enterate/Paginas/Sitios-recomendados.aspx : undated, read 2026-11-01 - "paseo de olla" river-day/sancocho culture documented.
 - Full pass preserved in `area-market-context-2026-11.md` (this folder).
 - https://viajaporcolombia.com/peajes/medellin_cocorna/ : opened 2026-11-01 - route toll calculator page, no static plaza list retrievable; not used for any claim.
+- https://diarioriente.com/noticias/conozca-el-rio.html : 2025-03-04 - dated route description: Las Palmas - Tunel de Oriente - variante - via Guarne-Aeropuerto - autopista ~56.2 km - La Pinuela - desvio San Francisco (Melcocho route, same turnoff as ESD).
+- https://es.wikipedia.org/wiki/es:San_Francisco_(Antioquia) : undated tertiary, read 2026-11-01 - access via autopista passing La Pinuela and Pailania (both Cocorna); "La via fue pavimentada recientemente" (revision date unchecked).
+- https://mioriente.com/altiplano/asi00-quedaron-las-tarifas-de-peaje-para-el-2018-en-el-oriente.html : 2017-12-29 - autopista plazas: Copacabana (Guarne), El Santuario (Cocorna jurisdiction), Puerto Triunfo; Peaje La Fe on via Palmas. Geography only, not current tariffs.
+- https://mioriente.com/movilidad/nuevas-tarifas-peajes/ : 2025-12-31 - 2026 tariffs effective 2026-01-01: Peaje Copacabana (Guarne) cat I COP 18,600; Palmas-El Retiro adjusted.
+- https://mioriente.com/bosques/cocorna-celebra-160-anos-desfile/ : 2024-08-20 - mayor-attributed ~25,000 visitors over the Aug 17-19, 2024 festival weekend; single event, not a baseline.
+- https://portucolombia.mincit.gov.co/tematicas/estadisticas-territoriales-de-turismo-1 : read 2026-11-01 - MinCIT territorial tourism statistics route (municipal non-resident arrivals); data behind viewer, not extracted.
