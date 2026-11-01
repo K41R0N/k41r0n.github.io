@@ -76,6 +76,8 @@ The example is the explanation. Avoid leading with repository plumbing, a taxono
 
 Nine blocking checks. Run them in order on the final page, before any review link goes out, and report the evidence for each. A failure stops the publish; these are gates, not style preferences. Six of the nine owner corrections on the first live run repeated rules that already existed in this skill but were not enforced before publishing.
 
+A gate passes on evidence, not wording. Evidence means the methodology sources were actually read and applied to this reader, the demonstration genuinely shows the method working, and a reader could say what the offer is, why it is for them, and what happens next. A checked-off list proves only that the known failure modes were reviewed; it is not proof that the pitch is good, that the run was faster, or that the page will work. Quality stays with the owner's review.
+
 0. **Deployment surface confirmed.** The page is on the surface confirmed at orientation (default: here.now). Page link, expiry, and claim link reported. Never substitute another hosting surface without saying so.
 1. **Reader language.** The page is written in the reader's own language, and the five passes ran on that final language version, not on an earlier draft in another language. Reader-facing copy carries no English terms and no technical vocabulary; method concepts appear as plain questions and everyday words the reader would use.
 2. **Why first.** The opening leads with the reader's outcome, before any how. Implementation, tools, and infrastructure stay invisible unless the reader asks.

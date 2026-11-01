@@ -4,7 +4,7 @@ The approved result of the first end-to-end live run of `skills/pitch-website` o
 
 - `index.html` - the full page, anonymized for this public repo. The business's name, its own source links, and its photography are removed. The page expects a `photo.jpg` beside it that is intentionally not committed (it is the business's own photography).
 - The verbatim page, the photo, and provenance notes are in the private Drive archive: https://drive.google.com/drive/folders/1iCwtl7_6DP9F194H_nqoPT0KtwjNO_71
-- The retrospective of the run, with every owner correction verbatim: `agent/knowledge/site/pitch-page-learnings-first-live-run-2026-10-31.md`
+- The generalized retrospective of the run: `agent/knowledge/site/pitch-page-learnings-first-live-run-2026-10-31.md` (the verbatim correction record stays private in the Drive archive)
 
 ## What to copy from this example
 

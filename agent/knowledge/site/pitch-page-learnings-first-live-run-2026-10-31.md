@@ -2,9 +2,9 @@
 id: 01M6A786VZPKK0B7F5EQ3NG8H0
 type: Learning
 title: "Pitch page retrospective: first live prospect run, 2026-10-31"
-description: "What failed, what the owner corrected verbatim, and what the accepted result did well in the first live run of the pitch-website skill on a real business."
+description: "Generalized lessons from the first live run of the pitch-website skill on a real business: what failed, what was corrected, and what the accepted result did well."
 confidence: confirmed
-source: "Owner corrections on WhatsApp 2026-10-31 16:33-19:09 COT; accepted page archived verbatim in the private Drive pitch-archive and anonymized under skills/pitch-website/examples/2026-10-31-cafeteria/"
+source: "Owner review corrections, 2026-10-31 (verbatim record private in the Drive pitch-archive); accepted page archived verbatim there and anonymized under skills/pitch-website/examples/2026-10-31-cafeteria/"
 updated: 2026-10-31
 class: S0
 tags: [copy, verification, attention]
@@ -14,47 +14,30 @@ tags: [copy, verification, attention]
 
 ## Purpose and status
 
-Dated record of the first end-to-end live run of `skills/pitch-website` on a real business: a specialty coffee shop the owner had walked into that same morning. Research brief, then pitch page, then nine owner corrections, then acceptance and this archival request. The business is anonymized here per the no-prospect-names rule; the verbatim page, photo, and provenance live in the private Drive archive (pitch-archive folder).
+Dated record of the first end-to-end live run of `skills/pitch-website` on a real business: a specialty coffee shop the owner had visited that same morning. Research brief, then pitch page, then nine rounds of owner corrections across the afternoon and evening, then acceptance with a request to store the example and document what was learned.
 
-This record is about process quality. It is not a positioning statement, not a validated offer, and not evidence of business results.
+This record generalizes the owner's review corrections into lessons. The verbatim, timestamped record of his private messages is kept privately in the Drive pitch-archive (`corrections-record.md`), not in this public repo. This record is about process quality: it is not a positioning statement, not a validated offer, and not evidence of business results.
 
-## The run
+## What was corrected, in order
 
-- 16:33 - Owner kickoff, with visit photos: "Check out [the café]. I was there today." and "Run the whole pitch, and apply their design language using impeccable and the awwwards plugin." (Business name redacted per the no-prospect-names rule.)
-- 16:42 - Research brief and first page delivered for review. Verified facts about the business; goals, decision-makers and internal numbers explicitly not public, so the pitch asked before assuming.
-- 16:56 to 18:42 - nine corrections (log below).
-- 18:52 - final version delivered: Spanish throughout, interactive five-stage walkthrough, plain words.
-- 19:09 - owner accepted the result and asked for this record: "Ok, store this example and document what we learned, we wanna get better at getting these website pitches quicker, in less turns, more accurately, making good use of our whole methodology book, and understanding who we're talking to and why."
-
-## Correction log, verbatim, in order
-
-1. 16:56 - "Where's the page? You didn't use here.now"
-   What was wrong: the first version went to a hosted File instead of the established page publisher. Root cause: deployment surface assumed, not confirmed.
-2. 17:03 - "Why do you keep adding all those meta commentary notes? I told you, you're undermining the pitch"
-   What was wrong: process and status notes on the reader-facing page. A repeat of the rule set the same day on the earlier explainer page. Root cause: the gate existed in the skill but did not block the publish.
-3. 17:04 - "Also, you didn't use any of the pitch, that page barely has any information, and it doesn't talk about how I could help them"
-   What was wrong: context without an actual offering. Root cause: same enforcement gap.
-4. 17:11 - "This is fluffy and vague, what do we have our method library for? Can't we do a better job of pitching? Think through how I'd set up tools, processes and Agentic harnesses to help them tangibly"
-   What was wrong: generic consulting copy, nothing concrete from his methods. Root cause: the method library was skimmed, not used.
-5. 17:28 - "Again, you're getting too into the weeds, you need to understand the why, don't open with the how. They don't care that it's a Google drive or a harness. You need to actually figure out how to talk about this to a prospective client, and use the five pass framework in Spanish"
-   What was wrong: tools visible, why missing, wrong language. Root cause: no reader-language pass; the five passes had not run on a Spanish version.
-6. 17:32 - "What's the point of all the superfluous design elements? Didn't you use impeccable?"
-   What was wrong: eyebrows, stickers, stripes and boxed cards, against both Impeccable and his own copy rules. Root cause: design gate skipped.
-7. 18:03 - "Don't you wanna include interactive elements, graphics, or any way to actually show what the approach would be and how it would benefit the business?"
-   What was wrong: the page described the approach instead of showing it. Root cause: show-don't-tell was in the skill as guidance, not as a gate.
-8. 18:34 - "Use compound engineering, find what's missing, I feel like you're just skimming the surface, and you haven't even mentioned the perks of my systems, approaches, the attention framework, or anything that's tangibly mine"
-   What was wrong: the pitch could have come from any consultant; nothing distinctively his. Root cause: no ownership pass and no gap pass before publishing.
-9. 18:42 - "There's English terms, and overly technical ones. Use the five pass again"
-   What was wrong: English method labels and technical vocabulary inside the Spanish page. Root cause: the five passes were not re-run after the rebuild; terminology was not localized.
+1. Publishing surface: the first version went to a hosted file instead of the established temporary-page publisher.
+2. Meta commentary on the reader-facing page: process and status notes that undermine the pitch. A repeat of a rule set the same day on the earlier explainer page.
+3. No actual pitch: the page carried context about the business but did not say how he could help them.
+4. Fluffy and vague copy: nothing concrete from his method library. The library had been skimmed, not used.
+5. How before why, wrong language: the page opened with tools and infrastructure instead of the reader's outcome, and the five passes had not been applied to a version in the reader's language.
+6. Superfluous design elements: eyebrows, stickers, stripes, boxed cards, against both the design method and his copy rules.
+7. Description instead of demonstration: no interactive element showing what the approach would be and how it would benefit the business.
+8. Nothing distinctively his: the perks of his systems, approaches, and the attention framework were absent, and no compound-engineering gap pass had been run before publishing.
+9. English terms and overly technical vocabulary inside the Spanish page: the five passes had not been re-run on the final language version.
 
 ## Root causes, grouped
 
-1. The gates existed but did not block. Six of the nine corrections repeated rules already written into the skill after that morning's explainer page. Prose rules do not stop a bad publish; an ordered checklist the runner must execute and report evidence for does. Fix: the nine-gate pre-publish checklist in `skills/pitch-website/SKILL.md` v0.2.0.
+1. The gates existed but did not block. Six of the nine corrections repeated rules already written into this skill after that morning's explainer page. Prose rules do not stop a bad publish; an ordered checklist the runner must execute and report evidence for does. Fix: the nine-gate pre-publish checklist in `skills/pitch-website/SKILL.md` v0.2.0.
 2. Deployment surface was not part of orientation. Fix: gate 0.
-3. No reader-language pass. Fix: gate 1, and the five passes run on the final language version.
+3. No reader-language pass. Fix: gate 1, with the five passes run on the final language version.
 4. No ownership pass: what is tangibly his was absent. Fix: gate 5.
-5. No compound gap pass: "find what's missing" had to be requested. Fix: gate 8, findings recorded before first publish.
-6. Show-don't-tell treated as optional decoration guidance. Fix: gate 6.
+5. No compound gap pass: "find what is missing" had to be requested. Fix: gate 8, findings recorded before first publish.
+6. Show-don't-tell treated as optional guidance instead of a requirement. Fix: gate 6.
 
 ## What the accepted result did well
 
@@ -67,12 +50,14 @@ This record is about process quality. It is not a positioning statement, not a v
 
 ## Standing changes from this run
 
-- `skills/pitch-website/SKILL.md` is now v0.2.0: the pre-publish check is a nine-gate blocking list with evidence reporting; ownership, reader-language, show-don't-tell, and the compound gap pass are new gates; deployment surface is confirmed at orientation.
+- `skills/pitch-website/SKILL.md` is now v0.2.0: the pre-publish check is a nine-gate blocking list; ownership, reader-language, show-don't-tell, and the compound gap pass are new gates; deployment surface is confirmed at orientation.
 - `routines/learnings.md`: new rules logged for deployment surface, reader language, ownership, gap pass, and show-don't-tell.
-- The example is preserved twice: verbatim in the private Drive archive, anonymized under `skills/pitch-website/examples/2026-10-31-cafeteria/`.
+- The example is preserved twice: verbatim in the private Drive pitch-archive (page sources, photo, research brief, and the verbatim correction record), anonymized under `skills/pitch-website/examples/2026-10-31-cafeteria/`.
 
 ## Evidence and limits
 
-- Sources: the owner's WhatsApp messages of 2026-10-31 16:33-19:09 COT, quoted verbatim above; the accepted page; the earlier same-day record `knowledge/site/pitch-page-learnings-2026-10-31.md`.
+- Sources: the owner's review corrections of 2026-10-31 (verbatim record kept privately in the Drive pitch-archive), the accepted page, and the earlier same-day record `knowledge/site/pitch-page-learnings-2026-10-31.md`.
+- The goal he set for this record: future pitches in fewer correction rounds, more accurate, making use of the whole methodology book, and starting from understanding who the reader is and why.
 - The page is an illustrative example of the approach, reviewed by the owner. It is not a deployed system, not a client result, and not evidence of business performance. The business has not been pitched beyond the owner's review.
-- The research brief behind the page used labeled evidence and stayed out of the public page by design; the owner's visit photos were never used on the page.
+- The research brief behind the page used labeled evidence and stayed private by design; the owner's visit photos were never used on the page.
+- Known gap: the seventh revision's raw source is unavailable; the archive labels it missing rather than reconstructing it.
