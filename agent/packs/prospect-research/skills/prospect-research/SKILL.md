@@ -77,6 +77,16 @@ Labels:
 
 A claim's date matters. Distinguish when the source was published from when the fact was true. A search result not opened can support at most a lead. Repeated copies of the same underlying statement count as one source group. A missing record means "not found in the sources checked," not that the thing does not exist.
 
+Observation, recency and comparison discipline (learned from owner corrections on real runs):
+
+- Point-in-time observations (archive capture records, status codes, availability checks) state only the observed instant. Never summarize them as continuous state over an interval ("404 through 2024", "live until X"), and never infer page content or uptime from a capture status alone.
+- An access failure is a same-day result from the vantage and date checked, not proof of universal or continuing unavailability.
+- An undated price, fare or schedule listing read today is an undated listing, not a verified current price. When undated listings conflict, report all of them with sources and promote none to "current".
+- Compare like with like: figures for different destinations, plans or entities are not conflicting prices for one item. Disambiguate same-name places before comparing routes, fares or listings.
+- Dated instructions and route descriptions ("take bus X via Y", 2022) are evidence for their date only; current service, stops and prices need current evidence or remain unconfirmed.
+- Registry mirrors and aggregators report a register's state; the current official state is confirmed only at the official register.
+- Numeric markers taken from separate listings (kilometre markers, review counts) are not cross-verified measurements of distance or scale between those listings.
+
 ### 4. Map the business and its operating context
 
 Research only dimensions relevant to the stated decision. Typical dimensions:
