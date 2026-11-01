@@ -110,3 +110,4 @@ Area, corridor and market context (added 2026-11-01, second pass):
 - https://www.google.com.co/travel/hotels/entity/ChoIitPz3q2m3NeQARoNL2cvMTFsZHZ4cnh2dxAB : read 2026-11-01 - Casa Kiwi Lodge widget USD 112/night for a sample date (lead only, not a rate card); Vereda El Tagual.
 - https://www.andes-antioquia.gov.co/Ciudadanos/PortaldeNinos/Enterate/Paginas/Sitios-recomendados.aspx : undated, read 2026-11-01 - "paseo de olla" river-day/sancocho culture documented.
 - Full pass preserved in `area-market-context-2026-11.md` (this folder).
+- https://viajaporcolombia.com/peajes/medellin_cocorna/ : opened 2026-11-01 - route toll calculator page, no static plaza list retrievable; not used for any claim.
