@@ -48,3 +48,30 @@ Retrieval date for all sources: 2026-11-01. Format: source, publisher/date, what
 ## Not found in checked sources (absence, not proof)
 
 TripAdvisor business listing; business-owned YouTube/TikTok; RNT entity-level record; current public price list; legal-representative and filing detail beyond the RUES mirror.
+
+## Sources added 2026-11-01 (market-picture expansion)
+
+Transport:
+- https://terminalesmedellin.com/destinos/estacion-cocorna/ : terminal operator page, undated, read 2026-11-01 - Flota Granada, Terminal del Norte Taquilla 15, hourly; fares Cocorná $18.000, San Francisco $23.000 (undated).
+- https://www.flotagranadasas.com/ : operator site, read 2026-11-01 - fares Cocorná $20.000, San Francisco $25.000 (page assets 2024-08/2025-08); online purchase via pinbus.
+- https://www.redbus.co/pasajes-de-bus/medellin-a-estacion-cocorna-ant : read 2026-11-01 - Medellín to ESTACIÓN Cocorná (Puerto Triunfo corregimiento, a different place), 5 h, COP 40.000+, one daily Flota Granada bus. Disambiguation only.
+- https://turismoantioquia.travel/cocorna/ : undated, read 2026-11-01 - 81 km / 1h37 Medellín-Cocorná, "promedio $15.000" bus fare, 2 tolls ~$13.000; municipal profile and attractions list; hosterías Aguatur and El Encanto.
+
+Area and destinations:
+- https://www.hotelesantioquia.com/destinos/san-francisco/ : read 2026-11-01 - San Francisco profile; Balneario Pailania described as preferred meeting point (kiosks, fishing, camping, trail); El Tagual 80 m, La Eresma 170 m.
+- https://viveysientecocorna.blogspot.com/2022/06/eco-parque-rio-santo-domingo.html : 2022-06-08 - locates the park "en el Balneario Pailania"; día de sol, camping, alojamiento; WhatsApp reservations 314 665 4100 / 314 677 4009; cited riosantodomingo.com as the park's site.
+- https://manadatravel.com/blog/camping-eco-santo-domingo : 2023-08-10 - camping COP 10.000 own tent, gear rental, pet-friendly.
+
+Restaurants:
+- https://colombiabz.com/antioquia/restaurante-y-mirador-cocorna-29029 and https://es.restaurantguru.com/Restaurante-y-Mirador-Cocorna-Colombia-2 : read 2026-11-01 - Restaurante y Mirador Cocorná, Km 13 Vereda La Chorrera, Autopista Medellín-Bogotá.
+
+Competitors (added):
+- https://jacarandarefugionatural.co/ : read 2026-11-01 - cabins + camping 6.2 km off the autopista at 1.000 masl, canyon border El Carmen de Viboral/Cocorná, conservation/wellness positioning.
+- https://en.casacol.co/campgrounds-san-francisco-antioquia/ : 2022-07 - Cabañas El Gual, bamboo-house campground, El Piñal; also documents ESD camping/lodging details.
+- https://cincohorizontes.com/hosterias/eco-hotel-cocorna/ and https://cincohorizontes.com/hosterias/rafting-en-cocorna-en-el-rio-santo-domingo/ : read 2026-11-01 - agency-packaged eco-hotel and rafting on the river.
+
+Scheduler/booking leads:
+- https://nosincontournables.com/en/hotel/7850305 and https://www.rentbyowner.com/property/casa-eco-santo-domingo/BC-7850305 : read 2026-11-01 - "Casa Eco Santo Domingo", Finca Morritos, Km 7 Vía San Francisco, Booking-sourced photos, 9.6/10 (11 reviews). Affiliation with ESD UNCONFIRMED.
+- https://www.instagram.com/ecoparqueriosantodomingo/ : logged-out browser read 2026-11-01 - verified badge, 15K followers, bio text, highlights (Aves ESD, Normas, Hospedaje, Río, Como llegar), no external link in bio view; recent posts 2026-04-27 / 05-15 / 08-27; third-party family-camping reel 2026-09-01 (@miniguias_tomilucci); collabs with @juventudessanfrancisco.
+- https://www.facebook.com/EcoSantoDomingo/ : logged-out browser read 2026-11-01 - login wall; CTA/booking button not verifiable without an account.
+- Internet Archive single recheck 2026-11-01: replay still HTTP 500 (outage unchanged); no repeated attempts.
