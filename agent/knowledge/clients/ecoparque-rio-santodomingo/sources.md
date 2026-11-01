@@ -16,7 +16,7 @@ Retrieval date for all sources: 2026-11-01. Format: source, publisher/date, what
 
 ## Registry
 
-- https://empresas.larepublica.co/colombia/antioquia/cocorna/eco-santo-domingo-sas-901498391 : RUES mirror - ECO SANTO DOMINGO SAS, NIT 901498391, active, MICRO, Cocorná; activities recreation, prepared food, visitor lodging. One source group; confirm on rues.org.co.
+- https://empresas.larepublica.co/colombia/antioquia/cocorna/eco-santo-domingo-sas-901498391 : RUES mirror - ECO SANTO DOMINGO SAS, NIT 901498391, reports active, MICRO, Cocorná; activities recreation, prepared food, visitor lodging. Mirror report, not official-registry confirmation; current RUES state unconfirmed pending rues.org.co check.
 - https://servicios.mincit.gov.co/rnt-bi/nuevosmensual_list.php?f=(MUNICIPIO~equals~COCORNA) : Mincit RNT new-registrations list for Cocorná; checked for entity-level match, none confirmed.
 
 ## Research and reporting about the business
