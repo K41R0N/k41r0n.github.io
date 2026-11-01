@@ -15,3 +15,4 @@
 - 2026-10-28 Phase 12: campaign-basics pack (authorship unconfirmed). Decision 26.
 - 2026-10-28 Phase 13: clear-message pack (authorship unconfirmed). Decision 27.
 - 2026-10-29 Phase 14: authorship loops for #8, #12, #13 closed by his keep. Decisions 22, 26, 27 confirmed, 28 added.
+- 2026-10-31 First live pitch run preserved: anonymized example under skills/pitch-website/examples/2026-10-31-cafeteria/ (verbatim in the private Drive pitch-archive), retrospective at knowledge/site/pitch-page-learnings-first-live-run-2026-10-31.md, pitch-website skill bumped to 0.2.0 with a nine-gate blocking pre-publish check, four new rules in routines/learnings.md.

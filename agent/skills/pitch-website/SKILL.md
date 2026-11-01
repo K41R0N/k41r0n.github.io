@@ -2,7 +2,7 @@
 name: pitch-website
 description: Plans, drafts, deploys, and verifies a reader-specific pitch website grounded in the owner's methods and evidence.
 argument-hint: "[reader or organization, decision the page should support, and available source material]"
-version: 0.1.0
+version: 0.2.0
 metadata:
   harness:
     lane: L5
@@ -32,6 +32,7 @@ Do not use it to decide a still-undefined offering by inventing buyer needs, to 
 3. Read the actual canonical Harness Standard and Attention Graduation Framework before describing harness types or attention stages. Use current, relevant sources in the ICP harness for audience signals and audience understanding, and the marketing harness for offering, market, alternatives, positioning, and value. One agent may draw from multiple harnesses; keep those method sources distinct and route by the question being answered.
 4. Read the public methods repo's `clear-message`, `copywriting-methods`, `copy-five-pass`, and `strategy-canvas` guidance. Read audience-listening and attention-graduation methods when explaining those methods. Use `prospect-research` as standard pre-work before considering any service, offer, or advice for a company, and as the evidence feeder for reader-specific pitch tailoring. Do not treat it as optional reference material or turn its hypotheses into approved positioning. Read any reader-relevant project evidence and design system. Say what was not available or read.
 5. Maintain a claim/source ledger in working notes: sourced fact, owner-reported experience, inference, or open gap. A citation is evidence to check, not blanket permission to disclose it.
+6. Confirm the deployment surface and the reader's language before building. Ad-hoc prospect pages go to here.now by default, with the page link, expiry, and claim link reported. Write the page in the reader's own language from the start; translating after drafting ships English structure with local words.
 
 ## Goals and completion test
 
@@ -71,7 +72,19 @@ The example is the explanation. Avoid leading with repository plumbing, a taxono
 - **Answer how the work helps this reader.** Explain the actual offering through the prospect's context and business goal. A generic description of the owner's capabilities is not enough.
 - **Make the proposal tangible.** Use the prospect research and relevant methods in the library to name the tools, processes, agent harnesses, recurring work and owner-visible outputs that fit this prospect. Separate a proposed setup from anything already deployed; never invent their workflow, priority or results.
 
-Before publish, check all five in the page itself: (1) lead with why this matters and the outcome for the prospect, before explaining how; keep implementation and infrastructure out of the prospect’s way unless they ask; (2) no meta commentary; (3) clear reader-specific explanation of how the offering helps them; (4) concrete prospect-specific work and outputs, grounded in relevant methods; (5) no eyebrow components or superfluous decoration - every element must earn its place. If any check fails, do not publish.
+## Pre-publish gate
+
+Nine blocking checks. Run them in order on the final page, before any review link goes out, and report the evidence for each. A failure stops the publish; these are gates, not style preferences. Six of the nine owner corrections on the first live run repeated rules that already existed in this skill but were not enforced before publishing.
+
+0. **Deployment surface confirmed.** The page is on the surface confirmed at orientation (default: here.now). Page link, expiry, and claim link reported. Never substitute another hosting surface without saying so.
+1. **Reader language.** The page is written in the reader's own language, and the five passes ran on that final language version, not on an earlier draft in another language. Reader-facing copy carries no English terms and no technical vocabulary; method concepts appear as plain questions and everyday words the reader would use.
+2. **Why first.** The opening leads with the reader's outcome, before any how. Implementation, tools, and infrastructure stay invisible unless the reader asks.
+3. **No meta commentary.** Nothing about drafting, review, research limits, or internal process appears on the page.
+4. **Tangible and prospect-specific.** The page explains how the offering helps this reader using the actual method library: named setup, recurring work, and owner-visible outputs grounded in the prospect research. A generic capability description fails.
+5. **Ownership.** The page shows what is tangibly the owner's: the perks of his systems and approaches, and the attention framework with its actual steps, in client-facing language. A pitch that could have come from any consultant fails.
+6. **Show, don't tell.** When the page explains a method, it includes an interactive demonstration that teaches: the reader moves through the steps and sees what changes. Every element must demonstrate; nothing merely decorates.
+7. **Restraint.** No eyebrow components, stickers, stripes, or other superfluous elements. The design pass ran against the prospect's own design language.
+8. **Compound gap pass.** Before the first review link goes out, run a compound-engineering review of the draft against the whole method library: which relevant method was not used, which claim lacks grounding, what the reader cannot understand from the page alone. Record the findings and fix them before publishing.
 
 ## Procedure
 
@@ -168,9 +181,13 @@ Do not call an example a client case study or a pilot result unless it is one an
 
 Record material reader corrections and recurring failure patterns in the relevant harness learning log. Do not silently turn one reader's preference or one page's performance into a universal rule. The deferred agent capability/case-study library is separate work and remains out of scope until requested.
 
+After each run: write a dated learnings record under `knowledge/site/` with the owner's corrections verbatim, the root causes, and what the accepted result did well; log owner corrections in `routines/learnings.md` when they happen; and preserve the accepted example, verbatim in the private Drive archive and anonymized under `examples/` here (prospect names, their source links, and their photography never enter this public repo).
+
 ## References
 
 - `knowledge/site/pitch-page-learnings-2026-10-31.md`
+- `knowledge/site/pitch-page-learnings-first-live-run-2026-10-31.md`
+- `skills/pitch-website/examples/2026-10-31-cafeteria/` (anonymized accepted example; verbatim copy in the private Drive pitch-archive)
 - `knowledge/site/contribution-workflow.md`
 - `knowledge/site/repo-architecture.md`
 - `routines/protocols/PORTFOLIO-WRITE-GUARD-01.md`

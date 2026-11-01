@@ -11,6 +11,7 @@ Each skill is a self-contained runbook for one task. They assume you have read
 | `edit-home-sections.md` | Change home headings / newsletter copy | 2 (content) |
 | `add-configurable-field.md` | Expose a NEW field to the CMS | 1 (schema+build) |
 | `build-and-verify.md` | Build and confirm nothing broke | — (always) |
+| `pitch-website/` | Plan, draft, deploy, and verify a reader-specific pitch website | 2 (content) |
 
 **Convention:** every skill ends by invoking `build-and-verify.md`. Nothing is
 "done" until the build is green and the change is confirmed in `dist/`.
