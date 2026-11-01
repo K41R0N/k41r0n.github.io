@@ -2,9 +2,9 @@
 id: 01M6A786VZPKK0B7F5EQ3NG8H0
 type: Learning
 title: "Pitch page retrospective: first live prospect run, 2026-10-31"
-description: "Generalized lessons from the first live run of the pitch-website skill on a real business: what failed, what was corrected, and what the accepted result did well."
+description: "Generalized lessons from the first live run of the pitch-website skill on a real business (Cafe Retiro): what failed, what was corrected, and what the accepted result did well."
 confidence: confirmed
-source: "Owner review corrections, 2026-10-31 (verbatim record private in the Drive pitch-archive); accepted page archived verbatim there and anonymized under skills/pitch-website/examples/2026-10-31-cafeteria/"
+source: "Owner review corrections, 2026-10-31; verbatim case (accepted page, research brief, correction record) preserved under skills/pitch-website/examples/2026-10-31-cafe-retiro/"
 updated: 2026-10-31
 class: S0
 tags: [copy, verification, attention]
@@ -14,9 +14,9 @@ tags: [copy, verification, attention]
 
 ## Purpose and status
 
-Dated record of the first end-to-end live run of `skills/pitch-website` on a real business: a specialty coffee shop the owner had visited that same morning. Research brief, then pitch page, then nine rounds of owner corrections across the afternoon and evening, then acceptance with a request to store the example and document what was learned.
+Dated record of the first end-to-end live run of `skills/pitch-website` on a real business: Cafe Retiro, a specialty coffee shop in El Retiro, Antioquia, the owner had visited that same morning. Research brief, then pitch page, then nine rounds of owner corrections across the afternoon and evening, then acceptance with a request to store the example and document what was learned. A tenth correction followed the same evening: the case belongs in this repo with its real identity, because the point is improving the methods in the harness, and a loose note outside the repo serves nothing.
 
-This record generalizes the owner's review corrections into lessons. The verbatim, timestamped record of his private messages is kept privately in the Drive pitch-archive (`corrections-record.md`), not in this public repo. This record is about process quality: it is not a positioning statement, not a validated offer, and not evidence of business results.
+This record generalizes the owner's review corrections into lessons. The verbatim, timestamped correction record and the full case (accepted page, research brief, photo, prior source) live in this repo under `skills/pitch-website/examples/2026-10-31-cafe-retiro/`; a backup copy sits in the owner's private Drive archive. This record is about process quality: it is not a positioning statement, not a validated offer, and not evidence of business results.
 
 ## What was corrected, in order
 
@@ -52,12 +52,13 @@ This record generalizes the owner's review corrections into lessons. The verbati
 
 - `skills/pitch-website/SKILL.md` is now v0.2.0: the pre-publish check is a nine-gate blocking list; ownership, reader-language, show-don't-tell, and the compound gap pass are new gates; deployment surface is confirmed at orientation.
 - `routines/learnings.md`: new rules logged for deployment surface, reader language, ownership, gap pass, and show-don't-tell.
-- The example is preserved twice: verbatim in the private Drive pitch-archive (page sources, photo, research brief, and the verbatim correction record), anonymized under `skills/pitch-website/examples/2026-10-31-cafeteria/`.
+- The example is preserved in this repo under `skills/pitch-website/examples/2026-10-31-cafe-retiro/`: verbatim accepted page, photo, prior source, research brief, and the verbatim correction record. The Drive pitch-archive is a backup only. Preservation is repo-centered because the case is the regression evidence for the method (his correction, 7:18-7:19 PM).
+- The method fixes landed where the failures originated, not only in the pitch checklist: `prospect-research` 0.2.1 (hypothesis-to-offer fit), the five-pass reader-language rule, `copy-five-pass` 0.2.0 (meta-commentary and language-mix checks with fixtures), `routines/second-pass.md`, and `skills/pitch-website` 0.3.0 (method selection record, repo-centered compound step).
 
 ## Evidence and limits
 
-- Sources: the owner's review corrections of 2026-10-31 (verbatim record kept privately in the Drive pitch-archive), the accepted page, and the earlier same-day record `knowledge/site/pitch-page-learnings-2026-10-31.md`.
+- Sources: the owner's review corrections of 2026-10-31 (verbatim record in the example folder), the accepted page, and the earlier same-day record `knowledge/site/pitch-page-learnings-2026-10-31.md`.
 - The goal he set for this record: future pitches in fewer correction rounds, more accurate, making use of the whole methodology book, and starting from understanding who the reader is and why.
 - The page is an illustrative example of the approach, reviewed by the owner. It is not a deployed system, not a client result, and not evidence of business performance. The business has not been pitched beyond the owner's review.
-- The research brief behind the page used labeled evidence and stayed private by design; the owner's visit photos were never used on the page.
+- The research brief behind the page used labeled evidence throughout and is preserved with the case; the owner's visit photos were never used on the page.
 - Known gap: the seventh revision's raw source is unavailable; the archive labels it missing rather than reconstructing it.

@@ -2,7 +2,7 @@
 name: pitch-website
 description: Plans, drafts, deploys, and verifies a reader-specific pitch website grounded in the owner's methods and evidence.
 argument-hint: "[reader or organization, decision the page should support, and available source material]"
-version: 0.2.0
+version: 0.3.0
 metadata:
   harness:
     lane: L5
@@ -86,7 +86,7 @@ A gate passes on evidence, not wording. Evidence means the methodology sources w
 5. **Ownership.** The page shows what is tangibly the owner's: the perks of his systems and approaches, and the attention framework with its actual steps, in client-facing language. A pitch that could have come from any consultant fails.
 6. **Show, don't tell.** When the page explains a method, it includes an interactive demonstration that teaches: the reader moves through the steps and sees what changes. Every element must demonstrate; nothing merely decorates.
 7. **Restraint.** No eyebrow components, stickers, stripes, or other superfluous elements. The design pass ran against the prospect's own design language.
-8. **Compound gap pass.** Before the first review link goes out, run a compound-engineering review of the draft against the whole method library: which relevant method was not used, which claim lacks grounding, what the reader cannot understand from the page alone. Record the findings and fix them before publishing.
+8. **Compound gap pass.** Before the first review link goes out, run a compound-engineering review of the draft against the whole method library: which relevant method was not used, which claim lacks grounding, what the reader cannot understand from the page alone. Record the findings and fix them before publishing. See `routines/second-pass.md`.
 
 ## Procedure
 
@@ -96,6 +96,7 @@ A gate passes on evidence, not wording. Evidence means the methodology sources w
 - Use `audience-listening` or the ICP harness's relevant methods to verify the audience context and terminology. Audience monitoring is not the same as market positioning.
 - Name the competitor or alternative only when evidence supports it. Ask the strategic question: "Who are you stealing market share from and how is the smartest way to do it?" Treat an unsupported answer as a research gap, not copy.
 - Write the central idea, target reader, reader's reason to care, UVP, example, and requested next step in a brief before designing the page.
+- Write the method selection record before drafting: for each method from the library this page will use, name the method, the file it was read from during this run, and the section of the page it shapes. The first live run's fluffy draft came from skimming the library instead of selecting from it; the record is the evidence that the whole methodology book was used, not browsed. Attach the record to the review report.
 
 ### 2. Build the argument and draft copy
 
@@ -174,6 +175,7 @@ Return a concise implementation report with:
 - links to the page, source/preview, and relevant commit or PR, when available;
 - brief section map and what evidence supports the offer/UVP;
 - sources read and substantive unresolved gaps;
+- the method selection record and the compound gap pass findings;
 - build, copy, methodology, responsive, interaction, and live-deployment checks actually performed;
 - any approvals still needed before sharing or publishing.
 
@@ -183,13 +185,13 @@ Do not call an example a client case study or a pilot result unless it is one an
 
 Record material reader corrections and recurring failure patterns in the relevant harness learning log. Do not silently turn one reader's preference or one page's performance into a universal rule. The deferred agent capability/case-study library is separate work and remains out of scope until requested.
 
-After each run: write a dated learnings record under `knowledge/site/` with the owner's corrections verbatim, the root causes, and what the accepted result did well; log owner corrections in `routines/learnings.md` when they happen; and preserve the accepted example, verbatim in the private Drive archive and anonymized under `examples/` here (prospect names, their source links, and their photography never enter this public repo).
+After each run: write a dated learnings record under `knowledge/site/` with the owner's corrections, the root causes, and what the accepted result did well; log owner corrections in `routines/learnings.md` when they happen; and preserve the accepted example in this repo under `examples/` with its real identity: the verbatim page, the research brief, and the correction record. The case is the regression evidence for the method; it is useless as a loose note outside the repo. Keep genuinely private and client-confidential material out (his personal photos, other clients' data, personal contacts, claim links); when in doubt about a specific item, ask rather than stripping the whole case.
 
 ## References
 
 - `knowledge/site/pitch-page-learnings-2026-10-31.md`
 - `knowledge/site/pitch-page-learnings-first-live-run-2026-10-31.md`
-- `skills/pitch-website/examples/2026-10-31-cafeteria/` (anonymized accepted example; verbatim copy in the private Drive pitch-archive)
+- `skills/pitch-website/examples/2026-10-31-cafe-retiro/` (first live run: verbatim accepted page, research brief, correction record)
 - `knowledge/site/contribution-workflow.md`
 - `knowledge/site/repo-architecture.md`
 - `routines/protocols/PORTFOLIO-WRITE-GUARD-01.md`

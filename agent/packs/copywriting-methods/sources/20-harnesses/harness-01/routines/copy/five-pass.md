@@ -38,6 +38,10 @@ Make the copy a connected explanation rather than a list of claims. Give the rea
 
 Check the approved terminology and claims guidance. Re-verify time-sensitive numbers against current sources. Check every quote against its original source and obtain any required permission. Flag legal, regulatory, performance, comparison or forward-looking claims for qualified review under the current project process. Remove unsupported claims, misleading implications and unresolved placeholders. A clean checklist is not approval.
 
+## Reader language
+
+Write the copy in the reader's own language from the start; translating an approved draft produces a new draft, not a version of it. Run all five passes on the final reader-language version, never on an earlier draft in another language. Pass 3 includes register: no imported English terms and no technical vocabulary the reader would not use; method concepts appear as plain questions and everyday words.
+
 ## Format adaptation
 
 After the five passes, adapt the copy to the chosen format and its constraints. Do not let a format change alter the substantiated meaning. Apply current channel, length, accessibility and approval requirements.

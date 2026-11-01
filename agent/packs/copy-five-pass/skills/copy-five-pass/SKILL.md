@@ -2,7 +2,7 @@
 name: copy-five-pass
 description: Runs five deterministic passes over a draft and reports failures and warnings for a person to judge.
 argument-hint: "[path to draft]"
-version: 0.1.0
+version: 0.2.0
 metadata:
   harness:
     lane: L5
@@ -17,7 +17,7 @@ metadata:
 Catch the mechanical problems in a draft before a person reads it. The person decides whether it is good.
 
 ## Step 0
-Check the draft has a header with `context: external` or `internal`. Say plainly if any source cited in the draft was not read.
+Check the draft has a header with `context: external` or `internal`. The header may also carry `language: <code>` (for example `language: es`) declaring the reader's language. Say plainly if any source cited in the draft was not read.
 
 ## When to use / not
 Use on any draft before review. Not to write or rewrite copy, and never to decide whether it sounds like him.
@@ -28,7 +28,7 @@ Interactive or headless. Headless ends with a fixed line: `clean`, `warn N` or `
 ## Procedure by slot
 1. Evidence: every number and every "first / only / best" carries a source marker.
 2. Unresolved: no TODO, TBD or placeholder left.
-3. Filler: generic phrases and a dash budget (a budget, not a ban).
+3. Filler: generic phrases and a dash budget (a budget, not a ban). For external drafts, meta commentary about drafting, review, research limits or internal process is a FAIL (P3-meta-commentary): the reader gets the pitch, not notes about making it. When `language` is set to a non-English code, imported English technical terms are a FAIL (P3-language-mix): run the passes on the final reader-language version.
 4. Plain reading: flag very long sentences. Offer a lay rendering as an addition, marked as one.
 5. Authority: external copy needs `approved_by`. Nothing goes out in his name without his yes.
 FAIL means fix or escalate. WARN means a person looks. Clean means only that these patterns were absent.

@@ -1,6 +1,6 @@
 name: prospect-research
 kind: method
-version: 0.2.0
+version: 0.2.1
 status: draft
 summary: Research a named business and relevant people from public evidence, map goal-linked business context and operations, and produce bounded, evidence-backed improvement hypotheses.
 class_max: S1

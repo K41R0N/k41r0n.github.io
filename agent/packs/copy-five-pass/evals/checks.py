@@ -3,6 +3,8 @@ Pass 1 evidence, 2 unresolved, 3 filler, 4 plain reading, 5 authority.
 A clean result means only that these patterns were absent. It never certifies voice or quality."""
 import re
 FILLER = ["game-changer", "game changer", "unlock", "seamless", "delve", "revolutionary", "in today's fast-paced", "cutting-edge", "leverage"]
+META = [r"as requested", r"for your review", r"draft version", r"still needs a pass", r"note to (the )?(reader|reviewer)", r"could(n't| not) verify", r"research limit", r"internal process"]
+EN_TERMS = ["workflow", "harness", "pipeline", "onboarding", "feedback", "insight", "engagement", "dashboard", "benchmark"]
 
 def _sentences(text):
     body = re.sub(r"^(\w+):.*$", "", text, flags=re.M)
@@ -28,6 +30,17 @@ def check(text):
     words = max(1, len(text.split()))
     if text.count("\u2014") * 1000 / words > 1:
         out.append(("WARN", "P3-dash-budget", "more than about 1 em dash per 1000 words"))
+    lang = re.search(r"^language:\s*(\w+)", text, re.M)
+    if ctx and ctx.group(1).lower() == "external":
+        for pat in META:
+            m = re.search(pat, text, re.I)
+            if m:
+                out.append(("FAIL", "P3-meta-commentary", m.group(0)[:50]))
+                break
+    if lang and lang.group(1).lower() not in ("en", "eng", "english"):
+        hits = [term for term in EN_TERMS if re.search(r"\b" + re.escape(term) + r"s?\b", text, re.I)]
+        if hits:
+            out.append(("FAIL", "P3-language-mix", "english terms in " + lang.group(1) + " copy: " + ", ".join(hits[:3])))
     if ctx and ctx.group(1).lower() == "external" and not re.search(r"^approved_by:\s*\S+", text, re.M):
         out.append(("FAIL", "P5-external-without-approval", "external copy needs approved_by"))
     if not ctx:

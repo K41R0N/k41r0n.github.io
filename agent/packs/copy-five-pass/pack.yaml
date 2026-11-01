@@ -1,6 +1,6 @@
 name: copy-five-pass
 kind: method
-version: 0.1.0
+version: 0.2.0
 status: draft
 summary: Five deterministic passes over a draft (evidence, unresolved items, filler, plain reading, authority). Catches problems. Never certifies voice or quality.
 class_max: S1

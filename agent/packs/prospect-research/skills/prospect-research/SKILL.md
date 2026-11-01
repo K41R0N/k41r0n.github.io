@@ -2,7 +2,7 @@
 name: prospect-research
 description: Research a named business and its relevant people from public sources, verify identities and claims, map how the business works, and identify evidence-backed improvement hypotheses tied to its stated goal.
 argument-hint: "[business name and domain; named people if known; stated goal; scope and sources available]"
-version: 0.2.0
+version: 0.2.1
 metadata:
   harness:
     lane: L5
@@ -110,6 +110,7 @@ For each candidate, write:
 4. **What would validate it:** a focused question, measurement, process walkthrough or other evidence needed from the business.
 5. **Disconfirming evidence:** what could show the issue is absent, intentional, already solved, or lower priority.
 6. **Fit to the goal:** how resolving it could support the stated goal, without promising an outcome.
+7. **Owner-method fit:** when this research feeds a pitch, offer or advice, name which of the owner's methods, systems or recurring work could address the hypothesis and what owner-visible output that would produce. A hypothesis with no plausible owner-method connection is a finding to report, not pitch material. This mapping is what lets the later page say concretely how the owner could help; the first live pitch run failed exactly there, with a good brief in hand.
 
 Prioritize using explicit evidence of severity, frequency, affected people, delay/cost/risk, and goal linkage. If impact or frequency is unknown, leave it unranked or mark it a research question. When interpreting sparse or conflicting signals, list plausible benign and adverse explanations in proportion to evidence, then name the next source or question that could distinguish them; do not turn a pattern of missing public evidence into an adverse verdict. Do not label something "painful" merely because it looks inefficient from outside. Do not recommend an offering or pitch unless it is grounded in the owner's current method/offer evidence and the prospect's goal.
 
@@ -144,7 +145,7 @@ Use this bottleneck order for a failed run: `G-SRC` -> `G-ID` -> `G-GOAL` -> `G-
 - Check every material claim against its cited opened source. Recheck current roles, products, business status and recent events at the point they will be used.
 - Read for entity conflation, stale claims, unsupported causal explanations, privacy risk, missing counterevidence and facts drawn from snippets only.
 - Keep the report proportional to the decision; include a concise coverage/gaps list and the highest-value next evidence needed.
-- When the owner asks for a custom pitch, hand verified facts, hypotheses and open questions into `pitch-website`; do not silently treat a research hypothesis as approved positioning or public copy. For any company-directed service, offer, or advice consideration, this research is standard operating pre-work, not an optional reference lookup. If the work cannot be done first, state the evidence gap and hold any recommendation that depends on it.
+- When the owner asks for a custom pitch, hand verified facts, hypotheses, the hypothesis-to-method mapping, and open questions into `pitch-website`; do not silently treat a research hypothesis as approved positioning or public copy. For any company-directed service, offer, or advice consideration, this research is standard operating pre-work, not an optional reference lookup. If the work cannot be done first, state the evidence gap and hold any recommendation that depends on it.
 
 ## Output contract
 
