@@ -125,3 +125,24 @@ Area, corridor and market context (added 2026-11-01, second pass):
 - https://www.flypass.com.co/coberturas/antioquia : read 2026-11-01 - Antioquia plaza list with coordinates: "COCORNA" Km 03+100 Ruta 6005 (6.12473, -75.24233; the plaza press calls "El Santuario", Cocorna jurisdiction); "COPACABANA" (6.32828, -75.51440); Variante Las Palmas (6.17101, -75.47868).
 - https://router.project-osrm.org and https://nominatim.openstreetmap.org : computed public-API analysis 2026-11-01 - modeled route Medellin centro (-75.5812, 6.2442) to Pailania (5.9784, -75.1135): 88.6 km / 1.85 h; route distance to plaza coordinates: 0.04 km (Cocorna-jurisdiction plaza), 11.4 km (Copacabana), 2.2 km (Variante Las Palmas). Modeled lead, not an observed trip; no toll cost or direction rule established.
 - es.wikipedia.org MediaWiki API revision check 2026-11-01: "La via fue pavimentada recientemente" in San_Francisco_(Antioquia) is uncited and present since at least revision 121983231 (2019-12-12), also in 2021-03 and 2024-02 revisions; stale claim - does not corroborate current pavement.
+
+## Sources added 2026-11-01 (fourth pass: access corridor + adjacent competitor)
+
+Toll corridor (official + dated press):
+- https://www.datos.gov.co/resource/68qj-5xux.json : official Invias "Peajes" dataset (Red Vial Nacional), rows updated 2026-10-19, queried 2026-11-01. "Cocorna" plaza: KM 03+100 Ruta 6005 (Via Santuario - Puerto Triunfo; sector El Santuario - Cruce Ruta 45 Cano Alegre), 6.1246071, -75.24303963, charge direction Sur - Norte, cat I COP 18,800 / II 29,300 / III 25,600, INVIAS. "Guarne" plaza (press "Copacabana (Guarne)"): Km 7 Autopista Medellin-Bogota, sector Medellin-Santuario, charge direction Oriente, cat I COP 18,500, INVIAS. "Puerto Triunfo" plaza: KM 130+100 Ruta 6005, Sur - Norte, same tariffs.
+- https://puertotriunfo.com/blog/peaje-puerto-triunfo/ : updated 2026-10-18 - Puerto Triunfo cat I COP 18,800 since 2026-01-16 per Invias resolucion 062 de 2026 (incl. FOSEVI COP 553); motos exempt at Invias plazas; secondary, resolution text not read.
+- https://www.elcolombiano.com/antioquia/fin-concesion-devimed-invias-asume-vias-oriente-antioqueno-JH39491998 : 2026-08-01 - Devimed concession ended 2026-07-31; Invias assumed Oriente corridors 2026-08-01.
+- https://www.lafm.com.co/actualidad/invias-asume-corredores-devimed-406607 : 2026-08-01 - same handover, corroborating date.
+- https://mioriente.com/oriente/tarifas-peajes-salida-devimed/ : 2026-07-31 - Copacabana and Las Palmas tolls continue under Invias with unchanged tariffs; Copacabana cat I COP 18,500, full category table.
+- https://www.semana.com/nacion/articulo/peajes-gratis-en-la-autopista-medellin-bogota-el-motivo-de-este-caso/202604/ : 2026-03-30 - "Los Magnificos de la Ruta 60" lifted barriers at El Santuario and Puerto Triunfo plazas since late Feb 2026; cargo drivers quoted: Copacabana COP 90,000 vs Santuario+Puerto Triunfo COP 94,000.
+- https://www.elcolombiano.com/antioquia/autopista-medellin-bogota-sin-peajes-por-pesimo-estado-de-la-via-BJ34972939 : 2026-03-26 - one month without toll collection on the corridor.
+- https://diarioriente.com/altiplano/peajes-sin-cobro-en.html : 2026-03-31 - protest marks one month.
+- https://mioriente.com/oriente/invias-incumpliendo-protesta/ : 2026-10-19 - Copacabana protest 2026-10-18 over missing medical/roadside assistance post-takeover; Copacabana cat I stated COP 18,500.
+- https://www.infobae.com/colombia/2026/10/05/autopista-entre-medellin-y-bogota-sigue-en-estado-deplorable-asamblea-de-antioquia-exigio-reparaciones-urgentes/ and https://www.elcolombiano.com/antioquia/antioquia-deterioro-autopista-medellin-bogota-tramo-santuario-cano-alegre-DM41908694 : both 2026-10-05 - corridor deplorable; Asamblea demands repairs; COP 120,000 million revenue vs 10% invested claim.
+
+Adjacent competitor:
+- https://exa.ai/library/place/9y1j0wbkqh8 : aggregator place page, read 2026-11-01 - Estadero y Restaurante la Playa, 5.97772, -75.1174 (plus code XVHM+32, ~0.4-0.5 km from Pailania point), 4.7/6 reviews, hours Mon-Fri 9-17 / Sat-Sun 9-19, phone +57 312 853 8167; 2025-dated reviews: free entry, parking COP 10,000, restaurant, small pool, river access, camping/cooking areas, pets, bathrooms. Same-name restaurant in Silvia (Cauca) is a different place (https://exa.ai/library/place/pd5xn6n0h38).
+
+Bus access:
+- https://viveysientesanfrancisco1.blogspot.com/2019/09/transporte-publico.html : San Francisco municipal blog, 2015-based page with fare line referencing 2026 - Medellin-San Francisco COP 23,000, ~2.5 h, Terminal del Norte taquilla 15; Rionegro-San Francisco 2x daily COP 18,000; on-demand camionetas to veredas. No Pailania stop named.
+- https://m.horariodebuses.com.co/flota-granada : 2026-titled aggregator, content undated, read 2026-11-01 - Medellin-San Francisco schedule; table fare COP 18,000 while noting the operator site lists COP 23,000; conflicting, not promoted.
