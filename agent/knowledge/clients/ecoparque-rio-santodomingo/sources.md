@@ -147,7 +147,7 @@ Bus access:
 - https://viveysientesanfrancisco1.blogspot.com/2019/09/transporte-publico.html : San Francisco municipal blog, 2015-based page with fare line referencing 2026 - Medellin-San Francisco COP 23,000, ~2.5 h, Terminal del Norte taquilla 15; Rionegro-San Francisco 2x daily COP 18,000; on-demand camionetas to veredas. No Pailania stop named.
 - https://m.horariodebuses.com.co/flota-granada : 2026-titled aggregator, content undated, read 2026-11-01 - Medellin-San Francisco schedule; table fare COP 18,000 while noting the operator site lists COP 23,000; conflicting, not promoted.
 
-## Pass 5 (2026-11-01) - Rio Melcocho access geography, CAICA, coordinator traces, reserve plan de manejo
+## Pass 5 (2026-11-01) - Rio Melcocho access geography, CAICA, group-visit organization traces, reserve plan de manejo
 
 | URL | What it shows | Status |
 |---|---|---|
@@ -161,5 +161,5 @@ Bus access:
 | https://exa.ai/library/place/m896wldwf6j | ESD listing reviews: restricted entry with prior reservation (2020-10-12); bad access road for small cars in rain, very full estadero on holiday (2019-11-12); lockers, ample parking, food variety, easy river access (2023-12-09); family/pets camping (2023-03-19) | Read 2026-11-01 |
 | https://www.cornare.gov.co/SIAR/Plan-de-manejo/plan-de-manejo-melcocho-santo-domingo/Plan-de-Manejo-de-los-Canones-de-los-rios-Melcocho-y-Santo-Domingo.pdf | CORNARE plan de manejo (Convenio 112-2015, doc 2015-2016, 326 pp): zoning Preservacion 57.98% / Restauracion 30.45% / Uso Sostenible 11.56% / Uso Publico 0.01% (2.81 ha recreation subzone, minimal infrastructure) | Read 2026-11-01; parcel-level zone for ESD not analyzed |
 | https://cincohorizontes.com/dia-de-sol/tour-melcocho/ | Agency Melcocho tour page | Blocked 2026-11-01 (ModSecurity "Not Acceptable"); not extracted |
-| https://maps.app.goo.gl/BbaEdWy7fwJyiWyVA | Owner's canonical ESD Google Maps link; resolved in browser to exact point 5.9748909, -75.118416, address "Km 6, Via a San Francisco, Cocorna" | Read 2026-11-01 (browser) |
+| https://maps.app.goo.gl/BbaEdWy7fwJyiWyVA | ESD Google Maps share link; resolved in browser to exact point 5.9748909, -75.118416, address "Km 6, Via a San Francisco, Cocorna" | Read 2026-11-01 (browser) |
 | https://router.project-osrm.org + https://nominatim.openstreetmap.org | Modeled pass-by check 2026-11-01: OSRM routes Cocorna town and El Carmen de Viboral to Pailania school node (5.9783911, -75.1135410) pass no closer than ~630 m to ESD point; ESD-to-Pailania modeled at 1.0 km. Lead only - OSM unpaved-road gaps likely; pass-by neither confirmed nor ruled out | Computed 2026-11-01 (modeled lead) |

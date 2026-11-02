@@ -36,7 +36,7 @@ UNKNOWN: current Registro Nacional de Turismo (RNT) status for this specific est
 
 ## Place and access
 
-VERIFIED (two independent source groups, both opened): Km 6, Vía a San Francisco, Cocorná, Antioquia; plus code XVFJ+XJ; coordinates 5.9748909, -75.118416 (exact, resolved from the owner's canonical Maps link 2026-11-01); on the Santo Domingo river at the Cocorná/San Francisco boundary in the river's canyon. Sources: live Google Maps listing (2026-11-01); https://colombiabz.com/antioquia/la-base-del-rio-santo-domingo-112271 ; https://diarioriente.com/bosques/rio-santo-domingo.html (2021-09-19).
+VERIFIED (two independent source groups, both opened): Km 6, Vía a San Francisco, Cocorná, Antioquia; plus code XVFJ+XJ; coordinates 5.9748909, -75.118416 (exact, resolved from the live Google Maps listing 2026-11-01); on the Santo Domingo river at the Cocorná/San Francisco boundary in the river's canyon. Sources: live Google Maps listing (2026-11-01); https://colombiabz.com/antioquia/la-base-del-rio-santo-domingo-112271 ; https://diarioriente.com/bosques/rio-santo-domingo.html (2021-09-19).
 REPORTED: final access is an unpaved road whose state worsens with rain (visitor review, 2019-11-24). Source: https://colombiabz.com/antioquia/la-base-del-rio-santo-domingo-112271 . Bus access: Medellín Terminal del Norte, Flota Granada to San Francisco via Pailania (https://en.casacol.co/fishing-san-francisco-antioquia/, 2022-07-01).
 
 ### Transport routes, fares and the actual visitor journey (all read 2026-11-01)
