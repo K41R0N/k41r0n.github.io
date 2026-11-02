@@ -176,5 +176,5 @@ The two raw protocol specs remain excluded. Method text from the same harness is
 ## Review pipeline reference (added 2026-11-02)
 
 - Published file: `agent/packs/copywriting-methods/sources/copy-review-framework/review-pipeline.md`
-- Sources: his Copy Review Engine reference doc (his own private product repo, `docs/research/copy_framework.md`, commit ba0dbd9) and its implementation (`lib/presets.ts`, `lib/prompts.ts`, commit e5f74f1). Both repos are his; no client material is carried.
+- Sources: his Copy Review Engine reference doc and its implementation, both in his private tooling repos. Exact repo, path and commit pointers live in the owner's private source map (Kairon Drive), not in this public repo. Both sources are his; no client material is carried.
 - Changes: method retained in full (five review passes, five creative lenses, Ogilvy's five questions, structural rulebook, tonal arc, banned phrases). Excluded: the brand-specific application section (one product's landing-copy guidance and another brand's voice words) and the extraction note naming a client workspace. A known drift is documented in the file: the deployed review prompt lists four of the five Ogilvy questions; the framework's five are canonical.

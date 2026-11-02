@@ -4,7 +4,7 @@ title: "Copy review pipeline"
 confidence: proposed
 tier: 2
 approver: Alejandro Arango
-source: His Copy Review Engine reference doc (K41R0N/candy-cms, docs/research/copy_framework.md, commit ba0dbd9) and its implementation (K41R0N/copywriting-review-flow, commits e5f74f1), read 2026-11-02, generalized in packs/copywriting-methods/sources/copy-review-framework/review-pipeline.md. Mechanical checks from this harness's earlier draft are folded into the passes they belong to. Replaces the 2026-10-30 reconstruction that described seven ordered passes; no source of his carries seven, and that version had dropped the creative passes entirely - the failure he caught on the Tommy page ("you very clearly didn't use the five pass method", "This is still AI copy", 2026-11-02 1:20-1:25 AM).
+source: His Copy Review Engine reference doc and its implementation (his private tooling repos; exact pointers in the owner's private source map, Kairon Drive), read 2026-11-02, generalized in packs/copywriting-methods/sources/copy-review-framework/review-pipeline.md. Mechanical checks from this harness's earlier draft are folded into the passes they belong to. Replaces the 2026-10-30 reconstruction that described seven ordered passes; no source of his carries seven, and that version had dropped the creative passes entirely - the failure he caught on the Tommy page ("you very clearly didn't use the five pass method", "This is still AI copy", 2026-11-02 1:20-1:25 AM).
 status: PROPOSED. Not yet graduated (no two identical manual runs). Source-derived structure; run it from the source files, not from memory.
 ---
 # Copy review (every draft, including ones written by an agent, and any outside draft)
