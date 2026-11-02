@@ -1,7 +1,7 @@
 ---
 type: Reference
 title: "Copy review pipeline (his review engine, generalized)"
-source: "His Copy Review Engine reference doc (private repo K41R0N/candy-cms, docs/research/copy_framework.md, commit ba0dbd9) and its implementation (private repo K41R0N/copywriting-review-flow, lib/presets.ts and lib/prompts.ts, commit e5f74f1), read 2026-11-02. Product- and brand-specific application sections (a CMS landing page, a client voice) are excluded; this is the method only."
+source: "His Copy Review Engine reference doc and its implementation, both in his private tooling repos, read 2026-11-02. Exact source pointers are kept in the owner's private source map (Kairon Drive), not in this public repo. Product- and brand-specific application sections (a CMS landing page, a client voice) are excluded; this is the method only."
 status: source-derived. Read this file fresh each run; reviewing from remembered rules is the drift this system exists to prevent.
 ---
 # Copy review pipeline
@@ -68,10 +68,11 @@ For each strongest idea, ask all five:
 
 The filter keeps the direction strategically sound, ownable and a long-term
 asset, not clever for its own sake. All five questions are canonical. Known
-implementation drift: the deployed review prompt (lib/prompts.ts @ e5f74f1)
-lists only four of the five, dropping question 2; the reference doc and the
-creative preset carry all five. When the tool and this file disagree, this
-file's five win, and the drift gets fixed at the source.
+implementation drift: the deployed review prompt currently lists only four
+of the five, dropping question 2; the reference doc and the creative preset
+carry all five. When the tool and this file disagree, this file's five win,
+and the drift gets fixed at the source (tracked in the owner's private
+tooling repo).
 
 ## Structural copy rules
 
