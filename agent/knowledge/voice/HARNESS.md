@@ -26,7 +26,7 @@ Stylometry points the same way: the signal sits in habits writers do not control
 knowledge/voice/ (voice-spec, do-dont, lexicon) · assets/voice-corpus/raw (spec source) · assets/voice-corpus/holdout (test only, never used to build the spec) · assets/voice-corpus/excluded (AI-assisted, co-written, or authorship unverified) · knowledge/voice/thoughts/ (his raw ideas) · knowledge/voice/refs/ (evidence) · decisions/voice-findings/ (dated findings and decisions, one file per finding, see decisions/voice-findings/README.md) · knowledge/voice/registers/ · assets/voice-drafts/ · ingestion/reports/voice/ · routines/ (copy-draft, copy-review, blind-test) · scripts/local/voice/ (measure and check, stdlib Python) · routines/voice-compound.md.
 
 ## 4. Pipeline
-thought, brief, draft (five passes), deterministic checks (scripts/local/voice/checks.py, range checks against voice-spec), review (seven passes), checks again, he approves. Corpus, thoughts and refs stay in separate folders so form, content and evidence never contaminate each other.
+thought, brief, draft (five passes, routines/copy-draft.md), deterministic checks (scripts/local/voice/checks.py, range checks against voice-spec), review (five passes, routines/copy-review.md, from his review-engine source), checks again, he approves. Corpus, thoughts and refs stay in separate folders so form, content and evidence never contaminate each other.
 
 ## 5. Hard rules
 1. Nothing is published or sent as him without his explicit approval.

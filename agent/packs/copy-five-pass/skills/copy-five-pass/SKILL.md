@@ -14,7 +14,7 @@ metadata:
 # Copy five-pass
 
 ## Purpose
-Catch the mechanical problems in a draft before a person reads it. The person decides whether it is good.
+Catch the mechanical problems in a draft before a person reads it. The person decides whether it is good. This is the lint gate, not his five-pass method: the drafting five-pass and the creative review pipeline (five lenses, Ogilvy's five questions, final page review) live in `packs/copywriting-methods/` and are read fresh from source each run. A clean result here never stands in for those passes.
 
 ## Step 0
 Check the draft has a header with `context: external` or `internal`. The header may also carry `language: <code>` (for example `language: es`) declaring the reader's language. Say plainly if any source cited in the draft was not read.

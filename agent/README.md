@@ -50,6 +50,8 @@ you. Do not edit files outside `content/` until you have read
 | Iterate and verify revisions | `knowledge/methodologies/iteration-protocol.md` |
 | Scope and plan work with a compact brief | `knowledge/methodologies/briefing-and-work-planning.md` |
 | Consult his methods library (packs, evals, fixtures) | `packs/` |
+| Draft or review copy (his method, incl. anything as him) | `routines/copy-draft.md`, `routines/copy-review.md`, `packs/copywriting-methods/` (drafting five-pass + review pipeline), `packs/copy-five-pass/` (lint only), voice canon in `knowledge/voice/` |
+| Find where one of his processes lives (copy, marketing, ICP, client-locked) | `knowledge/methodologies/method-sources.md` |
 | Prepare a reader-specific pitch website | [Pitch website skill](skills/pitch-website/SKILL.md); see [the worked-example learnings](knowledge/site/pitch-page-learnings-2026-10-31.md) and its limits |
 
 ---

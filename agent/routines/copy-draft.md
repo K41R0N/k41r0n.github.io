@@ -4,7 +4,7 @@ title: "Copy drafting: five-pass method"
 confidence: proposed
 tier: 2
 approver: Alejandro Arango
-source: Rewritten for this harness from his five-pass copywriting method (drafting workflow in two of his brand harnesses). Brand-specific material removed. His own voice is the brand here.
+source: Rewritten for this harness from his five-pass copywriting method (drafting workflow in two of his brand harnesses). Brand-specific material removed. His own voice is the brand here. The source-derived generalized original is packs/copywriting-methods/sources/20-harnesses/harness-01/routines/copy/five-pass.md; the review pipeline that runs after drafting is packs/copywriting-methods/sources/copy-review-framework/review-pipeline.md (routines/copy-review.md). Read the source files fresh each run.
 status: PROPOSED. Not run yet. Graduation rule: no scripting until two identical manual runs (D1-D5).
 ---
 # Copy drafting: five passes

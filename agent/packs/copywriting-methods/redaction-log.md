@@ -172,3 +172,9 @@
 - **Embedded client legal analysis in Pass 5 source**: Removed as a block and replaced with general advice to use current qualified review. Its archive member is the Pass 5 file above; no client legal doctrine or product-specific interpretation was retained.
 
 The two raw protocol specs remain excluded. Method text from the same harness is included only after generalization; exclusions are per file or passage, not blanket holds on the surrounding harness.
+
+## Review pipeline reference (added 2026-11-02)
+
+- Published file: `agent/packs/copywriting-methods/sources/copy-review-framework/review-pipeline.md`
+- Sources: his Copy Review Engine reference doc (his own private product repo, `docs/research/copy_framework.md`, commit ba0dbd9) and its implementation (`lib/presets.ts`, `lib/prompts.ts`, commit e5f74f1). Both repos are his; no client material is carried.
+- Changes: method retained in full (five review passes, five creative lenses, Ogilvy's five questions, structural rulebook, tonal arc, banned phrases). Excluded: the brand-specific application section (one product's landing-copy guidance and another brand's voice words) and the extraction note naming a client workspace. A known drift is documented in the file: the deployed review prompt lists four of the five Ogilvy questions; the framework's five are canonical.

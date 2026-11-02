@@ -2,7 +2,7 @@
 name: pitch-website
 description: Plans, drafts, deploys, and verifies a reader-specific pitch website grounded in the owner's methods and evidence.
 argument-hint: "[reader or organization, decision the page should support, and available source material]"
-version: 0.3.1
+version: 0.3.2
 metadata:
   harness:
     lane: L5
@@ -29,10 +29,10 @@ Do not use it to decide a still-undefined offering by inventing buyer needs, to 
 
 1. Establish the reader, their organization and role, the decision the page should support, the intended channel, the requested next step, and whether this is an example, proposal, or live offer. Use current brief and direct evidence; do not infer a relationship or business need from the name alone.
 2. Read the site's contribution instructions and write guard before editing. Inspect current repository state, deploy path, branch rules, and any existing page or template. Never edit generated output.
-3. Read the actual canonical Harness Standard and Attention Graduation Framework before describing harness types or attention stages. Use current, relevant sources in the ICP harness for audience signals and audience understanding, and the marketing harness for offering, market, alternatives, positioning, and value. One agent may draw from multiple harnesses; keep those method sources distinct and route by the question being answered.
+3. Read the actual canonical Harness Standard and Attention Graduation Framework before describing harness types or attention stages (canonical copies: private repo K41R0N/Marketing-harness, docs/references/harness-standard-v0.3/). Use current, relevant sources in the ICP harness (private repo K41R0N/icp-harness) for audience signals and audience understanding, and the Marketing-harness (private repo K41R0N/Marketing-harness) for offering, market, alternatives, positioning, and value. Both are reference-only, never pushed, and re-read fresh each run, never cited from memory (his standing rule, 2026-10-29). One agent may draw from multiple harnesses; keep those method sources distinct and route by the question being answered. The full map of where each method lives is knowledge/methodologies/method-sources.md.
 4. Read the public methods repo's `clear-message`, `copywriting-methods`, `copy-five-pass`, and `strategy-canvas` guidance. Read audience-listening and attention-graduation methods when explaining those methods. Use `prospect-research` as standard pre-work before considering any service, offer, or advice for a company, and as the evidence feeder for reader-specific pitch tailoring. Do not treat it as optional reference material or turn its hypotheses into approved positioning. Read any reader-relevant project evidence and design system. Say what was not available or read.
 5. Maintain a claim/source ledger in working notes: sourced fact, owner-reported experience, inference, or open gap. A citation is evidence to check, not blanket permission to disclose it.
-6. Confirm the deployment surface and the reader's language before building. Ad-hoc prospect pages go to here.now by default, with the page link, expiry, and claim link reported. Write the page in the reader's own language from the start; translating after drafting ships English structure with local words.
+6. Confirm the deployment surface and the reader's language before building. Ad-hoc prospect pages always go to here.now - never Instinct Files or any other surface - with the page link, expiry, and claim link reported (his rule 2026-10-31, repeated and made absolute 2026-11-02 after two more misses). Write the page in the reader's own language from the start; translating after drafting ships English structure with local words.
 
 ## Goals and completion test
 
@@ -78,7 +78,7 @@ Nine blocking checks. Run them in order on the final page, before any review lin
 
 A gate passes on evidence, not wording. Evidence means the methodology sources were actually read and applied to this reader, the demonstration genuinely shows the method working, and a reader could say what the offer is, why it is for them, and what happens next. A checked-off list proves only that the known failure modes were reviewed; it is not proof that the pitch is good, that the run was faster, or that the page will work. Quality stays with the owner's review.
 
-0. **Deployment surface confirmed.** The page is on the surface confirmed at orientation (default: here.now). Page link, expiry, and claim link reported. The complete deployable source bundle is preserved and verified as the compound step requires. Never substitute another hosting surface without saying so.
+0. **Deployment surface confirmed.** The page is on the surface confirmed at orientation (always here.now for ad-hoc prospect pages; never Instinct Files). Page link, expiry, and claim link reported. The complete deployable source bundle is preserved and verified as the compound step requires. Never substitute another hosting surface without saying so.
 1. **Reader language.** The page is written in the reader's own language, and the five passes ran on that final language version, not on an earlier draft in another language. Reader-facing copy carries no English terms and no technical vocabulary; method concepts appear as plain questions and everyday words the reader would use.
 2. **Why first.** The opening leads with the reader's outcome, before any how. Implementation, tools, and infrastructure stay invisible unless the reader asks.
 3. **No meta commentary.** Nothing about drafting, review, research limits, or internal process appears on the page.
@@ -100,7 +100,7 @@ A gate passes on evidence, not wording. Evidence means the methodology sources w
 
 ### 2. Build the argument and draft copy
 
-- Follow the five-pass method: big idea; factual anchoring; voice; story structure; compliance. Every factual or comparative claim must trace to current evidence. Leave uncertain claims out or visibly mark them for resolution.
+- Follow his five-pass drafting method from its source-derived text (`packs/copywriting-methods`, big idea; factual anchoring; voice; story structure; compliance), then review with the five-pass review pipeline (`packs/copywriting-methods/sources/copy-review-framework/review-pipeline.md`: decontamination, creative review with the five lenses and all five Ogilvy questions, tone and voice, compliance, final page review). Read the source files fresh each run; a checklist recalled from memory is not the method, and a deterministic lint clean is not a creative pass. Every factual or comparative claim must trace to current evidence. Leave uncertain claims out or visibly mark them for resolution.
 - Use `clear-message` to reduce the explanation to what this reader needs to understand. Replace generic adjectives with actions, examples, and inspectable artifacts.
 - Make the worked example answer: what starts the process, what happens, what the reader can inspect or decide, and what remains human judgment.
 - Explain the Attention Graduation Framework accurately: Describe what happens, Explain why and what good means, Predict what changes under different conditions, Estimate time/cost from evidence, and only then consider bounded delegation. Do not skip stages or claim the page established automation readiness. Use its canonical framework for exact ladder, seven slots and thresholds.
@@ -193,6 +193,8 @@ After each run: write a dated learnings record under `knowledge/site/` with the 
 
 ## References
 
+- `knowledge/methodologies/method-sources.md`
+- `packs/copywriting-methods/sources/copy-review-framework/review-pipeline.md`
 - `knowledge/site/pitch-page-learnings-2026-10-31.md`
 - `knowledge/site/pitch-page-learnings-first-live-run-2026-10-31.md`
 - `skills/pitch-website/examples/2026-10-31-cafe-retiro/` (first live run: verbatim accepted page, research brief, correction record)
