@@ -105,7 +105,11 @@ For working preferences and repeatable methods, use the routed guides in
 for defaults and limits; `research-method.md` for evidence-led research;
 `feedback-and-review.md` for correction and review; `iteration-protocol.md`
 for revision and verification; and `briefing-and-work-planning.md` for briefs
-and plans. These are inferred procedural syntheses, not owner-approved universal
+and plans. For copy work, route to `routines/copy-draft.md` and
+`routines/copy-review.md` with the source-derived methods in
+`packs/copywriting-methods/`; for where each of his processes lives (copy,
+marketing, ICP, client-locked material), use
+`knowledge/methodologies/method-sources.md`. These are inferred procedural syntheses, not owner-approved universal
 rules; each file names its source basis and limits. Consult its cited source
 when a disputed detail or higher-stakes application depends on it.
 
