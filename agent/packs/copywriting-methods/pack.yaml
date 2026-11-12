@@ -1,9 +1,9 @@
 name: copywriting-methods
 kind: reference
-version: 0.2.0
+version: 0.3.0
 status: draft
-summary: Source-derived five-pass writing and review methods, generalized. Drafting five-pass from client material; review pipeline from his own review-engine reference doc and implementation (read 2026-11-02). This procedure is not project policy, legal advice, factual authority, or approval.
+summary: Source-derived five-pass writing and review methods, generalized. Drafting five-pass from client material; review pipeline from his own review-engine reference doc and implementation (read 2026-11-02). Email archetype taxonomy reference added from the IdeaBrowser reverse-engineering intake (owner ruling 2026-11-12). This procedure is not project policy, legal advice, factual authority, or approval.
 provides:
-  references: [five-pass-copywriting-method, copy-review-pipeline]
+  references: [five-pass-copywriting-method, copy-review-pipeline, email-archetype-taxonomy]
 requires: { modules: [], secrets: [], egress: [] }
-source: Six anonymized source documents from the supplied methodology archive; exact source and output hashes and changed-line ranges in redaction-log.md. Client-instance API and endpoint specifications are excluded.
+source: Six anonymized source documents from the supplied methodology archive; exact source and output hashes and changed-line ranges in redaction-log.md. Client-instance API and endpoint specifications are excluded. Email archetype reference: IdeaBrowser "Email Wizard" prompt via Marketing-harness ingestion/pending/ideabrowser-reverse-engineering-2026-11-11/.
