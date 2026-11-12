@@ -14,5 +14,6 @@ These notes are methods, not project policy, legal advice, or factual authority.
 - [Pass 5: Final review](sources/20-harnesses/harness-01/skills/copy-review/references/05-pass-5-compliance-gate.md)
 - [Source and redaction log](redaction-log.md)
 - [Review pipeline (his review engine, generalized)](sources/copy-review-framework/review-pipeline.md) - the five review passes, the five creative lenses, Ogilvy's five-question Big Idea filter, and the structural rulebook
+- [Email archetype taxonomy and sequence architecture](sources/ideabrowser-reverse-engineering/email-archetype-taxonomy.md) - owner-approved reference method (ruling 2026-11-12) from the IdeaBrowser reverse-engineering intake; seven archetypes, blend mode, structural craft layer, and sequence shapes; subordinate to the five-pass routine, the review pipeline, and his voice rules
 
 The `harness-01` folder label is an anonymized neutral identifier for the source harness. The original client name and repository paths are intentionally omitted from the public copy.
