@@ -4,7 +4,7 @@ type: Method
 title: "Feedback and review method"
 description: "Procedure for diagnosing feedback, using distinct review lenses, adjudicating findings, and recording corrections."
 confidence: inferred
-source: "10-skills/sky-thought-piece/references/review-protocol.md@e2c6fcdacf32783a72f1ddca06ee0e4edc8038d4"
+source: "10-skills/client-thought-piece/references/review-protocol.md@e2c6fcdacf32783a72f1ddca06ee0e4edc8038d4"
 updated: 2026-10-31
 class: S0
 tags: [copy, verification]
@@ -67,8 +67,8 @@ After revision, have a fresh verifier check explicit pass/fail statements for ea
 | Procedure claim | Supporting source | What it supports / boundary |
 |---|---|---|
 | Triage framing, compliance, length, factual, robotic, and clumsy-line feedback; use distinct blind stages; adjudicate and verify | `00-compendium/alejandro-ways-of-working-2026-10-28.md`, E4 and E9 | Source-derived categories and sequence; this guide's table is a practical summary. |
-| Exact reviewer packet, ranked findings with quotes/rewrites, adjudication rules, checkable verification pass, knock-on read | `10-skills/sky-thought-piece/references/review-protocol.md` | Concrete long-form editorial protocol; scale rather than impose all its lenses on every artifact. |
-| Measured subtraction and re-run after substantive revision | `10-skills/sky-thought-piece/references/structural-audit.md` | Genre-specific counters and thresholds, not a general quality score. |
+| Exact reviewer packet, ranked findings with quotes/rewrites, adjudication rules, checkable verification pass, knock-on read | `10-skills/client-thought-piece/references/review-protocol.md` | Concrete long-form editorial protocol; scale rather than impose all its lenses on every artifact. |
+| Measured subtraction and re-run after substantive revision | `10-skills/client-thought-piece/references/structural-audit.md` | Genre-specific counters and thresholds, not a general quality score. |
 | Terminology, definition, visual rendering, optional addition feedback; review happening too late and terminology buried in threads | `50-reporting-docs/int-feedback-on-the-report.md`; `60-notion-sops/f3-reviews-alignment.md` | A small example and an operational concern, not a complete universal feedback taxonomy. |
 
 Classify actual feedback by the requested outcome. The packet format above is adapted from the source review protocol; it is not proof that a review occurred unless a reviewer actually completed it.

@@ -70,7 +70,7 @@ Scale the number of lenses and rounds to the work. Do not use one generic review
 | Profile claim | Supporting source | Confidence boundary |
 |---|---|---|
 | Fixed instruments, source ladders, hypotheses, disconfirmation, and comparable runs | `00-compendium/alejandro-ways-of-working-2026-10-28.md`, R1-R10; `detailed behavioral-search instrument in the supplied source archive (instance details omitted)` | Methods are evidenced in the compendium and one detailed instrument; task-specific details are not universal. |
-| Feedback triage, review stages, adjudication, and verification | Compendium E4/E9; `10-skills/sky-thought-piece/references/review-protocol.md` | Editorial methods, scaled by artifact; not every review needs every stage. |
+| Feedback triage, review stages, adjudication, and verification | Compendium E4/E9; `10-skills/client-thought-piece/references/review-protocol.md` | Editorial methods, scaled by artifact; not every review needs every stage. |
 | Exact brief questions and one-page contract | `10-skills/project-brief-skill/SKILL.md` | Directly specified in the source skill; use the skill for the complete deliverable contract. |
 | Manual-first process design and explicit plan checks | Compendium H1, E2 | Source-derived principles; this profile's combined defaults are an inference. |
 | Terminology and visual/layout feedback examples | `50-reporting-docs/int-feedback-on-the-report.md` | Small sample only; does not justify a universal feedback taxonomy. |

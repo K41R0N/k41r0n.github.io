@@ -4,7 +4,7 @@ type: Method
 title: "Iteration protocol: make changes, then verify their effects"
 description: "Revision loop with bounded edits, invalidated-check reruns, measured subtraction where applicable, and a final knock-on read."
 confidence: inferred
-source: "10-skills/sky-thought-piece/references/review-protocol.md@e2c6fcdacf32783a72f1ddca06ee0e4edc8038d4"
+source: "10-skills/client-thought-piece/references/review-protocol.md@e2c6fcdacf32783a72f1ddca06ee0e4edc8038d4"
 updated: 2026-10-31
 class: S0
 tags: [copy, verification]
@@ -65,7 +65,7 @@ A small comment or paragraph can use a short mechanical check, self-edit, and fi
 
 ## Evidence basis and limits
 
-The source is `10-skills/sky-thought-piece/references/review-protocol.md`, which records the failure where a substantive revision invalidated an earlier structural review and the final subtraction pass was skipped, then specifies the stages, verification, measurement, and knock-on read. `references/structural-audit.md` gives the counters and genre thresholds above, and documents why the pass reruns after substantive revisions. The compendium E4/E9 supports scaling by artifact stakes. The generic loop is an organizing synthesis; the counters are specific to the cited long-form forms and do not certify quality.
+The source is `10-skills/client-thought-piece/references/review-protocol.md`, which records the failure where a substantive revision invalidated an earlier structural review and the final subtraction pass was skipped, then specifies the stages, verification, measurement, and knock-on read. `references/structural-audit.md` gives the counters and genre thresholds above, and documents why the pass reruns after substantive revisions. The compendium E4/E9 supports scaling by artifact stakes. The generic loop is an organizing synthesis; the counters are specific to the cited long-form forms and do not certify quality.
 
 ## Stop conditions
 
