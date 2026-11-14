@@ -1,10 +1,13 @@
-name: methods
-version: 0.1.0
+# Corrected 2026-11-14 (decisions/log.md #34): this file migrated
+# byte-identical from the retired methods repo and misdescribed this brain.
+name: kairon-xyz-agent
+version: 0.3.0
 owner: Alejandro Arango
-visibility: private
-default_branch_policy: pull_request_only
+visibility: public  # agent/ inside the public site repo; never rendered on the site
+default_branch_policy: lanes_per_contribution_workflow  # Tier 2 content: branch+PR or CMS commit; Tier 1 code/config: always PR
 pack_class_max: S1
 exports: packs/
 gates:
   push_gate: scripts/local/push_gate.sh
   eval_contract: evals/contract.md
+  routing_lint: scripts/local/routing_lint.py

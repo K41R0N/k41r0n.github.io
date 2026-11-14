@@ -5,13 +5,13 @@ Each skill is a self-contained runbook for one task. They assume you have read
 
 | Skill | Task | Tier |
 |---|---|---|
-| `add-blog-post.md` | Publish a new blog post / essay | 2 (content) |
-| `add-thesis.md` | Add or edit a thesis | 2 (content) |
-| `edit-site-settings.md` | Change identity, social, SEO, footer | 2 (content) |
-| `edit-home-sections.md` | Change home headings / newsletter copy | 2 (content) |
-| `add-configurable-field.md` | Expose a NEW field to the CMS | 1 (schema+build) |
-| `build-and-verify.md` | Build and confirm nothing broke | — (always) |
+| `add-blog-post/SKILL.md` | Publish a new blog post / essay | 2 (content) |
+| `add-thesis/SKILL.md` | Add or edit a thesis | 2 (content) |
+| `edit-site-settings/SKILL.md` | Change identity, social, SEO, footer | 2 (content) |
+| `edit-home-sections/SKILL.md` | Change home headings / newsletter copy | 2 (content) |
+| `add-configurable-field/SKILL.md` | Expose a NEW field to the CMS | 1 (schema+build) |
+| `build-and-verify/SKILL.md` | Build and confirm nothing broke | — (always) |
 | `pitch-website/` | Plan, draft, deploy, and verify a reader-specific pitch website | 2 (content) |
 
-**Convention:** every skill ends by invoking `build-and-verify.md`. Nothing is
+**Convention:** every skill ends by invoking `build-and-verify/SKILL.md`. Nothing is
 "done" until the build is green and the change is confirmed in `dist/`.

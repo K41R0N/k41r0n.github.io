@@ -52,6 +52,8 @@ you. Do not edit files outside `content/` until you have read
 | Consult his methods library (packs, evals, fixtures) | `packs/` |
 | Draft or review copy (his method, incl. anything as him) | `routines/copy-draft.md`, `routines/copy-review.md`, `packs/copywriting-methods/` (drafting five-pass + review pipeline), `packs/copy-five-pass/` (lint only), voice canon in `knowledge/voice/` |
 | Find where one of his processes lives (copy, marketing, ICP, client-locked) | `knowledge/methodologies/method-sources.md` |
+| Find his method for any ask, across every harness (document level) | `knowledge/methodologies/method-sources.md` corpus index + `knowledge/methodologies/method-corpus.json`; on failure follow its recovery contract |
+| Show Alejandro any HTML page or preview | `AGENTS.md` section 5 - here.now by default; confidential HTML route unresolved (issue #35), say so and hold |
 | Prepare a reader-specific pitch website | [Pitch website skill](skills/pitch-website/SKILL.md); see [the worked-example learnings](knowledge/site/pitch-page-learnings-2026-10-31.md) and its limits |
 
 ---

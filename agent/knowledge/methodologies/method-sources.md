@@ -8,7 +8,7 @@ confidence: confirmed access rules from his standing instructions
 Where to find the process that answers a given question. Built after the
 2026-11-02 run, where copy, marketing and ICP method locations were treated
 as known and then not read. Read the source fresh each run; never cite a
-method from memory (his standing rule, 2026-10-29 8:29 PM: re-read the
+method from memory (his standing rule of 2026-10-29, recorded in the agent log at 8:29 PM: re-read the
 Marketing-harness and icp-harness whenever anyone asks about his marketing
 methodologies, before any positioning, messaging or copy work, and on a
 periodic refresh).
@@ -16,7 +16,9 @@ periodic refresh).
 Private originals are not located in this public repo. The exact repos,
 paths and pinned commits for every private source below live in the owner's
 private source map in his Kairon Drive (reference folder). Open that map
-when a rule says re-read the private source.
+when a rule says re-read the private source. If the map itself cannot be
+reached, follow the recovery contract at the bottom of this file - do not
+ask him to re-identify material that is already logged.
 
 ## This repo (public, `agent/`)
 
@@ -82,3 +84,59 @@ method questions. The push gate enforces this. The generalized five-pass in
 | What do we say and how? | `packs/copywriting-methods/` (drafting five-pass + review pipeline), voice canon for anything as him |
 | Is this copy any good? | Review pipeline: creative quality, voice source fit, reader/audience/offer fit; `packs/copy-five-pass/` as lint only |
 | How far can this work be delegated? | `packs/attention-graduation/` + the canonical staged-delegation framework (private source map) |
+
+## Method corpus index (document level)
+
+Every method corpus he has, across all harnesses, at the level an intent
+can route to. The machine-readable form is `method-corpus.json` in this
+folder; `../../scripts/local/routing_lint.py` keeps the registry complete
+and resolvable. Route from here first; open the source fresh before using
+any method (his standing re-read rule).
+
+For a deterministic first stop, run
+`python3 ../../scripts/local/route.py "<the ask>"` - it prints the routed
+document or the recovery steps, and its cases live in
+`routing-cases.json`.
+
+| Area | Access | What it answers | Docs |
+|---|---|---|---|
+| Packs (this repo, `agent/packs/`) | public, writable via PR | Executable methods with evals: see `../../packs/index.md` for the 16 rows | one folder per pack |
+| Ways-of-working corpus (`ways-of-working-corpus.md`) | public | Plain-words answers to common asks, distilled from his 142-method compendium | 1 doc, Q&A form |
+| Ethos (`../ethos/`) | public | The principles every answer is judged against | ethos + candidates + asker lens |
+| Method archive (`../../method-archive/`) | public | Original wording of imported methods, for provenance questions | source-area folders |
+| Voice canon (`../voice/`) | public | How anything in his voice is written and checked | spec, do-don't, lexicon, registers |
+| Marketing-method notes (private marketing harness) | private-map | 23 documented methods, each with source status, attribution and limits. Topics: tool fit; content format; strategy and positioning; LinkedIn programme; manual-first agentic research; video research; six-question brief; knowledge governance; thought-piece production; funnel/email audit; reconnaissance and listening; intelligence cards; copywriting and editorial review; content operations; case-study evidence; presentations; analytics and reporting; process standardization; harness knowledge governance; testing and correction loops; website/launch/search; offer economics; value-equation offer framing | routed by the method index in that repo; exact paths in the private source map |
+| P-035 import record (private marketing harness) | private-map | What the kairon-methods archive held, what was imported or held, and why | import record + safe-materials map + family disposition map |
+| icp-harness (private) | private-map | Named-list ICP method, listening map, what moves the audience, funnel and news sources; OSINT person-research original | routed by its own index; paths in the private source map |
+| Harness Standard + Attention Graduation Framework (private marketing harness) | private-map | How any harness is structured; how work graduates from manual to delegated | canonical copies; paths in the private source map |
+| Copy framework originals (private) | private-map / locked | The review engine at source; drafting five-pass originals are locked client material - reconcile privately, never copy | paths in the private source map |
+| K41R0N/methods | retired | Nothing. Superseded by this repo's `agent/` on 2026-10-29; never route here | deletion is the owner's pending call |
+| Delivery routes (`../../AGENTS.md` section 5) | public | How outputs reach him: any HTML ships as a here.now page; generic experiments ship genericized; client-confidential or private source-bearing HTML is held (issue #35) | AGENTS.md section 5 |
+
+## Recovery contract: when routing fails
+
+1. **No corpus entry matches the ask.** Absence may only be declared
+   after BOTH the corpus index (the table above / `method-corpus.json`)
+   AND the private source map have been checked - a guessed path
+   returning 404 is not evidence of absence. Then say which sources were
+   checked and what they did NOT locate (never claim a method does not
+   exist anywhere), and add an open loop in
+   `../../decisions/open-loops.md`. Ask him only if a genuinely
+   unresolved user-owned fact or decision remains after those checks -
+   never a mandatory question, and never an absence claim, when the
+   index and map already settle it. Never route by nearest name (packs
+   index rule, generalized to the whole corpus).
+2. **A routed source is inaccessible.** Report the exact locator tried,
+   what was checked, and the gap. Check this file and the private source
+   map before asking him to re-supply anything - re-asking for logged
+   material is the failure this file exists to prevent. Never fill the
+   gap from memory; a method not read this run is a method not used.
+3. **Routes disagree or smell stale.** The higher-confidence source wins
+   (see `../../HOW-TO-USE-THIS-BRAIN.md`), the disagreement becomes an
+   open loop, and the stale route is fixed in the same cycle, not worked
+   around.
+4. **A real routing failure reached him.** It becomes a lint case or a
+   registry fix in the same cycle (eval contract rule 12: failures become
+   fixtures). The 2026-11-13/14 failures - method library not recognized,
+   here.now route not applied - produced this section, the corpus index
+   and the routing lint.
