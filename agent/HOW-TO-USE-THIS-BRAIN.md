@@ -4,12 +4,15 @@ This file explains how to find things, how much to trust them, and how to change
 
 ## Retrieval order
 
+For a method or delivery question ("his method for X", "how do I show him HTML"), the first stop is deterministic: `python3 scripts/local/route.py "<the ask>"`. It routes to the corpus entry that answers the ask, or to the recovery contract - never a nearest-name guess. Then continue with the order below, starting at the routed document.
+
 Look in this order and stop as soon as you have a sourced answer:
 
 1. `index.md`: the repo map - what the site is, how it builds, where things live.
 2. `AGENTS.md` and `CHARTER.md`: the rules and the scope. These override everything below.
 3. `decisions/`: what is decided (`decisions/log.md`), what we are aiming at (`decisions/goals.md`), what is still unknown (`decisions/open-loops.md`), and voice findings (`decisions/voice-findings/`). A decision beats a knowledge note that disagrees with it.
 4. `knowledge/`: `knowledge/ethos/` (his principles), `knowledge/methodologies/` (his ways of working - `knowledge/methodologies/method-sources.md` routes any method question to the right document across all harnesses, and its recovery contract governs dead ends), `knowledge/site/` (the site itself), `knowledge/voice/` (his voice canon), `knowledge/clients/` (durable public-source client research, one folder per client).
+   The corpus index (`knowledge/methodologies/method-corpus.json`) and its router (`scripts/local/route.py`) stay in lockstep: adding an entry means adding its aliases and a behavioral case in `knowledge/methodologies/routing-cases.json`; `scripts/local/routing_lint.py` fails otherwise.
 5. `routines/`: how the recurring jobs run, `routines/protocols/` (mandatory rules for multi-step operations), and `routines/learnings.md` for what earlier runs taught us.
 6. `packs/`: his methods as importable modules, each with evals. `packs/index.md` routes a task to a pack.
 7. `assets/`: the voice corpus and draft workspaces.
