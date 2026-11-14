@@ -27,7 +27,11 @@
       "answers": "Drafting an answer to a question put to him",
       "confidence": "confirmed",
       "status": "draft",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "answer a question put to him",
+        "draft an answer for him"
+      ]
     },
     {
       "id": "pack-ai-coaching",
@@ -38,7 +42,11 @@
       "answers": "Coaching someone to use AI better",
       "confidence": "confirmed",
       "status": "draft",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "coach someone to use ai",
+        "use ai better"
+      ]
     },
     {
       "id": "pack-asker-fit",
@@ -49,7 +57,11 @@
       "answers": "Fitting an answer to who is asking",
       "confidence": "confirmed",
       "status": "draft",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "fit an answer to who is asking",
+        "plain words for the asker"
+      ]
     },
     {
       "id": "pack-attention-graduation",
@@ -60,7 +72,11 @@
       "answers": "Rating a way of working and deciding what to automate",
       "confidence": "confirmed",
       "status": "draft",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "decide what to automate",
+        "automate a repeated task"
+      ]
     },
     {
       "id": "pack-audience-listening",
@@ -71,7 +87,11 @@
       "answers": "Mapping where an audience speaks and running a daily listening pass",
       "confidence": "confirmed",
       "status": "draft",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "daily listening pass",
+        "where an audience speaks"
+      ]
     },
     {
       "id": "pack-campaign-basics",
@@ -82,7 +102,11 @@
       "answers": "Planning a small social media campaign for a beginner",
       "confidence": "confirmed",
       "status": "draft",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "small social campaign",
+        "beginner campaign"
+      ]
     },
     {
       "id": "pack-clear-message",
@@ -93,7 +117,11 @@
       "answers": "Saying something clearly to a specific listener",
       "confidence": "confirmed",
       "status": "draft",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "say something clearly",
+        "specific listener"
+      ]
     },
     {
       "id": "pack-client-kickoff",
@@ -104,7 +132,11 @@
       "answers": "Planning a client kickoff call and week one",
       "confidence": "confirmed",
       "status": "draft",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "client kickoff",
+        "week one with a client"
+      ]
     },
     {
       "id": "pack-copy-five-pass",
@@ -115,7 +147,11 @@
       "answers": "Deterministic lint passes over a draft (gate only)",
       "confidence": "confirmed",
       "status": "draft",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "copy lint",
+        "deterministic lint over a draft"
+      ]
     },
     {
       "id": "pack-copywriting-methods",
@@ -126,7 +162,13 @@
       "answers": "Drafting and reviewing copy with his five-pass method and review pipeline",
       "confidence": "confirmed",
       "status": "draft",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "five-pass",
+        "draft copy",
+        "copy that does not sound like a robot",
+        "his copy method"
+      ]
     },
     {
       "id": "pack-discovery-interview",
@@ -137,7 +179,11 @@
       "answers": "Interviewing someone to find what they need",
       "confidence": "confirmed",
       "status": "draft",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "interview someone to find what they need",
+        "discovery interview"
+      ]
     },
     {
       "id": "pack-process-standardization",
@@ -148,7 +194,10 @@
       "answers": "Standardizing team processes from interviews to a reviewed playbook",
       "confidence": "confirmed",
       "status": "draft",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "standardize team processes"
+      ]
     },
     {
       "id": "pack-prospect-research",
@@ -159,7 +208,12 @@
       "answers": "Researching a business and its people from public evidence",
       "confidence": "confirmed",
       "status": "draft",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "research a business",
+        "research a company",
+        "improvement hypotheses"
+      ]
     },
     {
       "id": "pack-research-intake",
@@ -170,7 +224,12 @@
       "answers": "Taking in a burst of notes on one topic and finding the threads",
       "confidence": "confirmed",
       "status": "draft",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "burst of notes",
+        "find the threads",
+        "research intake"
+      ]
     },
     {
       "id": "pack-strategy-canvas",
@@ -181,7 +240,11 @@
       "answers": "Building a client strategy on one canvas",
       "confidence": "confirmed",
       "status": "draft",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "strategy on one canvas",
+        "client strategy canvas"
+      ]
     },
     {
       "id": "pack-verify-before-act",
@@ -192,7 +255,12 @@
       "answers": "Checking claims and changing one thing at a time",
       "confidence": "confirmed",
       "status": "draft",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "verify before changing",
+        "one thing at a time",
+        "check a claim before acting"
+      ]
     },
     {
       "id": "ways-of-working-corpus",
@@ -203,7 +271,11 @@
       "answers": "Common questions answered his way: AI reliability, getting agents to do real work, copy that does not sound like a robot, client strategy",
       "confidence": "confirmed",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "ways of working",
+        "common questions answered his way"
+      ]
     },
     {
       "id": "ethos",
@@ -214,7 +286,11 @@
       "answers": "The principles every answer and deliverable is judged against",
       "confidence": "operator_reported",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "ethos",
+        "his principles"
+      ]
     },
     {
       "id": "method-archive",
@@ -225,7 +301,12 @@
       "answers": "Original wording of imported methods when a pack's provenance is in question",
       "confidence": "confirmed",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "original wording of a method",
+        "method originals",
+        "pack provenance"
+      ]
     },
     {
       "id": "voice-canon",
@@ -236,7 +317,13 @@
       "answers": "How anything in his voice is written and checked",
       "confidence": "confirmed",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "his voice",
+        "sound like him",
+        "write as him",
+        "voice spec"
+      ]
     },
     {
       "id": "mm-tool-fit-across-real-workflow",
@@ -247,7 +334,11 @@
       "answers": "Choosing or judging tools for a workflow",
       "confidence": "operator_reported",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "tool fit",
+        "which tool for the workflow"
+      ]
     },
     {
       "id": "mm-content-format-is-a-hypothesis",
@@ -258,7 +349,10 @@
       "answers": "Picking a content format for a context",
       "confidence": "operator_reported",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "content format"
+      ]
     },
     {
       "id": "mm-strategy-foundation-and-positioning-system",
@@ -269,7 +363,12 @@
       "answers": "Strategy, positioning, message architecture for an offer",
       "confidence": "operator_reported",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "positioning system",
+        "strategy foundation",
+        "message architecture"
+      ]
     },
     {
       "id": "mm-executive-linkedin-programme",
@@ -280,7 +379,12 @@
       "answers": "LinkedIn presence and programme design",
       "confidence": "operator_reported",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "linkedin programme",
+        "linkedin program",
+        "executive linkedin"
+      ]
     },
     {
       "id": "mm-manual-first-agentic-research-positioning",
@@ -291,7 +395,11 @@
       "answers": "Turning a manual research process into an agentic flow",
       "confidence": "operator_reported",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "manual-first",
+        "agentic research flow"
+      ]
     },
     {
       "id": "mm-youtube-video-research-method",
@@ -302,7 +410,11 @@
       "answers": "Mining videos (talks, interviews) for method and positioning material",
       "confidence": "operator_reported",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "video research",
+        "youtube research"
+      ]
     },
     {
       "id": "mm-six-question-project-brief",
@@ -313,7 +425,11 @@
       "answers": "Scoping a project or brief",
       "confidence": "operator_reported",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "project brief",
+        "six questions"
+      ]
     },
     {
       "id": "mm-knowledge-governance-loop",
@@ -324,7 +440,10 @@
       "answers": "Governing changes to a knowledge base or harness",
       "confidence": "operator_reported",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "knowledge governance"
+      ]
     },
     {
       "id": "mm-thought-piece-editorial-production",
@@ -335,7 +454,13 @@
       "answers": "Writing and producing thought-leadership articles",
       "confidence": "operator_reported",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "thought-leadership article",
+        "thought piece",
+        "long-form article",
+        "editorial production"
+      ]
     },
     {
       "id": "mm-funnel-lifecycle-and-email-audit",
@@ -346,7 +471,12 @@
       "answers": "Funnel, lifecycle and email diagnosis",
       "confidence": "operator_reported",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "funnel",
+        "lifecycle journey",
+        "email audit"
+      ]
     },
     {
       "id": "mm-reconnaissance-and-social-listening",
@@ -357,7 +487,11 @@
       "answers": "Reconnaissance and social listening",
       "confidence": "operator_reported",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "reconnaissance",
+        "social listening"
+      ]
     },
     {
       "id": "mm-intelligence-card-and-lead-qualification",
@@ -368,7 +502,11 @@
       "answers": "Research records, lead qualification",
       "confidence": "operator_reported",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "intelligence card",
+        "lead qualification"
+      ]
     },
     {
       "id": "mm-copywriting-and-editorial-review",
@@ -379,7 +517,10 @@
       "answers": "Copy production and editorial review",
       "confidence": "operator_reported",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "editorial review"
+      ]
     },
     {
       "id": "mm-content-approval-and-project-operations",
@@ -390,7 +531,12 @@
       "answers": "Content operations: briefs, approvals, handoffs, closeout",
       "confidence": "operator_reported",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "content approval",
+        "project operations",
+        "handoff and closeout"
+      ]
     },
     {
       "id": "mm-case-study-discovery-and-evidence",
@@ -401,7 +547,11 @@
       "answers": "Case-study interviews and evidence",
       "confidence": "operator_reported",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "case study",
+        "case-study evidence"
+      ]
     },
     {
       "id": "mm-presentation-and-deck-production",
@@ -412,7 +562,11 @@
       "answers": "Presentations and decks",
       "confidence": "operator_reported",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "presentation",
+        "deck production"
+      ]
     },
     {
       "id": "mm-analytics-measurement-and-reporting",
@@ -423,7 +577,12 @@
       "answers": "Analytics, measurement, reporting",
       "confidence": "operator_reported",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "analytics",
+        "measurement",
+        "reporting"
+      ]
     },
     {
       "id": "mm-process-standardization-interview-to-playbook",
@@ -434,7 +593,11 @@
       "answers": "Process standardization (private-source original)",
       "confidence": "operator_reported",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "standardize work from interviews",
+        "process standardization reference"
+      ]
     },
     {
       "id": "mm-harness-knowledge-and-capability-governance",
@@ -445,7 +608,11 @@
       "answers": "Harness knowledge boundaries and capabilities",
       "confidence": "operator_reported",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "capability governance",
+        "harness knowledge boundaries"
+      ]
     },
     {
       "id": "mm-testing-retro-and-correction-loop",
@@ -456,7 +623,11 @@
       "answers": "Testing, retrospectives, correction loops",
       "confidence": "operator_reported",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "retrospective",
+        "correction loop"
+      ]
     },
     {
       "id": "mm-website-launch-and-search-optimization",
@@ -467,7 +638,11 @@
       "answers": "Website, launch and search optimization",
       "confidence": "operator_reported",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "website launch",
+        "search optimization"
+      ]
     },
     {
       "id": "mm-offer-economics-and-revenue-pillars",
@@ -478,7 +653,12 @@
       "answers": "Offer economics and revenue pillars",
       "confidence": "operator_reported",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "unit economics",
+        "revenue pillars",
+        "offer economics"
+      ]
     },
     {
       "id": "mm-value-equation-offer-interview-frame",
@@ -489,7 +669,10 @@
       "answers": "Framing an offer through the value equation",
       "confidence": "operator_reported",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "value equation"
+      ]
     },
     {
       "id": "icp-audience-methods",
@@ -500,7 +683,13 @@
       "answers": "Who the reader is, where they speak, their exact words, what they already accept",
       "confidence": "confirmed",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "icp",
+        "named list",
+        "listening map",
+        "what clicks with the audience"
+      ]
     },
     {
       "id": "icp-osint-original",
@@ -511,7 +700,12 @@
       "answers": "Deep research on one person from public evidence",
       "confidence": "confirmed",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "osint",
+        "research a person",
+        "person research"
+      ]
     },
     {
       "id": "harness-standard",
@@ -522,7 +716,12 @@
       "answers": "How any harness is structured, and how work graduates from manual to delegated",
       "confidence": "operator_reported",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "harness standard",
+        "attention graduation framework",
+        "graduate a repeated task"
+      ]
     },
     {
       "id": "copy-review-originals",
@@ -533,7 +732,12 @@
       "answers": "The five review passes, five creative lenses, Ogilvy filter, structural rulebook at source",
       "confidence": "confirmed",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "review engine",
+        "ogilvy",
+        "big idea filter"
+      ]
     },
     {
       "id": "copy-drafting-originals",
@@ -544,7 +748,11 @@
       "answers": "Drafting pass originals; read privately for reconciliation only, never copied",
       "confidence": "confirmed",
       "status": "held",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "drafting originals",
+        "copy originals"
+      ]
     },
     {
       "id": "p035-import-record",
@@ -555,7 +763,13 @@
       "answers": "What the kairon-methods archive contained, what was imported, held, and why",
       "confidence": "confirmed",
       "status": "current",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "p-035",
+        "kairon-methods archive",
+        "method library import",
+        "what was imported from the archive"
+      ]
     },
     {
       "id": "methods-repo-retired",
@@ -566,7 +780,31 @@
       "answers": "Nothing: superseded by this repo's agent/; never route here",
       "confidence": "confirmed",
       "status": "retired",
-      "verified": "2026-11-14"
+      "verified": "2026-11-14",
+      "aliases": [
+        "methods repo",
+        "k41r0n/methods",
+        "old methods repository"
+      ]
+    },
+    {
+      "id": "delivery-html-preview",
+      "title": "Show him HTML: the here.now preview route",
+      "area": "delivery",
+      "access": "public",
+      "location": "agent/AGENTS.md",
+      "answers": "Any HTML he is asked to look at ships as a here.now page; generic experiments ship genericized; client-confidential or private source-bearing HTML is held (issue #35)",
+      "confidence": "operator_reported",
+      "status": "current",
+      "verified": "2026-11-14",
+      "aliases": [
+        "here.now",
+        "html preview",
+        "preview this html",
+        "show him a page",
+        "show him the page",
+        "publish an html page"
+      ]
     }
   ]
 }
