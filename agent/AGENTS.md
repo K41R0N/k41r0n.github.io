@@ -68,6 +68,15 @@ agent/routines/writing-runs.md (this repo).
 
 ## 5. Delivery expectations
 
+- Any HTML he is asked to look at ships as a here.now page (his standing
+  instruction 2026-11-03: "You can just use here.now to show me any html
+  files"; pitch pages have the same rule since 2026-10-31). Anonymous
+  24-hour sites unless he provides an API key. Never substitute a file
+  attachment, a screenshot or a Drive link. Confidential HTML (client
+  material) needs a private preview; that route is unresolved
+  (issue #35) - say so and hold instead of silently publishing
+  confidential material to a public link or falling back to another
+  format.
 - Every site PR ships with a live preview URL (here.now; anonymous 24-hour
   sites unless he provides an API key), reported together with the PR link,
   with direct links to every changed page - never just the site root.
