@@ -120,8 +120,11 @@ document or the recovery steps, and its cases live in
    AND the private source map have been checked - a guessed path
    returning 404 is not evidence of absence. Then say which sources were
    checked and what they did NOT locate (never claim a method does not
-   exist anywhere), add an open loop in `../../decisions/open-loops.md`,
-   and ask him one sharp question. Never route by nearest name (packs
+   exist anywhere), and add an open loop in
+   `../../decisions/open-loops.md`. Ask him only if a genuinely
+   unresolved user-owned fact or decision remains after those checks -
+   never a mandatory question, and never an absence claim, when the
+   index and map already settle it. Never route by nearest name (packs
    index rule, generalized to the whole corpus).
 2. **A routed source is inaccessible.** Report the exact locator tried,
    what was checked, and the gap. Check this file and the private source
