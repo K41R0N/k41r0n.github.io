@@ -1,22 +1,11 @@
-# Charter
+# packs/CHARTER.md
 
-## Purpose
-Package Alejandro's methods and techniques as plug-and-play modules (packs) that an agent can copy in and use, so his advice can be applied consistently, with checks, to questions from family, friends and projects.
+Pointer file. The charter for the harness this folder belongs to is
+`../CHARTER.md`. This folder is the methods library inside it: his methods
+as plug-and-play packs, one per method, each with evals, each draft until
+he reviews it. Packs follow his harness structure and the Attention
+Graduation Framework; they are method only and work without client context.
 
-## Spine
-His harness structure and the Attention Graduation Framework. Other methods become packs that follow the same shape.
-
-## Is
-- A private harness repo that exports packs.
-- Method, written so it works without any client context.
-
-## Is not
-- A place for client content, client names, client voice rules or credits.
-- His voice or his site copy. Those stay in the site repo.
-- A publisher. Nothing leaves this repo in his name without his yes.
-
-## Change control
-Every change is a pull request. He merges. The default branch is never written to directly.
-
-## Success
-A pack can be copied into another agent, run on a fixture, and pass its deterministic checks. Whether the advice is right is his call.
+Replaced 2026-11-14 (decisions/log.md #34): the previous content described
+this folder as its own standalone repo, which it has not been since the
+methods library moved into the site repo on 2026-10-29/30.
