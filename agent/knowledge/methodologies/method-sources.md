@@ -8,7 +8,7 @@ confidence: confirmed access rules from his standing instructions
 Where to find the process that answers a given question. Built after the
 2026-11-02 run, where copy, marketing and ICP method locations were treated
 as known and then not read. Read the source fresh each run; never cite a
-method from memory (his standing rule, 2026-10-29 8:29 PM: re-read the
+method from memory (his standing rule of 2026-10-29, recorded in the agent log at 8:29 PM: re-read the
 Marketing-harness and icp-harness whenever anyone asks about his marketing
 methodologies, before any positioning, messaging or copy work, and on a
 periodic refresh).
@@ -93,6 +93,11 @@ folder; `../../scripts/local/routing_lint.py` keeps the registry complete
 and resolvable. Route from here first; open the source fresh before using
 any method (his standing re-read rule).
 
+For a deterministic first stop, run
+`python3 ../../scripts/local/route.py "<the ask>"` - it prints the routed
+document or the recovery steps, and its cases live in
+`routing-cases.json`.
+
 | Area | Access | What it answers | Docs |
 |---|---|---|---|
 | Packs (this repo, `agent/packs/`) | public, writable via PR | Executable methods with evals: see `../../packs/index.md` for the 16 rows | one folder per pack |
@@ -106,11 +111,16 @@ any method (his standing re-read rule).
 | Harness Standard + Attention Graduation Framework (private marketing harness) | private-map | How any harness is structured; how work graduates from manual to delegated | canonical copies; paths in the private source map |
 | Copy framework originals (private) | private-map / locked | The review engine at source; drafting five-pass originals are locked client material - reconcile privately, never copy | paths in the private source map |
 | K41R0N/methods | retired | Nothing. Superseded by this repo's `agent/` on 2026-10-29; never route here | deletion is the owner's pending call |
+| Delivery routes (`../../AGENTS.md` section 5) | public | How outputs reach him: any HTML ships as a here.now page; generic experiments ship genericized; client-confidential or private source-bearing HTML is held (issue #35) | AGENTS.md section 5 |
 
 ## Recovery contract: when routing fails
 
-1. **No corpus entry matches the ask.** Say plainly that no documented
-   method covers it, add an open loop in `../../decisions/open-loops.md`,
+1. **No corpus entry matches the ask.** Absence may only be declared
+   after BOTH the corpus index (the table above / `method-corpus.json`)
+   AND the private source map have been checked - a guessed path
+   returning 404 is not evidence of absence. Then say which sources were
+   checked and what they did NOT locate (never claim a method does not
+   exist anywhere), add an open loop in `../../decisions/open-loops.md`,
    and ask him one sharp question. Never route by nearest name (packs
    index rule, generalized to the whole corpus).
 2. **A routed source is inaccessible.** Report the exact locator tried,
