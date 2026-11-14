@@ -1,0 +1,242 @@
+{
+  "description": "Behavioral routing cases: each is executed against scripts/local/route.py by routing_lint.py. A case proves the router routes a natural-language ask to the corpus entry that answers it (or to the recovery contract). One case per registry entry plus behavior-category cases (uncovered, tie, negation, multi-intent); the lint requires every category to be present, not just per-entry coverage. Keep in lockstep with the registry: adding an entry adds a case.",
+  "cases": [
+    {
+      "input": "his method for answer a question put to him",
+      "expected": "pack-advice-answer"
+    },
+    {
+      "input": "his method for coach someone to use ai",
+      "expected": "pack-ai-coaching"
+    },
+    {
+      "input": "his method for fit an answer to who is asking",
+      "expected": "pack-asker-fit"
+    },
+    {
+      "input": "his method for decide what to automate",
+      "expected": "pack-attention-graduation"
+    },
+    {
+      "input": "his method for daily listening pass",
+      "expected": "pack-audience-listening"
+    },
+    {
+      "input": "his method for small social campaign",
+      "expected": "pack-campaign-basics"
+    },
+    {
+      "input": "his method for say something clearly",
+      "expected": "pack-clear-message"
+    },
+    {
+      "input": "his method for client kickoff",
+      "expected": "pack-client-kickoff"
+    },
+    {
+      "input": "his method for copy lint",
+      "expected": "pack-copy-five-pass"
+    },
+    {
+      "input": "his method for five-pass",
+      "expected": "pack-copywriting-methods"
+    },
+    {
+      "input": "his method for interview someone to find what they need",
+      "expected": "pack-discovery-interview"
+    },
+    {
+      "input": "his method for standardize team processes",
+      "expected": "pack-process-standardization"
+    },
+    {
+      "input": "his method for research a business",
+      "expected": "pack-prospect-research"
+    },
+    {
+      "input": "his method for burst of notes",
+      "expected": "pack-research-intake"
+    },
+    {
+      "input": "his method for strategy on one canvas",
+      "expected": "pack-strategy-canvas"
+    },
+    {
+      "input": "his method for verify before changing",
+      "expected": "pack-verify-before-act"
+    },
+    {
+      "input": "his method for ways of working",
+      "expected": "ways-of-working-corpus"
+    },
+    {
+      "input": "his method for ethos",
+      "expected": "ethos"
+    },
+    {
+      "input": "his method for original wording of a method",
+      "expected": "method-archive"
+    },
+    {
+      "input": "his method for his voice",
+      "expected": "voice-canon"
+    },
+    {
+      "input": "his method for tool fit",
+      "expected": "mm-tool-fit-across-real-workflow"
+    },
+    {
+      "input": "his method for content format",
+      "expected": "mm-content-format-is-a-hypothesis"
+    },
+    {
+      "input": "his method for positioning system",
+      "expected": "mm-strategy-foundation-and-positioning-system"
+    },
+    {
+      "input": "his method for linkedin programme",
+      "expected": "mm-executive-linkedin-programme"
+    },
+    {
+      "input": "his method for manual-first",
+      "expected": "mm-manual-first-agentic-research-positioning"
+    },
+    {
+      "input": "his method for video research",
+      "expected": "mm-youtube-video-research-method"
+    },
+    {
+      "input": "his method for project brief",
+      "expected": "mm-six-question-project-brief"
+    },
+    {
+      "input": "his method for knowledge governance",
+      "expected": "mm-knowledge-governance-loop"
+    },
+    {
+      "input": "his method for thought-leadership article",
+      "expected": "mm-thought-piece-editorial-production"
+    },
+    {
+      "input": "his method for funnel",
+      "expected": "mm-funnel-lifecycle-and-email-audit"
+    },
+    {
+      "input": "his method for reconnaissance",
+      "expected": "mm-reconnaissance-and-social-listening"
+    },
+    {
+      "input": "his method for intelligence card",
+      "expected": "mm-intelligence-card-and-lead-qualification"
+    },
+    {
+      "input": "his method for editorial review",
+      "expected": "mm-copywriting-and-editorial-review"
+    },
+    {
+      "input": "his method for content approval",
+      "expected": "mm-content-approval-and-project-operations"
+    },
+    {
+      "input": "his method for case study",
+      "expected": "mm-case-study-discovery-and-evidence"
+    },
+    {
+      "input": "his method for presentation",
+      "expected": "mm-presentation-and-deck-production"
+    },
+    {
+      "input": "his method for analytics",
+      "expected": "mm-analytics-measurement-and-reporting"
+    },
+    {
+      "input": "his method for standardize work from interviews",
+      "expected": "mm-process-standardization-interview-to-playbook"
+    },
+    {
+      "input": "his method for capability governance",
+      "expected": "mm-harness-knowledge-and-capability-governance"
+    },
+    {
+      "input": "his method for retrospective",
+      "expected": "mm-testing-retro-and-correction-loop"
+    },
+    {
+      "input": "his method for website launch",
+      "expected": "mm-website-launch-and-search-optimization"
+    },
+    {
+      "input": "his method for unit economics",
+      "expected": "mm-offer-economics-and-revenue-pillars"
+    },
+    {
+      "input": "his method for value equation",
+      "expected": "mm-value-equation-offer-interview-frame"
+    },
+    {
+      "input": "his method for icp",
+      "expected": "icp-audience-methods"
+    },
+    {
+      "input": "his method for osint",
+      "expected": "icp-osint-original"
+    },
+    {
+      "input": "his method for harness standard",
+      "expected": "harness-standard"
+    },
+    {
+      "input": "his method for review engine",
+      "expected": "copy-review-originals"
+    },
+    {
+      "input": "his method for drafting originals",
+      "expected": "copy-drafting-originals"
+    },
+    {
+      "input": "his method for p-035",
+      "expected": "p035-import-record"
+    },
+    {
+      "input": "his method for methods repo",
+      "expected": "methods-repo-retired"
+    },
+    {
+      "input": "his method for here.now",
+      "expected": "delivery-html-preview"
+    },
+    {
+      "input": "his method for booking podcast appearances",
+      "expected": "recovery",
+      "category": "uncovered",
+      "note": "No corpus entry covers this. Router must invoke the recovery contract (check index AND private source map, declare checked-not-located, open loop, question only if one genuinely remains), never a guessed path."
+    },
+    {
+      "input": "research a business and draft copy",
+      "expected": "recovery",
+      "category": "tie",
+      "note": "Tie: two entries match with equal score. The router must not pick one - ties go to recovery with adjacent entries named."
+    },
+    {
+      "input": "his copy methods other than the five-pass",
+      "expected": "recovery",
+      "category": "negation",
+      "note": "Negated/exclusion wording. Substring hits point at the excluded topic itself, so negated asks go to recovery with the matches named as leads to read, never as routes."
+    },
+    {
+      "input": "his method for html email templates",
+      "expected": "recovery",
+      "category": "uncovered",
+      "note": "Regression (review finding E1): bare words like 'html' must not pull the delivery-preview route. This ask is about an email-template method, which the checked sources do not locate - recovery, not delivery routing."
+    },
+    {
+      "input": "his copy method and also his analytics reporting approach",
+      "expected": "mm-analytics-measurement-and-reporting",
+      "category": "multi-intent",
+      "also": [
+        "pack-copywriting-methods"
+      ],
+      "note": "Multi-intent ask: the highest-scoring entry routes primary and every other matched intent is named under 'Also matched' so no intent is silently dropped."
+    }
+  ]
+}
