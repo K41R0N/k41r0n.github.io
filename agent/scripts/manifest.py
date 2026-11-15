@@ -7,6 +7,7 @@ for pk in sorted(glob.glob(os.path.join(root, "packs", "*"))):
     if not os.path.isdir(pk): continue
     h = hashlib.sha256()
     for f in sorted(glob.glob(os.path.join(pk, "**", "*"), recursive=True)):
+        if "__pycache__" in f.split(os.sep): continue
         if os.path.isfile(f):
             h.update(os.path.relpath(f, pk).encode()); h.update(open(f, "rb").read())
     y = open(os.path.join(pk, "pack.yaml")).read()

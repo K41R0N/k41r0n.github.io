@@ -18,6 +18,10 @@
 | Plan a small social media campaign (beginner) | campaign-basics | draft (fixtures pass) |
 | Say something clearly to a specific listener | clear-message | draft (fixtures pass) |
 | Standardize team processes from interviews through a reviewed playbook | process-standardization | draft (fixtures pass) |
+| Answer a question that quotes live numbers, with probed sources, declared fallbacks, and refusals instead of substitutes | live-number-answer | draft (fixtures pass) |
+| Edit shared knowledge files with audit-before-write, dated archive copies, post-write verification, and named recovery | knowledge-edit-discipline | draft (fixtures pass) |
+| Enable analytics instrumentation only on a recorded per-vendor permission state, with blocked items named | consent-gated-instrumentation | draft (fixtures pass) |
+| Assemble a metrics report with typed periods, figures separate from interpretation, and labeled hypotheses | analytics-report-discipline | draft (fixtures pass) |
 | Everything else in the spec's pack list | see decisions/goals.md | planned |
 
 Run all checks: `python3 evals/run.py`. Draft means his review is pending; nothing is listed ready until he reviews it.

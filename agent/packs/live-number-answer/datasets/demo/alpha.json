@@ -1,0 +1,14 @@
+{
+  "dataset": "alpha",
+  "description": "Invented newsletter metrics register. Synthetic; no real data.",
+  "staleness_threshold_days": 7,
+  "sources": {
+    "mail-api": {"kind": "api"},
+    "csv-export": {"kind": "file"}
+  },
+  "metrics": {
+    "opens": {"kind": "flow", "canonical": "mail-api", "fallback": "csv-export"},
+    "subscribers": {"kind": "stock", "canonical": "mail-api", "fallback": null},
+    "open-rate": {"kind": "derived", "components": ["opens", "subscribers"], "formula": "opens / subscribers"}
+  }
+}

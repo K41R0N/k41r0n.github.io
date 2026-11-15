@@ -1,0 +1,12 @@
+name: consent-gated-instrumentation
+kind: method
+version: 0.1.0
+status: draft
+summary: Gate user-observing instrumentation side effects on a recorded permission state, with separate consent scopes per vendor and a defined path for reviewing and migrating prior consent records. Scoped to analytics instrumentation work, the use case its source documents.
+class_max: S1
+requires: { modules: [], secrets: [], egress: [] }
+provides:
+  skills: [consent-gated-instrumentation]
+  evals: [evals/checks.py]
+attention: { consent-gated-instrumentation: D2/E3 }
+source: Generic method shape from the 2026-11-14 analytics migration checklist study (permission-gated side effects, separate consent scopes per vendor, consent-record migration path), abstracted from the owner-authorized archive. Fixtures are invented and generic.

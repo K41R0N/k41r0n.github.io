@@ -1,0 +1,12 @@
+name: analytics-report-discipline
+kind: method
+version: 0.1.0
+status: draft
+summary: Assemble a metrics report so detection precedes cause, periods carry their semantics, numbers stay separate from interpretation and ranked actions, threshold flags are labeled hypotheses, open decisions carry stated defaults, corrections are recorded, and uncaptured sources are named standing gaps.
+class_max: S1
+requires: { modules: [], secrets: [], egress: [] }
+provides:
+  skills: [analytics-report-discipline]
+  evals: [evals/checks.py]
+attention: { analytics-report-discipline: D2/E3 }
+source: Generic method shapes from the 2026-11-14 analytics family study (detection before cause, period semantics, separation of figures from interpretation and action, labeled threshold hypotheses, open-decisions register, corrections section, uncaptured-source standing gap), abstracted from the owner-authorized archive. Fixtures are invented and generic.
