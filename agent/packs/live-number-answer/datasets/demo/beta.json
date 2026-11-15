@@ -1,0 +1,14 @@
+{
+  "dataset": "beta",
+  "description": "Invented studio check-in metrics register. Synthetic; no real data.",
+  "staleness_threshold_days": 3,
+  "sources": {
+    "door-log": {"kind": "api"},
+    "paper-sheet": {"kind": "manual"}
+  },
+  "metrics": {
+    "visits": {"kind": "flow", "canonical": "door-log", "fallback": "paper-sheet"},
+    "members": {"kind": "stock", "canonical": "door-log", "fallback": null},
+    "visits-per-member": {"kind": "derived", "components": ["visits", "members"], "formula": "visits / members"}
+  }
+}

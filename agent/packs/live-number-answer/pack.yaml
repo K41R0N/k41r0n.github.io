@@ -1,0 +1,12 @@
+name: live-number-answer
+kind: method
+version: 0.1.0
+status: draft
+summary: Answer questions that quote live numbers with capability-probed source selection, pre-decided fallbacks, a refusal contract when fetches fail, status labels on every value, and a human-verify step. The method holds no dataset facts; each dataset supplies its own register.
+class_max: S1
+requires: { modules: [], secrets: [], egress: [] }
+provides:
+  skills: [live-number-answer]
+  evals: [evals/checks.py]
+attention: { live-number-answer: D2/E3 }
+source: Generic method shapes from the 2026-11-14 knowledge-system protocols and analytics family studies (source selection, refusal contract, status discipline, provenance sidecar), abstracted from the owner-authorized archive. Fixtures and demo datasets are invented and generic.

@@ -1,0 +1,12 @@
+name: knowledge-edit-discipline
+kind: method
+version: 0.1.0
+status: draft
+summary: Edit shared knowledge files safely. Audit the destination first, read before overwrite, keep the stronger existing content, take a versioned dated archive copy, re-read after writing, refresh the routing and retrieval indexes, and on failed verification stop, restore, and report.
+class_max: S1
+requires: { modules: [], secrets: [], egress: [] }
+provides:
+  skills: [knowledge-edit-discipline]
+  evals: [evals/checks.py]
+attention: { knowledge-edit-discipline: D2/E3 }
+source: Generic method shapes from the 2026-11-14 knowledge-system protocols family study (edit discipline checklist and named recovery), abstracted from the owner-authorized archive. Fixtures are invented and generic.

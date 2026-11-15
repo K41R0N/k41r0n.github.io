@@ -237,6 +237,22 @@
         "pack-copywriting-methods"
       ],
       "note": "Multi-intent ask: the highest-scoring entry routes primary and every other matched intent is named under 'Also matched' so no intent is silently dropped."
+    },
+    {
+      "input": "his method for answer a question that quotes live numbers",
+      "expected": "pack-live-number-answer"
+    },
+    {
+      "input": "his method for edit a knowledge file safely",
+      "expected": "pack-knowledge-edit-discipline"
+    },
+    {
+      "input": "his method for consent check before tracking tags",
+      "expected": "pack-consent-gated-instrumentation"
+    },
+    {
+      "input": "his method for assemble a metrics report",
+      "expected": "pack-analytics-report-discipline"
     }
   ]
 }

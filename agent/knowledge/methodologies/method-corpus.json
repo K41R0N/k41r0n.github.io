@@ -805,6 +805,66 @@
         "show him the page",
         "publish an html page"
       ]
+    },
+    {
+      "id": "pack-live-number-answer",
+      "title": "Pack: live-number-answer",
+      "area": "packs",
+      "access": "public",
+      "location": "agent/packs/live-number-answer",
+      "answers": "Answering a question that quotes live numbers with probed sources, declared fallbacks, and refusals instead of substitutes",
+      "confidence": "confirmed",
+      "status": "draft",
+      "verified": "2026-11-14",
+      "aliases": [
+        "answer a question that quotes live numbers",
+        "live number answer method"
+      ]
+    },
+    {
+      "id": "pack-knowledge-edit-discipline",
+      "title": "Pack: knowledge-edit-discipline",
+      "area": "packs",
+      "access": "public",
+      "location": "agent/packs/knowledge-edit-discipline",
+      "answers": "Editing shared knowledge files with audit-before-write, dated archive copies, post-write verification, and named recovery",
+      "confidence": "confirmed",
+      "status": "draft",
+      "verified": "2026-11-14",
+      "aliases": [
+        "edit a knowledge file safely",
+        "knowledge edit discipline"
+      ]
+    },
+    {
+      "id": "pack-consent-gated-instrumentation",
+      "title": "Pack: consent-gated-instrumentation",
+      "area": "packs",
+      "access": "public",
+      "location": "agent/packs/consent-gated-instrumentation",
+      "answers": "Enabling analytics instrumentation only on a recorded per-vendor permission state",
+      "confidence": "confirmed",
+      "status": "draft",
+      "verified": "2026-11-14",
+      "aliases": [
+        "consent check before tracking tags",
+        "consent gated instrumentation"
+      ]
+    },
+    {
+      "id": "pack-analytics-report-discipline",
+      "title": "Pack: analytics-report-discipline",
+      "area": "packs",
+      "access": "public",
+      "location": "agent/packs/analytics-report-discipline",
+      "answers": "Assembling a metrics report with typed periods, figures separate from interpretation, and labeled hypotheses",
+      "confidence": "confirmed",
+      "status": "draft",
+      "verified": "2026-11-14",
+      "aliases": [
+        "assemble a metrics report",
+        "metrics report discipline"
+      ]
     }
   ]
 }

@@ -17,7 +17,9 @@ Look in this order and stop as soon as you have a sourced answer:
 6. `packs/`: his methods as importable modules, each with evals. `packs/index.md` routes a task to a pack.
 7. `assets/`: the voice corpus and draft workspaces.
 
-If the answer is not in the brain, say so and add an open loop. Do not fill the gap from memory.
+Disambiguation defaults: when a question could belong to two domains, enter the domain the question acts on, not the domain it mentions. A question about changing the site goes to `knowledge/site/` even when it quotes his voice; a question about how he sounds goes to `knowledge/voice/` even when the example is a site page. When both could hold the answer, check the routed entry first and say which domain you chose.
+
+If the answer is not in the brain, say so and add an open loop. Do not fill the gap from memory. The terminal step after the files and the router is asking Alejandro: the person is the last retrieval tier, and his answer routes back into canon through the normal change path.
 
 ## Trusting what you read
 
