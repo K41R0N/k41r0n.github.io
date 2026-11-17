@@ -31,3 +31,6 @@ Only words he never uses in `assets/voice-corpus/raw` (`scripts/local/voice/ban_
 
 ## Limits
 Edit rate cannot certify voice. Tools here are checks on process. Fixtures in `scripts/local/voice/fixtures/` are synthetic. Edit rate definition is ours (words added plus cut over draft words), not the article's.
+
+## Related evidence, not an active pipeline change
+The [2026-11-16 taste/voice study](../knowledge/voice/taste-evaluation-study-2026-11-16.md) compares Every's case-linked checks and reference-based guide optimization with this loop. It proposes calibration and test separation without reopening writing, replacing the five drafting/five review passes or treating a model score as author approval. Candidate checks remain separate from confirmed voice rules; private gold and source corrections are not repository fixtures.
