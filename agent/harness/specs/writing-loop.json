@@ -1,0 +1,29 @@
+{
+  "schema": "writing-loop/v1",
+  "status": "D1/E4; exact evidence checks only; no graduation",
+  "new_voice_writing_enabled": false,
+  "max_rounds": 3,
+  "voice_dimensions": [
+    "concrete-entry",
+    "source-fidelity",
+    "one-idea",
+    "cadence",
+    "connectors",
+    "distinctive-language",
+    "stance-and-uncertainty",
+    "reader-distance",
+    "emphasis",
+    "ending",
+    "register-fit"
+  ],
+  "calibration": {
+    "mode": "shadow",
+    "min_author_cases": null,
+    "minimum_agreement": null,
+    "maximum_position_inconsistency": null,
+    "threshold_status": "not author-calibrated; no quality pass available"
+  },
+  "fact_freshness": "Re-verify against the source in the current facts/compliance/judge pass; offline timestamps are evidence declarations, not proof of live retrieval.",
+  "executors": {},
+  "executor_status": "No production host adapter configured. No model calls or spending authorized by this file."
+}

@@ -4,7 +4,7 @@ Each pack has evals/checks.py with check(text) -> list of (level, id, message)
 and fixtures/<name>.md with fixtures/<name>.expect (one expected id per line, or the word clean).
 A fixture passes when the set of ids found equals the expected set.
 Exit code is nonzero if any fixture differs from its expectation, or a pack has no failing fixture."""
-import importlib.util, os, sys, glob
+import importlib.util, os, sys, glob, subprocess
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -15,6 +15,11 @@ def load(path):
 def main(argv):
     only = argv[1] if len(argv) > 1 else None
     bad = 0
+    if only is None or only == 'writing':
+        result = subprocess.run([sys.executable, '-m', 'unittest', 'discover', '-s', os.path.join(ROOT,'evals','writing'), '-v'])
+        bad += result.returncode != 0
+        if only == 'writing':
+            return 1 if bad else 0
     for pack in sorted(glob.glob(os.path.join(ROOT, "packs", "*"))):
         if not os.path.isdir(pack): continue
         name = os.path.basename(pack)

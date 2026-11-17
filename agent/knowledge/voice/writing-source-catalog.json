@@ -1,0 +1,196 @@
+{
+  "schema": "writing-sources/v1",
+  "sources": [
+    {
+      "id": "draft-method",
+      "path": "packs/copywriting-methods/sources/20-harnesses/harness-01/routines/copy/five-pass.md",
+      "required": true,
+      "provenance": "source-derived method or existing author canon; see writing-source-inventory-2026-11-16.md",
+      "scopes": [
+        "personal",
+        "client"
+      ]
+    },
+    {
+      "id": "review-method",
+      "path": "packs/copywriting-methods/sources/copy-review-framework/review-pipeline.md",
+      "required": true,
+      "provenance": "source-derived method or existing author canon; see writing-source-inventory-2026-11-16.md",
+      "scopes": [
+        "personal",
+        "client"
+      ]
+    },
+    {
+      "id": "voice-charter",
+      "path": "knowledge/voice/HARNESS.md",
+      "required": true,
+      "provenance": "source-derived method or existing author canon; see writing-source-inventory-2026-11-16.md",
+      "scopes": [
+        "personal"
+      ]
+    },
+    {
+      "id": "voice-spec",
+      "path": "knowledge/voice/voice-spec.md",
+      "required": true,
+      "provenance": "source-derived method or existing author canon; see writing-source-inventory-2026-11-16.md",
+      "scopes": [
+        "personal"
+      ]
+    },
+    {
+      "id": "voice-rules",
+      "path": "knowledge/voice/do-dont.md",
+      "required": true,
+      "provenance": "source-derived method or existing author canon; see writing-source-inventory-2026-11-16.md",
+      "scopes": [
+        "personal"
+      ]
+    },
+    {
+      "id": "voice-lexicon",
+      "path": "knowledge/voice/lexicon.md",
+      "required": true,
+      "provenance": "source-derived method or existing author canon; see writing-source-inventory-2026-11-16.md",
+      "scopes": [
+        "personal"
+      ]
+    },
+    {
+      "id": "anti-patterns",
+      "path": "knowledge/voice/refs/anti-pattern-method.md",
+      "required": true,
+      "provenance": "source-derived method or existing author canon; see writing-source-inventory-2026-11-16.md",
+      "scopes": [
+        "personal",
+        "client"
+      ]
+    },
+    {
+      "id": "writer-judge",
+      "path": "routines/writer-judge-loop.md",
+      "required": true,
+      "provenance": "source-derived method or existing author canon; see writing-source-inventory-2026-11-16.md",
+      "scopes": [
+        "personal",
+        "client"
+      ]
+    },
+    {
+      "id": "eval-study",
+      "path": "knowledge/voice/taste-evaluation-study-2026-11-16.md",
+      "required": true,
+      "provenance": "source-derived method or existing author canon; see writing-source-inventory-2026-11-16.md",
+      "scopes": [
+        "personal",
+        "client"
+      ]
+    },
+    {
+      "id": "draft-pass-1",
+      "path": "packs/copywriting-methods/sources/20-harnesses/harness-01/skills/copy-review/references/01-pass-1-big-idea.md",
+      "required": true,
+      "provenance": "source-derived method or existing author canon; see writing-source-inventory-2026-11-16.md",
+      "scopes": [
+        "personal",
+        "client"
+      ]
+    },
+    {
+      "id": "draft-pass-2",
+      "path": "packs/copywriting-methods/sources/20-harnesses/harness-01/skills/copy-review/references/02-pass-2-factual-anchoring.md",
+      "required": true,
+      "provenance": "source-derived method or existing author canon; see writing-source-inventory-2026-11-16.md",
+      "scopes": [
+        "personal",
+        "client"
+      ]
+    },
+    {
+      "id": "draft-pass-3",
+      "path": "packs/copywriting-methods/sources/20-harnesses/harness-01/skills/copy-review/references/03-pass-3-voice-matching.md",
+      "required": true,
+      "provenance": "source-derived method or existing author canon; see writing-source-inventory-2026-11-16.md",
+      "scopes": [
+        "personal",
+        "client"
+      ]
+    },
+    {
+      "id": "draft-pass-4",
+      "path": "packs/copywriting-methods/sources/20-harnesses/harness-01/skills/copy-review/references/04-pass-4-storytelling-structure.md",
+      "required": true,
+      "provenance": "source-derived method or existing author canon; see writing-source-inventory-2026-11-16.md",
+      "scopes": [
+        "personal",
+        "client"
+      ]
+    },
+    {
+      "id": "draft-pass-5",
+      "path": "packs/copywriting-methods/sources/20-harnesses/harness-01/skills/copy-review/references/05-pass-5-compliance-gate.md",
+      "required": true,
+      "provenance": "source-derived method or existing author canon; see writing-source-inventory-2026-11-16.md",
+      "scopes": [
+        "personal",
+        "client"
+      ]
+    }
+  ],
+  "steps": {
+    "orient": [
+      "voice-charter",
+      "voice-spec",
+      "voice-rules",
+      "voice-lexicon",
+      "draft-method",
+      "review-method",
+      "anti-patterns",
+      "writer-judge",
+      "eval-study"
+    ],
+    "big-idea": [
+      "draft-method",
+      "draft-pass-1"
+    ],
+    "facts": [
+      "draft-method",
+      "draft-pass-2"
+    ],
+    "voice": [
+      "draft-method",
+      "draft-pass-3"
+    ],
+    "structure": [
+      "draft-method",
+      "draft-pass-4"
+    ],
+    "risk": [
+      "draft-method",
+      "draft-pass-5"
+    ],
+    "decontaminate": [
+      "review-method",
+      "anti-patterns"
+    ],
+    "creative": [
+      "review-method"
+    ],
+    "tone": [
+      "review-method",
+      "voice-rules",
+      "voice-spec"
+    ],
+    "compliance": [
+      "review-method"
+    ],
+    "page": [
+      "review-method"
+    ],
+    "judge": [
+      "writer-judge",
+      "eval-study"
+    ]
+  }
+}

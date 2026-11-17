@@ -8,7 +8,7 @@ confidence: proposed
 ---
 # voice harness charter
 
-**Location:** `agent/knowledge/voice/` inside the Kairon site repo (K41R0N/k41r0n.github.io). The website is the harness. Paths below are relative to `agent/`. Proposed, not yet merged: see INTEGRATION-PROPOSAL.md.
+**Location:** `agent/knowledge/voice/` inside the Kairon site repo (K41R0N/k41r0n.github.io). The website is the harness. Paths below are relative to `agent/`. Proposed, not yet merged: see the repository contribution workflow; current implementation status is in writing-source-inventory-2026-11-16.md.
 
 **Owner and approver:** Alejandro Arango. Nothing graduates a tier without his yes. **Maturity:** MVH-0 (manual runs only, nothing scripted beyond measurement and checks).
 
@@ -31,22 +31,22 @@ thought, brief, draft (five passes, routines/copy-draft.md), deterministic check
 ## 5. Hard rules
 1. Nothing is published or sent as him without his explicit approval.
 2. Existing writing of his is never rewritten unless he says "rewrite the copy".
-3. Spec is built from assets/voice-corpus/raw only. The holdout never touches it (scripts/local/voice/verify.py V3 proves this on every run).
+3. Spec is built from assets/voice-corpus/raw only. The historical test set is partly spent for rule calibration, not untouched gold. The holdout never touches it (the builder reads raw only; writing.py preflight checks a fresh JSON/Markdown rebuild and freezes raw-file hashes).
 4. Only self-written pieces enter raw. Authorship is unverified for anything without a byline or his confirmation.
 5. Judgment steps are never scripted.
 6. Client rules ported here are tested against his own writing before adoption.
 7. A rule that flags most of his own pieces is not adopted by default.
 
 ## 6. Graduation (D1-D5)
-Nothing is scripted until two identical manual runs. Judgment steps are never scripted. Each rule needs his approval, ideally with blind-pair evidence (routines/blind-test.md).
+Exact, tested input/lineage/gate helpers may run now. Two observed faithful runs are evidence for D1 promotion, not a universal ban on code. Judgment stays D1/E4 and author-reviewed until the sequential AGF gates and promotion approval pass. Each rule needs his approval, ideally with blind-pair evidence (routines/blind-test.md).
 
 ## 7. Current state (phase 1)
 - Corpus: 11 essays (Substack, cross-checked against content/blog). 9 raw, 2 holdout (chosen by seeded random draw, seed 20261028). 13 kairon.xyz pages in excluded/, authorship unverified.
 - Spec v0 measured from raw with recency weighting (12-month half-life, his instruction): knowledge/voice/voice-spec.md (Tier 2).
-- Checks v0: scripts/local/voice/checks.py (19 rules, mostly WARN), scripts/local/voice/range_check.py (WARN only, 3+ of 25 features), Burrows Delta in verify.py as a SOFT signal only. Result against his own writing: ingestion/reports/voice/verification.md.
+- Checks v0: scripts/local/voice/checks.py (19 rules, mostly WARN), scripts/local/voice/range_check.py (WARN only, 3+ of 25 features), Burrows Delta in verify.py as a SOFT signal only. Result against his own writing: ingestion/reports/voice/reports/verification.md.
 
 ## 7b. Status of every routine
-Nothing has graduated. No routine has run twice, so by the D1-D5 rule nothing may be scripted. The AEO pass is a stub: it needs his own AEO plan. Until he supplies it, the format step in copy-draft only names AEO as a form-only pass.
+Nothing has graduated. Exact helpers enforce evidence and measurements; they do not replace human judgment, change the D1/E4 mode or declare author voice ready. The AEO pass is a stub: it needs his own AEO plan. Until he supplies it, the format step in copy-draft only names AEO as a form-only pass.
 Honest limit on the holdout: it is partly spent. Rule-level false-positive tests, the dash budget, the metronome tightening and the range-check calibration all looked at the 2 holdout essays. For those rules, the holdout is no longer an untouched test. The spec itself never saw it (verified, V3). Fresh untouched samples are needed for real tests.
 
 ## 8. Open items for him
@@ -54,5 +54,9 @@ Honest limit on the holdout: it is partly spent. Rule-level false-positive tests
 2. RESOLVED 2026-10-28: he confirmed all 11 essays are fully his prose (the 2025-06-17 essay mentions using Claude to organize data and draft initial thoughts; he knows, and confirmed it anyway). Applies to the 11 essays only, not the 13 site pages.
 3. Decide the section B rules in knowledge/voice/do-dont.md (32-word cap, banned filler, 20-word target).
 4. Blind-test setup (routines/blind-test.md).
-5. The handwritten notes on mimicking someone's voice (his guidelines): the original image was never readable by the engine. His wording needs to be added to knowledge/voice/do-dont.md as Tier 0 or 1.
+5. The handwritten notes on mimicking someone's voice (his guidelines): the image outline was read, as recorded in finding 12. It calls for person-specific formulas, thoughts/refs folders, copy/AEO passes and linguistic research; it does not supply sentence rules. Further rule wording is still open, not an unreadable-image blocker.
 6. More verified samples for registers other than essay.
+
+## Enforced execution and honest limits
+
+Use `scripts/local/writing.py` for new drafting or supplied-copy review. The existing five drafting passes, five reviews and writer/judge evaluation are one sequence. Process completion is not quality completion. New author-voice generation remains blocked in `harness/specs/writing-loop.json`. Private labels and untouched cases are still needed for author calibration; no fixture or lint pass can substitute. See [source inventory and reconciliation](writing-source-inventory-2026-11-16.md).

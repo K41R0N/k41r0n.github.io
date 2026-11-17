@@ -33,13 +33,19 @@ RULES=[
  ('R04','paragraph mass uniform: share of 2-4 sentence paragraphs > 0.85 (piece-level)','craft tell catalog','WARN',lambda t:1 if (lambda ps:ps and sum(2<=x<=4 for x in ps)/len(ps)>0.85)([len(sentences(p)) for p in paragraphs(t)]) else 0),
  ('R05','bold lead-in stacks (3+ "**Lead:** sentence")','craft tell catalog','WARN',lambda t:1 if hits(r'^\*\*[^*\n]+:\*\*\s',t,re.M)>=3 else 0),
 ]
-def run(path):
+def run(path, scope="personal"):
+    if scope not in ("personal", "client-candidate"):
+        raise ValueError("unknown rule scope")
     t=body(path); n=len(W(t)); out=[]
     for rid,desc,origin,sev,fn in RULES:
-        c=fn(t); out.append({'id':rid,'desc':desc,'origin':origin,'severity':sev,'count':c,'per_1000_words':1000*c/n})
+        # Client bans and unconfirmed rhythm prescriptions are observations, not personal failures.
+        if scope == 'personal':
+            sev = 'INFO' if ('client-brand' in origin or rid in ('R01','R02')) else 'WARN'
+        c=fn(t); out.append({'id':rid,'desc':desc,'origin':origin,'severity':sev,'count':c,'per_1000_words':1000*c/max(1,n)})
     return n,out
 if __name__=='__main__':
-    n,o=run(sys.argv[1])
+    scope="client-candidate" if "--scope=client-candidate" in sys.argv else "personal"
+    n,o=run(sys.argv[1], scope)
     if '--json' in sys.argv: print(json.dumps(o,indent=1))
     else:
         print(f'{sys.argv[1]}  ({n} words)')

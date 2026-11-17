@@ -5,7 +5,7 @@ confidence: proposed
 tier: 2
 approver: Alejandro Arango
 status: PROPOSED. Measured, not yet confirmed by the approver. Nothing here is a rule until he confirms it.
-built_from: assets/voice-corpus/raw/ only (9 essays, all confirmed by him as fully his prose on 2026-10-28). Recency weighting applied at his request. Holdout (2 essays) excluded and verified absent (reports/verification.md V3).
+built_from: assets/voice-corpus/raw/ only (9 essays, all confirmed by him as fully his prose on 2026-10-28). Recency weighting applied at his request. Holdout (2 essays) excluded and verified absent (ingestion/reports/voice/reports/verification.md V3).
 generated_by: scripts/local/voice/build_spec.py -> scripts/local/voice/spec_v0.json -> scripts/local/voice/gen_spec_md.py
 ---
 # Voice spec v0 (essay register)
@@ -15,7 +15,7 @@ generated_by: scripts/local/voice/build_spec.py -> scripts/local/voice/spec_v0.j
 **What this is not.** Not a style guide and not proof of voice. It covers the measurable half only (see HARNESS.md section 1). Corpus is small: with n=9 the ranges are wide and will move when more of his writing is added. Registers other than essay (thesis pages, short posts, about copy) have no measured spec yet because no verified self-written samples exist.
 
 ## Weighting (his instruction: more recent essays carry higher priority)
-Method: exponential recency weight with a 12-month half-life, relative to the newest raw essay. A piece 12 months older than the newest counts half as much. Weights by piece are in `tools/spec_v0.json` under `weighting`. The 12-month half-life is my choice, not his. It is mild on purpose: the corpus is small and one essay (2026-09-20) sits about a year after the rest. He can set a different half-life (one constant in `tools/build_spec.py`). Min and max ranges stay unweighted across all nine pieces, because a range is about what he has done, not what he does most recently.
+Method: exponential recency weight with a 12-month half-life, relative to the newest raw essay. A piece 12 months older than the newest counts half as much. Weights by piece are in `scripts/local/voice/spec_v0.json` under `weighting`. The 12-month half-life is my choice, not his. It is mild on purpose: the corpus is small and one essay (2026-09-20) sits about a year after the rest. He can set a different half-life (one constant in `scripts/local/voice/build_spec.py`). Min and max ranges stay unweighted across all nine pieces, because a range is about what he has done, not what he does most recently.
 
 ## Sentence rhythm
 | metric | recency-weighted mean | unweighted mean | range across pieces | weighted between-piece sd |
@@ -30,15 +30,15 @@ Method: exponential recency weight with a 12-month half-life, relative to the ne
 Pooled sentence lengths: median 18, 10th percentile 8, 90th percentile 35, longest 62.
 
 ## Paragraph shape
-| metric | mean | range | sd |
-|---|---|---|---|
+| metric | recency-weighted mean | unweighted mean | range | weighted sd |
+|---|---|---|---|---|
 | sentences per paragraph | 2.04 | 2.03 | 1.63 to 2.55 | 0.27 |
 | share of one-sentence paragraphs | 0.361 | 0.359 | 0.179 to 0.488 | 0.092 |
 | share of 5+ sentence paragraphs | 0.014 | 0.012 | 0.000 to 0.060 | 0.019 |
 
 ## Punctuation and typography (per 1000 words)
-| metric | mean | range | sd |
-|---|---|---|---|
+| metric | recency-weighted mean | unweighted mean | range | weighted sd |
+|---|---|---|---|---|
 | em dash | 0.07 | 0.08 | 0.00 to 0.73 | 0.22 |
 | en dash | 0.05 | 0.06 | 0.00 to 0.50 | 0.15 |
 | spaced hyphen dash | 0.23 | 0.27 | 0.00 to 1.40 | 0.42 |
@@ -63,8 +63,8 @@ Pooled sentence lengths: median 18, 10th percentile 8, 90th percentile 35, longe
 Note: curly and straight apostrophes and quotes both appear, which is a Substack/CMS artifact and not a decision. Do not treat either as voice. Dashes: em dash 0.08 per 1000 words, essentially absent; spaced hyphen as dash 0.27.
 
 ## Person, discourse markers, lexical variety
-| metric | mean | range | sd |
-|---|---|---|---|
+| metric | recency-weighted mean | unweighted mean | range | weighted sd |
+|---|---|---|---|---|
 | mattr500 | 0.57 | 0.57 | 0.53 to 0.59 | 0.02 |
 | hapax ratio | 0.68 | 0.68 | 0.64 to 0.71 | 0.02 |
 | first person I per 1000 | 17.24 | 18.01 | 7.05 to 43.96 | 9.76 |
@@ -98,7 +98,7 @@ Note: curly and straight apostrophes and quotes both appear, which is a Substack
 | sent start that share | 0.00 | 0.01 | 0.00 to 0.02 | 0.01 |
 
 ## Function-word profile (per 1000 words)
-Highest-frequency function words with his mean and range. These are the habits stylometry relies on. Full table in tools/spec_v0.json.
+Highest-frequency function words with his mean and range. These are the habits stylometry relies on. Full table in scripts/local/voice/spec_v0.json.
 
 | word | mean | range |
 |---|---|---|

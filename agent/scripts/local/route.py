@@ -103,6 +103,8 @@ def route(intent, entries=None):
         lines.append(ACCESS_GUIDANCE["public"])
     else:
         lines.append(ACCESS_GUIDANCE[e["access"]])
+    if 'copy' in e['id'] or 'voice' in e['id']:
+        lines.append('Writing execution: python3 agent/scripts/local/writing.py (repo root). Read routines/writer-judge-loop.md; method lookup alone does not complete a writing run.')
     others = [x for _s, x in scored[1:]]
     if others:
         lines.append("Also matched (if the ask has several intents, route each one):")

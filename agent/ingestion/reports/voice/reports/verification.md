@@ -1,3 +1,5 @@
+> Historical phase-1 report. The two historical test essays were later used for rule calibration and are partly spent. On 2026-11-16 a fresh rebuild matched every numerical value; stored file-byte hashes were reconciled, and writing.py preflight now checks exact JSON and Markdown rebuild equality before accepting inputs. The original report below is retained, including its earlier mismatch and control experiment. Client-rule severity below is historical; personal lint now uses scoped INFO/WARN. See knowledge/voice/writing-source-inventory-2026-11-16.md.
+
 # Verification report (phase 1)
 
 ## V1. Every corpus file is his writing
