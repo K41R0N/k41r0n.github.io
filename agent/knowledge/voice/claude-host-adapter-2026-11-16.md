@@ -2,7 +2,7 @@
 
 Status: implemented and offline contract-tested, disabled. Not a verified running host.
 
-Owner source: private infrastructure-harness `knowledge/tools/claude-code-on-g14.md`, updated Nov15, observed at https://github.com/K41R0N/infrastructure-harness/blob/82298b903b0add933fdbf34840fc49031e8ee1a4/knowledge/tools/claude-code-on-g14.md . It records an installed Claude Code client using the existing operator subscription. This is evidence of a candidate route, not current auth, capacity or account permission.
+Owner source: the current private on-host CLI operations record, updated Nov15. Exact repository/file locator is retained in the private recovery record, not in this shareable change set. It records an installed Claude Code client using the existing operator subscription. This is evidence of a candidate route, not current auth, capacity or account permission.
 
 Official current contracts read Nov16:
 - https://code.claude.com/docs/en/cli-reference
