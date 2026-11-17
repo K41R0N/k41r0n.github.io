@@ -15,13 +15,14 @@ import subprocess
 import uuid
 import os
 import shutil
+import tempfile
 
 ROOT = Path(__file__).resolve().parents[2]
 POLICY = ROOT / 'harness/specs/writing-loop.json'
 CATALOG = ROOT / 'knowledge/voice/writing-source-catalog.json'
 STEPS = ['orient', 'big-idea', 'facts', 'voice', 'structure', 'risk',
          'decontaminate', 'creative', 'tone', 'compliance', 'page', 'judge']
-REVIEW = set(STEPS[6:])
+REVIEW = set(STEPS[6:]) | {'big-idea-review','ogilvy','positioning','clarity','legal','data-accuracy'}
 LENSES = ['reframe', 'behavioral-economics', 'cultural-tension', 'metaphor', 'contrarian']
 OGILVY = ['gasp', 'wish-i-thought-of-it', 'unique', 'strategy-fit', 'thirty-years']
 BUCKETS = ['voice-rule', 'structure', 'fidelity', 'banned-phrase']
@@ -75,15 +76,15 @@ def policy():
 
 def required_methods(step, brief):
     catalog=read(CATALOG)
-    allowed={x['id'] for x in catalog['sources'] if brief['scope'] in x['scopes']}
+    allowed={x['id'] for x in catalog['sources'] if (brief['scope'] in x['scopes'] or (brief.get('author_guideline_overlay') is True and 'personal' in x['scopes']))}
     return [x for x in catalog['steps'][step] if x in allowed]
 
 def snapshot(brief):
     cat = read(CATALOG)
     refs = {'runner': file_ref(__file__), 'policy': file_ref(POLICY), 'catalog': file_ref(CATALOG)}
-    for helper in ('voice/checks.py', 'voice/evaluate.py', 'voice/placeholders.py', 'voice/holdout_guard.py', 'voice/vlib.py', 'voice/ledger.py', 'voice/edit_rate.py', 'voice/build_spec.py', 'voice/gen_spec_md.py', 'voice/spec_v0.json'):
+    for helper in ('writing_claude_adapter.py', 'voice/checks.py', 'voice/evaluate.py', 'voice/placeholders.py', 'voice/holdout_guard.py', 'voice/vlib.py', 'voice/ledger.py', 'voice/edit_rate.py', 'voice/build_spec.py', 'voice/gen_spec_md.py', 'voice/spec_v0.json'):
         refs['helper:' + helper] = file_ref(ROOT / 'scripts/local' / helper)
-    if brief['scope']=='personal':
+    if brief['scope']=='personal' or brief.get('author_guideline_overlay') is True:
         for raw in sorted((ROOT/'assets/voice-corpus/raw').glob('*.md')):
             refs['measurement:raw:'+raw.name]=file_ref(raw)
         rebuild=subprocess.run([sys.executable,str(ROOT/'scripts/local/voice/build_spec.py')],capture_output=True,text=True,check=True)
@@ -91,7 +92,7 @@ def snapshot(brief):
         markdown=subprocess.run([sys.executable,str(ROOT/'scripts/local/voice/gen_spec_md.py')],capture_output=True,text=True,check=True)
         need(markdown.stdout==text(ROOT/'knowledge/voice/voice-spec.md'), 'voice Markdown and numerical spec disagree')
     for s in cat['sources']:
-        if s.get('required') and brief['scope'] in s['scopes']:
+        if s.get('required') and (brief['scope'] in s['scopes'] or (brief.get('author_guideline_overlay') is True and 'personal' in s['scopes'])):
             refs['method:' + s['id']] = file_ref(ROOT / s['path'])
     for kind in ('notes', 'voice', 'register', 'corrections', 'facts') + (('client_policy',) if brief['scope']=='client' else ()):
         need(brief['inputs'].get(kind), f'missing input role: {kind}')
@@ -113,10 +114,16 @@ def init(d, brief_path):
     need(b.get('scope') in ('personal', 'client'), 'scope must be personal or client')
     for k in ('reader', 'already-believes', 'action', 'channel', 'register', 'objective', 'risk-owner', 'voice_owner'):
         need(nonempty(b.get(k)), f'brief incomplete: {k}')
+    plan=b.get('review_plan',[])
+    need(isinstance(plan,list) and len(plan)==5 and all(isinstance(p,dict) and isinstance(p.get('topic'),str) for p in plan) and len({p['topic'] for p in plan})==5, 'select five distinct review topics for this piece')
+    for item in plan:
+        need(item.get('topic') in REVIEW-{'judge'} and nonempty(item.get('reason')) and nonempty(item.get('source_ref')), 'review-topic selection needs applicability and source provenance')
     need(b.get('voice_target') == 'author', 'voice_target must be author; no anonymous generic voice')
     if b['mode'] == 'new':
         need(policy()['new_voice_writing_enabled'], 'voice writing remains paused; new drafts are not authorized')
     need(b.get('format') in ('essay', 'short-post', 'landing-page', 'email'), 'unknown format; resolve before proceeding')
+    if b['scope']=='client':
+        need(b.get('author_guideline_overlay') is True and nonempty(b.get('author_overlay_reason')), 'author-target client run requires author-guideline overlay; no self-exemption by prose rationale')
     refs = snapshot(b)
     initial = file_ref(b['artifact'])
     d.mkdir(parents=True)
@@ -141,7 +148,8 @@ def load(d):
     return d, s, read(d / 'brief.json')
 
 def sequence(b):
-    return STEPS if b['mode'] == 'new' else ['orient'] + STEPS[6:]
+    reviews=[x['topic'] for x in b['review_plan']]+['judge']
+    return STEPS[:6]+reviews if b['mode']=='new' else ['orient']+reviews
 
 def artifact(s):
     return read(s['receipts'][-1]['path'])['after'] if s['receipts'] else s['initial']
@@ -188,7 +196,7 @@ def validate_receipt(r, step, s, b):
     if step == 'big-idea':
         need(isinstance(r.get('big_idea'), str) and 1 <= len(r['big_idea'].split()) <= 15, 'big idea must have 1-15 words')
         need(r['big_idea'] in text(r['after']['path']), 'big idea absent from artifact')
-    if step in ('facts', 'compliance', 'judge'):
+    if step in ('facts', 'compliance', 'legal', 'data-accuracy', 'judge'):
         need(r.get('claim_inventory_complete') is True, 'claim inventory not attested complete')
         for c in r.get('claims', []):
             quote(r['after'], c.get('draft_quote'))
@@ -204,11 +212,12 @@ def validate_receipt(r, step, s, b):
             need(any(match.group() in c['draft_quote'] and match.group() in c['source_quote'] for c in r.get('claims', [])), 'unmapped or changed numerical claim')
         for quoted in re.findall(r'[\"“]([^\"”\n]{16,})[\"”]', text(r['after']['path'])):
             need(any(quoted in c['draft_quote'] and quoted in c['source_quote'] for c in r.get('claims', [])), 'quotation lacks verbatim factual provenance')
-    if step == 'creative':
-        for key, names in [('lenses', LENSES), ('ogilvy', OGILVY)]:
+    if step in ('creative','big-idea-review','ogilvy'):
+        fields=[('lenses', LENSES), ('ogilvy', OGILVY)] if step=='creative' else [('ogilvy', OGILVY)]
+        for key, names in fields:
             need(set(r.get(key, {})) == set(names), f'{key}: all five required')
             need(all(nonempty(v) for v in r[key].values()), f'{key}: explain each judgment')
-    if step in ('structure', 'page'):
+    if step in ('structure', 'page','positioning','clarity'):
         paras = [p.strip() for p in re.split(r'\n\s*\n', text(r['after']['path'])) if p.strip()]
         moves = r.get('paragraph_moves', [])
         need(len(moves) == len(paras), 'name each paragraph move; do not replace structural review with a word sweep')
@@ -233,6 +242,11 @@ def validate_receipt(r, step, s, b):
             quote(r['after'], dim.get('quote'))
             need(nonempty(dim.get('reason')), 'dimension needs a reason grounded in the selected register')
     if step == 'judge':
+        coverage=r.get('critical_method_coverage',{})
+        need(set(coverage)=={'llm-patterns','ogilvy','sutherland-reframe'}, 'final review must surface crucial method coverage, not silently omit it from selected five')
+        for item in coverage.values():
+            quote(r['after'],item.get('draft_quote'));need(nonempty(item.get('assessment')), 'critical method coverage needs grounded assessment')
+            need(item.get('source') in s['snapshot'] and item['source'].startswith('method:'), 'critical method source missing');quote(s['snapshot'][item['source']],item.get('source_quote'))
         need(isinstance(r.get('top_fixes'), list) and len(r['top_fixes']) <= 3, 'judge feedback capped at top 3 fixes')
         need(all(nonempty(x) for x in r['top_fixes']), 'fixes need substance')
         need(type(r.get('fidelity_failures')) is int and r['fidelity_failures']>=0, 'explicit fidelity failure count required')
@@ -274,6 +288,7 @@ def replay(s, b):
         execution=r.get('execution',{})
         if execution.get('mode')=='dispatched':
             for pin in execution['pinned_files']: checked(pin)
+            checked(execution['confinement'])
             stdout=checked(execution['stdout'])
             need(execution['exit_code']==0 and execution['context_sha256']==r['prepared_packet']['sha256'], 'failed or unrelated worker invocation')
             need(r['turn']==execution['invocation_id'] and r['actor']==execution['worker_id'], 'execution identity changed')
@@ -281,6 +296,28 @@ def replay(s, b):
         need(r['decision'] == 'pass', f'{r["step"]} failed; revise, do not advance')
         shadow['receipts'].append(ref)
     return seq
+
+def receipt_contract(step):
+    # This is the worker-facing output shape; validate_receipt owns strict semantics.
+    fields={
+        'step':'Exact current step', 'before':'Packet before path+sha256 object',
+        'after':'Reviewers: identical to before; writers: actual next artifact reference',
+        'rationale':'Substantive judgment scoped to this step', 'decision':'pass or fail',
+        'applications':'List of {source: method ID, method_quote: exact source span, draft_quote: exact current span, application: reasoning}'
+    }
+    if step=='orient':fields.update(conflicts_resolved='boolean',input_applications='List of {input: packet input key, quote: exact input span, use: application}')
+    if step=='big-idea':fields['big_idea']='1-15 words, verbatim in artifact'
+    if step in ('facts','compliance','legal','data-accuracy','judge'):
+        fields.update(claim_inventory_complete='boolean',claims='List of {draft_quote, source: input:facts:N, source_quote, scope_and_caveat, verified_at: timezone-aware current verification time}. Do not fake retrieval. Offline-only evidence may require fail.',no_factual_claims_reason='Substantive reason only if claims truly absent')
+    if step=='creative':fields['lenses']='Object with exactly all five named lens keys and substantive values'
+    if step in ('creative','big-idea-review','ogilvy'):fields['ogilvy']='Object with exactly all five Ogilvy question keys and substantive values'
+    if step in ('structure','page','positioning','clarity'):
+        fields.update(paragraph_moves='List in paragraph order of {paragraph_sha256, move: structural purpose}',page_rule_scope='Explain applicability of landing-page-only rules')
+    if step in ('voice','tone','judge'):
+        fields.update(voice_evidence='List for every voice/register/corrections input of {input, source_quote, draft_quote, comparison}',dimensions='Object for all named voice dimensions: {score: integer 1-5, quote: exact draft span, reason}')
+    if step=='judge':
+        fields.update(critical_method_coverage='Object with exactly llm-patterns, ogilvy, sutherland-reframe; each {draft_quote, assessment, source: method snapshot key, source_quote}. Explicitly apply these crucial checks even if not separate topics. Do not invent an exemption.',top_fixes='List, at most three; must be empty to pass',fidelity_failures='Nonnegative integer; must be zero to pass',open_findings='List; must be empty to pass',worst_lines_assessment='Substantive judgment',overall='Integer 1-10, not author accuracy',predicted_edits='Substantive sealed edit predictions',warning_adjudications='Object keyed by warning rule ID, each {count, reviewer, reason}; unresolved human review requires fail')
+    return fields
 
 def prepare(d):
     d, s, b = load(d)
@@ -295,6 +332,7 @@ def prepare(d):
             'before':artifact(s),'snapshot':s['snapshot'],'brief':b,'artifact_text':text(checked(artifact(s))),
             'methods':{sid:text(checked(s['snapshot']['method:'+sid])) for sid in method_ids},
             'inputs':{key:text(checked(ref)) for key,ref in s['snapshot'].items() if key.startswith('input:')},
+            'receipt_fields':receipt_contract(step),
             'output_contract':{'voice_dimensions':policy()['voice_dimensions'],'lenses':LENSES,'ogilvy':OGILVY},
             'instruction':'Use a fresh turn and the whole piece. Apply only the named core review topic. Quote source clauses and artifact spans. Do not infer author opinions. Reviewers diagnose; they do not rewrite. Prior judge reports are withheld.'}
     path=d / ('round-%02d-context-%s.json' % (s['round'],step))
@@ -363,9 +401,17 @@ def execute(d):
     invocation='writing-invocation-'+str(uuid.uuid4())
     # A new process receives only the current context packet on stdin, never prior judge reports.
     # The adapter must not resume sessions. No production adapter ships enabled here.
-    result=subprocess.run(command,input=text(context['path']),capture_output=True,text=True,
-                          cwd=d,env={'PATH':os.environ.get('PATH',''),'LANG':'C.UTF-8'},
-                          timeout=adapter.get('timeout_seconds',120),check=False)
+    confinement=adapter.get('confinement',{})
+    sandbox=checked(confinement) if confinement else None
+    need(sandbox and sandbox.is_absolute() and sandbox.name=='bwrap', 'executor requires pinned bubblewrap run-history confinement; cwd/stdin withholding alone is insufficient')
+    # The run directory is hidden even at its absolute path; scratch is the only
+    # writable host mount. Root remains read-only for installed runtime/auth.
+    # This is history confinement, not a complete data/credential sandbox.
+    with tempfile.TemporaryDirectory(prefix='writing-worker-') as scratch:
+        isolated=[str(sandbox),'--ro-bind','/','/','--tmpfs',str(d),'--bind',scratch,scratch,'--chdir',scratch,'--unshare-pid','--die-with-parent','--']+command
+        result=subprocess.run(isolated,input=text(context['path']),capture_output=True,text=True,
+                              cwd=scratch,env={'PATH':os.environ.get('PATH',''),'LANG':'C.UTF-8'},
+                              timeout=adapter.get('timeout_seconds',120),check=False)
     stdout=d/(invocation+'-stdout.json');stdout.write_text(result.stdout)
     stderr=d/(invocation+'-stderr.txt');stderr.write_text(result.stderr)
     need(result.returncode==0, 'worker failed; see private invocation logs, no fallback or advancement')
@@ -378,7 +424,7 @@ def execute(d):
     path=d/(invocation+'-receipt.json');write(path,incoming)
     provenance={'mode':'dispatched','invocation_id':invocation,'worker_id':adapter['worker_id'],
                 'pinned_files':pins,'command':command,'stdout':file_ref(stdout),'stderr':file_ref(stderr),'exit_code':result.returncode,
-                'context_sha256':context['sha256']}
+                'context_sha256':context['sha256'],'confinement':confinement,'isolation':'read-only root; run history hidden; private writable scratch'}
     return record(d,path,_execution=provenance)
 
 def seal_author(d):
@@ -454,7 +500,9 @@ def packet(d, destination):
         ev=read(checked(evalref))
         need(ev['artifact']==artifact(s), 'evaluation is for a different artifact')
         for ref in ev['evidence']: checked(ref)
-    result = dict(status, evaluation=evalref, state='draft-for-author-evaluation', scope=b['scope'],
+    result = dict(status, evaluation=evalref, state='draft-for-author-evaluation', scope=b['scope'], review_plan=b['review_plan'],
+                  critical_review_coverage={topic:any(x['topic'] in covers for x in b['review_plan']) for topic,covers in {'llm-patterns':['decontaminate'],'ogilvy':['ogilvy','creative','big-idea-review'],'sutherland-reframe':['creative']}.items()},
+                  author_guideline_overlay=(b['scope']=='personal' or b.get('author_guideline_overlay') is True), author_overlay_reason=b.get('author_overlay_reason'),
                   limitations=['Mechanical evidence cannot certify taste, voice or semantic relevance.',
                                'Turn IDs and source references are auditable declarations, not authenticated identities.',
                                'Author calibration and exact final approval remain required.'],
@@ -491,6 +539,8 @@ def main():
         elif a.cmd == 'score-author': result = score_author(a.directory,a.final,a.classes,a.provenance)
         else: result = state(a.directory)
         print(json.dumps(result, indent=2))
+        if a.cmd in ('init','record','execute','revise'):
+            return 0  # Successful transition; JSON states remaining work explicitly.
         return 1 if result['state'] in ('blocked', 'calibration-insufficient', 'evidence-complete-attested', 'blocked-author-evaluation') else 0
     except (Block, KeyError, TypeError, ValueError, OSError, subprocess.SubprocessError) as e:
         print(json.dumps({'state': 'blocked', 'reason': str(e)})); return 1

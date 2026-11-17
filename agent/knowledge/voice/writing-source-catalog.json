@@ -190,7 +190,27 @@
     ],
     "judge": [
       "writer-judge",
-      "eval-study"
+      "eval-study",
+      "review-method",
+      "anti-patterns"
+    ],
+    "big-idea-review": [
+      "review-method"
+    ],
+    "ogilvy": [
+      "review-method"
+    ],
+    "positioning": [
+      "review-method"
+    ],
+    "clarity": [
+      "review-method"
+    ],
+    "legal": [
+      "review-method"
+    ],
+    "data-accuracy": [
+      "review-method"
     ]
   }
 }

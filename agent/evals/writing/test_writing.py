@@ -38,7 +38,7 @@ class LoopTests(unittest.TestCase):
             roles[role]=[str(p)]
         if scope=='client':
             cp=self.base/(d.name+'-policy.json');w.write(cp,{'schema':'writing-client-policy/v1','source_ref':'Synthetic policy fixture, no actual client authority.','rule_severities':{rid:'INFO' for rid,*_ in checks.RULES}});roles['client_policy']=[str(cp)]
-        b={'voice_owner':'Synthetic fixture subject, not Alejandro','mode':mode,'scope':scope,'voice_target':'author','reader':'The assigned maintenance inspector','already-believes':'The supply must remain closed until inspection','action':'Record the pressure before opening supply','channel':'A synthetic maintenance instruction sheet','register':register,'objective':'Test evidence gates without producing author prose','risk-owner':'The synthetic fixture coordinator','inputs':roles,'artifact':str(a),'format':'essay'}
+        b={'voice_owner':'Synthetic fixture subject, not Alejandro','mode':mode,'scope':scope,'voice_target':'author','reader':'The assigned maintenance inspector','already-believes':'The supply must remain closed until inspection','action':'Record the pressure before opening supply','channel':'A synthetic maintenance instruction sheet','register':register,'objective':'Test evidence gates without producing author prose','risk-owner':'The synthetic fixture coordinator','inputs':roles,'artifact':str(a),'format':'essay','author_guideline_overlay':True,'author_overlay_reason':'Synthetic client fixture selects client-only voice policy explicitly.','review_plan':[{'topic':topic,'reason':'Synthetic topic applicability exercises source-grounded selection.','source_ref':'synthetic-original-review-selection'} for topic in ['decontaminate','creative','tone','compliance','page']]}
         bp=self.base/(d.name+'-brief.json');w.write(bp,b)
         # Only the init authority hold is lifted inside this test process. No production policy edit.
         cfg=w.policy(); cfg['new_voice_writing_enabled']=True
@@ -59,18 +59,20 @@ class LoopTests(unittest.TestCase):
                 if key.startswith('input:'):
                     r['input_applications'].append({'input':key,'quote':Path(src['path']).read_text()[:60],'use':'Synthetic role selection checks coverage without quality claims.'})
         if step=='big-idea':r['big_idea']=draft.split('.')[0]+'.'
-        if step in ['facts','compliance','judge']:
+        if step in ['facts','compliance','legal','data-accuracy','judge']:
             r['claim_inventory_complete']=True;r['claims']=[];r['no_factual_claims_reason']='Synthetic procedural fixture asserts no changing external facts.'
-        if step=='creative':
+        if step in ['creative','big-idea-review','ogilvy']:
             r['lenses']={x:'Synthetic response checks that no lens can be omitted.' for x in w.LENSES}
             r['ogilvy']={x:'Synthetic response checks all five questions are retained.' for x in w.OGILVY}
-        if step in ['structure','page']:
+        if step in ['structure','page','positioning','clarity']:
             r['paragraph_moves']=[{'paragraph_sha256':hashlib.sha256(p.encode()).hexdigest(),'move':'Synthetic instruction advances the recorded procedure.'} for p in draft.split('\n\n')]
             r['page_rule_scope']='Landing-page conversion ratios do not govern this synthetic instruction.'
         if step in ['voice','tone','judge']:
             r['voice_evidence']=[{'input':key,'source_quote':Path(src['path']).read_text()[:60],'draft_quote':q,'comparison':'Synthetic sample-to-draft comparison checks the evidence contract only.'} for key,src in s['snapshot'].items() if any(key.startswith('input:'+role+':') for role in ('voice','register','corrections'))]
             r['dimensions']={x:{'score':3,'quote':q,'reason':'Synthetic schema field, not author voice evidence.'} for x in w.policy()['voice_dimensions']}
         if step=='judge':
+            sid='method:review-method';src=Path(s['snapshot'][sid]['path']).read_text();clause=next(x for x in src.splitlines() if len(x)>40)[:80]
+            r['critical_method_coverage']={k:{'draft_quote':q,'assessment':'Synthetic crucial-method review coverage only.','source':sid,'source_quote':clause} for k in ['llm-patterns','ogilvy','sutherland-reframe']}
             r.update(top_fixes=[],fidelity_failures=0,open_findings=[],worst_lines_assessment='Synthetic review validates the verdict contract only.',overall=5,predicted_edits='Synthetic prediction, never an author-approved result.')
             _,rows=checks.run(ref['path']);r['warning_adjudications']={x['id']:{'count':x['count'],'reviewer':'synthetic-human-reviewer','reason':'Synthetic disposition only; no quality or authorship claim.'} for x in rows if x['count'] and x['severity']=='WARN'}
         return r
@@ -86,10 +88,36 @@ class LoopTests(unittest.TestCase):
             self.assertEqual(w.state(d)['quality'],'uncalibrated')
     def test_client_uses_selected_sources_not_personal_canon(self):
         d,b=self.build(scope='client');_,state,_=w.load(d)
-        self.assertNotIn('method:voice-spec',state['snapshot'])
-        self.assertFalse(any(k.startswith('measurement:') for k in state['snapshot']))
+        self.assertIn('method:voice-spec',state['snapshot'])
+        self.assertTrue(any(k.startswith('measurement:') for k in state['snapshot']))
         self.finish(d,b)
         self.assertEqual(w.state(d)['state'],'evidence-complete-attested')
+    def test_review_selection_changes_actual_sequence(self):
+        d,b=self.build();bp=self.base/'alternate.json'
+        b['review_plan']=[{'topic':topic,'reason':'Synthetic piece-specific review requirement.','source_ref':'synthetic-original-review-selection'} for topic in ['data-accuracy','legal','clarity','positioning','ogilvy']]
+        w.write(bp,b);other=self.base/'alternate-run';w.init(other,bp)
+        self.assertEqual(w.sequence(b),['orient','data-accuracy','legal','clarity','positioning','ogilvy','judge'])
+        self.finish(other,b)
+        self.assertEqual(w.state(other)['state'],'evidence-complete-attested')
+    def test_duplicate_review_topic_rejected(self):
+        d,b=self.build();b['review_plan'][1]=b['review_plan'][0];bp=self.base/'duplicate.json';w.write(bp,b)
+        with self.assertRaisesRegex(w.Block,'distinct'):w.init(self.base/'bad-plan',bp)
+    def test_client_explicit_author_overlay(self):
+        d,b=self.build(scope='client');b['author_guideline_overlay']=True;bp=self.base/'overlay.json';w.write(bp,b)
+        other=self.base/'overlay-run';w.init(other,bp);_,s,_=w.load(other)
+        self.assertIn('method:voice-spec',s['snapshot']);self.assertTrue(any(x.startswith('measurement:') for x in s['snapshot']))
+        self.finish(other,b)
+    def test_client_overlay_cannot_be_implicit(self):
+        d,b=self.build(scope='client');del b['author_guideline_overlay'];bp=self.base/'implicit.json';w.write(bp,b)
+        with self.assertRaisesRegex(w.Block,'overlay'):w.init(self.base/'implicit-run',bp)
+    def test_client_false_overlay_is_not_self_exemption(self):
+        d,b=self.build(scope='client');b['author_guideline_overlay']=False;bp=self.base/'false-overlay.json';w.write(bp,b)
+        with self.assertRaisesRegex(w.Block,'requires author-guideline'):w.init(self.base/'false-overlay',bp)
+    def test_final_judge_cannot_omit_crucial_coverage(self):
+        d,b=self.build()
+        while w.state(d).get('next')!='judge':self.add(d,self.receipt(d,b))
+        r=self.receipt(d,b);del r['critical_method_coverage']
+        with self.assertRaisesRegex(w.Block,'crucial method coverage'):self.add(d,r)
     def test_cli_incomplete_packet_fails(self):
         d,b=self.build();p=subprocess.run([sys.executable,str(ROOT/'scripts/local/writing.py'),'packet',str(d),'--output',str(self.base/'out.json')],capture_output=True,text=True)
         self.assertNotEqual(p.returncode,0);self.assertIn('incomplete',p.stdout)
@@ -223,12 +251,32 @@ class DispatchCLITests(unittest.TestCase):
         root=repo/'agent';pol=root/'harness/specs/writing-loop.json';cfg=w.read(pol)
         worker=root/'evals/writing/synthetic_worker.py'
         cfg['new_voice_writing_enabled']=True
-        cfg['executors']={role:{'worker_id':'synthetic-'+role+'-executor','command':[sys.executable,str(worker)],'pinned_files':[w.file_ref(worker)],'timeout_seconds':10} for role in ['writer','reviewer']}
+        cfg['executors']={role:{'worker_id':'synthetic-'+role+'-executor','command':[sys.executable,str(worker)],'pinned_files':[w.file_ref(worker)],'timeout_seconds':10,'confinement':w.file_ref('/usr/bin/bwrap')} for role in ['writer','reviewer']}
         w.write(pol,cfg)
         return root
     def call(self,root,*args):
         p=subprocess.run([sys.executable,str(root/'scripts/local/writing.py'),*map(str,args)],capture_output=True,text=True)
         return p,json.loads(p.stdout)
+    def test_worker_cannot_read_known_absolute_prior_critique(self):
+        root=self.fixture_host();_,brief=self.build();bp=self.base/'probe-brief.json';w.write(bp,brief)
+        run=self.base/'probe-run'
+        secret=run/'prior-judge-predictions.txt'
+        pol=root/'harness/specs/writing-loop.json';cfg=w.read(pol)
+        for adapter in cfg['executors'].values():adapter['command'].append(str(secret))
+        w.write(pol,cfg)
+        self.call(root,'init',run,'--brief',bp)
+        secret.write_text('PRIVATE previous judge rationale and sealed predictions')
+        proc,result=self.call(root,'execute',run)
+        self.assertEqual(proc.returncode,0,proc.stdout);self.assertEqual(result['next'],'decontaminate')
+    def test_missing_confinement_blocks_dispatch(self):
+        root=self.fixture_host();_,brief=self.build();bp=self.base/'unconfined.json';w.write(bp,brief)
+        run=self.base/'unconfined-run'
+        pol=root/'harness/specs/writing-loop.json';cfg=w.read(pol)
+        for adapter in cfg['executors'].values():adapter.pop('confinement')
+        w.write(pol,cfg)
+        self.call(root,'init',run,'--brief',bp)
+        proc,result=self.call(root,'execute',run)
+        self.assertNotEqual(proc.returncode,0);self.assertIn('confinement',result['reason'])
     def test_end_to_end_cli_dispatch_isolated_twelve_passes(self):
         root=self.fixture_host();_,brief=self.build();brief['mode']='new';p=self.base/'cli-brief.json';w.write(p,brief)
         run=self.base/'cli-run';proc,result=self.call(root,'init',run,'--brief',p)
@@ -237,6 +285,7 @@ class DispatchCLITests(unittest.TestCase):
         for _ in range(12):
             proc,result=self.call(root,'execute',run)
             state=w.read(run/'run.json');receipt=w.read(state['receipts'][-1]['path'])
+            self.assertEqual(proc.returncode,0,proc.stdout)
             self.assertEqual(receipt['execution']['mode'],'dispatched');self.assertEqual(receipt['execution']['exit_code'],0)
             self.assertTrue(receipt['turn'].startswith('writing-invocation-'))
             self.assertNotEqual(receipt['actor'],'this-claim-must-be-overwritten');turns.append(receipt['turn'])
