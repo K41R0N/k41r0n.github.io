@@ -496,7 +496,6 @@ def score_author(d, final, classes, provenance):
     sealed=re.search(r'sealed:\s*(\S+)',text(pair/'SEAL.txt')).group(1)
     authored=dt.datetime.fromisoformat(proof['author_edit_at'])
     need(authored.tzinfo is not None and dt.datetime.fromisoformat(sealed)<=authored<=dt.datetime.now(dt.timezone.utc), 'author edit predates seal or is in future')
-    need(proof.get('final_sha256')==digest(final), 'author evidence does not bind the imported final')
     writers={read(ref['path'])['actor'] for ref in s['receipts'] if read(ref['path'])['step'] not in REVIEW}
     need(proof['independent_classifier'] not in writers, 'writer cannot independently classify its own edits')
     sys.path.insert(0,str(ROOT/'scripts/local/voice'))
@@ -505,12 +504,16 @@ def score_author(d, final, classes, provenance):
         candidate=Path(scratch)
         for name in ('draft.md','predictions.md','SEAL.txt'): shutil.copyfile(pair/name,candidate/name)
         shutil.copyfile(final,candidate/'final.md');shutil.copyfile(classes,candidate/'classes.md')
+        # Imported chronology comes from checked original provenance, not copy-time filesystem precision.
+        os.utime(candidate/'final.md',(authored.timestamp(),authored.timestamp()))
+        need(proof.get('final_sha256')==digest(candidate/'final.md'), 'author evidence does not bind the imported final')
         metrics,failures=ledger.score(candidate)
-    if failures:
-        attempt=d/('author-import-failed-'+str(uuid.uuid4())+'.json')
-        write(attempt,{'state':'blocked-author-evaluation','failures':failures,'final':file_ref(final),'classes':file_ref(classes)})
-        return {'state':'blocked-author-evaluation','failures':failures,'attempt':file_ref(attempt),'quality_pass':False}
-    shutil.copyfile(final,pair/'final.md');shutil.copyfile(classes,pair/'classes.md')
+        if failures:
+            attempt=d/('author-import-failed-'+str(uuid.uuid4())+'.json')
+            write(attempt,{'state':'blocked-author-evaluation','failures':failures,'final_sha256':digest(candidate/'final.md'),'classes_sha256':digest(candidate/'classes.md')})
+            return {'state':'blocked-author-evaluation','failures':failures,'attempt':file_ref(attempt),'quality_pass':False}
+        shutil.copyfile(candidate/'final.md',pair/'final.md')
+        shutil.copyfile(candidate/'classes.md',pair/'classes.md')
     report={'state':'blocked-author-evaluation' if failures else 'author-feedback-recorded',
             'edit_metrics':metrics,'failures':failures,'provenance_status':'imported and independently attested, not authenticated by a local file',
             'evidence':{'final':file_ref(pair/'final.md'),'classes':file_ref(pair/'classes.md'),'provenance':file_ref(provenance),'original':proof['original_evidence']},

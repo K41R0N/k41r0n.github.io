@@ -119,6 +119,25 @@ class LoopTests(unittest.TestCase):
         d,b=self.build();context=w.prepare(d)['context'];data=w.read(context['path'])
         self.assertIn('full-creative-method',data['methods'])
         self.assertIn('Generate 3-5 radical reframes',data['methods']['full-creative-method'])
+    def test_author_import_promotes_scored_snapshot_not_changed_sources(self):
+        import ledger
+        d,b=self.build();self.finish(d,b)
+        # Isolate the importer race contract; this does not claim dispatch.
+        with patch.object(w,'state',return_value={'state':'process-complete'}):w.seal_author(d)
+        final=self.base/'race-final.md';final.write_text(TEXT)
+        classes=self.base/'race-classes.md';classes.write_text('')
+        original=self.base/'race-evidence.txt';original.write_text('Synthetic provenance record for import snapshot regression.')
+        proof=self.base/'race-proof.json';w.write(proof,{'original_feedback_id':'synthetic-race-original','identity_checked_by':'synthetic-fixture-checker','independent_classifier':'synthetic-independent-classifier','author_edit_at':dt.datetime.now(dt.timezone.utc).isoformat(),'original_evidence':w.file_ref(original),'evidence_quote':'Synthetic provenance record','final_sha256':w.digest(final)})
+        score=ledger.score
+        def mutate_after_scoring(candidate):
+            result=score(candidate)
+            final.write_text(OTHER);classes.write_text('malformed changed classification')
+            return result
+        with patch.object(w,'state',return_value={'state':'process-complete'}),patch.object(ledger,'score',side_effect=mutate_after_scoring):
+            result=w.score_author(d,final,classes,proof)
+        self.assertEqual(result['state'],'author-feedback-recorded',result)
+        self.assertEqual(Path(result['evidence']['final']['path']).read_text(),TEXT)
+        self.assertEqual(Path(result['evidence']['classes']['path']).read_text(),'')
     def test_numerical_substring_cannot_supply_provenance(self):
         draft='The synthetic reservoir contains 17 units of stored water for this test.'
         d,b=self.build(content=draft)
@@ -437,6 +456,9 @@ class DispatchCLITests(unittest.TestCase):
         self.assertNotEqual(proc.returncode,0);self.assertIn('current round',result['reason'])
         for _ in range(7):
             proc,result=self.call(root,'execute',run);self.assertEqual(proc.returncode,0,proc.stdout)
+        proc,result=self.call(root,'score-author',run,'--final',final,'--classes',classes,'--provenance',proof)
+        self.assertNotEqual(proc.returncode,0)
+        self.assertEqual(result['reason'],'author seal not bound to current round/artifact')
         proc,result=self.call(root,'seal-author',run)
         self.assertEqual(proc.returncode,0,proc.stdout)
         self.assertNotEqual(w.read(run/'run.json')['author_seal'],oldseal)
