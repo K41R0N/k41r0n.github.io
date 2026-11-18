@@ -22,7 +22,8 @@ POLICY = ROOT / 'harness/specs/writing-loop.json'
 CATALOG = ROOT / 'knowledge/voice/writing-source-catalog.json'
 STEPS = ['orient', 'big-idea', 'facts', 'voice', 'structure', 'risk',
          'decontaminate', 'creative', 'tone', 'compliance', 'page', 'judge']
-REVIEW = set(STEPS[6:]) | {'big-idea-review','ogilvy','positioning','clarity','legal','data-accuracy'}
+FINAL_STEPS = ['subtract', 'verify-final', 'judge']
+REVIEW = {'verify-final'} | set(STEPS[6:]) | {'big-idea-review','ogilvy','positioning','clarity','legal','data-accuracy'}
 LENSES = ['reframe', 'behavioral-economics', 'cultural-tension', 'metaphor', 'contrarian']
 OGILVY = ['gasp', 'wish-i-thought-of-it', 'unique', 'strategy-fit', 'thirty-years']
 BUCKETS = ['voice-rule', 'structure', 'fidelity', 'banned-phrase']
@@ -74,6 +75,19 @@ def private_dir(d):
 def policy():
     return read(POLICY)
 
+def architecture_metrics(t):
+    """Diagnostics only. No personal budgets or quality verdict inferred."""
+    paras=[p.strip() for p in re.split(r'\n\s*\n',t) if p.strip()]
+    sentences=[x for x in re.split(r'(?<=[.!?])\s+',t) if x.strip()]
+    return {'words':len(t.split()), 'paragraphs':len(paras),
+            'sentence_lengths':[len(x.split()) for x in sentences],
+            'paragraph_final_lengths':[len(re.split(r'(?<=[.!?])\s+',p)[-1].split()) for p in paras],
+            'questions':t.count('?'),
+            'contrast_candidates':len(re.findall(r"\bnot\b[^.!?]{0,80}\bbut\b|\bisn.t\b[^.!?]{0,80}\bit.s\b",t,re.I)),
+            'meta_candidates':len(re.findall(r"\b(?:this matters|the key point|notice what|here.s (?:why|my)|let me (?:explain|make)|in summary)\b",t,re.I)),
+            'triad_candidates':len(re.findall(r'[^,.!?]+,[^,.!?]+,? and [^,.!?]+',t)),
+            'one_sentence_paragraphs':sum(len(re.split(r'(?<=[.!?])\s+',p))==1 for p in paras)}
+
 def required_methods(step, brief):
     catalog=read(CATALOG)
     allowed={x['id'] for x in catalog['sources'] if (brief['scope'] in x['scopes'] or (brief.get('author_guideline_overlay') is True and 'personal' in x['scopes']))}
@@ -93,7 +107,17 @@ def snapshot(brief):
         need(markdown.stdout==text(ROOT/'knowledge/voice/voice-spec.md'), 'voice Markdown and numerical spec disagree')
     for s in cat['sources']:
         if s.get('required') and (brief['scope'] in s['scopes'] or (brief.get('author_guideline_overlay') is True and 'personal' in s['scopes'])):
-            refs['method:' + s['id']] = file_ref(ROOT / s['path'])
+            if s.get('private_original'):
+                item=brief.get('private_methods',{}).get(s['id'],{})
+                need(item.get('read_status')=='fully-read', 'required original not included/read: '+s['id'])
+                for field in ('provenance','version','applicability','scope_boundary'):
+                    need(nonempty(item.get(field)), 'original provenance incomplete: '+field)
+                ref={'path':item.get('path',''), 'sha256':item.get('sha256','')}
+                checked(ref)
+                need(not Path(ref['path']).resolve().is_relative_to(ROOT.parent), 'originals must stay private outside repository')
+                refs['method:'+s['id']]=ref
+            else:
+                refs['method:' + s['id']] = file_ref(ROOT / s['path'])
     for kind in ('notes', 'voice', 'register', 'corrections', 'facts') + (('client_policy',) if brief['scope']=='client' else ()):
         need(brief['inputs'].get(kind), f'missing input role: {kind}')
     for kind, paths in brief['inputs'].items():
@@ -117,7 +141,7 @@ def init(d, brief_path):
     plan=b.get('review_plan',[])
     need(isinstance(plan,list) and len(plan)==5 and all(isinstance(p,dict) and isinstance(p.get('topic'),str) for p in plan) and len({p['topic'] for p in plan})==5, 'select five distinct review topics for this piece')
     for item in plan:
-        need(item.get('topic') in REVIEW-{'judge'} and nonempty(item.get('reason')) and nonempty(item.get('source_ref')), 'review-topic selection needs applicability and source provenance')
+        need(item.get('topic') in REVIEW-{'judge','verify-final'} and nonempty(item.get('reason')) and nonempty(item.get('source_ref')), 'review-topic selection needs applicability and source provenance')
     need(b.get('voice_target') == 'author', 'voice_target must be author; no anonymous generic voice')
     if b['mode'] == 'new':
         need(policy()['new_voice_writing_enabled'], 'voice writing remains paused; new drafts are not authorized')
@@ -149,7 +173,7 @@ def load(d):
     return d, s, read(d / 'brief.json')
 
 def sequence(b):
-    reviews=[x['topic'] for x in b['review_plan']]+['judge']
+    reviews=[x['topic'] for x in b['review_plan']]+FINAL_STEPS
     return STEPS[:6]+reviews if b['mode']=='new' else ['orient']+reviews
 
 def artifact(s):
@@ -194,6 +218,34 @@ def validate_receipt(r, step, s, b):
         need(r['before'] == r['after'], 'reviewer diagnoses; revise in a separate round, not inside critique')
         writers = {p['actor'] for p in prior if p['step'] not in REVIEW}
         need(r['actor'] not in writers, 'writer cannot be its own reviewer')
+    if step in REVIEW:
+        need(isinstance(r.get('ranked_findings'),list) and isinstance(r.get('adjudications'),list), 'review findings and adjudications required')
+        calls=r['adjudications']
+        need(len(calls)==len(r['ranked_findings']), 'every ranked finding needs exactly one adjudication')
+        need(all(isinstance(x,dict) and type(x.get('finding_index')) is int for x in calls), 'adjudication needs finding index')
+        need({x['finding_index'] for x in calls}==set(range(len(r['ranked_findings']))), 'adjudication indices missing or duplicated')
+        for call in calls:
+            need(call.get('decision') in ('repair','reject','defer'), 'adjudication decision invalid')
+            need(nonempty(call.get('reason')) and nonempty(call.get('seed_preservation')), 'adjudication needs rationale and seed preservation')
+            need(call.get('source') in s['snapshot'] and call['source'].startswith('method:'), 'adjudication method source missing')
+            quote(s['snapshot'][call['source']],call.get('source_clause'))
+            finding=r['ranked_findings'][call['finding_index']]
+            need(finding.get('materiality') in ('material','advisory'), 'finding materiality required')
+            need(call.get('materiality')==finding['materiality'], 'adjudication cannot downgrade finding materiality')
+            if call['decision']=='reject':
+                need(nonempty(call.get('counterevidence')), 'rejection needs explicit counterevidence, not relabeling')
+            if call['decision']=='defer':
+                need(nonempty(call.get('owner')) and nonempty(call.get('destination')), 'defer needs owner and destination')
+            if finding['materiality']=='material' and call['decision']!='reject':
+                need(r['decision']=='fail', 'accepted or deferred material repair blocks completion')
+        for finding in r['ranked_findings']:
+            quote(r['after'],finding.get('draft_quote'))
+            need(nonempty(finding.get('reason')), 'finding lacks source-grounded reason')
+            need(finding.get('source') in s['snapshot'] and finding['source'].startswith('method:'), 'finding method source missing')
+            quote(s['snapshot'][finding['source']],finding.get('source_clause'))
+    if step not in REVIEW and s.get('revision_findings'):
+        need(r.get('revision_findings_seen')==s['revision_findings'], 'writer must receive actual revision findings')
+        need(nonempty(r.get('revision_adjudication')), 'writer must explain seed preservation and accepted/rejected fixes')
     need(r.get('applications'), 'no source applications')
     required = required_methods(step, b)
     applied = set()
@@ -208,6 +260,8 @@ def validate_receipt(r, step, s, b):
     need(applied == set(required), f'missing required method applications: {sorted(set(required)-applied)}')
     development(r, step, s['snapshot'])
     if step == 'orient':
+        plan=r.get('construction_intent',{})
+        need(nonempty(plan.get('guiding_question')) and nonempty(plan.get('section_progression')) and nonempty(plan.get('source_use')), 'forward construction intent required before prose')
         used = set()
         for a in r.get('input_applications', []):
             key = a['input']
@@ -241,7 +295,7 @@ def validate_receipt(r, step, s, b):
         for key, names in fields:
             need(set(r.get(key, {})) == set(names), f'{key}: all five required')
             need(all(nonempty(v) for v in r[key].values()), f'{key}: explain each judgment')
-    if step in ('structure', 'page','positioning','clarity'):
+    if step in ('structure', 'page','positioning','clarity','subtract','verify-final','judge'):
         paras = [p.strip() for p in re.split(r'\n\s*\n', text(r['after']['path'])) if p.strip()]
         moves = r.get('paragraph_moves', [])
         need(len(moves) == len(paras), 'name each paragraph move; do not replace structural review with a word sweep')
@@ -265,6 +319,25 @@ def validate_receipt(r, step, s, b):
             need(type(dim.get('score')) is int and 1 <= dim['score'] <= 5, 'dimension score must be integer 1-5')
             quote(r['after'], dim.get('quote'))
             need(nonempty(dim.get('reason')), 'dimension needs a reason grounded in the selected register')
+    if step in ('big-idea','structure','subtract'):
+        plan=r.get('construction',{})
+        need(plan.get('artifact')==r['after'], 'construction plan missing or stale')
+        sections=plan.get('section_advances',[])
+        need(sections and all(nonempty(x.get('new_inference')) and isinstance(x.get('draft_quote'),str) for x in sections), 'section advances missing')
+        for item in sections: quote(r['after'],item['draft_quote'])
+        for item in plan.get('hard_joints',[]):
+            for key in ('given','new','stress','relation'): need(nonempty(item.get(key)), 'hard-joint construction missing '+key)
+            quote(r['after'],item.get('draft_quote'))
+        need(nonempty(plan.get('joint_selection_reason')), 'explain hard-joint selection or why no hard joint exists')
+    if step=='subtract':
+        evidence=r.get('subtraction',{})
+        need(evidence.get('before')==architecture_metrics(text(r['before']['path'])) and evidence.get('after')==architecture_metrics(text(r['after']['path'])), 'subtraction counters missing or stale')
+        for key in ('preservation','pattern_verdict','repeat_verdict','word_delta_reason'):
+            need(nonempty(evidence.get(key)), 'subtraction missing '+key)
+    if step=='verify-final':
+        need(r.get('verification_artifact')==r['after'], 'final verification stale')
+        for key in ('fix_verification','knock_on_read','source_preservation','voice_risks'):
+            need(nonempty(r.get(key)), 'final verification missing '+key)
     if step == 'judge':
         coverage=r.get('critical_method_coverage',{})
         need(set(coverage)=={'llm-patterns','ogilvy','sutherland-reframe'}, 'final review must surface crucial method coverage, not silently omit it from selected five')
@@ -331,18 +404,23 @@ def receipt_contract(step):
     }
     if step in ('big-idea','structure','creative','judge'):
         fields['development']={'guiding_question':'Actual inquiry', 'reframes':'3-5 distinct {frame, consequence} alternatives', 'selected_frame':'Exact chosen frame', 'selection_reason':'Why it serves this brief', 'scope_boundary':'What is not established or authorized', 'source_anchor':'{input: notes/facts key, quote: exact source span, relation: source vs new reasoning}', 'implication':'{draft_quote, reasoning}', 'strongest_objection':'{draft_quote, reasoning}', 'example_warrant':'{draft_quote, reasoning: what example establishes and cannot establish}', 'gained_ground':'{draft_quote, reasoning: what reader can now conclude}'}
-    if step=='orient':fields.update(conflicts_resolved='boolean',input_applications='List of {input: packet input key, quote: exact input span, use: application}')
+    if step=='orient':fields.update(construction_intent='{guiding_question,section_progression,source_use}: forward plan before prose; not metric targets',conflicts_resolved='boolean',input_applications='List of {input: packet input key, quote: exact input span, use: application}')
     if step=='big-idea':fields['big_idea']='1-15 words, verbatim in artifact'
     if step in ('facts','compliance','legal','data-accuracy','judge'):
         fields.update(claim_inventory_complete='boolean',claims='List of {draft_quote, source: input:facts:N, source_quote, scope_and_caveat, verified_at: timezone-aware current verification time}. Do not fake retrieval. Offline-only evidence may require fail.',no_factual_claims_reason='Substantive reason only if claims truly absent')
     if step=='creative':fields['lenses']='Object with exactly all five named lens keys and substantive values'
     if step in ('creative','big-idea-review','ogilvy'):fields['ogilvy']='Object with exactly all five Ogilvy question keys and substantive values'
-    if step in ('structure','page','positioning','clarity'):
+    if step in ('structure','page','positioning','clarity','subtract','verify-final','judge'):
         fields.update(paragraph_moves='List in paragraph order of {paragraph_sha256, move: structural purpose}',page_rule_scope='Explain applicability of landing-page-only rules')
     if step in ('voice','tone','judge'):
         fields.update(voice_evidence='List for every voice/register/corrections input of {input, source_quote, draft_quote, comparison}',dimensions='Object for all named voice dimensions: {score: integer 1-5, quote: exact draft span, reason}')
     if step=='judge':
         fields.update(critical_method_coverage='Object with exactly llm-patterns, ogilvy, sutherland-reframe; each {draft_quote, assessment, source: method snapshot key, source_quote}. Explicitly apply these crucial checks even if not separate topics. Do not invent an exemption.',top_fixes='List, at most three; must be empty to pass',fidelity_failures='Nonnegative integer; must be zero to pass',open_findings='List; must be empty to pass',worst_lines_assessment='Substantive judgment',overall='Integer 1-10, not author accuracy',predicted_edits='Substantive sealed edit predictions',warning_adjudications='Object keyed by warning rule ID, each {count, reviewer, reason}; unresolved human review requires fail')
+    if step in REVIEW:fields.update(ranked_findings='List of {draft_quote, reason, materiality: material/advisory, source: method snapshot key, source_clause: exact quote}; do not relabel accepted defects as advice',adjudications='Exactly one per finding: {finding_index, materiality: exact finding value, decision: repair/reject/defer, reason, seed_preservation, source: method snapshot key, source_clause: exact quote}. Reject needs counterevidence. Defer needs owner/destination. Accepted or deferred material defects block pass; advisories/rejections stay visible without forcing revision.')
+    if step not in REVIEW:fields.update(revision_findings_seen='Exact revision_findings packet list',revision_adjudication='Explain accepted/rejected fixes and authentic seed preservation; no blind compliance')
+    if step in ('big-idea','structure','subtract'):fields['construction']='{artifact: after ref, section_advances: [{draft_quote,new_inference}], hard_joints:[{draft_quote,given,new,stress,relation}], joint_selection_reason}. Plan before drafting, bind realized current text. No universal sentence worksheet.'
+    if step=='subtract':fields['subtraction']='{before,after: exact architecture_metrics objects, preservation, pattern_verdict, repeat_verdict, word_delta_reason}. Last writing operation; counters diagnose, never impose client budgets.'
+    if step=='verify-final':fields.update(verification_artifact='Exact after ref',fix_verification='Check explicit fixes on final bytes',knock_on_read='Read whole final text for seams/regrowth',source_preservation='Verify claims, caveats and seed preservation',voice_risks='Report real remaining voice risks, not a quality pass')
     return fields
 
 def prepare(d):
@@ -358,6 +436,10 @@ def prepare(d):
             'before':artifact(s),'snapshot':s['snapshot'],'brief':b,'artifact_text':text(checked(artifact(s))),
             'methods':{sid:text(checked(s['snapshot']['method:'+sid])) for sid in method_ids},
             'inputs':{key:text(checked(ref)) for key,ref in s['snapshot'].items() if key.startswith('input:')},
+            'construction_intent':read(s['receipts'][0]['path']).get('construction_intent',{}) if s['receipts'] and step not in REVIEW else {},
+            'original_provenance':b.get('private_methods',{}),
+            'architecture_diagnostics':architecture_metrics(text(checked(artifact(s)))) if step=='subtract' else {},
+            'revision_findings':s.get('revision_findings',[]) if step not in REVIEW else [],
             'receipt_fields':receipt_contract(step),
             'output_contract':{'voice_dimensions':policy()['voice_dimensions'],'lenses':LENSES,'ogilvy':OGILVY},
             'instruction':'Use a fresh turn and the whole piece. Apply only the named core review topic. Quote source clauses and artifact spans. Do not infer author opinions. Reviewers diagnose; they do not rewrite. Prior judge reports are withheld.'}
@@ -385,10 +467,17 @@ def record(d, receipt, _execution=None):
 def revise(d, new_artifact, reason):
     d, s, b = load(d)
     need(nonempty(reason), 'revision must state upstream cause')
-    need(s['round'] < policy()['max_rounds'], 'three rounds exhausted; escalate to author instead of polishing flat')
+    need(s['round'] < policy()['max_rounds'], 'three rounds exhausted; escalate with preserved findings and remaining material defects; do not claim completion or keep polishing')
     # Validate artifacts even if a judgment failed; preserve failed rounds as evidence.
     for ref in s['receipts']:
         r = read(ref['path']); checked(r['before']); checked(r['after'])
+    findings=[]
+    for ref in s['receipts']:
+        rr=read(ref['path'])
+        if rr['step'] in REVIEW:
+            findings.append({'receipt':ref,'step':rr['step'],'artifact':rr['after'],
+                             'findings':rr.get('ranked_findings',[]),'adjudications':rr.get('adjudications',[])})
+    s['revision_findings']=findings
     s['history'].append({'round': s['round'], 'receipts': s['receipts'], 'reason': reason, 'initial': s['initial'], 'author_seal': s.pop('author_seal',None), 'author_binding': s.pop('author_binding',None)})
     s.pop('evaluation', None)
     s['round'] += 1; s['receipts'] = []; s['initial'] = file_ref(new_artifact)
@@ -451,7 +540,10 @@ def execute(d):
             need(not saved.exists(), 'worker artifact already preserved; no overwrite')
             shutil.copyfile(output,saved)
             need(digest(saved)==incoming['after']['sha256'], 'worker artifact changed while preserving it')
+            old_after=incoming['after']
             incoming['after']=file_ref(saved)
+            if incoming.get('construction',{}).get('artifact')==old_after:
+                incoming['construction']['artifact']=incoming['after']
     incoming.pop('execution',None)
     incoming['actor']=adapter['worker_id'];incoming['turn']=invocation
     incoming['source_ref']='runner dispatch '+invocation
@@ -542,6 +634,17 @@ def evaluation(d, dataset):
     write(dest, result); s['evaluation']=file_ref(dest); write(d/'run.json',s)
     return result
 
+def retained_findings(s):
+    records=[]
+    rounds=[(x['round'],x['receipts']) for x in s['history']]+[(s['round'],s['receipts'])]
+    for number,refs in rounds:
+        for ref in refs:
+            rr=read(checked(ref))
+            if rr['step'] in REVIEW and rr.get('ranked_findings'):
+                records.append({'round':number,'step':rr['step'],'artifact':rr['after'],
+                                'receipt':ref,'findings':rr['ranked_findings'],'adjudications':rr['adjudications']})
+    return records
+
 def packet(d, destination):
     status = state(d)
     need(status['state'] == 'process-complete', 'required work incomplete; no handoff packet')
@@ -552,7 +655,7 @@ def packet(d, destination):
         ev=read(checked(evalref))
         need(ev['artifact']==artifact(s), 'evaluation is for a different artifact')
         for ref in ev['evidence']: checked(ref)
-    result = dict(status, evaluation=evalref, state='draft-for-author-evaluation', scope=b['scope'], review_plan=b['review_plan'],
+    result = dict(status, retained_review_findings=retained_findings(s), evaluation=evalref, state='draft-for-author-evaluation', scope=b['scope'], review_plan=b['review_plan'],
                   critical_review_coverage={topic:any(x['topic'] in covers for x in b['review_plan']) for topic,covers in {'llm-patterns':['decontaminate'],'ogilvy':['ogilvy','creative','big-idea-review'],'sutherland-reframe':['creative']}.items()},
                   author_guideline_overlay=(b['scope']=='personal' or b.get('author_guideline_overlay') is True), author_overlay_reason=b.get('author_overlay_reason'),
                   limitations=['Mechanical evidence cannot certify taste, voice or semantic relevance.',

@@ -146,6 +146,66 @@
         "personal",
         "client"
       ]
+    },
+    {
+      "id": "construction-original",
+      "private_original": true,
+      "required": true,
+      "scopes": [
+        "personal",
+        "client"
+      ],
+      "provenance": "Exact private original/version/hash and applicability required in brief.private_methods; no client rules automatically adopted."
+    },
+    {
+      "id": "anti-slop-original",
+      "private_original": true,
+      "required": true,
+      "scopes": [
+        "personal",
+        "client"
+      ],
+      "provenance": "Exact private original/version/hash and applicability required in brief.private_methods; no client rules automatically adopted."
+    },
+    {
+      "id": "tell-registry-original",
+      "private_original": true,
+      "required": true,
+      "scopes": [
+        "personal",
+        "client"
+      ],
+      "provenance": "Exact private original/version/hash and applicability required in brief.private_methods; no client rules automatically adopted."
+    },
+    {
+      "id": "structural-audit-original",
+      "private_original": true,
+      "required": true,
+      "scopes": [
+        "personal",
+        "client"
+      ],
+      "provenance": "Exact private original/version/hash and applicability required in brief.private_methods; no client rules automatically adopted."
+    },
+    {
+      "id": "review-protocol-original",
+      "private_original": true,
+      "required": true,
+      "scopes": [
+        "personal",
+        "client"
+      ],
+      "provenance": "Exact private original/version/hash and applicability required in brief.private_methods; no client rules automatically adopted."
+    },
+    {
+      "id": "transition-original",
+      "private_original": true,
+      "required": true,
+      "scopes": [
+        "personal",
+        "client"
+      ],
+      "provenance": "Exact private original/version/hash and applicability required in brief.private_methods; no client rules automatically adopted."
     }
   ],
   "steps": {
@@ -159,12 +219,20 @@
       "anti-patterns",
       "writer-judge",
       "eval-study",
-      "full-creative-method"
+      "full-creative-method",
+      "construction-original",
+      "anti-slop-original",
+      "tell-registry-original",
+      "structural-audit-original",
+      "review-protocol-original",
+      "transition-original"
     ],
     "big-idea": [
       "draft-method",
       "draft-pass-1",
-      "full-creative-method"
+      "full-creative-method",
+      "construction-original",
+      "transition-original"
     ],
     "facts": [
       "draft-method",
@@ -172,12 +240,16 @@
     ],
     "voice": [
       "draft-method",
-      "draft-pass-3"
+      "draft-pass-3",
+      "construction-original",
+      "transition-original"
     ],
     "structure": [
       "draft-method",
       "draft-pass-4",
-      "full-creative-method"
+      "full-creative-method",
+      "construction-original",
+      "transition-original"
     ],
     "risk": [
       "draft-method",
@@ -185,7 +257,11 @@
     ],
     "decontaminate": [
       "review-method",
-      "anti-patterns"
+      "anti-patterns",
+      "anti-slop-original",
+      "tell-registry-original",
+      "structural-audit-original",
+      "review-protocol-original"
     ],
     "creative": [
       "review-method",
@@ -207,7 +283,11 @@
       "eval-study",
       "review-method",
       "anti-patterns",
-      "full-creative-method"
+      "full-creative-method",
+      "anti-slop-original",
+      "tell-registry-original",
+      "structural-audit-original",
+      "review-protocol-original"
     ],
     "big-idea-review": [
       "review-method"
@@ -226,6 +306,17 @@
     ],
     "data-accuracy": [
       "review-method"
+    ],
+    "subtract": [
+      "anti-slop-original",
+      "structural-audit-original",
+      "construction-original",
+      "review-protocol-original"
+    ],
+    "verify-final": [
+      "review-protocol-original",
+      "structural-audit-original",
+      "anti-slop-original"
     ]
   }
 }

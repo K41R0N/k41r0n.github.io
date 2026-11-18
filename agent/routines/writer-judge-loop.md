@@ -152,3 +152,114 @@ Run-bound calibration additionally requires `run_binding` with the current artif
 ## Required development evidence
 
 The [November17 development update](../knowledge/voice/development-enforcement-2026-11-17.md) makes reframes, implications, strongest objection, example warrant and gained ground required source/current-artifact evidence in the existing entrypoint. A statement that lenses ran cannot substitute for it. `writing.py readiness` reports actual execution blockers; manual supervision remains distinct from dispatched software completion.
+
+## Source and construction repair (2026-11-17, proposed branch)
+
+The Macintosh author rejection is a known private failure, not new voice calibration.
+The repair keeps the same entrypoint and five writing/five fitted review stages.
+It adds one final writer operation, `subtract`, then a fresh read-only `verify-final`,
+then the existing read-only judge. No critic edits the text. A revision with a NEW artifact file through `revise` reopens the sequence. Editing
+immutable recorded bytes in place instead blocks all commands, including `revise`;
+restore the original bytes or start a fresh run. No stale evidence can complete it.
+
+### Complete private originals, not an adapter standing in for them
+
+The source catalog names six required private method roles. Supply `private_methods`
+in the private brief, keyed by `construction-original`, `anti-slop-original`,
+`tell-registry-original`, `structural-audit-original`, `review-protocol-original`,
+`transition-original`. Each entry has `path`, actual `sha256`, `read_status` exactly
+`fully-read`, `provenance`, `version`, `applicability`, and `scope_boundary`.
+Missing, changed, located-only or incomplete sources block preparation. Source bytes
+remain outside git. Catalog and prepared packets bind them alongside other sources.
+No private archive path, client example or source locator belongs in a public patch.
+
+The declaration is auditable, not proof that a person read or authored a file.
+The caller verifies original identity/version against the private archive manifest.
+A supplied method is not automatically author-written or personally confirmed.
+Client budgets, bans, examples and compliance policy do not become essay rules.
+No numerical personal budget is added by this repair. The existing personal INFO/WARN
+downgrades remain unchanged. Complete originals are available to relevant stages;
+source-role application evidence is still required, and judgment remains review work.
+
+### Construction and revision
+
+Orientation records a forward `construction_intent`: guiding question, section
+progression, and source use before prose work. Big idea, structure and subtraction
+record the realized current-artifact `construction`: section spans and new inference,
+selected hard joints with given/new/stress/relation, and why those joints were selected
+(or why none needs special planning). No sentence-count or cadence-target worksheet.
+Paragraph maps are required again at subtraction, final verification and judgment.
+A nonempty map still cannot prove actual idea movement; the reviewer must read it.
+
+Every critic supplies `ranked_findings` with current span, exact method clause and
+reason, plus `adjudications`. `revise` retains those actual findings in the private run.
+Writer packets receive that evidence; fresh critic packets do not receive it or prior
+judge predictions. Writers acknowledge the exact handoff and explain accepted/rejected
+fixes and seed preservation. The external revision import remains explicitly attested:
+it cannot prove who read findings before preparing the imported file.
+
+### Final subtraction and verification
+
+`subtract` is a writer operation, never an early review label. Its receipt records
+before/after architecture metrics, preservation of claims/caveats/voice/author seeds,
+pattern and repeat verdicts, and word-change reasoning. Growth is a diagnostic signal,
+not a hard word cap; no claim or necessary argument is cut merely to hit a counter.
+Metrics list sentence and paragraph endings, one-sentence paragraphs, questions and
+candidate contrast/meta/triad counts. They are approximate observations, not complete
+pattern detection, personal budgets, or an AI-authorship detector. Ring composition,
+restatement, flat-vs-manufactured endings and meaning require a whole-piece read.
+
+`verify-final` binds its evidence to the exact final artifact and records checkable
+fix verification, source/seed preservation, knock-on read and remaining voice risks.
+Judge then repeats current paragraph/voice/fact checks. Remaining risks must be stated
+plainly to the coordinator, never hidden by a clean fidelity score. Sealed edit
+predictions remain private. No artifact becomes author-approved through this process.
+
+### Integration and limits
+
+This is an owning-harness repair, not another service, catalog, dispatcher or host
+migration. Cross-harness routing and host capability claims remain governed by the
+owner's current infrastructure guidance and live verification. No host state was
+changed or newly verified. Executors stay empty; new author writing stays disabled.
+Synthetic tests demonstrate missing/stale evidence rejection and dispatch contracts,
+not good writing, correct source interpretation, author voice or taste. The original
+failure case stays private and known-exposed, never relabeled as an untouched holdout.
+
+### Review reconciliation (2026-11-17)
+
+Passing reviews may retain criticism. Every finding declares `materiality` as material
+or advisory; exactly one indexed adjudication repeats that value without downgrade,
+with repair/reject/defer, rationale, seed preservation and exact method-source clause.
+Accepted material repairs and deferred material defects block a pass. A rejection
+requires explicit counterevidence, not a severity relabel. A defer names its owner and
+private destination. Advisory and rejected findings remain in immutable receipts and
+in the final private handoff record, including earlier rounds; they do not force a
+prose change or full loop. Real revisions still deliver actual findings to writers.
+At the third round an unresolved material defect requires honest escalation with
+preserved evidence, never silent completion or more smoothing. Materiality, rejection
+and counterevidence remain attested judgments: software prevents missing fields,
+explicit downgrade and dropped records, not a model lying about semantics. Independent
+review and the author's judgment remain necessary. No extra author questionnaire.
+
+To avoid anchoring, fresh critic packets omit writer construction intent as well as
+prior findings and predictions. Approximate architecture counts are supplied only to
+the subtraction writer, not to fresh critics or the judge. They independently inspect
+the whole piece and complete required evidence. This is a deliberate separation between
+writer planning/diagnostics and a critic's own reading, not missing method context.
+
+Review mode now includes a writer-role subtraction operation. It may preserve every
+byte if no justified cut exists, but is no longer a strictly read-only run. A user
+request limited to comments/critique must not enter this completion path as permission
+to rewrite. A separate external approval still governs any send or publication.
+
+Synthetic workers import the runner's counter implementation to test packet wiring;
+those tests alone cannot catch a wrong counter algorithm. Literal independently
+expected counter tests cover a small set of mechanics, not comprehensive pattern
+recognition. Tests with synthetic source files do not establish behavior, interpretation
+or writing quality against the actual private originals.
+
+An advisory with disposition `repair` is only a candidate suggestion, not evidence
+that a repair happened. Only a later changed artifact and its verification can show
+an applied repair. Any author-visible summary must say candidate/unapplied where
+appropriate. The final packet is internal private evidence for the coordinator, not
+a document to send to the author or publish.

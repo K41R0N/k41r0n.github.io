@@ -41,6 +41,11 @@ class LoopTests(unittest.TestCase):
         if scope=='client':
             cp=self.base/(d.name+'-policy.json');w.write(cp,{'schema':'writing-client-policy/v1','source_ref':'Synthetic policy fixture, no actual client authority.','rule_severities':{rid:'INFO' for rid,*_ in checks.RULES}});roles['client_policy']=[str(cp)]
         b={'voice_owner':'Synthetic fixture subject, not Alejandro','mode':mode,'scope':scope,'voice_target':'author','reader':'The assigned maintenance inspector','already-believes':'The supply must remain closed until inspection','action':'Record the pressure before opening supply','channel':'A synthetic maintenance instruction sheet','register':register,'objective':'Test evidence gates without producing author prose','risk-owner':'The synthetic fixture coordinator','inputs':roles,'artifact':str(a),'format':'essay','author_guideline_overlay':True,'author_overlay_reason':'Synthetic client fixture selects client-only voice policy explicitly.','review_plan':[{'topic':topic,'reason':'Synthetic topic applicability exercises source-grounded selection.','source_ref':'synthetic-original-review-selection'} for topic in ['decontaminate','creative','tone','compliance','page']]}
+        b['private_methods']={}
+        for item in w.read(w.CATALOG)['sources']:
+            if item.get('private_original'):
+                src=self.base/(d.name+'-'+item['id']+'.md');src.write_text('Synthetic complete source fixture, no author/client words or approval. '+content)
+                b['private_methods'][item['id']]={**w.file_ref(src),'read_status':'fully-read','provenance':'Synthetic supplied source for contracts only.','version':'Synthetic immutable fixture version one.','applicability':'Construction evidence for synthetic fixture only.','scope_boundary':'No personal style mandate or client policy.'}
         bp=self.base/(d.name+'-brief.json');w.write(bp,b)
         # Only the init authority hold is lifted inside this test process. No production policy edit.
         cfg=w.policy(); cfg['new_voice_writing_enabled']=True
@@ -58,6 +63,7 @@ class LoopTests(unittest.TestCase):
         if step in ('big-idea','structure','creative','judge'):
             r['development']=self.synthetic_development(q)
         if step=='orient':
+            r['construction_intent']={k:'Synthetic forward construction intent before procedural prose.' for k in ('guiding_question','section_progression','source_use')}
             r['conflicts_resolved']=True;r['input_applications']=[]
             for key,src in s['snapshot'].items():
                 if key.startswith('input:'):
@@ -68,7 +74,7 @@ class LoopTests(unittest.TestCase):
         if step in ['creative','big-idea-review','ogilvy']:
             r['lenses']={x:'Synthetic response checks that no lens can be omitted.' for x in w.LENSES}
             r['ogilvy']={x:'Synthetic response checks all five questions are retained.' for x in w.OGILVY}
-        if step in ['structure','page','positioning','clarity']:
+        if step in ['structure','page','positioning','clarity','subtract','verify-final','judge']:
             r['paragraph_moves']=[{'paragraph_sha256':hashlib.sha256(p.encode()).hexdigest(),'move':'Synthetic instruction advances the recorded procedure.'} for p in draft.split('\n\n')]
             r['page_rule_scope']='Landing-page conversion ratios do not govern this synthetic instruction.'
         if step in ['voice','tone','judge']:
@@ -79,6 +85,13 @@ class LoopTests(unittest.TestCase):
             r['critical_method_coverage']={k:{'draft_quote':q,'assessment':'Synthetic crucial-method review coverage only.','source':sid,'source_quote':clause} for k in ['llm-patterns','ogilvy','sutherland-reframe']}
             r.update(top_fixes=[],fidelity_failures=0,open_findings=[],worst_lines_assessment='Synthetic review validates the verdict contract only.',overall=5,predicted_edits='Synthetic prediction, never an author-approved result.')
             _,rows=checks.run(ref['path']);r['warning_adjudications']={x['id']:{'count':x['count'],'reviewer':'synthetic-human-reviewer','reason':'Synthetic disposition only; no quality or authorship claim.'} for x in rows if x['count'] and x['severity']=='WARN'}
+        r.update(ranked_findings=[],adjudications=[])
+        if step not in w.REVIEW and s.get('revision_findings'):
+            r['revision_findings_seen']=s['revision_findings'];r['revision_adjudication']='Synthetic accepted/rejected fix and seed-preservation rationale.'
+        if step in ('big-idea','structure','subtract'):
+            r['construction']={'artifact':ref,'section_advances':[{'draft_quote':q,'new_inference':'Synthetic section gains procedural clarity only.'}],'hard_joints':[],'joint_selection_reason':'Synthetic short fixture has no difficult argumentative joins.'}
+        if step=='subtract':r['subtraction']={'before':w.architecture_metrics(draft),'after':w.architecture_metrics(draft),**{k:'Synthetic diagnostic review only, no personal budgets.' for k in ('preservation','pattern_verdict','repeat_verdict','word_delta_reason')}}
+        if step=='verify-final':r.update(verification_artifact=ref,**{k:'Synthetic final-byte verification, not author quality evidence.' for k in ('fix_verification','knock_on_read','source_preservation','voice_risks')})
         return r
     def synthetic_development(self,q):
         frames=[{'frame':'Synthetic alternative '+str(i)+' for contract validation only','consequence':'Synthetic consequence for evidence schema testing only.'} for i in range(3)]
@@ -163,7 +176,7 @@ class LoopTests(unittest.TestCase):
         d,b=self.build();bp=self.base/'alternate.json'
         b['review_plan']=[{'topic':topic,'reason':'Synthetic piece-specific review requirement.','source_ref':'synthetic-original-review-selection'} for topic in ['data-accuracy','legal','clarity','positioning','ogilvy']]
         w.write(bp,b);other=self.base/'alternate-run';w.init(other,bp)
-        self.assertEqual(w.sequence(b),['orient','data-accuracy','legal','clarity','positioning','ogilvy','judge'])
+        self.assertEqual(w.sequence(b),['orient','data-accuracy','legal','clarity','positioning','ogilvy','subtract','verify-final','judge'])
         self.finish(other,b)
         self.assertEqual(w.state(other)['state'],'evidence-complete-attested')
     def test_duplicate_review_topic_rejected(self):
@@ -197,7 +210,7 @@ class LoopTests(unittest.TestCase):
         self.assertNotEqual(p.returncode,0);self.assertIn('stale artifact',p.stdout)
     def test_full_twelve_stage_new_loop_contract_only(self):
         d,b=self.build(mode='new');self.finish(d,b)
-        self.assertEqual(len(w.read(d/'run.json')['receipts']),12)
+        self.assertEqual(len(w.read(d/'run.json')['receipts']),14)
     def test_production_new_writing_hold(self):
         d,b=self.build();b['mode']='new';p=self.base/'newbrief.json';w.write(p,b)
         with self.assertRaisesRegex(w.Block,'paused'):w.init(self.base/'blocked-new',p)
@@ -253,16 +266,16 @@ class LoopTests(unittest.TestCase):
         with self.assertRaisesRegex(w.Block,'all five'):self.add(d,r)
     def test_unresolved_placeholder_blocks(self):
         d,b=self.build(content=TEXT+'\n\n[UNVERIFIED: missing source]')
-        for _ in range(6):self.add(d,self.receipt(d,b))
+        while w.state(d).get('next')!='judge':self.add(d,self.receipt(d,b))
         with self.assertRaisesRegex(w.Block,'placeholder'):self.add(d,self.receipt(d,b))
     def test_fidelity_overrides_high_score(self):
         d,b=self.build()
-        for _ in range(6):self.add(d,self.receipt(d,b))
+        while w.state(d).get('next')!='judge':self.add(d,self.receipt(d,b))
         r=self.receipt(d,b);r['fidelity_failures']=1;r['overall']=10
         with self.assertRaisesRegex(w.Block,'fidelity failure'):self.add(d,r)
     def test_top_fix_cap(self):
         d,b=self.build()
-        for _ in range(6):self.add(d,self.receipt(d,b))
+        while w.state(d).get('next')!='judge':self.add(d,self.receipt(d,b))
         r=self.receipt(d,b);r['top_fixes']=['Synthetic detailed proposed correction.']*4
         with self.assertRaisesRegex(w.Block,'top 3'):self.add(d,r)
     def test_personal_lint_is_not_client_cap(self):
@@ -390,14 +403,14 @@ class DispatchCLITests(unittest.TestCase):
         run=self.base/'cli-run';proc,result=self.call(root,'init',run,'--brief',p)
         self.assertEqual(result['next'],'orient')
         turns=[]
-        for _ in range(12):
+        for _ in range(14):
             proc,result=self.call(root,'execute',run)
             state=w.read(run/'run.json');receipt=w.read(state['receipts'][-1]['path'])
             self.assertEqual(proc.returncode,0,proc.stdout)
             self.assertEqual(receipt['execution']['mode'],'dispatched');self.assertEqual(receipt['execution']['exit_code'],0)
             self.assertTrue(receipt['turn'].startswith('writing-invocation-'))
             self.assertNotEqual(receipt['actor'],'this-claim-must-be-overwritten');turns.append(receipt['turn'])
-        self.assertEqual(len(set(turns)),12);self.assertEqual(proc.returncode,0);self.assertEqual(result['state'],'process-complete')
+        self.assertEqual(len(set(turns)),14);self.assertEqual(proc.returncode,0);self.assertEqual(result['state'],'process-complete')
         self.assertEqual(result['quality'],'uncalibrated')
         proc,packet=self.call(root,'packet',run,'--output',self.base/'cli-packet.json')
         self.assertEqual(proc.returncode,0);self.assertEqual(packet['state'],'draft-for-author-evaluation')
@@ -417,22 +430,36 @@ class DispatchCLITests(unittest.TestCase):
         cfg['executors']['writer']['command'].append('--write-artifact');w.write(pol,cfg)
         run=self.base/'all-writes-run';self.call(root,'init',run,'--brief',bp)
         previous=w.read(run/'run.json')['initial']
-        for i in range(12):
+        for i in range(14):
             proc,status=self.call(root,'execute',run)
             self.assertEqual(proc.returncode,0,proc.stdout)
             receipt=w.read(w.read(run/'run.json')['receipts'][-1]['path'])
             self.assertEqual(receipt['before'],previous)
-            if i<6:self.assertNotEqual(receipt['after'],previous)
+            if i<6 or receipt['step']=='subtract':self.assertNotEqual(receipt['after'],previous)
             else:self.assertEqual(receipt['after'],previous)
             previous=receipt['after']
             self.assertTrue(w.checked(previous).is_file())
         self.assertEqual(status['state'],'process-complete')
-        self.assertEqual(len(list(run.glob('*-artifact.md'))),6)
+        self.assertEqual(len(list(run.glob('*-artifact.md'))),7)
+
+    def test_dispatched_retained_advisory_reaches_private_packet(self):
+        root=self.fixture_host();_,brief=self.build();bp=self.base/'retained-brief.json';w.write(bp,brief)
+        pol=root/'harness/specs/writing-loop.json';cfg=w.read(pol)
+        for adapter in cfg['executors'].values():adapter['command'].append('--retain-advisory')
+        w.write(pol,cfg);run=self.base/'retained-run';self.call(root,'init',run,'--brief',bp)
+        for _ in range(9):
+            proc,result=self.call(root,'execute',run);self.assertEqual(proc.returncode,0,proc.stdout)
+        self.assertEqual(result['state'],'process-complete')
+        dest=self.base/'retained-private-packet.json';proc,result=self.call(root,'packet',run,'--output',dest)
+        self.assertEqual(proc.returncode,0,proc.stdout)
+        self.assertEqual(result['retained_review_findings'][0]['adjudications'][0]['decision'],'reject')
+        self.assertNotIn('predicted_edits',dest.read_text());self.assertNotIn('Synthetic predictions',dest.read_text())
+        self.assertEqual(len(result['retained_review_findings']),1)
 
     def test_author_import_retry_and_revision_binding(self):
         root=self.fixture_host();_,brief=self.build();bp=self.base/'author-brief.json';w.write(bp,brief)
         run=self.base/'author-run';self.call(root,'init',run,'--brief',bp)
-        for _ in range(7):
+        for _ in range(9):
             proc,result=self.call(root,'execute',run);self.assertEqual(proc.returncode,0,proc.stdout)
         self.call(root,'seal-author',run)
         oldseal=w.read(run/'run.json')['author_seal']
@@ -454,7 +481,7 @@ class DispatchCLITests(unittest.TestCase):
         self.assertEqual(state['history'][0]['author_seal'],oldseal)
         proc,result=self.call(root,'score-author',run,'--final',final,'--classes',classes,'--provenance',proof)
         self.assertNotEqual(proc.returncode,0);self.assertIn('current round',result['reason'])
-        for _ in range(7):
+        for _ in range(9):
             proc,result=self.call(root,'execute',run);self.assertEqual(proc.returncode,0,proc.stdout)
         proc,result=self.call(root,'score-author',run,'--final',final,'--classes',classes,'--provenance',proof)
         self.assertNotEqual(proc.returncode,0)

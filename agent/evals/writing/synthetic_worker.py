@@ -29,6 +29,7 @@ if s in ('big-idea','structure','creative','judge'):
     frames=[{'frame':'Synthetic alternative '+str(i)+' for contract validation only','consequence':'Synthetic consequence for evidence schema testing only.'} for i in range(3)]
     r['development']={'guiding_question':'Synthetic fixture inquiry, not an author position.','reframes':frames,'selected_frame':frames[0]['frame'],'selection_reason':'Synthetic selection reason exercises shape only.','scope_boundary':'No author quality or creative success established.','source_anchor':{'input':'input:notes:0','quote':q,'relation':'Synthetic input relation, not a real author inference.'},**{k:{'draft_quote':q,'reasoning':'Synthetic schema field, not substantive editorial evidence.'} for k in ['implication','strongest_objection','example_warrant','gained_ground']}}
 if s=='orient':
+    r['construction_intent']={k:'Synthetic forward construction intent before procedural prose.' for k in ('guiding_question','section_progression','source_use')}
     r['conflicts_resolved']=True
     r['input_applications']=[{'input':key,'quote':source[:60],'use':'Synthetic input-role coverage, not evidence of author voice.'} for key,source in c['inputs'].items()]
 if s=='big-idea':r['big_idea']=draft.split('.')[0]+'.'
@@ -37,7 +38,7 @@ if s in ['facts','compliance','legal','data-accuracy','judge']:
 if s in ['creative','big-idea-review','ogilvy']:
     r['lenses']={name:'Synthetic lens field tests schema completion without quality claims.' for name in c['output_contract']['lenses']}
     r['ogilvy']={name:'Synthetic question field tests all five questions without quality claims.' for name in c['output_contract']['ogilvy']}
-if s in ['structure','page','positioning','clarity']:
+if s in ['structure','page','positioning','clarity','subtract','verify-final','judge']:
     r['paragraph_moves']=[{'paragraph_sha256':hashlib.sha256(p.strip().encode()).hexdigest(),'move':'Synthetic procedural paragraph advances the maintenance record.'} for p in draft.split('\n\n') if p.strip()]
     r['page_rule_scope']='Landing-page ratios do not govern this synthetic instruction.'
 if s in ['voice','tone','judge']:
@@ -53,10 +54,27 @@ if s=='judge':
     r['critical_method_coverage']={k:{'draft_quote':q,'assessment':'Synthetic crucial-method review coverage only.','source':sid,'source_quote':clause} for k in ['llm-patterns','ogilvy','sutherland-reframe']}
     r.update(top_fixes=[],fidelity_failures=0,open_findings=[],worst_lines_assessment='Synthetic canned assessment for software testing only.',overall=5,predicted_edits='Synthetic predictions, not guesses at Alejandro edits.')
     r['warning_adjudications']={x['id']:{'count':x['count'],'reviewer':'synthetic-human-reviewer','reason':'Synthetic disposition tests the process schema only.'} for x in rows if x['count'] and x['severity']=='WARN'}
+r.update(ranked_findings=[],adjudications=[])
+if c.get('revision_findings'):
+    r['revision_findings_seen']=c['revision_findings'];r['revision_adjudication']='Synthetic accepted/rejected fix and seed-preservation rationale.'
 if '--write-artifact' in sys.argv or '--bad-output-hash' in sys.argv:
     output=Path.cwd()/'synthetic-output.md'
     output.write_text(draft+'\n')
     r['after']={'path':str(output),'sha256':hashlib.sha256(output.read_bytes()).hexdigest()}
 if '--bad-output-hash' in sys.argv:r['after']['sha256']='0'*64
 if '--external-artifact' in sys.argv:r['after']=snapshot['input:notes:0']
+spec=importlib.util.spec_from_file_location('synthetic_runner',snapshot['runner']['path'])
+w=importlib.util.module_from_spec(spec);spec.loader.exec_module(w)
+if s in ('big-idea','structure','subtract'):
+    r['construction']={'artifact':r['after'],'section_advances':[{'draft_quote':q,'new_inference':'Synthetic section gains procedural clarity only.'}],'hard_joints':[],'joint_selection_reason':'Synthetic short fixture has no difficult argumentative joins.'}
+if s=='subtract':
+    r['subtraction']={'before':w.architecture_metrics(draft),'after':w.architecture_metrics(Path(r['after']['path']).read_text()),**{k:'Synthetic diagnostic review only, no personal budgets.' for k in ('preservation','pattern_verdict','repeat_verdict','word_delta_reason')}}
+if s=='verify-final':r.update(verification_artifact=ref,**{k:'Synthetic final-byte verification, not author quality evidence.' for k in ('fix_verification','knock_on_read','source_preservation','voice_risks')})
+if '--retain-advisory' in sys.argv:
+    if c.get('role')=='reviewer' and (c.get('revision_findings') or c.get('construction_intent') or c.get('architecture_diagnostics')):
+        raise RuntimeError('Fresh critic contaminated by writer intent/findings/metrics')
+    if s=='decontaminate':
+        sid='method:anti-patterns';source=c['methods']['anti-patterns'];clause=next(line for line in source.splitlines() if len(line)>40)[:80]
+        r['ranked_findings']=[{'materiality':'advisory','draft_quote':q,'reason':'Synthetic optional alternative, not an accepted material defect.','source':sid,'source_clause':clause}]
+        r['adjudications']=[{'finding_index':0,'materiality':'advisory','decision':'reject','reason':'Synthetic current text remains justified by the source.','counterevidence':'Synthetic procedural wording already preserves the required action.','seed_preservation':'Synthetic original phrase remains unchanged in the artifact.','source':sid,'source_clause':clause}]
 json.dump(r,sys.stdout)
