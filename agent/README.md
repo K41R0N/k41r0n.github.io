@@ -50,7 +50,7 @@ you. Do not edit files outside `content/` until you have read
 | Iterate and verify revisions | `knowledge/methodologies/iteration-protocol.md` |
 | Scope and plan work with a compact brief | `knowledge/methodologies/briefing-and-work-planning.md` |
 | Consult his methods library (packs, evals, fixtures) | `packs/` |
-| Draft or review copy (his method, incl. anything as him) | `routines/copy-draft.md`, `routines/copy-review.md`, `packs/copywriting-methods/` (drafting five-pass + review pipeline), `packs/copy-five-pass/` (lint only), voice canon in `knowledge/voice/` |
+| Draft or review copy (his method, incl. anything as him) | `scripts/local/writing.py` is the execution entrypoint (production adapter not configured; new voice writing held); [run contract](routines/writer-judge-loop.md). Then read `routines/copy-draft.md`, `routines/copy-review.md`, `packs/copywriting-methods/` (drafting five-pass + review pipeline), `packs/copy-five-pass/` (lint only), voice canon in `knowledge/voice/` |
 | Find where one of his processes lives (copy, marketing, ICP, client-locked) | `knowledge/methodologies/method-sources.md` |
 | Find his method for any ask, across every harness (document level) | `knowledge/methodologies/method-sources.md` corpus index + `knowledge/methodologies/method-corpus.json`; on failure follow its recovery contract |
 | Show Alejandro any HTML page or preview | `AGENTS.md` section 5 - here.now by default; confidential HTML route unresolved (issue #35), say so and hold |

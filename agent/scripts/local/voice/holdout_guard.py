@@ -2,6 +2,7 @@
 The writer never sees corpus/holdout. This flags any run of 8 consecutive words in the given files (prompts, inputs, drafts) that also appears in a holdout piece.
 Usage: holdout_guard.py FILE... ; exit 1 on any overlap. Overlap does not prove the writer saw the holdout, but a clean result is required before a holdout test is trusted."""
 import sys,os,re,glob
+from pathlib import Path
 sys.path.insert(0,os.path.dirname(__file__)); from vlib import body,strip_md
 N=8
 def grams(t):
@@ -10,7 +11,7 @@ def run(files,holdout=None):
     holdout=holdout or os.path.join(os.path.dirname(__file__),'..','..','..','assets','voice-corpus','holdout')
     H=set()
     for p in glob.glob(os.path.join(holdout,'*.md')): H|=grams(body(p))
-    return {f:len(grams(open(f).read())&H) for f in files}
+    return {f:len(grams(Path(f).read_text())&H) for f in files}
 if __name__=='__main__':
     if len(sys.argv)<2: sys.exit(__doc__)
     r=run(sys.argv[1:]); bad=0

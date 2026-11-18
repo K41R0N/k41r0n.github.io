@@ -5,9 +5,11 @@ confidence: proposed
 tier: 2
 approver: Alejandro Arango
 source: Rewritten for this harness from his five-pass copywriting method (drafting workflow in two of his brand harnesses). Brand-specific material removed. His own voice is the brand here. The source-derived generalized original is packs/copywriting-methods/sources/20-harnesses/harness-01/routines/copy/five-pass.md; the review pipeline that runs after drafting is packs/copywriting-methods/sources/copy-review-framework/review-pipeline.md (routines/copy-review.md). Read the source files fresh each run.
-status: PROPOSED. Not run yet. Graduation rule: no scripting until two identical manual runs (D1-D5).
+status: PROPOSED. Not run yet. Exact evidence helpers are allowed; no judgment graduation or lower-inference execution without AGF evidence.
 ---
 # Copy drafting: five passes
+
+Execution entrypoint: `python3 agent/scripts/local/writing.py` from the repo root. The run contract lives in [writer-judge-loop.md](writer-judge-loop.md). Missing, failed or stale evidence blocks the handoff. This routine remains the drafting method, not a second pipeline.
 
 Governs every piece of copy written for or as him. Do not skip a step. Do not start the next step before the previous one is done. Do not combine passes.
 
@@ -25,7 +27,7 @@ One sentence, 15 words or fewer, written at the top of the draft. It must be sim
 List every factual claim: numbers, product features, people, dates, comparisons, superlatives. Trace each to a source in knowledge/voice/refs/ or a live source and cite it next to the claim. Cannot verify: mark [UNVERIFIED]. An [UNVERIFIED] mark blocks Pass 3. Sourcing a claim does not make a bad claim usable.
 
 ## Pass 3. Voice matching
-Register first (knowledge/voice/registers/), then his measured ranges (knowledge/voice/voice-spec.md), then do-dont and lexicon. Read aloud. Run the reader test: would the person this is for find it precise, not patronizing, and worth their time? Run scripts/local/voice/checks.py on the draft and fix FAILs. Then run the blind-pair test when the piece matters (routines/blind-test.md).
+Register first (knowledge/voice/registers/), then his measured ranges (knowledge/voice/voice-spec.md), then do-dont and lexicon. Read aloud. Run the reader test: would the person this is for find it precise, not patronizing, and worth their time? Run scripts/local/voice/checks.py on the draft with personal scope (the default). Client candidate rules and unconfirmed rhythm targets do not become personal hard failures; contextual warnings need disposition. A client run must load its own approved policy. Explicitly resolve the author-guideline overlay from the current request: when he asks for his voice guidelines alongside client copy, apply both, never treat brand policy as a substitute (Nov3 correction). Personal examples remain style evidence, never client facts or stories. Then run the blind-pair test when the piece matters (routines/blind-test.md).
 
 ## Pass 4. Storytelling structure
 Narrative, not a bulleted report of the piece. Explain why things moved, not only what they are. Each paragraph does one move: a claim, an objection met, a consequence, a mechanism. If every paragraph has the same length and shape, rewrite. Questions where the reader would ask them. No restating a claim in a new shape (claim budget: each claim appears once and is then built on).
@@ -38,3 +40,7 @@ Social post, essay, newsletter, page copy, AEO copy: apply the format's constrai
 
 ## Outputs
 assets/voice-drafts/<date>-<slug>/ with: draft.md, changelog.md, flags.md, checks.txt.
+
+## Required development evidence
+
+The [November17 development update](../knowledge/voice/development-enforcement-2026-11-17.md) makes reframes, implications, strongest objection, example warrant and gained ground required source/current-artifact evidence in the existing entrypoint. A statement that lenses ran cannot substitute for it. `writing.py readiness` reports actual execution blockers; manual supervision remains distinct from dispatched software completion.

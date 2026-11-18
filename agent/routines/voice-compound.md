@@ -19,3 +19,10 @@ Append-only. One entry per learning: what happened, what rule or change it sugge
 
 ## 2026-10-29
 Added routines/writer-judge-loop.md and tools edit_rate, ledger, ban_list, placeholders, holdout_guard, corpus_clean_check (synthetic fixtures only). Tier 2. See finding 13.
+
+## 2026-11-16: Every taste/voice evidence study
+- Read supplied newsletter-check experiment and complete publisher-delivered write-like-me article; read linked pairwise-gold-triad method and complete packaged runner. Originals preserved privately before interpretation. See `knowledge/voice/taste-evaluation-study-2026-11-16.md` for findings, actual-source comparison and access limits.
+- Candidate addition: case-linked correction checks alongside reference-based voice comparisons, using existing writer/judge case folders. Keep method logic separate from private cases/gold. No writing, optimizer run, installation, corpus upload or adoption performed.
+- Evidence limits: experiment045 changes case set between baseline and final; second article's two charts use different baselines/test populations and relative wins, not voice accuracy. Judge consistency is not author agreement. Runner uses random fallback on invalid verdicts and permits export without a passing gate; do not import unchanged.
+- Existing gaps confirmed, not fixed in this documentation task: old holdout partly spent; executable client 32-word cap conflicts with personal-voice documentation; verification report records spec rebuild mismatch. No clean-voice certification inferred.
+- Status: research/proposed calibration only. Five writing/five review passes and paused voice lane unchanged; no author-approved voice or process graduation claimed.

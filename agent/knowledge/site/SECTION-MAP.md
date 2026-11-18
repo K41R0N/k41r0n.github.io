@@ -21,7 +21,7 @@ Every visible string comes from `content/`: `about.md` (home intro), `home.json`
 | Head / SEO | Findable by people and AI answer engines | Title and description from `site.json`; sitemap, robots, llms.txt, structured data not verified | Unverified. See ICP-BRIEF for what buyers' tools look for. |
 
 ## Content that must not appear without his explicit OK
-- Client names and results from Sky Protocol and River One (client-confidential per earlier notes). Anonymized method write-ups only, and only after his go.
+- Client names and results are confidential. Anonymized method write-ups only, and only after his go.
 - Anything from the 13 pages in `agent/assets/voice-corpus/excluded/`. They stay excluded.
 - Anything from his day job.
 - Individuals from the ICP watchlist (it is a watchlist, not an outreach list).

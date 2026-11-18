@@ -9,6 +9,8 @@ status: PROPOSED. Not yet graduated (no two identical manual runs). Source-deriv
 ---
 # Copy review (every draft, including ones written by an agent, and any outside draft)
 
+Execution entrypoint: `python3 agent/scripts/local/writing.py` from repo root. Use `--brief` with `mode: review` for supplied copy. Each review is a distinct turn with fresh context; reviewers diagnose without rewriting inside the critique. Fixes start a new bounded round and invalidate downstream evidence. See [writer-judge-loop.md](writer-judge-loop.md) for the machine contract.
+
 Two stages exist: draft from canon (routines/copy-draft.md), then review. New copy runs both. Existing or outside copy runs review only. Never skip review because a draft looks clean. Sources resolve fresh every run; reviewing from remembered rules is the drift this system exists to prevent. The full method text is packs/copywriting-methods/sources/copy-review-framework/review-pipeline.md; this routine is how this harness runs it.
 
 The review judges three fits, and a clean lint never certifies any of them: creative quality (is the idea strong), voice source fit (does it read like him per knowledge/voice/), and reader, audience and offer fit (does it move this reader about this offer). "Five passes ran" is a process statement, not a quality claim.
@@ -19,16 +21,24 @@ The review judges three fits, and a clean lint never certifies any of them: crea
 3. Structure: headlines, openings, tonal arc, knowledge/voice/registers/.
 A rule that yields an awkward sentence is applied and flagged. A human decides the override.
 
-## The five passes (in order; do not combine, do not skip)
+## Select five passes for this piece, then run them separately
+
+Owner clarification, Nov2 08:38: five most important checks for the actual piece, not this fixed list on every run. Some pieces need legal or data accuracy; his pitch priorities were big idea, Ogilvy, positioning, clarity and LLM-pattern removal. Record exactly five topic/reason/source_ref entries in the brief review_plan and run in that order on fresh turns. The source-derived list below is a menu/example, not a universal execution order. Creative lenses run when creative is selected; all five Ogilvy questions run when that topic is selected. Factual fidelity, voice-source evaluation and open findings are still checked at the final judge, not silently dropped when they are not a dedicated review topic.
 1. **Decontamination.** Remove AI artifacts and tells: slop connectors, inflated vocabulary, tidy ring composition, generic transitions. scripts/local/voice/checks.py carries the deterministic part; the reader's ear carries the rest.
 2. **Creative review.** The judgment pass, never scripted. Run the five lenses sequentially (reframe, behavioral economics, cultural tension, metaphor, contrarian - full questions in the review-pipeline reference), then filter the strongest idea through all five of Ogilvy's questions: gasp; wish I'd thought of it; unique; fits the strategy to perfection; usable for 30 years. An idea that fails is pushed harder or replaced, not polished. This pass also judges reader/audience/offer fit: would this reader, at this awareness stage, care.
 3. **Tone and voice.** Register first (knowledge/voice/registers/), then voice-spec ranges, do-dont and lexicon, with the quote exemption. Words that work against words that fail. Read aloud.
 4. **Compliance.** Claim inventory: every claim listed with its source, each distinct claim appearing once plus one callback at most. Banned phrases, proof-required claims, superlatives, position integrity - a changed position is a flag, never an edit.
-5. **Final page review.** Read only the headings in sequence: coherent positioning story alone? "you/your" at least 60%? Tonal arc holds (aspiration, differentiation, function, trust, proof)? H1 and final CTA form a loop? Redundancy against the claim budget is cut or flagged here.
+5. **Final page review.** Read only the headings in sequence: coherent positioning story alone? For a landing page, "you/your" at least 60% where the current brief approves that rule? Tonal arc holds (aspiration, differentiation, function, trust, proof)? H1 and final CTA form a loop? Redundancy against the claim budget is cut or flagged here.
 
 ## What comes out, every time
-- Polished copy: same structure as the draft, no inline commentary.
+- Reviewed copy and findings. Critiques do not rewrite; revisions happen in the next bounded round.
 - Change log: every edit with its rule source.
 - Flags: positioning conflicts, unverifiable claims, rule conflicts, anything blocked. Flags go to him.
 
 The engine polishes. It never invents, expands, deletes sections, or changes position. Systemic problems (wrong tone throughout, wrong reader, drift) send the piece back to drafting. The deterministic gate (packs/copy-five-pass) runs alongside as a checker only; its clean result proves patterns absent, nothing more.
+
+Format scope: landing-page H1/CTA, scroll arc and pronoun targets are not universal essay, chat or email rules. For other formats, record why they do not apply and still review the whole argument. Never delete a necessary qualification to meet a page rule.
+
+## Required development evidence
+
+The [November17 development update](../knowledge/voice/development-enforcement-2026-11-17.md) makes reframes, implications, strongest objection, example warrant and gained ground required source/current-artifact evidence in the existing entrypoint. A statement that lenses ran cannot substitute for it. `writing.py readiness` reports actual execution blockers; manual supervision remains distinct from dispatched software completion.

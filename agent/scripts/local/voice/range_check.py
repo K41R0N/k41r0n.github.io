@@ -33,7 +33,7 @@ def main():
           R=ranges(raw[:i]+raw[i+1:]); o=outside(feats(body(f)),R); res[os.path.basename(f)]=sorted(o)
       n=len(next(iter([feats(body(raw[0]))])))
       tot=sum(len(v) for v in res.values()); out={'features':n,'pieces':len(raw),'outside_per_piece':{k:len(v) for k,v in res.items()},'total_outside':tot,'details':res,'threshold':THRESHOLD,'pieces_at_or_over_threshold':sum(len(v)>=THRESHOLD for v in res.values())}
-      json.dump(out,open(os.path.join(os.path.dirname(__file__),'..','..','..','ingestion','reports','voice','range_loo.json'),'w'),indent=1)
+      json.dump(out,open(os.path.join(os.path.dirname(__file__),'..','..','..','ingestion','reports','voice','reports','range_loo.json'),'w'),indent=1)
       print(json.dumps({k:out[k] for k in out if k!='details'},indent=1))
   else:
       R=ranges(raw); o=outside(feats(body(sys.argv[1])),R)

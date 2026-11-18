@@ -178,3 +178,11 @@ The two raw protocol specs remain excluded. Method text from the same harness is
 - Published file: `agent/packs/copywriting-methods/sources/copy-review-framework/review-pipeline.md`
 - Sources: his Copy Review Engine reference doc and its implementation, both in his private tooling repos. Exact repo, path and commit pointers live in the owner's private source map (Kairon Drive), not in this public repo. Both sources are his; no client material is carried.
 - Changes: method retained in full (five review passes, five creative lenses, Ogilvy's five questions, structural rulebook, tonal arc, banned phrases). Excluded: the brand-specific application section (one product's landing-copy guidance and another brand's voice words) and the extraction note naming a client workspace. A known drift is documented in the file: the deployed review prompt lists four of the five Ogilvy questions; the framework's five are canonical.
+
+## Anti-pattern process adapter (2026-11-16)
+
+- Original supplied archive remains byte-identical: SHA-256 `6e3e125a36ee078ff23569a9e1e9bbb7d5560206eb3c4d9aab54679ba0033f64`.
+- Source member path SHA-256: `e11a8b63ab32d4dad0395cef46820f8e35b32eb5370f9454c4a505c45f80046f`.
+- Source member bytes: 18,604; SHA-256 `c20e4d0be0d7fd019880957d936690aac8dfcd67c0ea398634c5c579ac525a72`.
+- Process adapter: `agent/knowledge/voice/refs/anti-pattern-method.md`; SHA-256 `9216408056e5fb884fe445a812b283e5a4cb7023b099765fab875952799a06c5`.
+- Treatment: source-derived procedural summary, not a replacement original. Retains tests, preservation, modes, structural diagnosis and external attribution. Excludes client/platform examples, project-specific numeric budgets and blanket word bans. Those remain private and scoped. No original client source is newly published.

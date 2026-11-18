@@ -8,40 +8,54 @@ buckets: voice-rule, structure, fidelity, banned-phrase.
 Deciding 'predicted' and the bucket is a judgment step. A reviewer other than the writer does it and he can audit it.
 The metric says when he may step out of the loop. It never certifies a draft as his."""
 import sys,os,re,json,hashlib,datetime
+from pathlib import Path
 sys.path.insert(0,os.path.dirname(__file__)); from edit_rate import measure
 BUCKETS=('voice-rule','structure','fidelity','banned-phrase')
-def sha(p): return hashlib.sha256(open(p,'rb').read()).hexdigest()
+def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def seal(d):
     p=os.path.join(d,'predictions.md')
+    if os.path.exists(os.path.join(d,'SEAL.txt')): return 'FAIL: seal already exists; no resealing or prediction overwrite'
+    if not os.path.exists(os.path.join(d,'draft.md')): return 'FAIL: draft.md missing'
     if not os.path.exists(p): return 'FAIL: predictions.md missing'
     if os.path.exists(os.path.join(d,'final.md')): return 'FAIL: final.md already exists; predictions cannot be sealed after his edit'
     t=datetime.datetime.now(datetime.timezone.utc).isoformat()
-    open(os.path.join(d,'SEAL.txt'),'w').write(f'sha256: {sha(p)}\nsealed: {t}\n'); return 'SEALED '+t
+    Path(os.path.join(d,'SEAL.txt')).write_text(f'sha256: {sha(p)}\ndraft_sha256: {sha(os.path.join(d,"draft.md"))}\nsealed: {t}\n'); return 'SEALED '+t
 def parse_classes(path):
     rows={}
-    for l in open(path).read().splitlines():
+    for l in Path(path).read_text().splitlines():
         m=re.match(r'H(\d+)\s*\|\s*([\w-]+)\s*\|\s*predicted:\s*(yes|no)\b',l)
-        if m: rows[int(m.group(1))]=(m.group(2),m.group(3))
+        if m:
+            n=int(m.group(1))
+            if n in rows: raise ValueError(f'duplicate class for H{n}')
+            rows[n]=(m.group(2),m.group(3))
+        elif l.strip(): raise ValueError('malformed class line')
     return rows
 def score(d):
     probs=[]; sp=os.path.join(d,'SEAL.txt')
     if not os.path.exists(sp): return None,['no SEAL.txt: predictions were never sealed']
-    s=open(sp).read(); h=re.search(r'sha256:\s*(\w+)',s).group(1); t=re.search(r'sealed:\s*(\S+)',s).group(1)
+    s=Path(sp).read_text(); h=re.search(r'sha256:\s*(\w+)',s).group(1); t=re.search(r'sealed:\s*(\S+)',s).group(1)
+    dh=re.search(r'draft_sha256:\s*(\w+)',s)
+    if not dh: probs.append('legacy seal has no draft hash; not an evaluation-grade untouched pair')
+    elif sha(os.path.join(d,'draft.md'))!=dh.group(1): probs.append('draft.md changed after sealing')
     if sha(os.path.join(d,'predictions.md'))!=h: probs.append('predictions.md changed after sealing')
     fp=os.path.join(d,'final.md')
     if not os.path.exists(fp): return None,probs+['final.md missing']
     if datetime.datetime.fromtimestamp(os.path.getmtime(fp),datetime.timezone.utc)<datetime.datetime.fromisoformat(t): probs.append('final.md is older than the seal')
-    m=measure(os.path.join(d,'draft.md'),fp); rows=parse_classes(os.path.join(d,'classes.md')) if os.path.exists(os.path.join(d,'classes.md')) else {}
+    m=measure(os.path.join(d,'draft.md'),fp)
+    try: rows=parse_classes(os.path.join(d,'classes.md')) if os.path.exists(os.path.join(d,'classes.md')) else {}
+    except ValueError as e: return None,probs+[str(e)]
     ids={x['n'] for x in m['hunks']}
     for n in sorted(ids-set(rows)): probs.append(f'hunk H{n} has no class line')
     for n,(b,_) in rows.items():
         if b not in BUCKETS: probs.append(f'H{n}: unknown bucket {b}')
         if n not in ids: probs.append(f'H{n}: no such hunk')
+    if any(b=='fidelity' for b,_ in rows.values()): probs.append('fidelity edit: quality failure regardless of edit rate')
     by={b:sum(1 for x in rows.values() if x[0]==b) for b in BUCKETS}; pred=sum(1 for x in rows.values() if x[1]=='yes')
     res={'rate':m['rate'],'hunks':len(ids),'by_bucket':by,'predicted':pred,'predicted_share':round(pred/len(ids),3) if ids else None}
     return res,probs
 def main(a):
-    if a[0]=='seal': print(seal(a[1])); return 0
+    if a[0]=='seal':
+        result=seal(a[1]); print(result); return 1 if result.startswith('FAIL') else 0
     if a[0]=='score':
         r,p=score(a[1])
         if r:

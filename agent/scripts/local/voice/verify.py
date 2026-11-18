@@ -1,4 +1,4 @@
-"""Verification suite for voice-harness phase 1. Run from agent/: python3 scripts/local/voice/verify.py [controls_dir]. Writes reports/verification.md"""
+"""Verification suite for voice-harness phase 1. Run from agent/: python3 scripts/local/voice/verify.py [controls_dir]. Writes a new timestamped report; historical verification.md is preserved"""
 import sys,os,re,glob,json,hashlib,subprocess,statistics as st,collections,math,html,tempfile,shutil
 sys.path.insert(0,'scripts/local/voice'); from vlib import *; import checks
 R=[]; P=lambda s='':(R.append(s),print(s))
@@ -68,10 +68,11 @@ for f in raw+hold:
 P(f'{len(raw+hold)} pieces, {W_} words\n'); P('| rule | severity | origin | pieces flagged | hits per 1000 words | verdict |'); P('|---|---|---|---|---|---|')
 verd={}
 for rid,desc,org,sev,fn in checks.RULES:
+    sev=next(x['severity'] for x in checks.run(raw[0])[1] if x['id']==rid)
     frac=pc[rid]/len(raw+hold); rate=1000*tot[rid]/W_
     v='keep (rarely flags him)' if frac<=0.2 else ('DO NOT ADOPT as default: flags most of his own pieces, so it describes the client brand or a noisy test, not him' if frac>=0.6 else 'candidate: ask him')
     verd[rid]=v; P(f'| {rid} {desc[:55]} | {sev} | {org.split(" (")[0]} | {pc[rid]}/{len(raw+hold)} | {rate:.2f} | {v} |')
-json.dump({'verdict':verd,'counts':dict(tot),'pieces_flagged':dict(pc),'words':W_},open('ingestion/reports/voice/rule_fp.json','w'))
+json.dump({'verdict':verd,'counts':dict(tot),'pieces_flagged':dict(pc),'words':W_},open('ingestion/reports/voice/reports/rule_fp.json','w'))
 # V5 Delta
 P('\n## V5. Burrows Delta (stylometry) on the holdout, with different-author controls\n')
 ctrl=sys.argv[1] if len(sys.argv)>1 else None
@@ -106,7 +107,7 @@ if res['control']:
     ov=[n for n,d in res['raw LOO'] if d>=min(d2 for _,d2 in res['control'])]
     P(f'- Overlap: {len(ov)} of his own leave-one-out pieces score as far as or farther than the closest control chunk. That is why Delta cannot gate anything.')
     P('- Caveat: n is tiny and chunk length differs from his pieces. This shows the measure separates authors at all; it does not prove the spec captures him. The blind test is the real calibration.')
-json.dump(res,open('ingestion/reports/voice/delta.json','w'),indent=1)
+json.dump(res,open('ingestion/reports/voice/reports/delta.json','w'),indent=1)
 P('\n## V6. Range check calibration (leave-one-out on his own pieces)\n')
 import subprocess as sp
 rl=json.loads(sp.run([sys.executable,'scripts/local/voice/range_check.py','--loo'],capture_output=True,text=True).stdout)
@@ -114,4 +115,7 @@ P(f"{rl['features']} structural features, ranges from the other pieces widened 5
 P('Strict min-max over all 57 features (with function words) put every one of his own pieces 10 to 20 features out of range, so that version was rejected. Range checks are WARN only and never block.')
 for f in hold:
     o=sp.run([sys.executable,'scripts/local/voice/range_check.py',f],capture_output=True,text=True).stdout.splitlines()[0]; P(f'- holdout {os.path.basename(f)}: {o}')
-open('ingestion/reports/voice/verification.md','w').write('\n'.join(R)+'\n')
+from datetime import datetime, timezone
+report='ingestion/reports/voice/reports/verification-'+datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')+'.md'
+open(report,'x').write('\n'.join(R)+'\n')
+P('Fresh report: '+report)

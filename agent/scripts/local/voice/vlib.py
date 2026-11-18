@@ -1,7 +1,7 @@
 """Shared text utilities for voice-harness. Stdlib only. Deterministic."""
 import re,statistics as st,glob,os
 def body(path):
-    t=open(path).read()
+    with open(path, encoding='utf-8') as source: t=source.read()
     m=re.match(r'---\n.*?\n---\n(.*)',t,re.S)
     return m.group(1).strip() if m else t
 def strip_md(t):

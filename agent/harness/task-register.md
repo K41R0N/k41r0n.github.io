@@ -16,6 +16,9 @@ promotions need evidence, not feel (AGF anti-patterns).
 
 ## Notes
 
+- 2026-11-16 foundation: `scripts/local/writing.py` enforces source-bound staged execution; `evals/run.py writing` tests it, including synthetic CLI dispatch. This does not promote cap-voice-writing: production host adapter is not configured, the writing hold remains on, and author calibration is not complete. Issue #45 tracks the foundation separately from #29 calibration drafts.
+
+
 - cap-site-data-upkeep sits at the bottom because it costs him the least; the
   register is worked top-down.
 - Acceptance, edit distance and his minutes feed from agent/routines/writing-runs.md
