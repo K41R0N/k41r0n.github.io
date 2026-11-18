@@ -38,3 +38,7 @@ Owner clarification, Nov2 08:38: five most important checks for the actual piece
 The engine polishes. It never invents, expands, deletes sections, or changes position. Systemic problems (wrong tone throughout, wrong reader, drift) send the piece back to drafting. The deterministic gate (packs/copy-five-pass) runs alongside as a checker only; its clean result proves patterns absent, nothing more.
 
 Format scope: landing-page H1/CTA, scroll arc and pronoun targets are not universal essay, chat or email rules. For other formats, record why they do not apply and still review the whole argument. Never delete a necessary qualification to meet a page rule.
+
+## Required development evidence
+
+The [November17 development update](../knowledge/voice/development-enforcement-2026-11-17.md) makes reframes, implications, strongest objection, example warrant and gained ground required source/current-artifact evidence in the existing entrypoint. A statement that lenses ran cannot substitute for it. `writing.py readiness` reports actual execution blockers; manual supervision remains distinct from dispatched software completion.

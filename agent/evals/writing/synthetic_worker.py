@@ -25,6 +25,9 @@ r={'step':s,'before':ref,'after':ref,'actor':'this-claim-must-be-overwritten','t
 for sid,source in c['methods'].items():
     clause=next(line for line in source.splitlines() if len(line)>40 and not line.startswith('source:'))[:80]
     r['applications'].append({'source':sid,'method_quote':clause,'draft_quote':q,'application':'Synthetic source mapping exercises the validator without judging taste.'})
+if s in ('big-idea','structure','creative','judge'):
+    frames=[{'frame':'Synthetic alternative '+str(i)+' for contract validation only','consequence':'Synthetic consequence for evidence schema testing only.'} for i in range(3)]
+    r['development']={'guiding_question':'Synthetic fixture inquiry, not an author position.','reframes':frames,'selected_frame':frames[0]['frame'],'selection_reason':'Synthetic selection reason exercises shape only.','scope_boundary':'No author quality or creative success established.','source_anchor':{'input':'input:notes:0','quote':q,'relation':'Synthetic input relation, not a real author inference.'},**{k:{'draft_quote':q,'reasoning':'Synthetic schema field, not substantive editorial evidence.'} for k in ['implication','strongest_objection','example_warrant','gained_ground']}}
 if s=='orient':
     r['conflicts_resolved']=True
     r['input_applications']=[{'input':key,'quote':source[:60],'use':'Synthetic input-role coverage, not evidence of author voice.'} for key,source in c['inputs'].items()]

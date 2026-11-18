@@ -53,6 +53,8 @@ class LoopTests(unittest.TestCase):
             src=Path(s['snapshot']['method:'+sid]['path']).read_text()
             clause=next(x for x in src.splitlines() if len(x)>40 and not x.startswith('source:'))[:80]
             r['applications'].append({'source':sid,'method_quote':clause,'draft_quote':q,'application':'Synthetic span mapping exercises schema and hashes only.'})
+        if step in ('big-idea','structure','creative','judge'):
+            r['development']=self.synthetic_development(q)
         if step=='orient':
             r['conflicts_resolved']=True;r['input_applications']=[]
             for key,src in s['snapshot'].items():
@@ -76,10 +78,45 @@ class LoopTests(unittest.TestCase):
             r.update(top_fixes=[],fidelity_failures=0,open_findings=[],worst_lines_assessment='Synthetic review validates the verdict contract only.',overall=5,predicted_edits='Synthetic prediction, never an author-approved result.')
             _,rows=checks.run(ref['path']);r['warning_adjudications']={x['id']:{'count':x['count'],'reviewer':'synthetic-human-reviewer','reason':'Synthetic disposition only; no quality or authorship claim.'} for x in rows if x['count'] and x['severity']=='WARN'}
         return r
+    def synthetic_development(self,q):
+        frames=[{'frame':'Synthetic alternative '+str(i)+' for contract validation only','consequence':'Synthetic consequence for evidence schema testing only.'} for i in range(3)]
+        return {'guiding_question':'Synthetic fixture inquiry, not an author position.', 'reframes':frames,'selected_frame':frames[0]['frame'],'selection_reason':'Synthetic selection reason exercises shape only.','scope_boundary':'No author quality or creative success established.','source_anchor':{'input':'input:notes:0','quote':q,'relation':'Synthetic input relation, not a real author inference.'},**{k:{'draft_quote':q,'reasoning':'Synthetic schema field, not substantive editorial evidence.'} for k in ['implication','strongest_objection','example_warrant','gained_ground']}}
     def add(self,d,r):
         p=self.base/'incoming.json';w.write(p,r);return w.record(d,p)
     def finish(self,d,b):
         while w.state(d)['state']=='blocked':self.add(d,self.receipt(d,b))
+    def test_development_cannot_be_lens_labels_only(self):
+        d,b=self.build(mode='new');self.add(d,self.receipt(d,b));r=self.receipt(d,b)
+        del r['development']
+        with self.assertRaisesRegex(w.Block,'development missing'):self.add(d,r)
+    def test_development_requires_strongest_objection_and_warrant(self):
+        for field in ['strongest_objection','example_warrant','gained_ground','implication']:
+            d,b=self.build(mode='new');self.add(d,self.receipt(d,b));r=self.receipt(d,b)
+            del r['development'][field]
+            with self.assertRaisesRegex(w.Block,'development missing reasoned'):self.add(d,r)
+    def test_development_cannot_borrow_voice_facts(self):
+        d,b=self.build(mode='new');self.add(d,self.receipt(d,b));r=self.receipt(d,b)
+        r['development']['source_anchor']['input']='input:voice:0'
+        with self.assertRaisesRegex(w.Block,'source substance'):self.add(d,r)
+    def test_development_must_consume_current_prose(self):
+        d,b=self.build(mode='new');self.add(d,self.receipt(d,b));r=self.receipt(d,b)
+        r['development']['gained_ground']['draft_quote']='A conclusion not present in this current artifact.'
+        with self.assertRaisesRegex(w.Block,'quote absent'):self.add(d,r)
+    def test_duplicate_reframe_is_not_alternative(self):
+        d,b=self.build(mode='new');self.add(d,self.receipt(d,b));r=self.receipt(d,b)
+        r['development']['reframes'][1]=r['development']['reframes'][0]
+        with self.assertRaisesRegex(w.Block,'duplicate reframes'):self.add(d,r)
+    def test_combined_turn_does_not_advance(self):
+        d,b=self.build();first=self.receipt(d,b);self.add(d,first);r=self.receipt(d,b)
+        r['turn']=first['turn']
+        with self.assertRaisesRegex(w.Block,'distinct turns'):self.add(d,r)
+    def test_readiness_does_not_claim_active_host(self):
+        r=w.readiness();self.assertEqual(r['state'],'blocked-production');self.assertFalse(r['host_verified'])
+        self.assertEqual(set(r['missing_executor_roles']),{'writer','reviewer'})
+    def test_full_creative_source_is_loaded_not_summary_only(self):
+        d,b=self.build();context=w.prepare(d)['context'];data=w.read(context['path'])
+        self.assertIn('full-creative-method',data['methods'])
+        self.assertIn('Generate 3-5 radical reframes',data['methods']['full-creative-method'])
     def test_full_review_loop_two_registers(self):
         for reg,t in [('synthetic-maintenance',TEXT),('synthetic-reading',OTHER)]:
             d,b=self.build(register=reg,content=t);self.finish(d,b)
@@ -241,6 +278,7 @@ class LoopTests(unittest.TestCase):
 class DispatchCLITests(unittest.TestCase):
     setUp=LoopTests.setUp
     build=LoopTests.build
+    synthetic_development=LoopTests.synthetic_development
     receipt=LoopTests.receipt
     add=LoopTests.add
 

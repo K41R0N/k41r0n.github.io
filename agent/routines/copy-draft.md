@@ -40,3 +40,7 @@ Social post, essay, newsletter, page copy, AEO copy: apply the format's constrai
 
 ## Outputs
 assets/voice-drafts/<date>-<slug>/ with: draft.md, changelog.md, flags.md, checks.txt.
+
+## Required development evidence
+
+The [November17 development update](../knowledge/voice/development-enforcement-2026-11-17.md) makes reframes, implications, strongest objection, example warrant and gained ground required source/current-artifact evidence in the existing entrypoint. A statement that lenses ran cannot substitute for it. `writing.py readiness` reports actual execution blockers; manual supervision remains distinct from dispatched software completion.

@@ -136,6 +136,16 @@
         "personal",
         "client"
       ]
+    },
+    {
+      "id": "full-creative-method",
+      "path": "packs/copywriting-methods/sources/copy-review-framework/full-creative-interpretation.md",
+      "required": true,
+      "provenance": "Complete brand-agnostic creative methodology from original preset, preserved as source; no client presets or runtime instructions.",
+      "scopes": [
+        "personal",
+        "client"
+      ]
     }
   ],
   "steps": {
@@ -148,11 +158,13 @@
       "review-method",
       "anti-patterns",
       "writer-judge",
-      "eval-study"
+      "eval-study",
+      "full-creative-method"
     ],
     "big-idea": [
       "draft-method",
-      "draft-pass-1"
+      "draft-pass-1",
+      "full-creative-method"
     ],
     "facts": [
       "draft-method",
@@ -164,7 +176,8 @@
     ],
     "structure": [
       "draft-method",
-      "draft-pass-4"
+      "draft-pass-4",
+      "full-creative-method"
     ],
     "risk": [
       "draft-method",
@@ -175,7 +188,8 @@
       "anti-patterns"
     ],
     "creative": [
-      "review-method"
+      "review-method",
+      "full-creative-method"
     ],
     "tone": [
       "review-method",
@@ -192,7 +206,8 @@
       "writer-judge",
       "eval-study",
       "review-method",
-      "anti-patterns"
+      "anti-patterns",
+      "full-creative-method"
     ],
     "big-idea-review": [
       "review-method"

@@ -154,6 +154,28 @@ def sequence(b):
 def artifact(s):
     return read(s['receipts'][-1]['path'])['after'] if s['receipts'] else s['initial']
 
+def development(r, step, snapshot):
+    """Validate required editorial work, never certify its semantic quality."""
+    if step not in ('big-idea', 'structure', 'creative', 'judge'):
+        return
+    d = r.get('development', {})
+    need(isinstance(d, dict), 'development evidence must be an object')
+    for key in ('guiding_question', 'selected_frame', 'selection_reason', 'scope_boundary'):
+        need(nonempty(d.get(key)), 'development missing ' + key)
+    frames = d.get('reframes', [])
+    need(isinstance(frames, list) and 3 <= len(frames) <= 5, 'develop 3-5 alternative reframes, not lens labels')
+    need(all(nonempty(x.get('frame')) and nonempty(x.get('consequence')) for x in frames), 'every reframe needs an actual consequence')
+    need(len({x['frame'].strip().lower() for x in frames}) == len(frames), 'duplicate reframes cannot substitute for alternatives')
+    need(d['selected_frame'] in [x['frame'] for x in frames], 'selected frame must be one of the alternatives')
+    for key in ('implication', 'strongest_objection', 'example_warrant', 'gained_ground'):
+        item = d.get(key, {})
+        need(isinstance(item, dict) and nonempty(item.get('reasoning')), 'development missing reasoned ' + key)
+        quote(r['after'], item.get('draft_quote'))
+    anchor = d.get('source_anchor', {})
+    need(anchor.get('input') in snapshot and anchor['input'].startswith(('input:notes:', 'input:facts:')), 'development anchor must be source substance, not a voice sample')
+    quote(snapshot[anchor['input']], anchor.get('quote'))
+    need(nonempty(anchor.get('relation')), 'explain source-to-development relation without inventing stance')
+
 def validate_receipt(r, step, s, b):
     need(r.get('step') == step, f'expected {step}, not {r.get("step")}')
     prepared=read(checked(r['prepared_packet']))
@@ -183,6 +205,7 @@ def validate_receipt(r, step, s, b):
         need(nonempty(a.get('application')), 'source must be applied, not merely listed')
         applied.add(a['source'])
     need(applied == set(required), f'missing required method applications: {sorted(set(required)-applied)}')
+    development(r, step, s['snapshot'])
     if step == 'orient':
         used = set()
         for a in r.get('input_applications', []):
@@ -305,6 +328,8 @@ def receipt_contract(step):
         'rationale':'Substantive judgment scoped to this step', 'decision':'pass or fail',
         'applications':'List of {source: method ID, method_quote: exact source span, draft_quote: exact current span, application: reasoning}'
     }
+    if step in ('big-idea','structure','creative','judge'):
+        fields['development']={'guiding_question':'Actual inquiry', 'reframes':'3-5 distinct {frame, consequence} alternatives', 'selected_frame':'Exact chosen frame', 'selection_reason':'Why it serves this brief', 'scope_boundary':'What is not established or authorized', 'source_anchor':'{input: notes/facts key, quote: exact source span, relation: source vs new reasoning}', 'implication':'{draft_quote, reasoning}', 'strongest_objection':'{draft_quote, reasoning}', 'example_warrant':'{draft_quote, reasoning: what example establishes and cannot establish}', 'gained_ground':'{draft_quote, reasoning: what reader can now conclude}'}
     if step=='orient':fields.update(conflicts_resolved='boolean',input_applications='List of {input: packet input key, quote: exact input span, use: application}')
     if step=='big-idea':fields['big_idea']='1-15 words, verbatim in artifact'
     if step in ('facts','compliance','legal','data-accuracy','judge'):
@@ -514,9 +539,19 @@ def packet(d, destination):
     write(out, result)
     return result
 
+def readiness():
+    cfg = policy()
+    missing = [role for role in ('writer', 'reviewer') if not cfg.get('executors', {}).get(role)]
+    return {'state': 'blocked-production' if missing or not cfg['new_voice_writing_enabled'] else 'host-conformance-required',
+            'missing_executor_roles': missing, 'author_writing_hold': not cfg['new_voice_writing_enabled'],
+            'host_verified': False, 'quality': 'uncalibrated',
+            'manual_path': 'Supervised stages may be documented honestly outside dispatched execution; never claim software process completion.',
+            'next': 'Resolve actual host conformance and source-grounded scope, not an activation flag flip.'}
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     sub = p.add_subparsers(dest='cmd', required=True)
+    sub.add_parser('readiness')
     for cmd in ('init', 'record', 'status', 'prepare', 'execute', 'revise', 'packet', 'evaluate', 'seal-author', 'score-author'):
         c = sub.add_parser(cmd); c.add_argument('directory')
         if cmd == 'init': c.add_argument('--brief', required=True)
@@ -528,7 +563,8 @@ def main():
         if cmd == 'packet': c.add_argument('--output', required=True)
     a = p.parse_args()
     try:
-        if a.cmd == 'init': result = init(a.directory, a.brief)
+        if a.cmd == 'readiness': result = readiness()
+        elif a.cmd == 'init': result = init(a.directory, a.brief)
         elif a.cmd == 'record': result = record(a.directory, a.receipt)
         elif a.cmd == 'prepare': result = prepare(a.directory)
         elif a.cmd == 'execute': result = execute(a.directory)
@@ -541,7 +577,7 @@ def main():
         print(json.dumps(result, indent=2))
         if a.cmd in ('init','record','execute','revise'):
             return 0  # Successful transition; JSON states remaining work explicitly.
-        return 1 if result['state'] in ('blocked', 'calibration-insufficient', 'evidence-complete-attested', 'blocked-author-evaluation') else 0
+        return 1 if result['state'] in ('blocked', 'blocked-production', 'host-conformance-required', 'calibration-insufficient', 'evidence-complete-attested', 'blocked-author-evaluation') else 0
     except (Block, KeyError, TypeError, ValueError, OSError, subprocess.SubprocessError) as e:
         print(json.dumps({'state': 'blocked', 'reason': str(e)})); return 1
 if __name__ == '__main__':
