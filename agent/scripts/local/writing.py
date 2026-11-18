@@ -324,7 +324,7 @@ def receipt_contract(step):
     # This is the worker-facing output shape; validate_receipt owns strict semantics.
     fields={
         'step':'Exact current step', 'before':'Packet before path+sha256 object',
-        'after':'Reviewers: identical to before; writers: actual next artifact reference',
+        'after':'Reviewers: identical to before; writers: actual next artifact reference. Dispatched writers create new files in cwd scratch; the runner preserves them before cleanup.',
         'rationale':'Substantive judgment scoped to this step', 'decision':'pass or fail',
         'applications':'List of {source: method ID, method_quote: exact source span, draft_quote: exact current span, application: reasoning}'
     }
@@ -437,11 +437,20 @@ def execute(d):
         result=subprocess.run(isolated,input=text(context['path']),capture_output=True,text=True,
                               cwd=scratch,env={'PATH':os.environ.get('PATH',''),'LANG':'C.UTF-8'},
                               timeout=adapter.get('timeout_seconds',120),check=False)
-    stdout=d/(invocation+'-stdout.json');stdout.write_text(result.stdout)
-    stderr=d/(invocation+'-stderr.txt');stderr.write_text(result.stderr)
-    need(result.returncode==0, 'worker failed; see private invocation logs, no fallback or advancement')
-    incoming=json.loads(result.stdout)
-    need(isinstance(incoming,dict), 'worker returned no receipt object')
+        stdout=d/(invocation+'-stdout.json');stdout.write_text(result.stdout)
+        stderr=d/(invocation+'-stderr.txt');stderr.write_text(result.stderr)
+        need(result.returncode==0, 'worker failed; see private invocation logs, no fallback or advancement')
+        incoming=json.loads(result.stdout)
+        need(isinstance(incoming,dict), 'worker returned no receipt object')
+        if incoming.get('after') != artifact(s):
+            need(role=='writer', 'reviewer diagnoses; cannot create a replacement artifact')
+            output=checked(incoming['after']).resolve()
+            need(output.is_relative_to(Path(scratch).resolve()), 'new worker artifact must live in its writable scratch')
+            saved=d/(invocation+'-artifact.md')
+            need(not saved.exists(), 'worker artifact already preserved; no overwrite')
+            shutil.copyfile(output,saved)
+            need(digest(saved)==incoming['after']['sha256'], 'worker artifact changed while preserving it')
+            incoming['after']=file_ref(saved)
     incoming.pop('execution',None)
     incoming['actor']=adapter['worker_id'];incoming['turn']=invocation
     incoming['source_ref']='runner dispatch '+invocation

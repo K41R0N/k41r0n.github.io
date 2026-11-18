@@ -306,6 +306,45 @@ class DispatchCLITests(unittest.TestCase):
         secret.write_text('PRIVATE previous judge rationale and sealed predictions')
         proc,result=self.call(root,'execute',run)
         self.assertEqual(proc.returncode,0,proc.stdout);self.assertEqual(result['next'],'decontaminate')
+    def test_writer_scratch_artifact_survives_dispatch(self):
+        root=self.fixture_host();_,brief=self.build();bp=self.base/'output-brief.json';w.write(bp,brief)
+        pol=root/'harness/specs/writing-loop.json';cfg=w.read(pol)
+        cfg['executors']['writer']['command'].append('--write-artifact');w.write(pol,cfg)
+        run=self.base/'output-run';self.call(root,'init',run,'--brief',bp)
+        proc,result=self.call(root,'execute',run)
+        self.assertEqual(proc.returncode,0,proc.stdout)
+        state=w.read(run/'run.json');receipt=w.read(state['receipts'][-1]['path'])
+        saved=w.checked(receipt['after'])
+        self.assertTrue(saved.is_relative_to(run))
+        self.assertEqual(saved.read_text(),TEXT+'\n')
+        self.assertFalse(Path(w.read(receipt['execution']['stdout']['path'])['after']['path']).exists())
+        proc,status=self.call(root,'status',run)
+        self.assertEqual(proc.returncode,1,proc.stdout)
+        self.assertEqual(status['next'],'decontaminate')
+
+    def test_worker_output_rejects_stale_hash_and_external_path(self):
+        for flag,reason in [('--bad-output-hash','stale artifact'),('--external-artifact','writable scratch')]:
+            with self.subTest(flag=flag):
+                root=self.fixture_host();_,brief=self.build();bp=self.base/'bad-output.json';w.write(bp,brief)
+                pol=root/'harness/specs/writing-loop.json';cfg=w.read(pol)
+                cfg['executors']['writer']['command'].append(flag);w.write(pol,cfg)
+                run=self.base/('run'+flag);self.call(root,'init',run,'--brief',bp)
+                proc,result=self.call(root,'execute',run)
+                self.assertNotEqual(proc.returncode,0);self.assertIn(reason,result['reason'])
+                self.assertEqual(w.read(run/'run.json')['receipts'],[])
+                # Each case gets an independent copied fixture, not a retuned run.
+                import shutil
+                shutil.rmtree(root.parent)
+    def test_reviewer_cannot_promote_scratch_rewrite(self):
+        root=self.fixture_host();_,brief=self.build();bp=self.base/'review-rewrite.json';w.write(bp,brief)
+        pol=root/'harness/specs/writing-loop.json';cfg=w.read(pol)
+        cfg['executors']['reviewer']['command'].append('--write-artifact');w.write(pol,cfg)
+        run=self.base/'review-rewrite-run';self.call(root,'init',run,'--brief',bp)
+        self.call(root,'execute',run)
+        proc,result=self.call(root,'execute',run)
+        self.assertNotEqual(proc.returncode,0);self.assertIn('reviewer diagnoses',result['reason'])
+        self.assertEqual(len(w.read(run/'run.json')['receipts']),1)
+
     def test_missing_confinement_blocks_dispatch(self):
         root=self.fixture_host();_,brief=self.build();bp=self.base/'unconfined.json';w.write(bp,brief)
         run=self.base/'unconfined-run'
@@ -340,6 +379,25 @@ class DispatchCLITests(unittest.TestCase):
         proc,scored=self.call(root,'score-author',run,'--final',final,'--classes',classes,'--provenance',proof)
         self.assertEqual(proc.returncode,0);self.assertEqual(scored['state'],'author-feedback-recorded');self.assertFalse(scored['quality_pass'])
         proc,repeated=self.call(root,'seal-author',run);self.assertNotEqual(proc.returncode,0)
+    def test_twelve_stages_consume_preserved_writer_outputs(self):
+        root=self.fixture_host();_,brief=self.build();brief['mode']='new'
+        bp=self.base/'all-writes.json';w.write(bp,brief)
+        pol=root/'harness/specs/writing-loop.json';cfg=w.read(pol)
+        cfg['executors']['writer']['command'].append('--write-artifact');w.write(pol,cfg)
+        run=self.base/'all-writes-run';self.call(root,'init',run,'--brief',bp)
+        previous=w.read(run/'run.json')['initial']
+        for i in range(12):
+            proc,status=self.call(root,'execute',run)
+            self.assertEqual(proc.returncode,0,proc.stdout)
+            receipt=w.read(w.read(run/'run.json')['receipts'][-1]['path'])
+            self.assertEqual(receipt['before'],previous)
+            if i<6:self.assertNotEqual(receipt['after'],previous)
+            else:self.assertEqual(receipt['after'],previous)
+            previous=receipt['after']
+            self.assertTrue(w.checked(previous).is_file())
+        self.assertEqual(status['state'],'process-complete')
+        self.assertEqual(len(list(run.glob('*-artifact.md'))),6)
+
     def test_existing_verification_runs_in_isolated_copy(self):
         root=self.fixture_host()
         p=subprocess.run([sys.executable,str(root/'scripts/local/voice/verify.py')],cwd=root,capture_output=True,text=True)

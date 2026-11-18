@@ -9,7 +9,7 @@ import json
 from pathlib import Path
 import sys
 
-if len(sys.argv)>1:
+if len(sys.argv)>1 and not sys.argv[1].startswith('--'):
     # Active regression probe: known absolute run-history path must be masked.
     try:
         Path(sys.argv[1]).read_text()
@@ -38,7 +38,7 @@ if s in ['creative','big-idea-review','ogilvy']:
     r['lenses']={name:'Synthetic lens field tests schema completion without quality claims.' for name in c['output_contract']['lenses']}
     r['ogilvy']={name:'Synthetic question field tests all five questions without quality claims.' for name in c['output_contract']['ogilvy']}
 if s in ['structure','page','positioning','clarity']:
-    r['paragraph_moves']=[{'paragraph_sha256':hashlib.sha256(p.encode()).hexdigest(),'move':'Synthetic procedural paragraph advances the maintenance record.'} for p in draft.split('\n\n')]
+    r['paragraph_moves']=[{'paragraph_sha256':hashlib.sha256(p.strip().encode()).hexdigest(),'move':'Synthetic procedural paragraph advances the maintenance record.'} for p in draft.split('\n\n') if p.strip()]
     r['page_rule_scope']='Landing-page ratios do not govern this synthetic instruction.'
 if s in ['voice','tone','judge']:
     r['voice_evidence']=[{'input':key,'source_quote':source[:60],'draft_quote':q,'comparison':'Synthetic comparison proves schema use, not resemblance or taste.'} for key,source in c['inputs'].items() if any(key.startswith('input:'+role+':') for role in ('voice','register','corrections'))]
@@ -47,9 +47,16 @@ if s=='judge':
     module_path=Path(snapshot['helper:voice/checks.py']['path'])
     sys.path.insert(0,str(module_path.parent))
     import checks
-    _,rows=checks.run(ref['path'])
+    current=Path.cwd()/'synthetic-current.md';current.write_text(draft)
+    _,rows=checks.run(current)
     sid='method:review-method';src=Path(snapshot[sid]['path']).read_text();clause=next(x for x in src.splitlines() if len(x)>40)[:80]
     r['critical_method_coverage']={k:{'draft_quote':q,'assessment':'Synthetic crucial-method review coverage only.','source':sid,'source_quote':clause} for k in ['llm-patterns','ogilvy','sutherland-reframe']}
     r.update(top_fixes=[],fidelity_failures=0,open_findings=[],worst_lines_assessment='Synthetic canned assessment for software testing only.',overall=5,predicted_edits='Synthetic predictions, not guesses at Alejandro edits.')
     r['warning_adjudications']={x['id']:{'count':x['count'],'reviewer':'synthetic-human-reviewer','reason':'Synthetic disposition tests the process schema only.'} for x in rows if x['count'] and x['severity']=='WARN'}
+if '--write-artifact' in sys.argv or '--bad-output-hash' in sys.argv:
+    output=Path.cwd()/'synthetic-output.md'
+    output.write_text(draft+'\n')
+    r['after']={'path':str(output),'sha256':hashlib.sha256(output.read_bytes()).hexdigest()}
+if '--bad-output-hash' in sys.argv:r['after']['sha256']='0'*64
+if '--external-artifact' in sys.argv:r['after']=snapshot['input:notes:0']
 json.dump(r,sys.stdout)
