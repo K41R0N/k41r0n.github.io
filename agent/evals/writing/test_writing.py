@@ -2,6 +2,8 @@
 Run: python3 -m unittest discover -s agent/evals/writing -v
 """
 import copy
+import os
+import shutil
 import datetime as dt
 import hashlib
 import importlib.util
@@ -117,6 +119,15 @@ class LoopTests(unittest.TestCase):
         d,b=self.build();context=w.prepare(d)['context'];data=w.read(context['path'])
         self.assertIn('full-creative-method',data['methods'])
         self.assertIn('Generate 3-5 radical reframes',data['methods']['full-creative-method'])
+    def test_numerical_substring_cannot_supply_provenance(self):
+        draft='The synthetic reservoir contains 17 units of stored water for this test.'
+        d,b=self.build(content=draft)
+        source=self.base/'different-number.md';source.write_text(draft.replace('17','170'))
+        b['inputs']['facts']=[str(source)];bp=self.base/'number-brief.json';w.write(bp,b)
+        run=self.base/'number-run';w.init(run,bp)
+        while w.state(run).get('next')!='compliance':self.add(run,self.receipt(run,b))
+        r=self.receipt(run,b);r['claims']=[{'draft_quote':draft,'source':'input:facts:0','source_quote':source.read_text(),'scope_and_caveat':'Synthetic exact numerical matching regression only.','verified_at':dt.datetime.now(dt.timezone.utc).isoformat()}]
+        with self.assertRaisesRegex(w.Block,'numerical claim'):self.add(run,r)
     def test_full_review_loop_two_registers(self):
         for reg,t in [('synthetic-maintenance',TEXT),('synthetic-reading',OTHER)]:
             d,b=self.build(register=reg,content=t);self.finish(d,b)
@@ -275,6 +286,7 @@ class LoopTests(unittest.TestCase):
     def test_private_run_cannot_live_in_repo(self):
         with self.assertRaisesRegex(w.Block,'outside'):w.private_dir(ROOT/'assets'/'new-run')
 
+@unittest.skipUnless(os.environ.get('WRITING_HOST_CONFORMANCE')=='1' and shutil.which('bwrap'), 'explicit host-conformance suite requires WRITING_HOST_CONFORMANCE=1 and bubblewrap')
 class DispatchCLITests(unittest.TestCase):
     setUp=LoopTests.setUp
     build=LoopTests.build
@@ -398,12 +410,46 @@ class DispatchCLITests(unittest.TestCase):
         self.assertEqual(status['state'],'process-complete')
         self.assertEqual(len(list(run.glob('*-artifact.md'))),6)
 
+    def test_author_import_retry_and_revision_binding(self):
+        root=self.fixture_host();_,brief=self.build();bp=self.base/'author-brief.json';w.write(bp,brief)
+        run=self.base/'author-run';self.call(root,'init',run,'--brief',bp)
+        for _ in range(7):
+            proc,result=self.call(root,'execute',run);self.assertEqual(proc.returncode,0,proc.stdout)
+        self.call(root,'seal-author',run)
+        oldseal=w.read(run/'run.json')['author_seal']
+        final=self.base/'author-final.md';final.write_text(TEXT.replace('small valve','large valve'))
+        classes=self.base/'bad-classes.md';classes.write_text('bad class format')
+        original=self.base/'author-evidence.txt';original.write_text('Synthetic author evidence for classification retry test only.')
+        proof=self.base/'author-proof.json';w.write(proof,{'original_feedback_id':'synthetic-author-original','identity_checked_by':'synthetic-fixture-checker','independent_classifier':'synthetic-independent-classifier','author_edit_at':dt.datetime.now(dt.timezone.utc).isoformat(),'original_evidence':w.file_ref(original),'evidence_quote':'Synthetic author evidence','final_sha256':w.digest(final)})
+        proc,result=self.call(root,'score-author',run,'--final',final,'--classes',classes,'--provenance',proof)
+        self.assertEqual(result['state'],'blocked-author-evaluation')
+        pair=Path(oldseal['draft.md']['path']).parent
+        self.assertFalse((pair/'final.md').exists());self.assertTrue(list(run.glob('author-import-failed-*.json')))
+        classes.write_text('H1 | structure | predicted: no | Synthetic independent classification')
+        proc,result=self.call(root,'score-author',run,'--final',final,'--classes',classes,'--provenance',proof)
+        self.assertEqual(proc.returncode,0,proc.stdout)
+        changed=self.base/'revision.md';changed.write_text(TEXT)
+        proc,result=self.call(root,'revise',run,'--artifact',changed,'--reason','Synthetic revision tests author-pair invalidation.')
+        self.assertEqual(proc.returncode,0,proc.stdout)
+        state=w.read(run/'run.json');self.assertNotIn('author_seal',state)
+        self.assertEqual(state['history'][0]['author_seal'],oldseal)
+        proc,result=self.call(root,'score-author',run,'--final',final,'--classes',classes,'--provenance',proof)
+        self.assertNotEqual(proc.returncode,0);self.assertIn('current round',result['reason'])
+        for _ in range(7):
+            proc,result=self.call(root,'execute',run);self.assertEqual(proc.returncode,0,proc.stdout)
+        proc,result=self.call(root,'seal-author',run)
+        self.assertEqual(proc.returncode,0,proc.stdout)
+        self.assertNotEqual(w.read(run/'run.json')['author_seal'],oldseal)
+        for ref in oldseal.values():w.checked(ref)
+
     def test_existing_verification_runs_in_isolated_copy(self):
         root=self.fixture_host()
+        historical=root/'ingestion/reports/voice/reports/verification.md';before=historical.read_bytes()
         p=subprocess.run([sys.executable,str(root/'scripts/local/voice/verify.py')],cwd=root,capture_output=True,text=True)
         self.assertEqual(p.returncode,0,p.stderr)
         self.assertIn('committed spec equals fresh rebuild = True',p.stdout)
-        self.assertTrue((root/'ingestion/reports/voice/reports/verification.md').is_file())
+        self.assertEqual(historical.read_bytes(),before)
+        self.assertTrue(list((root/'ingestion/reports/voice/reports').glob('verification-*.md')))
     def test_production_dispatch_not_configured_blocks(self):
         d,b=self.build()
         with self.assertRaisesRegex(w.Block,'no approved production'):w.execute(d)
@@ -437,6 +483,10 @@ class EvaluationTests(unittest.TestCase):
     def test_order_bias_counted(self):
         d=self.dataset();pred=d['predictions']['test'][0];pred['orders'][1]['choice']=pred['orders'][1]['order'][0]
         self.assertEqual(self.run_eval(d)['metrics']['test']['order_inconsistency'],1)
+    def test_repeated_candidate_orders_rejected(self):
+        d=self.dataset();orders=d['predictions']['test'][0]['orders']
+        a,b=orders[0]['order'];orders[0]['order']=[a,b,a];orders[1]['order']=[a,b,a]
+        with self.assertRaisesRegex(w.Block,'both blinded orders'):self.run_eval(d)
     def test_invalid_judgment_no_fallback(self):
         d=self.dataset();d['predictions']['test'][0]['orders'][0]['choice']='garbage'
         with self.assertRaisesRegex(w.Block,'invalid judgment'):self.run_eval(d)

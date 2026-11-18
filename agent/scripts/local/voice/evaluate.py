@@ -64,7 +64,7 @@ def evaluate(dataset_path):
             refs += [file_ref(checked(label['evidence']))] + case['artifacts']
             need(pred.get('guide_sha256')==d['guide']['sha256'] and pred.get('rubric_sha256')==d['rubric']['sha256'], 'prediction uses stale guide/rubric')
             orders=pred.get('orders',[])
-            need(len(orders)==2 and orders[0]['order']==list(reversed(orders[1]['order'])) and set(orders[0]['order'])==choices-{'tie'}, 'both blinded orders required')
+            need(len(orders)==2 and all(isinstance(o.get('order'),list) and len(o['order'])==2 for o in orders) and orders[0]['order']==list(reversed(orders[1]['order'])) and set(orders[0]['order'])==choices-{'tie'}, 'both blinded orders required')
             for o in orders:
                 need(o.get('choice') in choices|{'abstain'}, 'invalid judgment; never use random fallback')
                 need(nonempty(o.get('rationale')), 'judgment needs rationale')

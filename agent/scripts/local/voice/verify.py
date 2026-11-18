@@ -1,4 +1,4 @@
-"""Verification suite for voice-harness phase 1. Run from agent/: python3 scripts/local/voice/verify.py [controls_dir]. Writes reports/verification.md"""
+"""Verification suite for voice-harness phase 1. Run from agent/: python3 scripts/local/voice/verify.py [controls_dir]. Writes a new timestamped report; historical verification.md is preserved"""
 import sys,os,re,glob,json,hashlib,subprocess,statistics as st,collections,math,html,tempfile,shutil
 sys.path.insert(0,'scripts/local/voice'); from vlib import *; import checks
 R=[]; P=lambda s='':(R.append(s),print(s))
@@ -115,4 +115,7 @@ P(f"{rl['features']} structural features, ranges from the other pieces widened 5
 P('Strict min-max over all 57 features (with function words) put every one of his own pieces 10 to 20 features out of range, so that version was rejected. Range checks are WARN only and never block.')
 for f in hold:
     o=sp.run([sys.executable,'scripts/local/voice/range_check.py',f],capture_output=True,text=True).stdout.splitlines()[0]; P(f'- holdout {os.path.basename(f)}: {o}')
-open('ingestion/reports/voice/reports/verification.md','w').write('\n'.join(R)+'\n')
+from datetime import datetime, timezone
+report='ingestion/reports/voice/reports/verification-'+datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')+'.md'
+open(report,'x').write('\n'.join(R)+'\n')
+P('Fresh report: '+report)

@@ -141,6 +141,7 @@ def load(d):
     checked(s['initial'])
     for old_round in s['history']:
         checked(old_round['initial'])
+        for ref in (old_round.get('author_seal') or {}).values(): checked(ref)
         for ref in old_round['receipts']:
             rr = read(checked(ref)); checked(rr['before']); checked(rr['after'])
     for ref in s['receipts']:
@@ -232,7 +233,7 @@ def validate_receipt(r, step, s, b):
         need(r.get('claims') or nonempty(r.get('no_factual_claims_reason')), 'claims cannot disappear silently')
         number_rx=r'\b\d[\d,.%/:-]*\b'
         for match in re.finditer(number_rx, text(r['after']['path'])):
-            need(any(match.group() in c['draft_quote'] and match.group() in c['source_quote'] for c in r.get('claims', [])), 'unmapped or changed numerical claim')
+            need(any(match.group() in re.findall(number_rx,c['draft_quote']) and match.group() in re.findall(number_rx,c['source_quote']) for c in r.get('claims', [])), 'unmapped or changed numerical claim')
         for quoted in re.findall(r'[\"“]([^\"”\n]{16,})[\"”]', text(r['after']['path'])):
             need(any(quoted in c['draft_quote'] and quoted in c['source_quote'] for c in r.get('claims', [])), 'quotation lacks verbatim factual provenance')
     if step in ('creative','big-idea-review','ogilvy'):
@@ -388,7 +389,7 @@ def revise(d, new_artifact, reason):
     # Validate artifacts even if a judgment failed; preserve failed rounds as evidence.
     for ref in s['receipts']:
         r = read(ref['path']); checked(r['before']); checked(r['after'])
-    s['history'].append({'round': s['round'], 'receipts': s['receipts'], 'reason': reason, 'initial': s['initial']})
+    s['history'].append({'round': s['round'], 'receipts': s['receipts'], 'reason': reason, 'initial': s['initial'], 'author_seal': s.pop('author_seal',None), 'author_binding': s.pop('author_binding',None)})
     s.pop('evaluation', None)
     s['round'] += 1; s['receipts'] = []; s['initial'] = file_ref(new_artifact)
     write(d / 'run.json', s)
@@ -464,43 +465,57 @@ def execute(d):
 def seal_author(d):
     need(state(d)['state']=='process-complete', 'dispatch and all passes must finish before sealing author feedback')
     d,s,b=load(d)
-    need(not any((d/name).exists() for name in ('draft.md','predictions.md','SEAL.txt','final.md')), 'author pair already exists; no overwrite or resealing')
+    pair=d/('author-round-%02d' % s['round'])
+    need(not pair.exists(), 'author pair already exists; no overwrite or resealing')
+    pair.mkdir()
     judge=read(s['receipts'][-1]['path'])
-    shutil.copyfile(checked(artifact(s)),d/'draft.md')
-    (d/'predictions.md').write_text(judge['predicted_edits'])
+    shutil.copyfile(checked(artifact(s)),pair/'draft.md')
+    (pair/'predictions.md').write_text(judge['predicted_edits'])
     sys.path.insert(0,str(ROOT/'scripts/local/voice'))
     import ledger
-    result=ledger.seal(d)
+    result=ledger.seal(pair)
     need(result.startswith('SEALED'),result)
-    s['author_seal']={name:file_ref(d/name) for name in ('draft.md','predictions.md','SEAL.txt')}
+    s['author_seal']={name:file_ref(pair/name) for name in ('draft.md','predictions.md','SEAL.txt')}
+    s['author_binding']={'round':s['round'],'artifact':artifact(s)}
     write(d/'run.json',s)
     return {'state':'sealed-before-author-edit','evidence':s['author_seal'],'next':'author edits; preserve original-channel provenance and independent hunk classification'}
 
 def score_author(d, final, classes, provenance):
+    need(state(d)['state']=='process-complete', 'complete current round before author feedback')
     d,s,b=load(d)
+    need(s.get('author_binding')=={'round':s['round'],'artifact':artifact(s)}, 'author seal not bound to current round/artifact')
     need(s.get('author_seal'), 'seal predictions and draft before importing an author final')
     for ref in s['author_seal'].values(): checked(ref)
-    need(not (d/'final.md').exists(), 'author final already imported; no overwrite')
+    pair=Path(s['author_seal']['draft.md']['path']).parent
+    need(not (pair/'final.md').exists(), 'author final already imported; no overwrite')
     file_ref(final);file_ref(classes);file_ref(provenance)
     proof=read(provenance)
     for key in ('original_feedback_id','identity_checked_by','independent_classifier'):
         need(nonempty(proof.get(key)), 'author feedback lacks '+key)
     quote(proof['original_evidence'],proof.get('evidence_quote'))
-    sealed=re.search(r'sealed:\s*(\S+)',text(d/'SEAL.txt')).group(1)
+    sealed=re.search(r'sealed:\s*(\S+)',text(pair/'SEAL.txt')).group(1)
     authored=dt.datetime.fromisoformat(proof['author_edit_at'])
     need(authored.tzinfo is not None and dt.datetime.fromisoformat(sealed)<=authored<=dt.datetime.now(dt.timezone.utc), 'author edit predates seal or is in future')
     need(proof.get('final_sha256')==digest(final), 'author evidence does not bind the imported final')
     writers={read(ref['path'])['actor'] for ref in s['receipts'] if read(ref['path'])['step'] not in REVIEW}
     need(proof['independent_classifier'] not in writers, 'writer cannot independently classify its own edits')
-    shutil.copyfile(final,d/'final.md');shutil.copyfile(classes,d/'classes.md')
     sys.path.insert(0,str(ROOT/'scripts/local/voice'))
     import ledger
-    metrics,failures=ledger.score(d)
+    with tempfile.TemporaryDirectory(prefix='author-import-check-') as scratch:
+        candidate=Path(scratch)
+        for name in ('draft.md','predictions.md','SEAL.txt'): shutil.copyfile(pair/name,candidate/name)
+        shutil.copyfile(final,candidate/'final.md');shutil.copyfile(classes,candidate/'classes.md')
+        metrics,failures=ledger.score(candidate)
+    if failures:
+        attempt=d/('author-import-failed-'+str(uuid.uuid4())+'.json')
+        write(attempt,{'state':'blocked-author-evaluation','failures':failures,'final':file_ref(final),'classes':file_ref(classes)})
+        return {'state':'blocked-author-evaluation','failures':failures,'attempt':file_ref(attempt),'quality_pass':False}
+    shutil.copyfile(final,pair/'final.md');shutil.copyfile(classes,pair/'classes.md')
     report={'state':'blocked-author-evaluation' if failures else 'author-feedback-recorded',
             'edit_metrics':metrics,'failures':failures,'provenance_status':'imported and independently attested, not authenticated by a local file',
-            'evidence':{'final':file_ref(d/'final.md'),'classes':file_ref(d/'classes.md'),'provenance':file_ref(provenance),'original':proof['original_evidence']},
+            'evidence':{'final':file_ref(pair/'final.md'),'classes':file_ref(pair/'classes.md'),'provenance':file_ref(provenance),'original':proof['original_evidence']},
             'quality_pass':False,'next':'compound scoped candidate rules; no publication or graduation from these numbers'}
-    write(d/'author-evaluation.json',report)
+    write(pair/'author-evaluation.json',report)
     return report
 
 def evaluation(d, dataset):
