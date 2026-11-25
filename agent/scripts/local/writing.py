@@ -23,7 +23,7 @@ CATALOG = ROOT / 'knowledge/voice/writing-source-catalog.json'
 STEPS = ['orient', 'big-idea', 'facts', 'voice', 'structure', 'risk',
          'decontaminate', 'creative', 'tone', 'compliance', 'page', 'judge']
 FINAL_STEPS = ['subtract', 'verify-final', 'judge']
-REVIEW = {'verify-final'} | set(STEPS[6:]) | {'big-idea-review','ogilvy','positioning','clarity','legal','data-accuracy'}
+REVIEW = {'verify-final'} | set(STEPS[6:]) | {'big-idea-review','ogilvy','positioning','clarity','legal','data-accuracy','structure-review'}
 LENSES = ['reframe', 'behavioral-economics', 'cultural-tension', 'metaphor', 'contrarian']
 OGILVY = ['gasp', 'wish-i-thought-of-it', 'unique', 'strategy-fit', 'thirty-years']
 BUCKETS = ['voice-rule', 'structure', 'fidelity', 'banned-phrase']
@@ -146,6 +146,7 @@ def init(d, brief_path):
     if b['mode'] == 'new':
         need(policy()['new_voice_writing_enabled'], 'voice writing remains paused; new drafts are not authorized')
     need(b.get('format') in ('essay', 'short-post', 'landing-page', 'email'), 'unknown format; resolve before proceeding')
+    need(b.get('format') != 'essay' or any(item['topic'] == 'structure-review' for item in plan), 'essay runs select structure-review: construction gets one named fresh-eyes review pass, never a silent fold into another topic')
     if b['scope']=='client':
         need(b.get('author_guideline_overlay') is True and nonempty(b.get('author_overlay_reason')), 'author-target client run requires author-guideline overlay; no self-exemption by prose rationale')
     refs = snapshot(b)
@@ -295,7 +296,7 @@ def validate_receipt(r, step, s, b):
         for key, names in fields:
             need(set(r.get(key, {})) == set(names), f'{key}: all five required')
             need(all(nonempty(v) for v in r[key].values()), f'{key}: explain each judgment')
-    if step in ('structure', 'page','positioning','clarity','subtract','verify-final','judge'):
+    if step in ('structure', 'structure-review', 'page','positioning','clarity','subtract','verify-final','judge'):
         paras = [p.strip() for p in re.split(r'\n\s*\n', text(r['after']['path'])) if p.strip()]
         moves = r.get('paragraph_moves', [])
         need(len(moves) == len(paras), 'name each paragraph move; do not replace structural review with a word sweep')
@@ -416,7 +417,7 @@ def receipt_contract(step):
         fields.update(claim_inventory_complete='boolean',claims='List of {draft_quote, source: input:facts:N, source_quote, scope_and_caveat, verified_at: timezone-aware current verification time}. Do not fake retrieval. Offline-only evidence may require fail.',no_factual_claims_reason='Substantive reason only if claims truly absent')
     if step=='creative':fields['lenses']='Object with exactly all five named lens keys and substantive values'
     if step in ('creative','big-idea-review','ogilvy'):fields['ogilvy']='Object with exactly all five Ogilvy question keys and substantive values'
-    if step in ('structure','page','positioning','clarity','subtract','verify-final','judge'):
+    if step in ('structure','structure-review','page','positioning','clarity','subtract','verify-final','judge'):
         fields.update(paragraph_moves='List in paragraph order of {paragraph_sha256, move: structural purpose}',page_rule_scope='Explain applicability of landing-page-only rules')
     if step in ('voice','tone','judge'):
         fields.update(voice_evidence='List for every voice/register/corrections input of {input, source_quote, draft_quote, comparison}',dimensions='Object for all named voice dimensions: {score: integer 1-5, quote: exact draft span, reason}')

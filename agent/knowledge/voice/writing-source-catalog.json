@@ -251,6 +251,12 @@
       "construction-original",
       "transition-original"
     ],
+    "structure-review": [
+      "review-method",
+      "construction-original",
+      "structural-audit-original",
+      "transition-original"
+    ],
     "risk": [
       "draft-method",
       "draft-pass-5"
