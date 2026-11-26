@@ -21,6 +21,7 @@ Usage: wiki_candidate_evidence.py [--self-test]
 Stdlib only. Deterministic given the same candidates file and corpus.
 """
 import glob
+import hashlib
 import json
 import os
 import re
@@ -33,9 +34,23 @@ EVIDENCE = os.path.join(ROOT, 'knowledge', 'voice', 'refs', 'wiki-ai-signs-evide
 CORPUS = os.path.join(ROOT, 'assets', 'voice-corpus', 'raw')
 
 
+def corpus_files(corpus_dir):
+    """Only top-level *.md in the raw corpus directory: the owner-authored essays
+    the voice canon builds its spec from. excluded/ (authorship unverified) and
+    holdout/ are separate directories and are never read here."""
+    return sorted(glob.glob(os.path.join(corpus_dir, '*.md')))
+
+
+def sha_of(paths):
+    h = hashlib.sha256()
+    for p in paths:
+        h.update(os.path.basename(p).encode() + b'\0' + open(p, 'rb').read() + b'\0')
+    return h.hexdigest()
+
+
 def corpus_text(corpus_dir):
     parts = []
-    for p in sorted(glob.glob(os.path.join(corpus_dir, '*.md'))):
+    for p in corpus_files(corpus_dir):
         parts.append(open(p, encoding='utf-8').read().lower())
     return ' '.join(parts)
 
@@ -118,6 +133,10 @@ def build(candidates_path, corpus_dir):
         'source_revision': revts if oldid else '',
         'generated_at': dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
         'corpus_dir': os.path.relpath(corpus_dir, ROOT),
+        'corpus_files': [os.path.basename(x) for x in corpus_files(corpus_dir)],
+        'corpus_sha256': sha_of(corpus_files(corpus_dir)),
+        'candidates_sha256': sha_of([candidates_path]),
+        'corpus_scope': 'verified owner-authored raw essays only; excluded/ (authorship unverified) and holdout/ are never read. Zero use in a small corpus is weak evidence and never proof of AI writing; it supports personal calibration only and does not override channel or client constraints.',
         'corpus_words': corpus_words,
         'rule': 'a word is banned only if he never uses it in corpus/raw; zero_use = ban-eligible candidate, unconfirmed',
         'entries': entries,
