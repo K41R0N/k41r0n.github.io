@@ -18,6 +18,12 @@ def main(argv):
     if only is None or only == 'writing':
         result = subprocess.run([sys.executable, '-m', 'unittest', 'discover', '-s', os.path.join(ROOT,'evals','writing'), '-v'])
         bad += result.returncode != 0
+        runlog = subprocess.run([sys.executable, os.path.join(ROOT,'scripts','local','runlog_summary.py'), '--check'],
+                                capture_output=True, text=True)
+        for line in runlog.stdout.splitlines(): print(line)
+        if runlog.returncode != 0:
+            bad += 1
+            print('FAIL writing-runs - rolling summary drifted from the run rows')
         if only == 'writing':
             return 1 if bad else 0
     for pack in sorted(glob.glob(os.path.join(ROOT, "packs", "*"))):
