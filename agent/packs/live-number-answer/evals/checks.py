@@ -36,7 +36,11 @@ def check(text):
         metric, _num, src, _date, status = m.groups()
         if status not in STATUSES:
             out.append(("FAIL", "LN3-status-invalid", v[:60]))
-        if src in sources and sources[src] == "no":
+        if src not in sources:
+            # A value whose cited source has no Sources entry at all carries no
+            # reachability record, so it cannot be ok and final.
+            out.append(("FAIL", "LN9-source-not-listed", f"{metric} cites {src}, no Sources entry"))
+        elif sources[src] == "no":
             out.append(("FAIL", "LN4-unreachable-source-used", f"{metric} cites {src}, declared unreachable"))
         if status == "stale" and "| final: yes" in v:
             out.append(("FAIL", "LN5-stale-pasted-as-final", v[:60]))
@@ -64,6 +68,7 @@ CHECK_IDS = [
     "LN5-stale-pasted-as-final",
     "LN6-estimate-wording",
     "LN7-refusal-without-reason",
-    "LN8-verify-missing"
+    "LN8-verify-missing",
+    "LN9-source-not-listed"
 ]
 CONDITIONAL = {}
