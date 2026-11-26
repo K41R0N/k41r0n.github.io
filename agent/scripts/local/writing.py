@@ -360,11 +360,17 @@ def validate_receipt(r, step, s, b):
         import checks, holdout_guard
         need(not re.search(r'\[(?:UNVERIFIED|VERIFY|TBD|ALEJANDRO:)[^\]]*\]|\{\{.+?\}\}', text(r['after']['path']), re.I), 'unresolved source or author placeholder')
         _, rows = checks.run(r['after']['path'], 'personal' if b['scope']=='personal' else 'client-candidate')
+        # W08 (Wikipedia watch-list x his corpus) is advisory: never a gate, never needs
+        # adjudication or a client severity. It is printed, including when it could not run.
+        for adv in [x for x in rows if x['id']=='W08']:
+            if adv['count'] or adv.get('status','ok')!='ok':
+                print(f"ADVISORY W08 ({adv.get('status','ok')}): x{adv['count']} watch-list candidates he never uses in corpus/raw; {adv.get('detail','')}. Candidates only; not proof of AI writing; does not override channel or client constraints.", file=sys.stderr)
+        rows=[x for x in rows if x['id']!='W08']
         if b['scope']=='client':
             active=read(checked(s['snapshot']['input:client_policy:0']))
             need(active.get('schema')=='writing-client-policy/v1' and nonempty(active.get('source_ref')), 'client policy needs current source provenance')
             severities=active.get('rule_severities',{})
-            need(set(severities)=={x['id'] for x in rows} and all(v in ('INFO','WARN','FAIL') for v in severities.values()), 'client must explicitly select scoped rule severities; no personal or candidate defaults')
+            need(set(severities)-{'W08'}=={x['id'] for x in rows} and all(v in ('INFO','WARN','FAIL') for v in severities.values()), 'client must explicitly select scoped rule severities; no personal or candidate defaults')
             for row in rows: row['severity']=severities[row['id']]
         need(not [x for x in rows if x['severity']=='FAIL' and x['count']], 'encoded scoped lint failure')
         warns = {x['id']:x['count'] for x in rows if x['severity']=='WARN' and x['count']}

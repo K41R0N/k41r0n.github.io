@@ -1,0 +1,218 @@
+# Wikipedia "Signs of AI writing" - candidate extraction
+# Source: https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing (oldid 1387897756, revision 2026-11-25T22:43:03Z)
+# Fetched: 2026-11-26T16:25:10Z by scripts/local/voice/wiki_signs_update.py v2
+# Status: CANDIDATES ONLY. A candidate tell is not a personal ban
+# (refs/anti-pattern-method.md). Bans require zero use in corpus/raw via
+# ban_list.py plus his confirmation. This file is not the privacy denylist.
+# Update: rerun the script weekly or before publishing prose; it diffs
+# against this file and exit 2 flags removed/changed entries for review.
+
+## Vocabulary candidates (from "Words to watch" boxes)
+- stands/serves as  [Undue emphasis on significance, legacy, and broader trends]
+- is a testament/reminder  [Undue emphasis on significance, legacy, and broader trends]
+- a crucial/pivotal/vital/significant/key role/moment  [Undue emphasis on significance, legacy, and broader trends]
+- underscores/highlights its importance/significance  [Undue emphasis on significance, legacy, and broader trends]
+- reflects broader  [Undue emphasis on significance, legacy, and broader trends]
+- symbolizing its ongoing/enduring/lasting  [Undue emphasis on significance, legacy, and broader trends]
+- contributing to the  [Undue emphasis on significance, legacy, and broader trends]
+- setting the stage for  [Undue emphasis on significance, legacy, and broader trends]
+- marking/shaping the  [Undue emphasis on significance, legacy, and broader trends]
+- represents/marks a shift  [Undue emphasis on significance, legacy, and broader trends]
+- key turning point  [Undue emphasis on significance, legacy, and broader trends]
+- evolving landscape  [Undue emphasis on significance, legacy, and broader trends]
+- focal point  [Undue emphasis on significance, legacy, and broader trends]
+- indelible mark  [Undue emphasis on significance, legacy, and broader trends]
+- deeply rooted  [Undue emphasis on significance, legacy, and broader trends]
+- forms part of the wider  [Undue emphasis on significance, legacy, and broader trends]
+- distinction [matters/is important] because... ...  [Undue emphasis on significance, legacy, and broader trends]
+- has/have shaped conversations/discussions/debate about  [Claims that a topic has influenced discussions about related topics]
+- independent coverage  [Undue emphasis on notability, attribution, and media coverage]
+- local/regional/national/[country name] media outlets  [Undue emphasis on notability, attribution, and media coverage]
+- music/business/tech outlets  [Undue emphasis on notability, attribution, and media coverage]
+- trade publications  [Undue emphasis on notability, attribution, and media coverage]
+- cited/featured/profiled in  [Undue emphasis on notability, attribution, and media coverage]
+- Databases/records/listings/filings/materials identify/list/describe [article subject] as...  [Undue emphasis on identification by primary or tertiary sources]
+- was identified by [source] as [fact]...  [Undue emphasis on identification by primary or tertiary sources]
+- is listed in  [Undue emphasis on identification by primary or tertiary sources]
+- his/her professional profile lists  [Undue emphasis on identification by primary or tertiary sources]
+- maintains an active / a strong digital presence  [Undue emphasis on online presence]
+- social media presence  [Undue emphasis on online presence]
+- highlighting/underscoring/emphasizing ...  [Superficial analyses]
+- ensuring ...  [Superficial analyses]
+- reflecting/symbolizing ...  [Superficial analyses]
+- contributing to ...  [Superficial analyses]
+- cultivating/fostering ...  [Superficial analyses]
+- encompassing ...  [Superficial analyses]
+- enhancing ...  [Superficial analyses]
+- valuable insights  [Superficial analyses]
+- align/resonate with  [Superficial analyses]
+- in connection with/to ...  [Vague expression of connection or association]
+- connected with/to  [Vague expression of connection or association]
+- in association with ...  [Vague expression of connection or association]
+- associated with  [Vague expression of connection or association]
+- Industry reports  [Vague attributions and overgeneralization of opinions]
+- Observers have cited  [Vague attributions and overgeneralization of opinions]
+- Experts argue  [Vague attributions and overgeneralization of opinions]
+- Some critics argue  [Vague attributions and overgeneralization of opinions]
+- several sources/publications (when only few sources are cited)  [Vague attributions and overgeneralization of opinions]
+- such as (before exhaustive word lists)  [Vague attributions and overgeneralization of opinions]
+- ...  [Vague attributions and overgeneralization of opinions]
+- Despite its... faces several challenges...  [Outline-like conclusions about challenges and future prospects]
+- Despite these challenges  [Outline-like conclusions about challenges and future prospects]
+- Challenges and Legacy  [Outline-like conclusions about challenges and future prospects]
+- Future Outlook ...  [Outline-like conclusions about challenges and future prospects]
+- Additionally (especially beginning a sentence)  [High density of "AI vocabulary" words]
+- align with  [High density of "AI vocabulary" words]
+- boasts (meaning "has")  [High density of "AI vocabulary" words]
+- bolstered  [High density of "AI vocabulary" words]
+- crucial  [High density of "AI vocabulary" words]
+- deep dive  [High density of "AI vocabulary" words]
+- delve  [High density of "AI vocabulary" words]
+- emphasizing  [High density of "AI vocabulary" words]
+- enduring  [High density of "AI vocabulary" words]
+- enhance  [High density of "AI vocabulary" words]
+- fostering  [High density of "AI vocabulary" words]
+- garner  [High density of "AI vocabulary" words]
+- highlight (as a verb)  [High density of "AI vocabulary" words]
+- interplay  [High density of "AI vocabulary" words]
+- intricate/intricacies  [High density of "AI vocabulary" words]
+- landscape (as an abstract noun)  [High density of "AI vocabulary" words]
+- meticulous/meticulously  [High density of "AI vocabulary" words]
+- pivotal  [High density of "AI vocabulary" words]
+- robust  [High density of "AI vocabulary" words]
+- showcase  [High density of "AI vocabulary" words]
+- tapestry (as an abstract noun)  [High density of "AI vocabulary" words]
+- testament  [High density of "AI vocabulary" words]
+- underscore (as a verb)  [High density of "AI vocabulary" words]
+- valuable  [High density of "AI vocabulary" words]
+- vibrant  [High density of "AI vocabulary" words]
+- serves as/stands as/marks/functions as/operates as/represents [a]  [Avoidance of basic copulatives ("is"/"are" phrases)]
+- boasts/features/maintains/offers [a]  [Avoidance of basic copulatives ("is"/"are" phrases)]
+- refers to  [Avoidance of basic copulatives ("is"/"are" phrases)]
+- a Wikipedia-style article  [Collaborative communication]
+- I hope this helps  [Collaborative communication]
+- Of course!  [Collaborative communication]
+- Certainly!  [Collaborative communication]
+- You're absolutely right!  [Collaborative communication]
+- Would you like...  [Collaborative communication]
+- is there anything else  [Collaborative communication]
+- let me know  [Collaborative communication]
+- more detailed breakdown  [Collaborative communication]
+- here is a ..., [check/verify/confirm]... ...before [publishing/publication/submitting]  [Collaborative communication]
+- While specific details are limited/scarce...  [Hedging disclaimers about source availability and recommended usage]
+- not widely available/documented/disclosed  [Hedging disclaimers about source availability and recommended usage]
+- ...in the provided/available sources / search results...  [Hedging disclaimers about source availability and recommended usage]
+- [claim] should be [treated/presented] as... rather than...  [Hedging disclaimers about source availability and recommended usage]
+- based on available information  [Hedging disclaimers about source availability and recommended usage]
+- ...does not by itself establish... ...  [Hedging disclaimers about source availability and recommended usage]
+- ensured that... adheres to  [Canned assurance of adherence to Wikipedia policies and guidelines]
+- refined  [Canned assurance of adherence to Wikipedia policies and guidelines]
+- enhanced  [Canned assurance of adherence to Wikipedia policies and guidelines]
+- enriched  [Canned assurance of adherence to Wikipedia policies and guidelines]
+- streamlined  [Canned assurance of adherence to Wikipedia policies and guidelines]
+- improved  [Canned assurance of adherence to Wikipedia policies and guidelines]
+- in compliance/complies with  [Canned assurance of adherence to Wikipedia policies and guidelines]
+- Wikipedia [guidelines/style/standards]  [Canned assurance of adherence to Wikipedia policies and guidelines]
+- revised  [Canned assurance of adherence to Wikipedia policies and guidelines]
+- verifiability  [Canned assurance of adherence to Wikipedia policies and guidelines]
+- neutrality  [Canned assurance of adherence to Wikipedia policies and guidelines]
+- neutral tone  [Canned assurance of adherence to Wikipedia policies and guidelines]
+- encyclopedic tone  [Canned assurance of adherence to Wikipedia policies and guidelines]
+- clarity  [Canned assurance of adherence to Wikipedia policies and guidelines]
+- flow  [Canned assurance of adherence to Wikipedia policies and guidelines]
+- preserved/preserving  [Specific mentions of "preserved" or "retained" information, "avoided" mistakes, and other procedural statements]
+- retained/retaining  [Specific mentions of "preserved" or "retained" information, "avoided" mistakes, and other procedural statements]
+- avoided/avoiding  [Specific mentions of "preserved" or "retained" information, "avoided" mistakes, and other procedural statements]
+- ensured/ensuring  [Specific mentions of "preserved" or "retained" information, "avoided" mistakes, and other procedural statements]
+- aimed/aiming to  [Specific mentions of "preserved" or "retained" information, "avoided" mistakes, and other procedural statements]
+- added sourced [information/content/infobox/section]  [Overemphasis on presence/reliability of citations]
+- added verified [information/content/infobox/section]  [Overemphasis on presence/reliability of citations]
+- added [coverage/citations/references]  [Overemphasis on presence/reliability of citations]
+- improved attribution  [Overemphasis on presence/reliability of citations]
+- with [independent/secondary/third-party/peer-reviewed] sources  [Overemphasis on presence/reliability of citations]
+- boasts a  [Promotional and advertisement-like language (2023–2025)]
+- vibrant  [Promotional and advertisement-like language (2023–2025)]
+- rich  [Promotional and advertisement-like language (2023–2025)]
+- profound  [Promotional and advertisement-like language (2023–2025)]
+- enhancing  [Promotional and advertisement-like language (2023–2025)]
+- showcasing  [Promotional and advertisement-like language (2023–2025)]
+- exemplifies  [Promotional and advertisement-like language (2023–2025)]
+- commitment to  [Promotional and advertisement-like language (2023–2025)]
+- natural beauty  [Promotional and advertisement-like language (2023–2025)]
+- nestled  [Promotional and advertisement-like language (2023–2025)]
+- in the heart of  [Promotional and advertisement-like language (2023–2025)]
+- groundbreaking  [Promotional and advertisement-like language (2023–2025)]
+- renowned  [Promotional and advertisement-like language (2023–2025)]
+- featuring  [Promotional and advertisement-like language (2023–2025)]
+- diverse array  [Promotional and advertisement-like language (2023–2025)]
+- ...  [Promotional and advertisement-like language (2023–2025)]
+- Up to my last training update  [Statements about knowledge cutoffs (2022–2023)]
+- as of my last knowledge update ...  [Statements about knowledge cutoffs (2022–2023)]
+- In summary  [Section summaries]
+- In conclusion  [Section summaries]
+- Overall ...  [Section summaries]
+- as an AI language model  [Prompt refusal]
+- as a large language model  [Prompt refusal]
+- I cannot offer medical advice, but I can...  [Prompt refusal]
+- I'm sorry ...  [Prompt refusal]
+
+## Pattern index (section headings)
+- Caveats / AI detection tools
+- Caveats / Your detection ability
+- Content / Undue emphasis on significance, legacy, and broader trends
+- Content / Claims that a topic has influenced discussions about related topics
+- Content / Undue emphasis on notability, attribution, and media coverage
+- Content / Undue emphasis on identification by primary or tertiary sources
+- Content / Undue emphasis on online presence
+- Content / Superficial analyses
+- Content / Vague expression of connection or association
+- Content / Vague attributions and overgeneralization of opinions
+- Content / Outline-like conclusions about challenges and future prospects
+- Content / "Awards and recognition" section
+- Language and grammar / High density of "AI vocabulary" words
+- Language and grammar / Avoidance of basic copulatives ("is"/"are" phrases)
+- Language and grammar / Negative parallelisms
+- Language and grammar / Not just X, but also Y
+- Language and grammar / Not X, but Y
+- Language and grammar / Y rather than X
+- Language and grammar / Leads treating Wikipedia lists or broad article titles as proper nouns
+- Language and grammar / Rule of three
+- Communication intended for the user / Collaborative communication
+- Communication intended for the user / Hedging disclaimers about source availability and recommended usage
+- Communication intended for the user / 2023–2024
+- Communication intended for the user / 2024–2025
+- Communication intended for the user / Mid-2026–present
+- Communication intended for the user / Phrasal templates and placeholder text
+- Communication intended for the user / Date placeholders
+- Communication intended for the user / URL placeholders
+- Citations / Broken external links
+- Citations / Invalid DOI and ISBNs
+- Citations / DOIs that lead to unrelated articles
+- Citations / Book citations without page numbers or URLs
+- Citations / Incorrect or unconventional use of references
+- Citations / utm_source=
+- Citations / Links to searches
+- Citations / Named references declared in references section but unused in article body
+- Edit summaries / General examples
+- Edit summaries / Canned assurance of adherence to Wikipedia policies and guidelines
+- Edit summaries / Specific mentions of "preserved" or "retained" information, "avoided" mistakes, and other procedural statements
+- Edit summaries / Overemphasis on presence/reliability of citations
+- Edit summaries / Overemphasis on parameter/template names and markup idiosyncracies
+- Edit summaries / Reference to AfC review
+- Miscellaneous / Pronounced shift in writing style
+- Miscellaneous / "Submission statements" in AfC drafts
+- Miscellaneous / Pre-placed maintenance templates
+- Miscellaneous / Canned user pages
+- Miscellaneous / Permissions gaming
+- Miscellaneous / Differences between LLMs
+- Miscellaneous / Biases in content
+- Signs of human writing / Age of text relative to ChatGPT launch
+- Signs of human writing / Ability to explain one's own editorial choices
+- Signs of human writing / Syntax
+- Historical indicators / Promotional and advertisement-like language (2023–2025)
+- Historical indicators / Statements about knowledge cutoffs (2022–2023)
+- Historical indicators / Section summaries
+- Historical indicators / Prompt refusal
+- Historical indicators / Overuse of em dashes (2022–September 2026)
+- Historical indicators / Abrupt cut offs
+- Historical indicators / Lexical diversity/elegant variation
