@@ -1,6 +1,6 @@
 # Redaction change log
 
-Archive SHA-256: `6e3e125a36ee078ff23569a9e1e9bbb7d5560206eb3c4d9aab54679ba0033f64`
+Archive SHA-256: `6e3e125a36ee078ff23569a9e1e9bbb7d5560206eb3c4d9aab54679ba0033f64` (re-verified byte-identical against the Drive original 2026-11-26; all ten source pins below confirmed against the same archive the same day)
 
 The ten preserved source documents are listed below with source and current output hashes. The source hashes come from the provided archive before editing; the redacted hashes identify the current files. Harness files and later workflow-contract changes are new, not source archive edits. The original source/redacted line-count record and changed lines apply to the archive redactions only; follow-on workflow corrections are recorded separately below.
 
@@ -33,7 +33,7 @@ The ten preserved source documents are listed below with source and current outp
 
 ## `skills/process-standardization-bootstrap/SKILL.md`
 
-- Source SHA-256: `1d9c6ee6ddb21a277109b408772793e3f53c12ddd6370a66bb4032303c11ac81` (private archive pin; not re-verifiable from this repo)
+- Source SHA-256: `1d9c6ee6ddb21a277109b408772793e3f53c12ddd6370a66bb4032303c11ac81` (private archive pin; not re-verifiable from this repo; confirmed against the original archive 2026-11-26)
 - Redaction state (commit 56da0b3): byte-identical to the source; the committed file hashed to the same `1d9c6ee6...`
 - Follow-on hardening (commit c95b4ff, 2026-10-31): planned-interviewee roster, gated v2 overlay, review-reconciliation before assembly; narrative in the follow-on section below
 - Current SHA-256: `5d41cefb62fff0ed09e0a4dc93dad887375d94daf9413a8d8fd13b15041a7760` (verified 2026-11-25; 151 lines)

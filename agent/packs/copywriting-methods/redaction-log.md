@@ -206,3 +206,9 @@ The two raw protocol specs remain excluded. Method text from the same harness is
 Note: source-side hashes in this log pin private archive material and are not
 re-verifiable from this repo; the verifier (scripts/local/source_log_check.py)
 checks the Current SHA-256 fields only.
+
+All source-side pins above (archive SHA, the six member path and file hashes,
+and the anti-pattern member path, byte count and hash) were verified against
+the original archive 2026-11-26 via the documented Drive route. The two
+excluded protocol-spec hashes are not members of that archive or its inventory
+(checked 2026-11-26); they pin excluded files held outside the archive.
