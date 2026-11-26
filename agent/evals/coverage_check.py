@@ -42,6 +42,10 @@ def main():
             problems.append('no CHECK_IDS registry')
         expected = set()
         for e in glob.glob(os.path.join(ROOT, 'packs', pack, 'fixtures', '*.expect')):
+            if not os.path.exists(e[:-len('.expect')] + '.md'):
+                # The runner only discovers .md drafts, so an orphaned .expect
+                # never executes but would still credit its IDs as covered.
+                problems.append(f'orphaned expectation {os.path.basename(e)}: no matching .md draft')
             for line in open(e, encoding='utf-8'):
                 line = line.strip()
                 if line and line != 'clean':
@@ -54,7 +58,8 @@ def main():
                 problems.append(f'{cid}: declared but no fixture exercises it')
         for cid in sorted(expected - set(declared)):
             problems.append(f'{cid}: fixture expects an ID the module does not declare')
-        for cid in sorted(set(re.findall(r'(?<!f)"([A-Z]{1,5}\d+-[a-z0-9][a-z0-9-]*)"', src)) - set(declared)):
+        lit = re.findall(r'''(?<![fF])(["'])([A-Z]{1,5}\d+-[a-z0-9][a-z0-9-]*)\1''', src)
+        for cid in sorted({q[1] for q in lit} - set(declared)):
             problems.append(f'{cid}: literal ID in source missing from CHECK_IDS')
         # Registry is not self-certifying: run check() over every fixture and an
         # empty input, and require every actually emitted ID to be declared.

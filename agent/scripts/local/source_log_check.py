@@ -65,6 +65,7 @@ def main():
     ]
     for relpath, pats in jobs:
         text = open(os.path.join(ROOT, relpath), encoding='utf-8').read()
+        recognized = 0
         # process-standardization: file path is in the section heading
         if 'process-standardization' in relpath:
             for sec in re.split(r'\n## ', text)[1:]:
@@ -72,6 +73,7 @@ def main():
                 m = re.match(r'^`([^`]+)`$', title)
                 if not m:
                     continue
+                recognized += 1
                 rel = m.group(1)
                 cur = re.search(r'Current SHA-256: `([0-9a-f]{64})`', sec)
                 path = os.path.join(ROOT, 'packs/process-standardization', rel)
@@ -88,8 +90,14 @@ def main():
                         print(f'FAIL {label} - drifted (log pins {cur.group(1)[:12]}..., file is {actual[:12]}...); record the change, do not silently repin'); bad += 1
         else:
             for label, ok, reason in check_log(relpath, pats):
+                recognized += 1
                 print(('PASS' if ok else 'FAIL'), label, '-', reason)
                 bad += 0 if ok else 1
+        if recognized == 0:
+            # A truncated or format-drifted log compares nothing and must not
+            # report clean: the full intended scope has to be recognized first.
+            print(f'FAIL {relpath} - no recognized entries; log truncated or entry format drifted, intended scope unverified')
+            bad += 1
     print('RESULT', 'all pinned files verified' if not bad else f'{bad} pin(s) failed')
     return 1 if bad else 0
 
