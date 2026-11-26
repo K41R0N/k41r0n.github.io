@@ -55,6 +55,29 @@ def check_log(relpath, entry_file_patterns):
                 yield label, False, f'current file is {actual[:12]}... but log pins {cur.group(1)[:12]}...; record the change, do not silently repin'
 
 
+def expected_targets():
+    """Independently maintained inventory: the pinned files as they exist on disk.
+
+    The logs pin every file under these roots, so the on-disk listing is the
+    completeness reference: a log truncated after its first complete section
+    still has recognized > 0, but no longer covers files this inventory names.
+    """
+    ps = ['CONTROLLER.md', 'README.md']
+    ps_root = os.path.join(ROOT, 'packs/process-standardization')
+    skills = os.path.join(ps_root, 'skills')
+    if os.path.isdir(skills):
+        for dirpath, _, files in os.walk(skills):
+            for f in files:
+                if f == 'SKILL.md':
+                    ps.append(os.path.relpath(os.path.join(dirpath, f), ps_root))
+    cm_root = os.path.join(ROOT, 'packs/copywriting-methods', 'sources')
+    cm = []
+    for dirpath, _, files in os.walk(cm_root):
+        for f in files:
+            cm.append('agent/' + os.path.relpath(os.path.join(dirpath, f), ROOT))
+    return sorted(ps), sorted(cm)
+
+
 def main():
     bad = 0
     jobs = [
@@ -97,6 +120,27 @@ def main():
             # A truncated or format-drifted log compares nothing and must not
             # report clean: the full intended scope has to be recognized first.
             print(f'FAIL {relpath} - no recognized entries; log truncated or entry format drifted, intended scope unverified')
+            bad += 1
+    # Completeness against the independent on-disk inventory: a partially
+    # truncated log still recognizes its surviving sections, so zero-entry
+    # rejection alone is not enough; missing targets must be named.
+    exp_ps, exp_cm = expected_targets()
+    for relpath, pats in jobs:
+        text = open(os.path.join(ROOT, relpath), encoding='utf-8').read()
+        if 'process-standardization' in relpath:
+            logged = set()
+            for sec in re.split(r'\n## ', text)[1:]:
+                m = re.match(r'^`([^`]+)`$', sec.split('\n', 1)[0].strip())
+                if m:
+                    logged.add(m.group(1))
+            missing = [t for t in exp_ps if t not in logged]
+        else:
+            logged = set()
+            for pat in pats:
+                logged |= set(re.findall(pat, text, flags=re.M))
+            missing = [t for t in exp_cm if t not in logged]
+        for t in missing:
+            print(f'FAIL {relpath} - pinned file has no log entry: {t} (log truncated or entry dropped)')
             bad += 1
     print('RESULT', 'all pinned files verified' if not bad else f'{bad} pin(s) failed')
     return 1 if bad else 0
