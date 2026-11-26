@@ -26,33 +26,38 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 
 
 def check_log(relpath, entry_file_patterns):
-    """Yield (label, ok, reason) per pinned file."""
+    """Yield (label, ok, reason) per pinned file record.
+
+    A section may pin several files (each `File:`/`Published file:` record
+    with its own `Current SHA-256`). Every record is verified, paired with
+    the first pin between it and the next record, so a drifted later file in
+    a multi-record section cannot pass unchecked.
+    """
     text = open(os.path.join(ROOT, relpath), encoding='utf-8').read()
     sections = re.split(r'\n## ', text)
+    pin_re = re.compile(r'Current SHA-256: `([0-9a-f]{64})`')
     for sec in sections[1:]:
-        title = sec.split('\n', 1)[0].strip()
-        target = None
+        records = []
         for pat in entry_file_patterns:
-            m = re.search(pat, sec)
-            if m:
-                target = m.group(1)
-                break
-        if not target:
-            continue
-        cur = re.search(r'Current SHA-256: `([0-9a-f]{64})`', sec)
-        rel = target[len('agent/'):] if target.startswith('agent/') else target
-        path = os.path.join(ROOT, rel)
-        label = f'{relpath.split("/")[1]}:{target}'
-        if not cur:
-            yield label, False, 'no Current SHA-256 field (pin the verified current state with its change note)'
-        elif not os.path.exists(path):
-            yield label, False, f'file missing: {rel}'
-        else:
-            actual = hashlib.sha256(open(path, 'rb').read()).hexdigest()
-            if actual == cur.group(1):
-                yield label, True, 'matches'
+            for m in re.finditer(pat, sec, flags=re.M):
+                records.append((m.start(), m.end(), m.group(1)))
+        records.sort()
+        for i, (start, end, target) in enumerate(records):
+            bound = records[i + 1][0] if i + 1 < len(records) else len(sec)
+            cur = pin_re.search(sec, end, bound)
+            rel = target[len('agent/'):] if target.startswith('agent/') else target
+            path = os.path.join(ROOT, rel)
+            label = f'{relpath.split("/")[1]}:{target}'
+            if not cur:
+                yield label, False, 'no Current SHA-256 field (pin the verified current state with its change note)'
+            elif not os.path.exists(path):
+                yield label, False, f'file missing: {rel}'
             else:
-                yield label, False, f'current file is {actual[:12]}... but log pins {cur.group(1)[:12]}...; record the change, do not silently repin'
+                actual = hashlib.sha256(open(path, 'rb').read()).hexdigest()
+                if actual == cur.group(1):
+                    yield label, True, 'matches'
+                else:
+                    yield label, False, f'current file is {actual[:12]}... but log pins {cur.group(1)[:12]}...; record the change, do not silently repin'
 
 
 def expected_targets():
@@ -137,7 +142,8 @@ def main():
         else:
             logged = set()
             for pat in pats:
-                logged |= set(re.findall(pat, text, flags=re.M))
+                for m in re.finditer(pat, text, flags=re.M):
+                    logged.add(m.group(1))
             missing = [t for t in exp_cm if t not in logged]
         for t in missing:
             print(f'FAIL {relpath} - pinned file has no log entry: {t} (log truncated or entry dropped)')
