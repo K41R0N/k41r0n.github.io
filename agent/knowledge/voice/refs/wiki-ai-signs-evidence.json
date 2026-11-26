@@ -1,0 +1,2346 @@
+{
+ "schema": "wiki-ai-signs-evidence/v1",
+ "source": "Wikipedia:Signs of AI writing",
+ "source_oldid": "1387897756",
+ "source_revision": "2026-11-25T22:43:03Z)",
+ "generated_at": "2026-11-26T16:18:41Z",
+ "corpus_dir": "assets/voice-corpus/raw",
+ "corpus_words": 15712,
+ "rule": "a word is banned only if he never uses it in corpus/raw; zero_use = ban-eligible candidate, unconfirmed",
+ "entries": [
+  {
+   "term": "stands/serves as",
+   "section": "Undue emphasis on significance, legacy, and broader trends",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "is a testament/reminder",
+   "section": "Undue emphasis on significance, legacy, and broader trends",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "a crucial/pivotal/vital/significant/key role/moment",
+   "section": "Undue emphasis on significance, legacy, and broader trends",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "underscores/highlights its importance/significance",
+   "section": "Undue emphasis on significance, legacy, and broader trends",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "reflects broader",
+   "section": "Undue emphasis on significance, legacy, and broader trends",
+   "kind": "phrase",
+   "forms": [
+    "reflects broader"
+   ],
+   "corpus_hits": {
+    "reflects broader": 0
+   },
+   "form_class": {
+    "reflects broader": "zero_use"
+   },
+   "auto_flag": {
+    "reflects broader": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "symbolizing its ongoing/enduring/lasting",
+   "section": "Undue emphasis on significance, legacy, and broader trends",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "contributing to the",
+   "section": "Undue emphasis on significance, legacy, and broader trends",
+   "kind": "phrase",
+   "forms": [
+    "contributing to the"
+   ],
+   "corpus_hits": {
+    "contributing to the": 0
+   },
+   "form_class": {
+    "contributing to the": "zero_use"
+   },
+   "auto_flag": {
+    "contributing to the": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "setting the stage for",
+   "section": "Undue emphasis on significance, legacy, and broader trends",
+   "kind": "phrase",
+   "forms": [
+    "setting the stage for"
+   ],
+   "corpus_hits": {
+    "setting the stage for": 0
+   },
+   "form_class": {
+    "setting the stage for": "zero_use"
+   },
+   "auto_flag": {
+    "setting the stage for": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "marking/shaping the",
+   "section": "Undue emphasis on significance, legacy, and broader trends",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "represents/marks a shift",
+   "section": "Undue emphasis on significance, legacy, and broader trends",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "key turning point",
+   "section": "Undue emphasis on significance, legacy, and broader trends",
+   "kind": "phrase",
+   "forms": [
+    "key turning point"
+   ],
+   "corpus_hits": {
+    "key turning point": 0
+   },
+   "form_class": {
+    "key turning point": "zero_use"
+   },
+   "auto_flag": {
+    "key turning point": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "evolving landscape",
+   "section": "Undue emphasis on significance, legacy, and broader trends",
+   "kind": "phrase",
+   "forms": [
+    "evolving landscape"
+   ],
+   "corpus_hits": {
+    "evolving landscape": 0
+   },
+   "form_class": {
+    "evolving landscape": "zero_use"
+   },
+   "auto_flag": {
+    "evolving landscape": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "focal point",
+   "section": "Undue emphasis on significance, legacy, and broader trends",
+   "kind": "phrase",
+   "forms": [
+    "focal point"
+   ],
+   "corpus_hits": {
+    "focal point": 0
+   },
+   "form_class": {
+    "focal point": "zero_use"
+   },
+   "auto_flag": {
+    "focal point": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "indelible mark",
+   "section": "Undue emphasis on significance, legacy, and broader trends",
+   "kind": "phrase",
+   "forms": [
+    "indelible mark"
+   ],
+   "corpus_hits": {
+    "indelible mark": 0
+   },
+   "form_class": {
+    "indelible mark": "zero_use"
+   },
+   "auto_flag": {
+    "indelible mark": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "deeply rooted",
+   "section": "Undue emphasis on significance, legacy, and broader trends",
+   "kind": "phrase",
+   "forms": [
+    "deeply rooted"
+   ],
+   "corpus_hits": {
+    "deeply rooted": 1
+   },
+   "form_class": {
+    "deeply rooted": "used"
+   },
+   "auto_flag": {
+    "deeply rooted": true
+   },
+   "class": "used"
+  },
+  {
+   "term": "forms part of the wider",
+   "section": "Undue emphasis on significance, legacy, and broader trends",
+   "kind": "phrase",
+   "forms": [
+    "forms part of the wider"
+   ],
+   "corpus_hits": {
+    "forms part of the wider": 0
+   },
+   "form_class": {
+    "forms part of the wider": "zero_use"
+   },
+   "auto_flag": {
+    "forms part of the wider": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "distinction [matters/is important] because... ...",
+   "section": "Undue emphasis on significance, legacy, and broader trends",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "has/have shaped conversations/discussions/debate about",
+   "section": "Claims that a topic has influenced discussions about related topics",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "independent coverage",
+   "section": "Undue emphasis on notability, attribution, and media coverage",
+   "kind": "phrase",
+   "forms": [
+    "independent coverage"
+   ],
+   "corpus_hits": {
+    "independent coverage": 0
+   },
+   "form_class": {
+    "independent coverage": "zero_use"
+   },
+   "auto_flag": {
+    "independent coverage": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "local/regional/national/[country name] media outlets",
+   "section": "Undue emphasis on notability, attribution, and media coverage",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "music/business/tech outlets",
+   "section": "Undue emphasis on notability, attribution, and media coverage",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "trade publications",
+   "section": "Undue emphasis on notability, attribution, and media coverage",
+   "kind": "phrase",
+   "forms": [
+    "trade publications"
+   ],
+   "corpus_hits": {
+    "trade publications": 0
+   },
+   "form_class": {
+    "trade publications": "zero_use"
+   },
+   "auto_flag": {
+    "trade publications": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "cited/featured/profiled in",
+   "section": "Undue emphasis on notability, attribution, and media coverage",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "Databases/records/listings/filings/materials identify/list/describe [article subject] as...",
+   "section": "Undue emphasis on identification by primary or tertiary sources",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "was identified by [source] as [fact]...",
+   "section": "Undue emphasis on identification by primary or tertiary sources",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "is listed in",
+   "section": "Undue emphasis on identification by primary or tertiary sources",
+   "kind": "phrase",
+   "forms": [
+    "is listed in"
+   ],
+   "corpus_hits": {
+    "is listed in": 0
+   },
+   "form_class": {
+    "is listed in": "zero_use"
+   },
+   "auto_flag": {
+    "is listed in": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "his/her professional profile lists",
+   "section": "Undue emphasis on identification by primary or tertiary sources",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "maintains an active / a strong digital presence",
+   "section": "Undue emphasis on online presence",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "social media presence",
+   "section": "Undue emphasis on online presence",
+   "kind": "phrase",
+   "forms": [
+    "social media presence"
+   ],
+   "corpus_hits": {
+    "social media presence": 0
+   },
+   "form_class": {
+    "social media presence": "zero_use"
+   },
+   "auto_flag": {
+    "social media presence": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "highlighting/underscoring/emphasizing ...",
+   "section": "Superficial analyses",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "ensuring ...",
+   "section": "Superficial analyses",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "reflecting/symbolizing ...",
+   "section": "Superficial analyses",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "contributing to ...",
+   "section": "Superficial analyses",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "cultivating/fostering ...",
+   "section": "Superficial analyses",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "encompassing ...",
+   "section": "Superficial analyses",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "enhancing ...",
+   "section": "Superficial analyses",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "valuable insights",
+   "section": "Superficial analyses",
+   "kind": "phrase",
+   "forms": [
+    "valuable insights"
+   ],
+   "corpus_hits": {
+    "valuable insights": 0
+   },
+   "form_class": {
+    "valuable insights": "zero_use"
+   },
+   "auto_flag": {
+    "valuable insights": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "align/resonate with",
+   "section": "Superficial analyses",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "in connection with/to ...",
+   "section": "Vague expression of connection or association",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "connected with/to",
+   "section": "Vague expression of connection or association",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "in association with ...",
+   "section": "Vague expression of connection or association",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "associated with",
+   "section": "Vague expression of connection or association",
+   "kind": "phrase",
+   "forms": [
+    "associated with"
+   ],
+   "corpus_hits": {
+    "associated with": 0
+   },
+   "form_class": {
+    "associated with": "zero_use"
+   },
+   "auto_flag": {
+    "associated with": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "Industry reports",
+   "section": "Vague attributions and overgeneralization of opinions",
+   "kind": "phrase",
+   "forms": [
+    "Industry reports"
+   ],
+   "corpus_hits": {
+    "Industry reports": 0
+   },
+   "form_class": {
+    "Industry reports": "zero_use"
+   },
+   "auto_flag": {
+    "Industry reports": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "Observers have cited",
+   "section": "Vague attributions and overgeneralization of opinions",
+   "kind": "phrase",
+   "forms": [
+    "Observers have cited"
+   ],
+   "corpus_hits": {
+    "Observers have cited": 0
+   },
+   "form_class": {
+    "Observers have cited": "zero_use"
+   },
+   "auto_flag": {
+    "Observers have cited": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "Experts argue",
+   "section": "Vague attributions and overgeneralization of opinions",
+   "kind": "phrase",
+   "forms": [
+    "Experts argue"
+   ],
+   "corpus_hits": {
+    "Experts argue": 0
+   },
+   "form_class": {
+    "Experts argue": "zero_use"
+   },
+   "auto_flag": {
+    "Experts argue": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "Some critics argue",
+   "section": "Vague attributions and overgeneralization of opinions",
+   "kind": "phrase",
+   "forms": [
+    "Some critics argue"
+   ],
+   "corpus_hits": {
+    "Some critics argue": 0
+   },
+   "form_class": {
+    "Some critics argue": "zero_use"
+   },
+   "auto_flag": {
+    "Some critics argue": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "several sources/publications (when only few sources are cited)",
+   "section": "Vague attributions and overgeneralization of opinions",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "such as (before exhaustive word lists)",
+   "section": "Vague attributions and overgeneralization of opinions",
+   "kind": "phrase",
+   "forms": [
+    "such as"
+   ],
+   "corpus_hits": {
+    "such as": 0
+   },
+   "form_class": {
+    "such as": "zero_use"
+   },
+   "auto_flag": {
+    "such as": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "...",
+   "section": "Vague attributions and overgeneralization of opinions",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "Despite its... faces several challenges...",
+   "section": "Outline-like conclusions about challenges and future prospects",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "Despite these challenges",
+   "section": "Outline-like conclusions about challenges and future prospects",
+   "kind": "phrase",
+   "forms": [
+    "Despite these challenges"
+   ],
+   "corpus_hits": {
+    "Despite these challenges": 0
+   },
+   "form_class": {
+    "Despite these challenges": "zero_use"
+   },
+   "auto_flag": {
+    "Despite these challenges": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "Challenges and Legacy",
+   "section": "Outline-like conclusions about challenges and future prospects",
+   "kind": "phrase",
+   "forms": [
+    "Challenges and Legacy"
+   ],
+   "corpus_hits": {
+    "Challenges and Legacy": 0
+   },
+   "form_class": {
+    "Challenges and Legacy": "zero_use"
+   },
+   "auto_flag": {
+    "Challenges and Legacy": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "Future Outlook ...",
+   "section": "Outline-like conclusions about challenges and future prospects",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "Additionally (especially beginning a sentence)",
+   "section": "High density of \"AI vocabulary\" words",
+   "kind": "word",
+   "forms": [
+    "Additionally"
+   ],
+   "corpus_hits": {
+    "Additionally": 0
+   },
+   "form_class": {
+    "Additionally": "zero_use"
+   },
+   "auto_flag": {
+    "Additionally": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "align with",
+   "section": "High density of \"AI vocabulary\" words",
+   "kind": "phrase",
+   "forms": [
+    "align with"
+   ],
+   "corpus_hits": {
+    "align with": 0
+   },
+   "form_class": {
+    "align with": "zero_use"
+   },
+   "auto_flag": {
+    "align with": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "boasts (meaning \"has\")",
+   "section": "High density of \"AI vocabulary\" words",
+   "kind": "word",
+   "forms": [
+    "boasts"
+   ],
+   "corpus_hits": {
+    "boasts": 0
+   },
+   "form_class": {
+    "boasts": "zero_use"
+   },
+   "auto_flag": {
+    "boasts": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "bolstered",
+   "section": "High density of \"AI vocabulary\" words",
+   "kind": "word",
+   "forms": [
+    "bolstered"
+   ],
+   "corpus_hits": {
+    "bolstered": 0
+   },
+   "form_class": {
+    "bolstered": "zero_use"
+   },
+   "auto_flag": {
+    "bolstered": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "crucial",
+   "section": "High density of \"AI vocabulary\" words",
+   "kind": "word",
+   "forms": [
+    "crucial"
+   ],
+   "corpus_hits": {
+    "crucial": 2
+   },
+   "form_class": {
+    "crucial": "used"
+   },
+   "auto_flag": {
+    "crucial": true
+   },
+   "class": "used"
+  },
+  {
+   "term": "deep dive",
+   "section": "High density of \"AI vocabulary\" words",
+   "kind": "phrase",
+   "forms": [
+    "deep dive"
+   ],
+   "corpus_hits": {
+    "deep dive": 0
+   },
+   "form_class": {
+    "deep dive": "zero_use"
+   },
+   "auto_flag": {
+    "deep dive": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "delve",
+   "section": "High density of \"AI vocabulary\" words",
+   "kind": "word",
+   "forms": [
+    "delve"
+   ],
+   "corpus_hits": {
+    "delve": 0
+   },
+   "form_class": {
+    "delve": "zero_use"
+   },
+   "auto_flag": {
+    "delve": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "emphasizing",
+   "section": "High density of \"AI vocabulary\" words",
+   "kind": "word",
+   "forms": [
+    "emphasizing"
+   ],
+   "corpus_hits": {
+    "emphasizing": 0
+   },
+   "form_class": {
+    "emphasizing": "zero_use"
+   },
+   "auto_flag": {
+    "emphasizing": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "enduring",
+   "section": "High density of \"AI vocabulary\" words",
+   "kind": "word",
+   "forms": [
+    "enduring"
+   ],
+   "corpus_hits": {
+    "enduring": 0
+   },
+   "form_class": {
+    "enduring": "zero_use"
+   },
+   "auto_flag": {
+    "enduring": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "enhance",
+   "section": "High density of \"AI vocabulary\" words",
+   "kind": "word",
+   "forms": [
+    "enhance"
+   ],
+   "corpus_hits": {
+    "enhance": 0
+   },
+   "form_class": {
+    "enhance": "zero_use"
+   },
+   "auto_flag": {
+    "enhance": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "fostering",
+   "section": "High density of \"AI vocabulary\" words",
+   "kind": "word",
+   "forms": [
+    "fostering"
+   ],
+   "corpus_hits": {
+    "fostering": 0
+   },
+   "form_class": {
+    "fostering": "zero_use"
+   },
+   "auto_flag": {
+    "fostering": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "garner",
+   "section": "High density of \"AI vocabulary\" words",
+   "kind": "word",
+   "forms": [
+    "garner"
+   ],
+   "corpus_hits": {
+    "garner": 0
+   },
+   "form_class": {
+    "garner": "zero_use"
+   },
+   "auto_flag": {
+    "garner": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "highlight (as a verb)",
+   "section": "High density of \"AI vocabulary\" words",
+   "kind": "word",
+   "forms": [
+    "highlight"
+   ],
+   "corpus_hits": {
+    "highlight": 0
+   },
+   "form_class": {
+    "highlight": "zero_use"
+   },
+   "auto_flag": {
+    "highlight": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "interplay",
+   "section": "High density of \"AI vocabulary\" words",
+   "kind": "word",
+   "forms": [
+    "interplay"
+   ],
+   "corpus_hits": {
+    "interplay": 0
+   },
+   "form_class": {
+    "interplay": "zero_use"
+   },
+   "auto_flag": {
+    "interplay": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "intricate/intricacies",
+   "section": "High density of \"AI vocabulary\" words",
+   "kind": "word",
+   "forms": [
+    "intricate",
+    "intricacies"
+   ],
+   "corpus_hits": {
+    "intricate": 0,
+    "intricacies": 0
+   },
+   "form_class": {
+    "intricate": "zero_use",
+    "intricacies": "zero_use"
+   },
+   "auto_flag": {
+    "intricate": true,
+    "intricacies": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "landscape (as an abstract noun)",
+   "section": "High density of \"AI vocabulary\" words",
+   "kind": "word",
+   "forms": [
+    "landscape"
+   ],
+   "corpus_hits": {
+    "landscape": 1
+   },
+   "form_class": {
+    "landscape": "used"
+   },
+   "auto_flag": {
+    "landscape": true
+   },
+   "class": "used"
+  },
+  {
+   "term": "meticulous/meticulously",
+   "section": "High density of \"AI vocabulary\" words",
+   "kind": "word",
+   "forms": [
+    "meticulous",
+    "meticulously"
+   ],
+   "corpus_hits": {
+    "meticulous": 0,
+    "meticulously": 0
+   },
+   "form_class": {
+    "meticulous": "zero_use",
+    "meticulously": "zero_use"
+   },
+   "auto_flag": {
+    "meticulous": true,
+    "meticulously": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "pivotal",
+   "section": "High density of \"AI vocabulary\" words",
+   "kind": "word",
+   "forms": [
+    "pivotal"
+   ],
+   "corpus_hits": {
+    "pivotal": 0
+   },
+   "form_class": {
+    "pivotal": "zero_use"
+   },
+   "auto_flag": {
+    "pivotal": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "robust",
+   "section": "High density of \"AI vocabulary\" words",
+   "kind": "word",
+   "forms": [
+    "robust"
+   ],
+   "corpus_hits": {
+    "robust": 0
+   },
+   "form_class": {
+    "robust": "zero_use"
+   },
+   "auto_flag": {
+    "robust": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "showcase",
+   "section": "High density of \"AI vocabulary\" words",
+   "kind": "word",
+   "forms": [
+    "showcase"
+   ],
+   "corpus_hits": {
+    "showcase": 1
+   },
+   "form_class": {
+    "showcase": "used"
+   },
+   "auto_flag": {
+    "showcase": true
+   },
+   "class": "used"
+  },
+  {
+   "term": "tapestry (as an abstract noun)",
+   "section": "High density of \"AI vocabulary\" words",
+   "kind": "word",
+   "forms": [
+    "tapestry"
+   ],
+   "corpus_hits": {
+    "tapestry": 0
+   },
+   "form_class": {
+    "tapestry": "zero_use"
+   },
+   "auto_flag": {
+    "tapestry": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "testament",
+   "section": "High density of \"AI vocabulary\" words",
+   "kind": "word",
+   "forms": [
+    "testament"
+   ],
+   "corpus_hits": {
+    "testament": 0
+   },
+   "form_class": {
+    "testament": "zero_use"
+   },
+   "auto_flag": {
+    "testament": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "underscore (as a verb)",
+   "section": "High density of \"AI vocabulary\" words",
+   "kind": "word",
+   "forms": [
+    "underscore"
+   ],
+   "corpus_hits": {
+    "underscore": 0
+   },
+   "form_class": {
+    "underscore": "zero_use"
+   },
+   "auto_flag": {
+    "underscore": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "valuable",
+   "section": "High density of \"AI vocabulary\" words",
+   "kind": "word",
+   "forms": [
+    "valuable"
+   ],
+   "corpus_hits": {
+    "valuable": 9
+   },
+   "form_class": {
+    "valuable": "used"
+   },
+   "auto_flag": {
+    "valuable": true
+   },
+   "class": "used"
+  },
+  {
+   "term": "vibrant",
+   "section": "High density of \"AI vocabulary\" words",
+   "kind": "word",
+   "forms": [
+    "vibrant"
+   ],
+   "corpus_hits": {
+    "vibrant": 1
+   },
+   "form_class": {
+    "vibrant": "used"
+   },
+   "auto_flag": {
+    "vibrant": true
+   },
+   "class": "used"
+  },
+  {
+   "term": "serves as/stands as/marks/functions as/operates as/represents [a]",
+   "section": "Avoidance of basic copulatives (\"is\"/\"are\" phrases)",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "boasts/features/maintains/offers [a]",
+   "section": "Avoidance of basic copulatives (\"is\"/\"are\" phrases)",
+   "kind": "word",
+   "forms": [
+    "boasts",
+    "features",
+    "maintains",
+    "offers"
+   ],
+   "corpus_hits": {
+    "boasts": 0,
+    "features": 0,
+    "maintains": 0,
+    "offers": 2
+   },
+   "form_class": {
+    "boasts": "zero_use",
+    "features": "zero_use",
+    "maintains": "zero_use",
+    "offers": "used"
+   },
+   "auto_flag": {
+    "boasts": true,
+    "features": true,
+    "maintains": true,
+    "offers": true
+   },
+   "class": "mixed"
+  },
+  {
+   "term": "refers to",
+   "section": "Avoidance of basic copulatives (\"is\"/\"are\" phrases)",
+   "kind": "phrase",
+   "forms": [
+    "refers to"
+   ],
+   "corpus_hits": {
+    "refers to": 0
+   },
+   "form_class": {
+    "refers to": "zero_use"
+   },
+   "auto_flag": {
+    "refers to": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "a Wikipedia-style article",
+   "section": "Collaborative communication",
+   "kind": "phrase",
+   "forms": [
+    "a Wikipedia-style article"
+   ],
+   "corpus_hits": {
+    "a Wikipedia-style article": 0
+   },
+   "form_class": {
+    "a Wikipedia-style article": "zero_use"
+   },
+   "auto_flag": {
+    "a Wikipedia-style article": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "I hope this helps",
+   "section": "Collaborative communication",
+   "kind": "phrase",
+   "forms": [
+    "I hope this helps"
+   ],
+   "corpus_hits": {
+    "I hope this helps": 0
+   },
+   "form_class": {
+    "I hope this helps": "zero_use"
+   },
+   "auto_flag": {
+    "I hope this helps": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "Of course!",
+   "section": "Collaborative communication",
+   "kind": "phrase",
+   "forms": [
+    "Of course!"
+   ],
+   "corpus_hits": {
+    "Of course!": 0
+   },
+   "form_class": {
+    "Of course!": "zero_use"
+   },
+   "auto_flag": {
+    "Of course!": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "Certainly!",
+   "section": "Collaborative communication",
+   "kind": "phrase",
+   "forms": [
+    "Certainly!"
+   ],
+   "corpus_hits": {
+    "Certainly!": 0
+   },
+   "form_class": {
+    "Certainly!": "zero_use"
+   },
+   "auto_flag": {
+    "Certainly!": false
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "You're absolutely right!",
+   "section": "Collaborative communication",
+   "kind": "phrase",
+   "forms": [
+    "You're absolutely right!"
+   ],
+   "corpus_hits": {
+    "You're absolutely right!": 0
+   },
+   "form_class": {
+    "You're absolutely right!": "zero_use"
+   },
+   "auto_flag": {
+    "You're absolutely right!": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "Would you like...",
+   "section": "Collaborative communication",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "is there anything else",
+   "section": "Collaborative communication",
+   "kind": "phrase",
+   "forms": [
+    "is there anything else"
+   ],
+   "corpus_hits": {
+    "is there anything else": 0
+   },
+   "form_class": {
+    "is there anything else": "zero_use"
+   },
+   "auto_flag": {
+    "is there anything else": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "let me know",
+   "section": "Collaborative communication",
+   "kind": "phrase",
+   "forms": [
+    "let me know"
+   ],
+   "corpus_hits": {
+    "let me know": 0
+   },
+   "form_class": {
+    "let me know": "zero_use"
+   },
+   "auto_flag": {
+    "let me know": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "more detailed breakdown",
+   "section": "Collaborative communication",
+   "kind": "phrase",
+   "forms": [
+    "more detailed breakdown"
+   ],
+   "corpus_hits": {
+    "more detailed breakdown": 0
+   },
+   "form_class": {
+    "more detailed breakdown": "zero_use"
+   },
+   "auto_flag": {
+    "more detailed breakdown": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "here is a ...",
+   "section": "Collaborative communication",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "[check/verify/confirm]... ...before [publishing/publication/submitting]",
+   "section": "Collaborative communication",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "While specific details are limited/scarce...",
+   "section": "Hedging disclaimers about source availability and recommended usage",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "not widely available/documented/disclosed",
+   "section": "Hedging disclaimers about source availability and recommended usage",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "...in the provided/available sources / search results...",
+   "section": "Hedging disclaimers about source availability and recommended usage",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "[claim] should be [treated/presented] as... rather than...",
+   "section": "Hedging disclaimers about source availability and recommended usage",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "based on available information",
+   "section": "Hedging disclaimers about source availability and recommended usage",
+   "kind": "phrase",
+   "forms": [
+    "based on available information"
+   ],
+   "corpus_hits": {
+    "based on available information": 0
+   },
+   "form_class": {
+    "based on available information": "zero_use"
+   },
+   "auto_flag": {
+    "based on available information": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "...does not by itself establish... ...",
+   "section": "Hedging disclaimers about source availability and recommended usage",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "ensured that... adheres to",
+   "section": "Canned assurance of adherence to Wikipedia policies and guidelines",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "refined",
+   "section": "Canned assurance of adherence to Wikipedia policies and guidelines",
+   "kind": "word",
+   "forms": [
+    "refined"
+   ],
+   "corpus_hits": {
+    "refined": 0
+   },
+   "form_class": {
+    "refined": "zero_use"
+   },
+   "auto_flag": {
+    "refined": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "enhanced",
+   "section": "Canned assurance of adherence to Wikipedia policies and guidelines",
+   "kind": "word",
+   "forms": [
+    "enhanced"
+   ],
+   "corpus_hits": {
+    "enhanced": 0
+   },
+   "form_class": {
+    "enhanced": "zero_use"
+   },
+   "auto_flag": {
+    "enhanced": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "enriched",
+   "section": "Canned assurance of adherence to Wikipedia policies and guidelines",
+   "kind": "word",
+   "forms": [
+    "enriched"
+   ],
+   "corpus_hits": {
+    "enriched": 0
+   },
+   "form_class": {
+    "enriched": "zero_use"
+   },
+   "auto_flag": {
+    "enriched": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "streamlined",
+   "section": "Canned assurance of adherence to Wikipedia policies and guidelines",
+   "kind": "word",
+   "forms": [
+    "streamlined"
+   ],
+   "corpus_hits": {
+    "streamlined": 1
+   },
+   "form_class": {
+    "streamlined": "used"
+   },
+   "auto_flag": {
+    "streamlined": true
+   },
+   "class": "used"
+  },
+  {
+   "term": "improved",
+   "section": "Canned assurance of adherence to Wikipedia policies and guidelines",
+   "kind": "word",
+   "forms": [
+    "improved"
+   ],
+   "corpus_hits": {
+    "improved": 0
+   },
+   "form_class": {
+    "improved": "zero_use"
+   },
+   "auto_flag": {
+    "improved": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "in compliance/complies with",
+   "section": "Canned assurance of adherence to Wikipedia policies and guidelines",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "Wikipedia [guidelines/style/standards]",
+   "section": "Canned assurance of adherence to Wikipedia policies and guidelines",
+   "kind": "word",
+   "forms": [
+    "Wikipedia"
+   ],
+   "corpus_hits": {
+    "Wikipedia": 2
+   },
+   "form_class": {
+    "Wikipedia": "used"
+   },
+   "auto_flag": {
+    "Wikipedia": true
+   },
+   "class": "used"
+  },
+  {
+   "term": "revised",
+   "section": "Canned assurance of adherence to Wikipedia policies and guidelines",
+   "kind": "word",
+   "forms": [
+    "revised"
+   ],
+   "corpus_hits": {
+    "revised": 0
+   },
+   "form_class": {
+    "revised": "zero_use"
+   },
+   "auto_flag": {
+    "revised": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "verifiability",
+   "section": "Canned assurance of adherence to Wikipedia policies and guidelines",
+   "kind": "word",
+   "forms": [
+    "verifiability"
+   ],
+   "corpus_hits": {
+    "verifiability": 0
+   },
+   "form_class": {
+    "verifiability": "zero_use"
+   },
+   "auto_flag": {
+    "verifiability": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "neutrality",
+   "section": "Canned assurance of adherence to Wikipedia policies and guidelines",
+   "kind": "word",
+   "forms": [
+    "neutrality"
+   ],
+   "corpus_hits": {
+    "neutrality": 0
+   },
+   "form_class": {
+    "neutrality": "zero_use"
+   },
+   "auto_flag": {
+    "neutrality": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "neutral tone",
+   "section": "Canned assurance of adherence to Wikipedia policies and guidelines",
+   "kind": "phrase",
+   "forms": [
+    "neutral tone"
+   ],
+   "corpus_hits": {
+    "neutral tone": 0
+   },
+   "form_class": {
+    "neutral tone": "zero_use"
+   },
+   "auto_flag": {
+    "neutral tone": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "encyclopedic tone",
+   "section": "Canned assurance of adherence to Wikipedia policies and guidelines",
+   "kind": "phrase",
+   "forms": [
+    "encyclopedic tone"
+   ],
+   "corpus_hits": {
+    "encyclopedic tone": 0
+   },
+   "form_class": {
+    "encyclopedic tone": "zero_use"
+   },
+   "auto_flag": {
+    "encyclopedic tone": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "clarity",
+   "section": "Canned assurance of adherence to Wikipedia policies and guidelines",
+   "kind": "word",
+   "forms": [
+    "clarity"
+   ],
+   "corpus_hits": {
+    "clarity": 0
+   },
+   "form_class": {
+    "clarity": "zero_use"
+   },
+   "auto_flag": {
+    "clarity": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "flow",
+   "section": "Canned assurance of adherence to Wikipedia policies and guidelines",
+   "kind": "word",
+   "forms": [
+    "flow"
+   ],
+   "corpus_hits": {
+    "flow": 2
+   },
+   "form_class": {
+    "flow": "used"
+   },
+   "auto_flag": {
+    "flow": true
+   },
+   "class": "used"
+  },
+  {
+   "term": "preserved/preserving",
+   "section": "Specific mentions of \"preserved\" or \"retained\" information, \"avoided\" mistakes, and other procedural statements",
+   "kind": "word",
+   "forms": [
+    "preserved",
+    "preserving"
+   ],
+   "corpus_hits": {
+    "preserved": 0,
+    "preserving": 0
+   },
+   "form_class": {
+    "preserved": "zero_use",
+    "preserving": "zero_use"
+   },
+   "auto_flag": {
+    "preserved": true,
+    "preserving": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "retained/retaining",
+   "section": "Specific mentions of \"preserved\" or \"retained\" information, \"avoided\" mistakes, and other procedural statements",
+   "kind": "word",
+   "forms": [
+    "retained",
+    "retaining"
+   ],
+   "corpus_hits": {
+    "retained": 0,
+    "retaining": 0
+   },
+   "form_class": {
+    "retained": "zero_use",
+    "retaining": "zero_use"
+   },
+   "auto_flag": {
+    "retained": true,
+    "retaining": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "avoided/avoiding",
+   "section": "Specific mentions of \"preserved\" or \"retained\" information, \"avoided\" mistakes, and other procedural statements",
+   "kind": "word",
+   "forms": [
+    "avoided",
+    "avoiding"
+   ],
+   "corpus_hits": {
+    "avoided": 0,
+    "avoiding": 0
+   },
+   "form_class": {
+    "avoided": "zero_use",
+    "avoiding": "zero_use"
+   },
+   "auto_flag": {
+    "avoided": true,
+    "avoiding": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "ensured/ensuring",
+   "section": "Specific mentions of \"preserved\" or \"retained\" information, \"avoided\" mistakes, and other procedural statements",
+   "kind": "word",
+   "forms": [
+    "ensured",
+    "ensuring"
+   ],
+   "corpus_hits": {
+    "ensured": 0,
+    "ensuring": 0
+   },
+   "form_class": {
+    "ensured": "zero_use",
+    "ensuring": "zero_use"
+   },
+   "auto_flag": {
+    "ensured": true,
+    "ensuring": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "aimed/aiming to",
+   "section": "Specific mentions of \"preserved\" or \"retained\" information, \"avoided\" mistakes, and other procedural statements",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "added sourced [information/content/infobox/section]",
+   "section": "Overemphasis on presence/reliability of citations",
+   "kind": "phrase",
+   "forms": [
+    "added sourced"
+   ],
+   "corpus_hits": {
+    "added sourced": 0
+   },
+   "form_class": {
+    "added sourced": "zero_use"
+   },
+   "auto_flag": {
+    "added sourced": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "added verified [information/content/infobox/section]",
+   "section": "Overemphasis on presence/reliability of citations",
+   "kind": "phrase",
+   "forms": [
+    "added verified"
+   ],
+   "corpus_hits": {
+    "added verified": 0
+   },
+   "form_class": {
+    "added verified": "zero_use"
+   },
+   "auto_flag": {
+    "added verified": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "added [coverage/citations/references]",
+   "section": "Overemphasis on presence/reliability of citations",
+   "kind": "word",
+   "forms": [
+    "added"
+   ],
+   "corpus_hits": {
+    "added": 0
+   },
+   "form_class": {
+    "added": "zero_use"
+   },
+   "auto_flag": {
+    "added": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "improved attribution",
+   "section": "Overemphasis on presence/reliability of citations",
+   "kind": "phrase",
+   "forms": [
+    "improved attribution"
+   ],
+   "corpus_hits": {
+    "improved attribution": 0
+   },
+   "form_class": {
+    "improved attribution": "zero_use"
+   },
+   "auto_flag": {
+    "improved attribution": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "with [independent/secondary/third-party/peer-reviewed] sources",
+   "section": "Overemphasis on presence/reliability of citations",
+   "kind": "phrase",
+   "forms": [
+    "with sources"
+   ],
+   "corpus_hits": {
+    "with sources": 0
+   },
+   "form_class": {
+    "with sources": "zero_use"
+   },
+   "auto_flag": {
+    "with sources": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "boasts a",
+   "section": "Promotional and advertisement-like language (2023–2025)",
+   "kind": "phrase",
+   "forms": [
+    "boasts a"
+   ],
+   "corpus_hits": {
+    "boasts a": 0
+   },
+   "form_class": {
+    "boasts a": "zero_use"
+   },
+   "auto_flag": {
+    "boasts a": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "vibrant",
+   "section": "Promotional and advertisement-like language (2023–2025)",
+   "kind": "word",
+   "forms": [
+    "vibrant"
+   ],
+   "corpus_hits": {
+    "vibrant": 1
+   },
+   "form_class": {
+    "vibrant": "used"
+   },
+   "auto_flag": {
+    "vibrant": true
+   },
+   "class": "used"
+  },
+  {
+   "term": "rich",
+   "section": "Promotional and advertisement-like language (2023–2025)",
+   "kind": "word",
+   "forms": [
+    "rich"
+   ],
+   "corpus_hits": {
+    "rich": 2
+   },
+   "form_class": {
+    "rich": "used"
+   },
+   "auto_flag": {
+    "rich": true
+   },
+   "class": "used"
+  },
+  {
+   "term": "profound",
+   "section": "Promotional and advertisement-like language (2023–2025)",
+   "kind": "word",
+   "forms": [
+    "profound"
+   ],
+   "corpus_hits": {
+    "profound": 0
+   },
+   "form_class": {
+    "profound": "zero_use"
+   },
+   "auto_flag": {
+    "profound": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "enhancing",
+   "section": "Promotional and advertisement-like language (2023–2025)",
+   "kind": "word",
+   "forms": [
+    "enhancing"
+   ],
+   "corpus_hits": {
+    "enhancing": 0
+   },
+   "form_class": {
+    "enhancing": "zero_use"
+   },
+   "auto_flag": {
+    "enhancing": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "showcasing",
+   "section": "Promotional and advertisement-like language (2023–2025)",
+   "kind": "word",
+   "forms": [
+    "showcasing"
+   ],
+   "corpus_hits": {
+    "showcasing": 0
+   },
+   "form_class": {
+    "showcasing": "zero_use"
+   },
+   "auto_flag": {
+    "showcasing": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "exemplifies",
+   "section": "Promotional and advertisement-like language (2023–2025)",
+   "kind": "word",
+   "forms": [
+    "exemplifies"
+   ],
+   "corpus_hits": {
+    "exemplifies": 0
+   },
+   "form_class": {
+    "exemplifies": "zero_use"
+   },
+   "auto_flag": {
+    "exemplifies": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "commitment to",
+   "section": "Promotional and advertisement-like language (2023–2025)",
+   "kind": "phrase",
+   "forms": [
+    "commitment to"
+   ],
+   "corpus_hits": {
+    "commitment to": 0
+   },
+   "form_class": {
+    "commitment to": "zero_use"
+   },
+   "auto_flag": {
+    "commitment to": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "natural beauty",
+   "section": "Promotional and advertisement-like language (2023–2025)",
+   "kind": "phrase",
+   "forms": [
+    "natural beauty"
+   ],
+   "corpus_hits": {
+    "natural beauty": 0
+   },
+   "form_class": {
+    "natural beauty": "zero_use"
+   },
+   "auto_flag": {
+    "natural beauty": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "nestled",
+   "section": "Promotional and advertisement-like language (2023–2025)",
+   "kind": "word",
+   "forms": [
+    "nestled"
+   ],
+   "corpus_hits": {
+    "nestled": 0
+   },
+   "form_class": {
+    "nestled": "zero_use"
+   },
+   "auto_flag": {
+    "nestled": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "in the heart of",
+   "section": "Promotional and advertisement-like language (2023–2025)",
+   "kind": "phrase",
+   "forms": [
+    "in the heart of"
+   ],
+   "corpus_hits": {
+    "in the heart of": 0
+   },
+   "form_class": {
+    "in the heart of": "zero_use"
+   },
+   "auto_flag": {
+    "in the heart of": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "groundbreaking",
+   "section": "Promotional and advertisement-like language (2023–2025)",
+   "kind": "word",
+   "forms": [
+    "groundbreaking"
+   ],
+   "corpus_hits": {
+    "groundbreaking": 0
+   },
+   "form_class": {
+    "groundbreaking": "zero_use"
+   },
+   "auto_flag": {
+    "groundbreaking": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "renowned",
+   "section": "Promotional and advertisement-like language (2023–2025)",
+   "kind": "word",
+   "forms": [
+    "renowned"
+   ],
+   "corpus_hits": {
+    "renowned": 0
+   },
+   "form_class": {
+    "renowned": "zero_use"
+   },
+   "auto_flag": {
+    "renowned": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "featuring",
+   "section": "Promotional and advertisement-like language (2023–2025)",
+   "kind": "word",
+   "forms": [
+    "featuring"
+   ],
+   "corpus_hits": {
+    "featuring": 0
+   },
+   "form_class": {
+    "featuring": "zero_use"
+   },
+   "auto_flag": {
+    "featuring": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "diverse array",
+   "section": "Promotional and advertisement-like language (2023–2025)",
+   "kind": "phrase",
+   "forms": [
+    "diverse array"
+   ],
+   "corpus_hits": {
+    "diverse array": 0
+   },
+   "form_class": {
+    "diverse array": "zero_use"
+   },
+   "auto_flag": {
+    "diverse array": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "...",
+   "section": "Promotional and advertisement-like language (2023–2025)",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "Up to my last training update",
+   "section": "Statements about knowledge cutoffs (2022–2023)",
+   "kind": "phrase",
+   "forms": [
+    "Up to my last training update"
+   ],
+   "corpus_hits": {
+    "Up to my last training update": 0
+   },
+   "form_class": {
+    "Up to my last training update": "zero_use"
+   },
+   "auto_flag": {
+    "Up to my last training update": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "as of my last knowledge update ...",
+   "section": "Statements about knowledge cutoffs (2022–2023)",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "In summary",
+   "section": "Section summaries",
+   "kind": "phrase",
+   "forms": [
+    "In summary"
+   ],
+   "corpus_hits": {
+    "In summary": 0
+   },
+   "form_class": {
+    "In summary": "zero_use"
+   },
+   "auto_flag": {
+    "In summary": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "In conclusion",
+   "section": "Section summaries",
+   "kind": "phrase",
+   "forms": [
+    "In conclusion"
+   ],
+   "corpus_hits": {
+    "In conclusion": 0
+   },
+   "form_class": {
+    "In conclusion": "zero_use"
+   },
+   "auto_flag": {
+    "In conclusion": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "Overall ...",
+   "section": "Section summaries",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "as an AI language model",
+   "section": "Prompt refusal",
+   "kind": "phrase",
+   "forms": [
+    "as an AI language model"
+   ],
+   "corpus_hits": {
+    "as an AI language model": 0
+   },
+   "form_class": {
+    "as an AI language model": "zero_use"
+   },
+   "auto_flag": {
+    "as an AI language model": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "as a large language model",
+   "section": "Prompt refusal",
+   "kind": "phrase",
+   "forms": [
+    "as a large language model"
+   ],
+   "corpus_hits": {
+    "as a large language model": 0
+   },
+   "form_class": {
+    "as a large language model": "zero_use"
+   },
+   "auto_flag": {
+    "as a large language model": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "I cannot offer medical advice",
+   "section": "Prompt refusal",
+   "kind": "phrase",
+   "forms": [
+    "I cannot offer medical advice"
+   ],
+   "corpus_hits": {
+    "I cannot offer medical advice": 0
+   },
+   "form_class": {
+    "I cannot offer medical advice": "zero_use"
+   },
+   "auto_flag": {
+    "I cannot offer medical advice": true
+   },
+   "class": "zero_use"
+  },
+  {
+   "term": "but I can...",
+   "section": "Prompt refusal",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  },
+  {
+   "term": "I'm sorry ...",
+   "section": "Prompt refusal",
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
+  }
+ ]
+}

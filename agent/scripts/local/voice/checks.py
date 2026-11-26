@@ -11,6 +11,42 @@ WRAPPER=[r'\bthis matters because\b',r'\bthis reflects a broader\b',r'\ba testam
 TRANSITION=[r'(?:^|\n)\s*(?:Additionally|Furthermore|Moreover|In conclusion)\b']
 def lines(t): return strip_md(t)
 def hits(rx,t,flags=re.I): return len(re.findall(rx,t,flags))
+def _wiki_w08_forms():
+    """Zero-use forms from the Wikipedia watch-list evidence file, or None if absent."""
+    p = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'knowledge', 'voice', 'refs', 'wiki-ai-signs-evidence.json')
+    p = os.path.normpath(p)
+    if not os.path.exists(p):
+        return None
+    try:
+        ev = json.load(open(p))
+    except Exception:
+        return None
+    forms = set()
+    for e in ev.get('entries', []):
+        if e.get('kind') == 'uncheckable':
+            continue
+        for f, c in e.get('form_class', {}).items():
+            if c == 'zero_use':
+                forms.add((e.get('kind'), f))
+    return sorted(forms)
+
+
+WIKI_W08 = _wiki_w08_forms()
+
+
+def _w08_count(t):
+    """Flag only candidates he never uses in corpus/raw (per-form), never every wiki word."""
+    if WIKI_W08 is None:
+        return 0
+    c = 0
+    for kind, f in WIKI_W08:
+        if kind == 'word':
+            c += hits(r'\b' + re.escape(f.lower()) + r'\b', lines(t))
+        else:
+            c += lines(t).lower().count(f.lower())
+    return c
+
+
 RULES=[
  # id, description, origin, severity, fn(text)->count
  ('P01','no em dash','client-brand (Sky writing-mechanics)','FAIL',lambda t:t.count('—')),
@@ -24,6 +60,7 @@ RULES=[
  ('W05','interpretive wrapper phrases','craft tell catalog (strongest tell)','WARN',lambda t:sum(hits(p,lines(t)) for p in WRAPPER)),
  ('W06','Additionally/Furthermore/Moreover/In conclusion','client-brand (check 04)','WARN',lambda t:sum(hits(p,lines(t)) for p in TRANSITION)),
  ('W07','hedging stack: 2+ of may/might/could/potentially/arguably in one sentence','craft tell catalog','WARN',lambda t:sum(1 for p in paragraphs(t) for s in sentences(p) if hits(r'\b(may|might|could|potentially|arguably)\b',s)>=2)),
+ ('W08','Wikipedia watch-list candidates he never uses in corpus/raw (per-form; unconfirmed, revision-pinned)','wikipedia-watch-list x corpus/raw (refs/wiki-ai-signs-evidence.json)','WARN',_w08_count),
  ('S01','sentence over 32 words (hard cap)','client-brand (Sky writing-mechanics)','FAIL',lambda t:sum(1 for l in sent_lens(t) if l>32)),
  ('S02','participial significance ending (, reflecting/underscoring/highlighting/demonstrating/cementing)','craft tell catalog','WARN',lambda t:hits(r', (?:reflecting|underscoring|highlighting|demonstrating|cementing|showcasing)\b',lines(t))),
  ('S03','copula avoidance (serves as / stands as / boasts)','craft tell catalog','WARN',lambda t:hits(r'\b(?:serves as|stands as|boasts)\b',lines(t))),
@@ -40,7 +77,7 @@ def run(path, scope="personal"):
     for rid,desc,origin,sev,fn in RULES:
         # Client bans and unconfirmed rhythm prescriptions are observations, not personal failures.
         if scope == 'personal':
-            sev = 'INFO' if ('client-brand' in origin or rid in ('R01','R02')) else 'WARN'
+            sev = 'INFO' if ('client-brand' in origin or rid in ('R01','R02','W08')) else 'WARN'
         c=fn(t); out.append({'id':rid,'desc':desc,'origin':origin,'severity':sev,'count':c,'per_1000_words':1000*c/max(1,n)})
     return n,out
 if __name__=='__main__':
