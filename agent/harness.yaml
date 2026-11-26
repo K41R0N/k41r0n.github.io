@@ -1,3 +1,11 @@
+# Harness Standard v0.3 conformance (declared 2026-11-25):
+# this manifest is partial by design. Applied: 5.1 layout, 5.4 never-in-repo
+# rules, section 9 capability/graduation model (harness/task-register.md),
+# section 11 pack contract (packs/), section 13 sensitivity classes.
+# Deliberately not implemented: cells/runtime (12, 14), model routing (8),
+# system_one (7), harness.lock (5.3), per-capability attention profiles
+# (AGF 10.2). This harness is a knowledge/methods library attached to the
+# static site, not an operator cell; revisit if a runtime is ever added.
 # Corrected 2026-11-14 (decisions/log.md #34): this file migrated
 # byte-identical from the retired methods repo and misdescribed this brain.
 name: kairon-xyz-agent

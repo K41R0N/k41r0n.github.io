@@ -253,6 +253,18 @@
     {
       "input": "his method for assemble a metrics report",
       "expected": "pack-analytics-report-discipline"
+    },
+    {
+      "input": "how do I sign into github to open a pull request",
+      "expected": "ops-authorized-access-routes"
+    },
+    {
+      "input": "which credential is authorized for repo writes",
+      "expected": "ops-authorized-access-routes"
+    },
+    {
+      "input": "push to the repo after the records fix",
+      "expected": "ops-authorized-access-routes"
     }
   ]
 }

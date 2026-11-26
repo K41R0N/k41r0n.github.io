@@ -2,7 +2,7 @@
   "id": "method-corpus",
   "type": "registry",
   "title": "Method corpus registry",
-  "updated": "2026-11-14",
+  "updated": "2026-11-25",
   "canonical_for": "agent/knowledge/methodologies/method-sources.md (corpus index section)",
   "confidence_vocabulary": [
     "operator_reported",
@@ -864,6 +864,26 @@
       "aliases": [
         "assemble a metrics report",
         "metrics report discipline"
+      ]
+    },
+    {
+      "id": "ops-authorized-access-routes",
+      "title": "Authorized access routes for outside systems",
+      "area": "operations",
+      "access": "public",
+      "location": "agent/knowledge/site/authorized-access-routes.md",
+      "answers": "Which route is authorized when the harness needs to sign into, push to, or use an outside system (GitHub writes, HTML previews, CMS content writes), and what to do when that route is unavailable",
+      "confidence": "operator_reported",
+      "status": "current",
+      "verified": "2026-11-25",
+      "aliases": [
+        "authorized access route",
+        "sign into github",
+        "github sign-in",
+        "github login",
+        "log into his account",
+        "which credential",
+        "push to the repo"
       ]
     }
   ]
