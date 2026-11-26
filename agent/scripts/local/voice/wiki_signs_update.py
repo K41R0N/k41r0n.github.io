@@ -24,7 +24,7 @@ What this does NOT do:
     is not a personal ban. Adoption goes through ban_list.py (a word is banned
     only if he never uses it in corpus/raw) and his confirmation.
 
-Exit codes: 0 = no change; 1 = additions only (written; skim the diff);
+Exit codes: 0 = no change; 3 = FAILED (fetch/parse/self-test error, never a quiet no-change); 1 = additions only (written; skim the diff);
 2 = removals or changed entries (written; REVIEW REQUIRED - the source dropped
 or reworded a pattern, so any local use of it needs a human look).
 --dry-run prints the diff and the would-be exit code without writing.
@@ -317,4 +317,13 @@ def main(argv):
 
 
 if __name__ == '__main__':
-    sys.exit(main(sys.argv[1:]))
+    # Exit codes: 0 no entry change, 1 not used for errors, 2 entries changed (see header).
+    # Any fetch/parse/self-test failure exits 3 so it can never look like a quiet no-change
+    # (an uncaught traceback would exit 1, which is the 'changed' code).
+    try:
+        sys.exit(main(sys.argv[1:]))
+    except SystemExit:
+        raise
+    except BaseException as e:
+        print(f'FAILED: {type(e).__name__}: {e}', file=sys.stderr)
+        sys.exit(3)
