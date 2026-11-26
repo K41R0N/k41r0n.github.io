@@ -26,6 +26,11 @@ def main(argv):
             print('FAIL writing-runs - rolling summary drifted from the run rows')
         if only == 'writing':
             return 1 if bad else 0
+    if only is None:
+        # Read-only freshness check: MANIFEST.md must match the packs it describes.
+        mf = subprocess.run([sys.executable, os.path.join(ROOT,'scripts','manifest.py'), '--check'], capture_output=True, text=True)
+        for line in mf.stdout.splitlines(): print(line)
+        bad += mf.returncode != 0
     for pack in sorted(glob.glob(os.path.join(ROOT, "packs", "*"))):
         if not os.path.isdir(pack): continue
         name = os.path.basename(pack)
