@@ -24,9 +24,12 @@ What this does NOT do:
     is not a personal ban. Adoption goes through ban_list.py (a word is banned
     only if he never uses it in corpus/raw) and his confirmation.
 
-Exit codes: 0 = no change; 3 = FAILED (fetch/parse/self-test error, never a quiet no-change); 1 = additions only (written; skim the diff);
-2 = removals or changed entries (written; REVIEW REQUIRED - the source dropped
-or reworded a pattern, so any local use of it needs a human look).
+Exit codes:
+  0 = no change
+  1 = additions only (written; skim the diff)
+  2 = removals or changed entries (written; REVIEW REQUIRED - the source dropped
+      or reworded a pattern, so any local use of it needs a human look)
+  3 = FAILED (fetch/parse/self-test error, never a quiet no-change)
 --dry-run prints the diff and the would-be exit code without writing.
 --self-test runs the extractor on a saved fixture of real wikitext, no network.
 

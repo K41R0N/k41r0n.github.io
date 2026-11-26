@@ -30,7 +30,7 @@ class LoopTests(unittest.TestCase):
         self.tmp=tempfile.TemporaryDirectory(prefix='writing-contract-')
         self.addCleanup(self.tmp.cleanup)
         self.base=Path(self.tmp.name)
-    def build(self, mode='review', register='synthetic-maintenance', content=TEXT, scope='personal'):
+    def build(self, mode='review', register='synthetic-maintenance', content=TEXT, scope='personal', legacy_policy=False):
         d=self.base/('run-'+str(len(list(self.base.iterdir()))))
         a=self.base/(d.name+'-artifact.md'); a.write_text(content)
         roles={}
@@ -39,7 +39,7 @@ class LoopTests(unittest.TestCase):
             p.write_text(f'SYNTHETIC {role} evidence for a contract test. Never author material or quality evidence. '+content)
             roles[role]=[str(p)]
         if scope=='client':
-            cp=self.base/(d.name+'-policy.json');w.write(cp,{'schema':'writing-client-policy/v1','source_ref':'Synthetic policy fixture, no actual client authority.','rule_severities':{rid:'INFO' for rid,*_ in checks.RULES}});roles['client_policy']=[str(cp)]
+            cp=self.base/(d.name+'-policy.json');w.write(cp,{'schema':'writing-client-policy/v1','source_ref':'Synthetic policy fixture, no actual client authority.','rule_severities':{rid:'INFO' for rid,*_ in checks.RULES if not (legacy_policy and rid=='W08')}});roles['client_policy']=[str(cp)]
         b={'voice_owner':'Synthetic fixture subject, not Alejandro','mode':mode,'scope':scope,'voice_target':'author','reader':'The assigned maintenance inspector','already-believes':'The supply must remain closed until inspection','action':'Record the pressure before opening supply','channel':'A synthetic maintenance instruction sheet','register':register,'objective':'Test evidence gates without producing author prose','risk-owner':'The synthetic fixture coordinator','inputs':roles,'artifact':str(a),'format':'essay','author_guideline_overlay':True,'author_overlay_reason':'Synthetic client fixture selects client-only voice policy explicitly.','review_plan':[{'topic':topic,'reason':'Synthetic topic applicability exercises source-grounded selection.','source_ref':'synthetic-original-review-selection'} for topic in ['decontaminate','creative','tone','compliance','page']]}
         b['private_methods']={}
         for item in w.read(w.CATALOG)['sources']:
@@ -170,6 +170,17 @@ class LoopTests(unittest.TestCase):
         d,b=self.build(scope='client');_,state,_=w.load(d)
         self.assertIn('method:voice-spec',state['snapshot'])
         self.assertTrue(any(k.startswith('measurement:') for k in state['snapshot']))
+        self.finish(d,b)
+        self.assertEqual(w.state(d)['state'],'evidence-complete-attested')
+    def test_existing_client_policy_without_w08_still_completes_with_w08_hit(self):
+        # A client policy written before W08 existed lists no W08 severity. W08 is advisory:
+        # it must not need a policy entry or an adjudication, even when it fires.
+        forms,status,_=checks.w08_state()
+        words=[f for k,f in forms if k=='word']
+        if status!='ok' or not words: self.skipTest('no W08 evidence in this checkout')
+        content=TEXT+'\n\nNote the '+words[0]+'.'
+        self.assertGreater(checks._w08_count(content),0,'probe must actually trigger W08')
+        d,b=self.build(scope='client',content=content,legacy_policy=True)
         self.finish(d,b)
         self.assertEqual(w.state(d)['state'],'evidence-complete-attested')
     def test_review_selection_changes_actual_sequence(self):

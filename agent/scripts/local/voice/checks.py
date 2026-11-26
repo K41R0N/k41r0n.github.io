@@ -31,7 +31,8 @@ def w08_state():
     Advisory only: when the evidence file is missing, unreadable, or no longer
     matches the candidates file or the raw corpus it was built from, no form is
     flagged and the state says so out loud instead of reading as a clean pass.
-    Only forms with auto_flag and zero corpus use are ever flagged."""
+    Only checkable entries (never the evidence-only "uncheckable" class) with zero
+    corpus use are flagged; auto_flag is also read but is effectively always true there."""
     import glob
     if not os.path.exists(W08_EVIDENCE):
         return [], 'unavailable', 'evidence file missing (run wiki_candidate_evidence.py)'

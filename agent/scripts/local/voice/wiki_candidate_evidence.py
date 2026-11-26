@@ -131,9 +131,11 @@ def build(candidates_path, corpus_dir):
         hits = {f: count_form(f, docs) for f in forms}
         # Per-form classes: the corpus rule is per word (ban_list.py BAN/KEEP lines),
         # so a slash-group entry does not shield an individually unused form.
-        # auto_flag: lone words inside phrase-pattern entries (e.g. "moment" in
-        # "key role/moment") stay evidence-only - a 15k-word corpus is weak
-        # evidence for common words, so those need his confirmation, not a flag.
+        # auto_flag marks forms checks.py may flag (a word, or a multi-word phrase).
+        # checks.py does read it, but it is effectively always true for checkable
+        # forms. What keeps phrase fragments (e.g. "moment" in "key role/moment")
+        # from being flagged is the 'uncheckable' classification (placeholders,
+        # slash fragments, "..."), which checks.py skips entirely.
         form_class = {f: ('zero_use' if n == 0 else 'used') for f, n in hits.items()}
         auto = {f: (kind == 'word' or ' ' in f) for f in forms}
         vals = set(form_class.values())
