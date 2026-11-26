@@ -14,3 +14,13 @@ def check(text):
     if re.search(r"https?://|\b20\d\d-\d\d-\d\d\b", text, re.IGNORECASE):
         found.append(("fail", "R3-specific-reference", "Contains a raw URL or ISO date that needs review."))
     return found
+
+# Every check ID this module can emit. evals/coverage_check.py enforces that each
+# carries at least one fixture whose run through check() produces it (the runner's
+# found == expected rule is the proof of signal), or an explicit CONDITIONAL reason.
+CHECK_IDS = [
+    "R1-client-name",
+    "R2-client-detail",
+    "R3-specific-reference"
+]
+CONDITIONAL = {}

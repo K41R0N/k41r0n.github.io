@@ -39,3 +39,18 @@ def check(text):
     if changes and not _items(sec.get("Verify", "")):
         out.append(("FAIL", "VA7-change-without-verification", "check the result before the next change"))
     return out
+
+# Every check ID this module can emit. evals/coverage_check.py enforces that each
+# carries at least one fixture whose run through check() produces it (the runner's
+# found == expected rule is the proof of signal), or an explicit CONDITIONAL reason.
+CHECK_IDS = [
+    "VA0-mode-missing",
+    "VA1-claim-without-check",
+    "VA2-change-in-investigation",
+    "VA3-more-than-one-change",
+    "VA4-change-on-unverified-claim",
+    "VA5-signal-unclassified",
+    "VA6-alarm-without-independent-confirmation",
+    "VA7-change-without-verification"
+]
+CONDITIONAL = {}

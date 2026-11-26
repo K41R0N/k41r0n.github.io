@@ -7,11 +7,21 @@
 # static site, not an operator cell, so cells/runtime (12, 14), model routing
 # (8) and system_one (7) have nothing to attach to. That is a scoping
 # statement, not a claim that the contracts are met.
-# REMAINING GAPS (not solved by this comment): no harness.lock (5.3); no
-# per-capability attention profiles (AGF 10.2); depths in
-# harness/task-register.md are self-assessed and uncalibrated (AGF 4.2 cap:
-# no rating above what his rulings support); the writing run log has
-# unruled runs (routines/writing-runs.md). Revisit when a runtime is added.
+# REMAINING GAPS (not solved by this comment), clause-precise:
+# - 5.3 harness.lock: most of its subjects are empty today (no stack
+#   modules, imported packs, embedding model, exec allowlist or platform
+#   versions - every pack declares requires: none). The one applicable
+#   slice, hash-pinning preserved source material and detecting drift, is
+#   done by hand in the two redaction logs; scripts/local/source_log_check.py
+#   now enforces their current-state pins from the eval runner.
+# - AGF 10.2 attention profiles record per-slot executors/tiers for a
+#   calibrated capability; depths here are self-assessed and slots run
+#   under one operator, so a profile today would record declarations, not
+#   measurements. Blocked on calibration evidence (real rulings), not on a
+#   runtime. The task register (10.1) is the present-day partial.
+# - Depths in harness/task-register.md stay self-assessed and uncalibrated
+#   (AGF 4.2 cap: no rating above what his rulings support); the writing
+#   run log has unruled runs (routines/writing-runs.md).
 # Corrected 2026-11-14 (decisions/log.md #34): this file migrated
 # byte-identical from the retired methods repo and misdescribed this brain.
 name: kairon-xyz-agent

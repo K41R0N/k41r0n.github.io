@@ -37,3 +37,18 @@ def check(text):
     if changes and not _items(sec.get("Indexes", "")):
         out.append(("FAIL", "KE6-indexes-stale", "update routing and retrieval indexes after the edit"))
     return out
+
+# Every check ID this module can emit. evals/coverage_check.py enforces that each
+# carries at least one fixture whose run through check() produces it (the runner's
+# found == expected rule is the proof of signal), or an explicit CONDITIONAL reason.
+CHECK_IDS = [
+    "KE0-file-missing",
+    "KE0-reason-missing",
+    "KE1-no-audit",
+    "KE2-overwrite-without-archive",
+    "KE3-archive-undated",
+    "KE4-no-post-write-verify",
+    "KE5-failed-verify-without-restore",
+    "KE6-indexes-stale"
+]
+CONDITIONAL = {}

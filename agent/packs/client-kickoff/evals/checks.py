@@ -33,3 +33,16 @@ def check(text):
     if not re.search(r"^publishing in week 1:\s*none", text, re.M | re.I):
         out.append(("FAIL", "KO6-publishing-in-week-1", "week one is audit and strategy, nothing publishes"))
     return out
+
+# Every check ID this module can emit. evals/coverage_check.py enforces that each
+# carries at least one fixture whose run through check() produces it (the runner's
+# found == expected rule is the proof of signal), or an explicit CONDITIONAL reason.
+CHECK_IDS = [
+    "KO1-agenda-not-60-min",
+    "KO2-approver-not-one-person",
+    "KO3-no-90-day-success-question",
+    "KO4-access-preference-not-asked",
+    "KO5-no-after-call-summary",
+    "KO6-publishing-in-week-1"
+]
+CONDITIONAL = {}

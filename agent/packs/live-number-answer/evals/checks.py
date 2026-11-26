@@ -50,3 +50,20 @@ def check(text):
     if ok_values and not _items(sec.get("Verify", "")):
         out.append(("FAIL", "LN8-verify-missing", "ok values need the human-verify step"))
     return out
+
+# Every check ID this module can emit. evals/coverage_check.py enforces that each
+# carries at least one fixture whose run through check() produces it (the runner's
+# found == expected rule is the proof of signal), or an explicit CONDITIONAL reason.
+CHECK_IDS = [
+    "LN0-dataset-missing",
+    "LN0-probe-missing",
+    "LN1-source-undeclared",
+    "LN2-value-without-source-or-asof",
+    "LN3-status-invalid",
+    "LN4-unreachable-source-used",
+    "LN5-stale-pasted-as-final",
+    "LN6-estimate-wording",
+    "LN7-refusal-without-reason",
+    "LN8-verify-missing"
+]
+CONDITIONAL = {}

@@ -36,3 +36,16 @@ def check(text):
         if re.search(r"carried:\s*yes", r) and "review: reviewed" not in r:
             out.append(("FAIL", "CG5-carried-without-review", r[:60]))
     return out
+
+# Every check ID this module can emit. evals/coverage_check.py enforces that each
+# carries at least one fixture whose run through check() produces it (the runner's
+# found == expected rule is the proof of signal), or an explicit CONDITIONAL reason.
+CHECK_IDS = [
+    "CG0-change-missing",
+    "CG1-no-scopes",
+    "CG2-scope-without-state",
+    "CG3-decision-without-basis",
+    "CG4-enabled-without-grant",
+    "CG5-carried-without-review"
+]
+CONDITIONAL = {}

@@ -26,6 +26,11 @@ def main(argv):
             print('FAIL writing-runs - rolling summary drifted from the run rows')
         if only == 'writing':
             return 1 if bad else 0
+    if only is None:
+        # Read-only freshness check: MANIFEST.md must match the packs it describes.
+        mf = subprocess.run([sys.executable, os.path.join(ROOT,'scripts','manifest.py'), '--check'], capture_output=True, text=True)
+        for line in mf.stdout.splitlines(): print(line)
+        bad += mf.returncode != 0
     for pack in sorted(glob.glob(os.path.join(ROOT, "packs", "*"))):
         if not os.path.isdir(pack): continue
         name = os.path.basename(pack)
@@ -55,6 +60,11 @@ def main(argv):
                 print(f"FAIL {name} {fname} - expected {sorted(exp) or 'clean'}, found {sorted(found) or 'clean'}")
         if not has_fail:
             bad += 1; print(f"FAIL {name} - no fixture that fails on purpose")
+    if only is None:
+        cov = subprocess.run([sys.executable, os.path.join(ROOT,'evals','coverage_check.py')])
+        bad += cov.returncode != 0
+        srclog = subprocess.run([sys.executable, os.path.join(ROOT,'scripts','local','source_log_check.py')])
+        bad += srclog.returncode != 0
     print("RESULT", "all as expected" if bad == 0 else f"{bad} problem(s)")
     return 1 if bad else 0
 

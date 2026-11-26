@@ -27,3 +27,22 @@ def check(text):
     if e is not None and e <= 1 and (runs is None or not runs.isdigit() or int(runs) < 2):
         out.append(("FAIL", "AG6-script-before-two-runs", "scripted modes need two identical manual runs first"))
     return out
+
+# Every check ID this module can emit. evals/coverage_check.py enforces that each
+# carries at least one fixture whose run through check() produces it (the runner's
+# found == expected rule is the proof of signal), or an explicit CONDITIONAL reason.
+CHECK_IDS = [
+    "AG1-depth-missing",
+    "AG2-mode-missing",
+    "AG3-slot-missing-act",
+    "AG3-slot-missing-anticipate",
+    "AG3-slot-missing-calculate",
+    "AG3-slot-missing-react",
+    "AG3-slot-missing-recognize",
+    "AG3-slot-missing-strategize",
+    "AG3-slot-missing-suspect",
+    "AG4-depth-not-lowest-slot",
+    "AG5-mode-below-cap",
+    "AG6-script-before-two-runs"
+]
+CONDITIONAL = {}

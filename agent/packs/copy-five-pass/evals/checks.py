@@ -46,3 +46,21 @@ def check(text):
     if not ctx:
         out.append(("FAIL", "P5-context-missing", "add 'context: external' or 'context: internal'"))
     return out
+
+# Every check ID this module can emit. evals/coverage_check.py enforces that each
+# carries at least one fixture whose run through check() produces it (the runner's
+# found == expected rule is the proof of signal), or an explicit CONDITIONAL reason.
+CHECK_IDS = [
+    "P1-number-without-source",
+    "P1-slop-superlative",
+    "P1-superlative-without-source",
+    "P2-unresolved",
+    "P3-dash-budget",
+    "P3-filler",
+    "P3-language-mix",
+    "P3-meta-commentary",
+    "P4-long-sentence",
+    "P5-context-missing",
+    "P5-external-without-approval"
+]
+CONDITIONAL = {}

@@ -42,3 +42,16 @@ def check(text):
         if not re.search(rf"^- {k}:\s*\S", conf, re.M):
             out.append(("FAIL", "AF6-confidence-line-missing", k))
     return out
+
+# Every check ID this module can emit. evals/coverage_check.py enforces that each
+# carries at least one fixture whose run through check() produces it (the runner's
+# found == expected rule is the proof of signal), or an explicit CONDITIONAL reason.
+CHECK_IDS = [
+    "AF1-asker-level-missing",
+    "AF2-buzzword",
+    "AF3-jargon-without-plain-words",
+    "AF4-sentence-too-long",
+    "AF5-not-one-next-step",
+    "AF6-confidence-line-missing"
+]
+CONDITIONAL = {}
