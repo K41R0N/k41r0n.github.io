@@ -3,7 +3,7 @@
  "source": "Wikipedia:Signs of AI writing",
  "source_oldid": "1387897756",
  "source_revision": "2026-11-25T22:43:03Z)",
- "generated_at": "2026-11-26T16:18:41Z",
+ "generated_at": "2026-11-26T16:25:15Z",
  "corpus_dir": "assets/voice-corpus/raw",
  "corpus_words": 15712,
  "rule": "a word is banned only if he never uses it in corpus/raw; zero_use = ban-eligible candidate, unconfirmed",
@@ -1385,17 +1385,7 @@
    "class": "zero_use"
   },
   {
-   "term": "here is a ...",
-   "section": "Collaborative communication",
-   "kind": "uncheckable",
-   "forms": [],
-   "corpus_hits": {},
-   "form_class": {},
-   "auto_flag": {},
-   "class": "uncheckable"
-  },
-  {
-   "term": "[check/verify/confirm]... ...before [publishing/publication/submitting]",
+   "term": "here is a ..., [check/verify/confirm]... ...before [publishing/publication/submitting]",
    "section": "Collaborative communication",
    "kind": "uncheckable",
    "forms": [],
@@ -2305,25 +2295,7 @@
    "class": "zero_use"
   },
   {
-   "term": "I cannot offer medical advice",
-   "section": "Prompt refusal",
-   "kind": "phrase",
-   "forms": [
-    "I cannot offer medical advice"
-   ],
-   "corpus_hits": {
-    "I cannot offer medical advice": 0
-   },
-   "form_class": {
-    "I cannot offer medical advice": "zero_use"
-   },
-   "auto_flag": {
-    "I cannot offer medical advice": true
-   },
-   "class": "zero_use"
-  },
-  {
-   "term": "but I can...",
+   "term": "I cannot offer medical advice, but I can...",
    "section": "Prompt refusal",
    "kind": "uncheckable",
    "forms": [],

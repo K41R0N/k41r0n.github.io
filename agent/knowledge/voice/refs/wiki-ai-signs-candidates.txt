@@ -1,6 +1,6 @@
 # Wikipedia "Signs of AI writing" - candidate extraction
 # Source: https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing (oldid 1387897756, revision 2026-11-25T22:43:03Z)
-# Fetched: 2026-11-26T16:13:01Z by scripts/local/voice/wiki_signs_update.py v2
+# Fetched: 2026-11-26T16:25:10Z by scripts/local/voice/wiki_signs_update.py v2
 # Status: CANDIDATES ONLY. A candidate tell is not a personal ban
 # (refs/anti-pattern-method.md). Bans require zero use in corpus/raw via
 # ban_list.py plus his confirmation. This file is not the privacy denylist.
@@ -98,8 +98,7 @@
 - is there anything else  [Collaborative communication]
 - let me know  [Collaborative communication]
 - more detailed breakdown  [Collaborative communication]
-- here is a ...  [Collaborative communication]
-- [check/verify/confirm]... ...before [publishing/publication/submitting]  [Collaborative communication]
+- here is a ..., [check/verify/confirm]... ...before [publishing/publication/submitting]  [Collaborative communication]
 - While specific details are limited/scarce...  [Hedging disclaimers about source availability and recommended usage]
 - not widely available/documented/disclosed  [Hedging disclaimers about source availability and recommended usage]
 - ...in the provided/available sources / search results...  [Hedging disclaimers about source availability and recommended usage]
@@ -154,8 +153,7 @@
 - Overall ...  [Section summaries]
 - as an AI language model  [Prompt refusal]
 - as a large language model  [Prompt refusal]
-- I cannot offer medical advice  [Prompt refusal]
-- but I can...  [Prompt refusal]
+- I cannot offer medical advice, but I can...  [Prompt refusal]
 - I'm sorry ...  [Prompt refusal]
 
 ## Pattern index (section headings)
@@ -217,5 +215,4 @@
 - Historical indicators / Prompt refusal
 - Historical indicators / Overuse of em dashes (2022–September 2026)
 - Historical indicators / Abrupt cut offs
-- Historical indicators / Outdated <i>access-date</i> parameters
 - Historical indicators / Lexical diversity/elegant variation

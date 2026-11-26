@@ -11,7 +11,25 @@
   {
    "parent": "Language and grammar",
    "wikitext": "===Rule of three===\n{{shortcut|WP:RO3}}\n\nLLMs overuse the [[Rule of three (writing)|rule of three]]. This can take different forms, from \"<var>adjective</var>, <var>adjective</var>, <var>adjective</var>\" to \"<var>short phrase</var>, <var>short phrase</var>, and <var>short phrase</var>\".<ref name=\"Russell\"/><ref name=\"economistJul2026\" /><ref name=\"Kriss\"/> LLMs often use this structure to make [[#Superficial analyses|superficial analyses]] appear more comprehensive.\n\nThis sign is stronger when it appears in contexts where most people would not bother to include such stylistic flourishes, like [[Wikipedia:Signs_of_AI_writing#Edit_summaries|edit summaries]].\n\n'''Examples'''\n{{quote frame|\n* **Standard Rotary Saws**: Typically used for drywall and light materials.\n* **Heavy-Duty Rotary Saws**: Designed for tougher materials such as {{highlight|tiles, metals, and plastics}}.\n* **Corded and Cordless Versions**: Corded rotary saws offer continuous power, while cordless versions provide portability and convenience\n[...]\n* **Construction and Renovation**: For cutting {{highlight|drywall, plywood, and other construction materials}}.\n* **Electrical and Plumbing**: To create openings for {{highlight|electrical outlets, switches, and plumbing fixtures}}.\n* **Hobby and Craft**: Used in {{highlight|model making, woodworking, and other craft projects}}.\n* **Automotive**: Employed in auto body repair and modification tasks.\n|From [[Special:Diff/1237779206|this July 2024 revision]] to [[Rotary saw]] (note that these are [[WP:AILIST|canned-format lists]] that used [[WP:MARKDOWN|Markdown]])}}\n\n{{quote frame|\nThe film preserves core elements such as Nezha's {{highlight|mythological image, magical weapons, and spirit of resistance}} while reshaping them through {{highlight|contemporary values, modern aesthetics, and digital animation technology}}.\n|From [[Special:Diff/1359424195|this June 2026 revision]] to [[Ne Zha (2019 film)]]}}"
+  },
+  {
+   "parent": "Historical indicators",
+   "wikitext": "===Prompt refusal===\n{{tmbox|image=none|text=Words to watch: {{strong|''as an AI language model'', ''as a large language model'', ''I cannot offer medical advice, but I can...'', ''I'm sorry''&nbsp;...}} }}\nIn the past, AI chatbots occasionally declined to answer prompts as written.\n"
   }
  ],
- "note": "Real wikitext of sections 16,17,23 of Wikipedia:Signs of AI writing, fetched 2026-11-26 for wiki_signs_update.py --self-test."
+ "note": "Real wikitext of sections 16,17,23 of Wikipedia:Signs of AI writing, fetched 2026-11-26 for wiki_signs_update.py --self-test. Includes the pinned revision's Prompt refusal span (comma inside an italicized candidate) and a split_sections alignment case.",
+ "split_case": {
+  "note": "A level-3 child under the meta parent Notes (excluded from the API toc) sits between two eligible sections; pairing must stay title-aligned and keep the final eligible section.",
+  "toc": [
+   [
+    "Language and grammar",
+    "Eligible one"
+   ],
+   [
+    "Language and grammar",
+    "Eligible two"
+   ]
+  ],
+  "wikitext": "== Language and grammar ==\nlead text\n=== Eligible one ===\n{{tmbox|text=Words to watch: {{strong|''alpha''}} }}\n== Notes ==\n=== Excluded child ===\n{{tmbox|text=Words to watch: {{strong|''shouldneverappear''}} }}\n=== Eligible two ===\n{{tmbox|text=Words to watch: {{strong|''omega''}} }}\n"
+ }
 }

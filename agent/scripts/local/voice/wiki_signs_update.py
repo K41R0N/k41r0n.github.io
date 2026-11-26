@@ -81,14 +81,16 @@ def fetch_page():
 
 
 def split_sections(wikitext, toc):
-    """Split full wikitext into (parent, clean_title, section_text), aligned to the API toc.
+    """Split full wikitext into (parent, clean_title, section_text), aligned by title.
 
-    The wikitext is cut at every heading of level 3 or deeper; the API's own
-    section titles (already clean of span/anchor markup) label the chunks, in
-    document order. Chunks beyond the toc length keep their parsed heading."""
+    The wikitext is cut at every heading; each level-3+ chunk's own heading is
+    cleaned and matched against the API toc in document order. Chunks whose
+    heading is not in the toc (level-3+ children of meta parents such as
+    Notes, which fetch_page excludes) are dropped, so one excluded child can
+    never shift the pairing of every later eligible section."""
     chunks, buf = [], []
     for line in wikitext.splitlines():
-        if re.match(r'^={3,6}\s*.+?\s*=+\s*$', line) or re.match(r'^==\s*.+?\s*==\s*$', line):
+        if re.match(r'^={2,6}\s*.+?\s*=+\s*$', line):
             if buf:
                 chunks.append(buf)
             buf = [line]
@@ -98,12 +100,18 @@ def split_sections(wikitext, toc):
         chunks.append(buf)
     # drop chunks before the first level-3 heading (lead + level-2-only text)
     chunks = [c for c in chunks if re.match(r'^={3,6}\s*.+?\s*=+\s*$', c[0])]
-    sections = []
-    for i, c in enumerate(chunks):
-        if i < len(toc):
-            sections.append((toc[i][0], toc[i][1], '\n'.join(c)))
-        else:
-            sections.append(('', heading_of('\n'.join(c)), '\n'.join(c)))
+    sections, ti = [], 0
+    for c in chunks:
+        title = clean_text(re.sub(r'^=+\s*|\s*=+$', '', c[0]))
+        k = ti
+        while k < len(toc) and toc[k][1] != title:
+            k += 1
+        if k < len(toc):
+            # matched: pair with the toc entry, continue after it; an
+            # unmatched (meta-parented) chunk is dropped without consuming
+            # toc entries, so later eligible sections keep their titles
+            sections.append((toc[k][0], toc[k][1], '\n'.join(c)))
+            ti = k + 1
     return sections
 
 
@@ -160,11 +168,50 @@ def clean_text(s):
     s = re.sub(r'\s+', ' ', s).strip(" ,;'")
     return s
 
+def split_candidates(text):
+    """Split a span on top-level commas only.
+
+    Commas inside ''italics'', [[links]] or (qualifiers) belong to a single
+    candidate (''I cannot offer medical advice, but I can...'' is one term,
+    not two)."""
+    parts, buf = [], []
+    i, link, paren, ital = 0, 0, 0, False
+    while i < len(text):
+        if text.startswith("''", i):
+            ital = not ital
+            buf.append("''")
+            i += 2
+            continue
+        if text.startswith('[[', i):
+            link += 1
+            buf.append('[[')
+            i += 2
+            continue
+        if text.startswith(']]', i) and link:
+            link -= 1
+            buf.append(']]')
+            i += 2
+            continue
+        c = text[i]
+        if c == '(' and not link:
+            paren += 1
+        elif c == ')' and paren:
+            paren -= 1
+        if c == ',' and not ital and not link and not paren:
+            parts.append(''.join(buf))
+            buf = []
+        else:
+            buf.append(c)
+        i += 1
+    parts.append(''.join(buf))
+    return parts
+
+
 def vocab_from(strong_text):
     """Split a strong span into candidate terms, keeping qualifiers."""
     text = strip_templates(strong_text)
     terms = []
-    for part in text.split(','):
+    for part in split_candidates(text):
         part = re.sub(r'\[\[(?:[^]|]*\|)?([^]|]*)\]\]', r'\1', part)
         part = clean_text(part)
         if part and len(part) > 1:
@@ -224,6 +271,17 @@ def main(argv):
             f'sec-17 phrase groups missing: {sorted(terms)}'
         assert any(p.endswith('/ Rule of three') for p in patterns), \
             f'pattern index broke: {patterns}'
+        assert 'I cannot offer medical advice, but I can...' in terms, \
+            f'comma inside italic candidate split: {sorted(t for t in terms if "medical" in t or "but I can" in t)}'
+        sc = data['split_case']
+        toc = [(p, t) for p, t in sc['toc']]
+        got = split_sections(sc['wikitext'], toc)
+        assert [(p, t) for p, t, _ in got] == [tuple(x) for x in sc['toc']], \
+            f'section alignment broke: {[(p, t) for p, t, _ in got]}'
+        v2, _ = extract(got)
+        t2 = {t for t, _ in v2}
+        assert t2 == {'alpha', 'omega'}, \
+            f'excluded meta child leaked or eligible section dropped: {sorted(t2)}'
         print(f'self-test OK: {len(vocab)} vocab candidates, {len(patterns)} pattern entries from fixture')
         return 0
 
