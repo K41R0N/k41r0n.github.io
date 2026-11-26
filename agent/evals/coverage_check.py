@@ -56,6 +56,21 @@ def main():
             problems.append(f'{cid}: fixture expects an ID the module does not declare')
         for cid in sorted(set(re.findall(r'(?<!f)"([A-Z]{1,5}\d+-[a-z0-9][a-z0-9-]*)"', src)) - set(declared)):
             problems.append(f'{cid}: literal ID in source missing from CHECK_IDS')
+        # Registry is not self-certifying: run check() over every fixture and an
+        # empty input, and require every actually emitted ID to be declared.
+        # This catches new f-string variants no literal scan can see.
+        emitted = set()
+        try:
+            emitted |= {i[1] for i in mod.check('')}
+        except Exception as e:
+            problems.append(f'check() failed on empty input: {e}')
+        for f in sorted(glob.glob(os.path.join(ROOT, 'packs', pack, 'fixtures', '*.md'))):
+            try:
+                emitted |= {i[1] for i in mod.check(open(f, encoding='utf-8').read())}
+            except Exception as e:
+                problems.append(f'check() failed on {os.path.basename(f)}: {e}')
+        for cid in sorted(emitted - set(declared)):
+            problems.append(f'{cid}: emitted by check() but missing from CHECK_IDS')
         for cid in sorted(set(conditional) - set(declared)):
             problems.append(f'{cid}: CONDITIONAL entry not in CHECK_IDS')
         if problems:
