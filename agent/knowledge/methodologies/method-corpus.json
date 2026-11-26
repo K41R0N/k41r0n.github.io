@@ -883,7 +883,10 @@
         "github login",
         "log into his account",
         "which credential",
-        "push to the repo"
+        "push to the repo",
+        "cms lane",
+        "site content write",
+        "preview route"
       ]
     }
   ]

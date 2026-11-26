@@ -660,7 +660,8 @@ def packet(d, destination):
                   author_guideline_overlay=(b['scope']=='personal' or b.get('author_guideline_overlay') is True), author_overlay_reason=b.get('author_overlay_reason'),
                   limitations=['Mechanical evidence cannot certify taste, voice or semantic relevance.',
                                'Turn IDs and source references are auditable declarations, not authenticated identities.',
-                               'Author calibration and exact final approval remain required.'],
+                               'Author calibration and exact final approval remain required.',
+                               'A completion claim about this run is checked against its record with scripts/local/claim_check.py; that validates the record, never the quality.'],
                   evidence={k: v['sha256'] for k,v in s['snapshot'].items()},
                   receipt_hashes=[r['sha256'] for r in s['receipts']])
     out = Path(destination).resolve()

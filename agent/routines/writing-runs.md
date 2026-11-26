@@ -15,7 +15,11 @@ rules on it; drafts in flight are not evidence.
   rows are listed and never counted
 - upkeep: every deliverable he rules on gets a row in the same session; the
   rolling summary below is derived from the rows with
-  `python3 scripts/local/runlog_summary.py` and `--check` fails on drift
+  `python3 scripts/local/runlog_summary.py`; the eval runner
+  (`evals/run.py`) runs `--check` on every pass and fails the suite on drift
+- completion claims about a run are verified against its record with
+  `python3 scripts/local/claim_check.py RUN_DIR --claim STEP --complete`;
+  a PASS validates the record, never the prose
 
 | run | date | deliverable | surface | outcome | edit distance | cause | his minutes |
 |---|---|---|---|---|---|---|---|

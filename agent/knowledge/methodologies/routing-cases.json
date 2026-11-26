@@ -265,6 +265,14 @@
     {
       "input": "push to the repo after the records fix",
       "expected": "ops-authorized-access-routes"
+    },
+    {
+      "input": "which CMS lane is authorized for site content writes",
+      "expected": "ops-authorized-access-routes"
+    },
+    {
+      "input": "which preview route is authorized for html output",
+      "expected": "ops-authorized-access-routes"
     }
   ]
 }
