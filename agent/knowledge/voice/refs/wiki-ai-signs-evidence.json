@@ -2,8 +2,8 @@
  "schema": "wiki-ai-signs-evidence/v1",
  "source": "Wikipedia:Signs of AI writing",
  "source_oldid": "1387897756",
- "source_revision": "2026-11-25T22:43:03Z)",
- "generated_at": "2026-11-26T16:27:42Z",
+ "source_revision": "2026-11-25T22:43:03Z",
+ "generated_at": "2026-11-26T16:41:13Z",
  "corpus_dir": "assets/voice-corpus/raw",
  "corpus_files": [
   "2025-06-04-why-im-building-things-that-dont.md",
@@ -1199,32 +1199,12 @@
   {
    "term": "boasts/features/maintains/offers [a]",
    "section": "Avoidance of basic copulatives (\"is\"/\"are\" phrases)",
-   "kind": "word",
-   "forms": [
-    "boasts",
-    "features",
-    "maintains",
-    "offers"
-   ],
-   "corpus_hits": {
-    "boasts": 0,
-    "features": 0,
-    "maintains": 0,
-    "offers": 2
-   },
-   "form_class": {
-    "boasts": "zero_use",
-    "features": "zero_use",
-    "maintains": "zero_use",
-    "offers": "used"
-   },
-   "auto_flag": {
-    "boasts": true,
-    "features": true,
-    "maintains": true,
-    "offers": true
-   },
-   "class": "mixed"
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
   },
   {
    "term": "refers to",
@@ -1589,20 +1569,12 @@
   {
    "term": "Wikipedia [guidelines/style/standards]",
    "section": "Canned assurance of adherence to Wikipedia policies and guidelines",
-   "kind": "word",
-   "forms": [
-    "Wikipedia"
-   ],
-   "corpus_hits": {
-    "Wikipedia": 2
-   },
-   "form_class": {
-    "Wikipedia": "used"
-   },
-   "auto_flag": {
-    "Wikipedia": true
-   },
-   "class": "used"
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
   },
   {
    "term": "revised",
@@ -1831,56 +1803,32 @@
   {
    "term": "added sourced [information/content/infobox/section]",
    "section": "Overemphasis on presence/reliability of citations",
-   "kind": "phrase",
-   "forms": [
-    "added sourced"
-   ],
-   "corpus_hits": {
-    "added sourced": 0
-   },
-   "form_class": {
-    "added sourced": "zero_use"
-   },
-   "auto_flag": {
-    "added sourced": true
-   },
-   "class": "zero_use"
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
   },
   {
    "term": "added verified [information/content/infobox/section]",
    "section": "Overemphasis on presence/reliability of citations",
-   "kind": "phrase",
-   "forms": [
-    "added verified"
-   ],
-   "corpus_hits": {
-    "added verified": 0
-   },
-   "form_class": {
-    "added verified": "zero_use"
-   },
-   "auto_flag": {
-    "added verified": true
-   },
-   "class": "zero_use"
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
   },
   {
    "term": "added [coverage/citations/references]",
    "section": "Overemphasis on presence/reliability of citations",
-   "kind": "word",
-   "forms": [
-    "added"
-   ],
-   "corpus_hits": {
-    "added": 0
-   },
-   "form_class": {
-    "added": "zero_use"
-   },
-   "auto_flag": {
-    "added": true
-   },
-   "class": "zero_use"
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
   },
   {
    "term": "improved attribution",
@@ -1903,20 +1851,12 @@
   {
    "term": "with [independent/secondary/third-party/peer-reviewed] sources",
    "section": "Overemphasis on presence/reliability of citations",
-   "kind": "phrase",
-   "forms": [
-    "with sources"
-   ],
-   "corpus_hits": {
-    "with sources": 0
-   },
-   "form_class": {
-    "with sources": "zero_use"
-   },
-   "auto_flag": {
-    "with sources": true
-   },
-   "class": "zero_use"
+   "kind": "uncheckable",
+   "forms": [],
+   "corpus_hits": {},
+   "form_class": {},
+   "auto_flag": {},
+   "class": "uncheckable"
   },
   {
    "term": "boasts a",

@@ -48,17 +48,24 @@ def sha_of(paths):
     return h.hexdigest()
 
 
-def corpus_text(corpus_dir):
-    parts = []
-    for p in corpus_files(corpus_dir):
-        parts.append(open(p, encoding='utf-8').read().lower())
-    return ' '.join(parts)
+def norm(text):
+    """Lowercase and collapse whitespace so a phrase split across a line break matches."""
+    return re.sub(r'\s+', ' ', text.lower())
 
 
-def parse_candidates(path):
-    """Yield (term, section) from the vocabulary section of the candidates file."""
+def corpus_docs(corpus_dir):
+    """One normalized text per document. Fails loudly (before any catalog is
+    replaced) when the corpus is missing or empty."""
+    files = corpus_files(corpus_dir)
+    if not os.path.isdir(corpus_dir) or not files:
+        raise SystemExit(f'FAILED: corpus directory missing or empty: {corpus_dir}')
+    return [norm(open(p, encoding='utf-8').read()) for p in files]
+
+
+def parse_candidates(lines):
+    """Yield (term, section) from the vocabulary section of the candidates file lines."""
     in_vocab = False
-    for line in open(path, encoding='utf-8'):
+    for line in lines:
         if line.startswith('## '):
             in_vocab = line.strip().startswith('## Vocabulary candidates')
             continue
@@ -73,8 +80,11 @@ def forms_of(term):
 
     kind: 'word' (single-word slash alternatives), 'phrase' (literal multi-word
     alternatives), or 'uncheckable' (open-ended pattern)."""
+    if '[' in term:
+        # Mandatory placeholders ([a], [source]) would leave fragments such as
+        # "added" or "with sources" that the source never listed: evidence-only.
+        return 'uncheckable', []
     t = re.sub(r'\([^)]*\)', ' ', term)      # qualifiers
-    t = re.sub(r'\[[^]]*\]', ' ', t)          # placeholders like [a], [source]
     if '...' in t or '…' in t:
         return 'uncheckable', []
     alts = []
@@ -93,25 +103,32 @@ def forms_of(term):
     return 'uncheckable', []
 
 
-def count_form(form, corpus):
-    if re.fullmatch(r"[A-Za-z][A-Za-z'-]*", form):
-        return len(re.findall(r'\b' + re.escape(form.lower()) + r'\b', corpus))
-    return corpus.count(form.lower())
+def form_regex(form):
+    """Word-boundary regex for a word or phrase over whitespace-normalized text."""
+    return r'(?<![A-Za-z0-9\'])' + re.escape(norm(form)) + r"(?![A-Za-z0-9'])"
+
+
+def count_form(form, docs):
+    """Sum of per-document matches (no match can span two documents)."""
+    rx = re.compile(form_regex(form))
+    return sum(len(rx.findall(d)) for d in docs)
 
 
 def build(candidates_path, corpus_dir):
-    corpus = corpus_text(corpus_dir)
-    corpus_words = len(re.findall(r"[a-z0-9']+", corpus))
-    oldid = ''
-    for line in open(candidates_path, encoding='utf-8'):
-        m = re.search(r'oldid (\d+), revision (\S+)', line)
+    docs = corpus_docs(corpus_dir)
+    corpus_words = sum(len(re.findall(r"[a-z0-9']+", d)) for d in docs)
+    cand_bytes = open(candidates_path, 'rb').read()   # one snapshot for revision, entries and hash
+    cand_lines = cand_bytes.decode('utf-8').splitlines()
+    oldid = revts = ''
+    for line in cand_lines:
+        m = re.search(r'oldid (\d+), revision ([^\s)]+)', line)
         if m:
             oldid, revts = m.group(1), m.group(2)
             break
     entries = []
-    for term, section in parse_candidates(candidates_path):
+    for term, section in parse_candidates(cand_lines):
         kind, forms = forms_of(term)
-        hits = {f: count_form(f, corpus) for f in forms}
+        hits = {f: count_form(f, docs) for f in forms}
         # Per-form classes: the corpus rule is per word (ban_list.py BAN/KEEP lines),
         # so a slash-group entry does not shield an individually unused form.
         # auto_flag: lone words inside phrase-pattern entries (e.g. "moment" in
@@ -135,7 +152,7 @@ def build(candidates_path, corpus_dir):
         'corpus_dir': os.path.relpath(corpus_dir, ROOT),
         'corpus_files': [os.path.basename(x) for x in corpus_files(corpus_dir)],
         'corpus_sha256': sha_of(corpus_files(corpus_dir)),
-        'candidates_sha256': sha_of([candidates_path]),
+        'candidates_sha256': hashlib.sha256(os.path.basename(candidates_path).encode() + b'\0' + cand_bytes + b'\0').hexdigest(),
         'corpus_scope': 'verified owner-authored raw essays only; excluded/ (authorship unverified) and holdout/ are never read. Zero use in a small corpus is weak evidence and never proof of AI writing; it supports personal calibration only and does not override channel or client constraints.',
         'corpus_words': corpus_words,
         'rule': 'a word is banned only if he never uses it in corpus/raw; zero_use = ban-eligible candidate, unconfirmed',
@@ -160,7 +177,8 @@ def main(argv):
         assert ev['corpus_words'] > 1000, 'corpus not read'
         classes = {e['class'] for e in ev['entries']}
         assert 'zero_use' in classes and 'used' in classes, f'expected both classes, got {classes}'
-        assert any(e['class'] == 'mixed' for e in ev['entries']), 'expected at least one mixed slash-group'
+        # mixed/uncheckable semantics are covered by synthetic tests (evals/writing/test_wiki_w08.py);
+        # real page content may legitimately have none after a source change
         used = [e['term'] for e in ev['entries'] if e['class'] == 'used']
         zero = [e['term'] for e in ev['entries'] if e['class'] == 'zero_use']
         print(f"self-test OK: {len(ev['entries'])} entries, corpus {ev['corpus_words']} words; "

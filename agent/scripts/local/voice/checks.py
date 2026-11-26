@@ -62,12 +62,11 @@ def _w08_count(t):
     forms, status, _ = w08_state()
     if status != 'ok':
         return 0
+    text = re.sub(r'\s+', ' ', lines(t).lower())   # stripped + normalized once per run
     c = 0
     for kind, f in forms:
-        if kind == 'word':
-            c += hits(r'\b' + re.escape(f.lower()) + r'\b', lines(t))
-        else:
-            c += lines(t).lower().count(f.lower())
+        norm_f = re.sub(r'\s+', ' ', f.lower())
+        c += len(re.findall(r"(?<![a-z0-9'])" + re.escape(norm_f) + r"(?![a-z0-9'])", text))
     return c
 
 

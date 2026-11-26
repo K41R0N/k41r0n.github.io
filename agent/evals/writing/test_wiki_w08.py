@@ -24,6 +24,9 @@ CANDIDATES = """# synthetic
 - a sturdy/hardy role/moment  [Synthetic]
 - as a quokka, I can...  [Synthetic]
 - plainword (as a noun)  [Synthetic]
+- refers to  [Synthetic]
+- ends the  [Synthetic]
+- added [coverage/citations]  [Synthetic]
 
 ## Pattern index (section headings)
 - Synthetic / Heading
@@ -37,7 +40,8 @@ class W08Tests(unittest.TestCase):
         self.addCleanup(self.tmp.cleanup)
         d = Path(self.tmp.name)
         (d / 'raw').mkdir()
-        (d / 'raw' / 'a.md').write_text(CORPUS)
+        (d / 'raw' / 'a.md').write_text(CORPUS + ' She ends')
+        (d / 'raw' / 'b.md').write_text('the start of a story.')
         (d / 'excluded').mkdir()
         (d / 'excluded' / 'x.md').write_text('zebrafish zebrafish unverified authorship')
         self.cand = d / 'cand.txt'
@@ -82,8 +86,30 @@ class W08Tests(unittest.TestCase):
         self.assertEqual(self.row('The cat is a marsupial of note.')['count'], 1)
         self.assertEqual(self.row('This sturdy role is a hardy moment.')['count'], 0)
 
+    def test_phrase_matches_on_word_boundaries(self):
+        self.assertEqual(self.row('She prefers to wait.')['count'], 0)
+        self.assertEqual(self.row('This refers to the draft.')['count'], 1)
+
+    def test_phrase_split_across_line_break_matches(self):
+        self.assertEqual(self.row('The cat is a\nmarsupial of note.')['count'], 1)
+
+    def test_corpus_match_cannot_span_documents(self):
+        # a.md ends with "she ends" and b.md starts "the start": "ends the" never occurs inside one document
+        self.assertEqual(self.classes()['ends the'], 'zero_use')
+
+    def test_mandatory_placeholder_entries_are_evidence_only(self):
+        self.assertEqual(self.classes()['added [coverage/citations]'], 'uncheckable')
+        self.assertEqual(self.row('We added a table.')['count'], 0)
+
+    def test_revision_capture_excludes_paren_and_empty_corpus_fails(self):
+        self.assertEqual(self.ev['source_revision'], '2026-01-01T00:00:00Z')
+        empty = Path(self.tmp.name) / 'empty'
+        empty.mkdir()
+        with self.assertRaises(SystemExit):
+            wce.build(str(self.cand), str(empty))
+
     def test_excluded_dir_never_read(self):
-        self.assertEqual(self.ev['corpus_files'], ['a.md'])
+        self.assertEqual(self.ev['corpus_files'], ['a.md', 'b.md'])
         self.assertEqual(self.classes()['zebrafish'], 'zero_use')
 
     def test_missing_evidence_reports_unavailable_not_clean(self):
@@ -100,7 +126,7 @@ class W08Tests(unittest.TestCase):
         self.cand.write_text(CANDIDATES + '- newword  [Synthetic]\n')
         self.assertEqual(self.row('A zebrafish swims.')['status'], 'stale')
         self.cand.write_text(CANDIDATES)
-        (self.raw / 'b.md').write_text('another essay')
+        (self.raw / 'c.md').write_text('another essay')
         self.assertEqual(self.row('A zebrafish swims.')['status'], 'stale')
 
     def test_advisory_in_every_scope(self):
