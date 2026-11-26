@@ -62,3 +62,21 @@ def check(text):
     if re.search(r"(?i)\b(?:home address|personal phone|private email|password|ssn)\s*[:=]\s*(?!none\b|unknown\b|not collected\b|redacted\b|n/?a\b|$)\S+", text):
         out.append(("FAIL", "PR4-private-detail", "possible private personal detail"))
     return out
+
+# Every check ID this module can emit. evals/coverage_check.py enforces that each
+# carries at least one fixture whose run through check() produces it (the runner's
+# found == expected rule is the proof of signal), or an explicit CONDITIONAL reason.
+CHECK_IDS = [
+    "PR1-missing-business-identity",
+    "PR1-missing-business-model",
+    "PR1-missing-decision",
+    "PR1-missing-gaps",
+    "PR1-missing-improvement-hypotheses",
+    "PR1-missing-operations",
+    "PR1-missing-sources",
+    "PR1-missing-stated-goal-and-source",
+    "PR2-evidence-tag-without-source",
+    "PR3-pain-asserted-without-validation",
+    "PR4-private-detail"
+]
+CONDITIONAL = {}

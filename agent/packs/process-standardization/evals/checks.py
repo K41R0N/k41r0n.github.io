@@ -61,3 +61,16 @@ def check_source_tree(pack_dir):
         elif digest != redacted.group(1):
             issues.append(f"redacted-hash-mismatch:{relative}")
     return issues
+
+# Every check ID this module can emit. evals/coverage_check.py enforces that each
+# carries at least one fixture whose run through check() produces it (the runner's
+# found == expected rule is the proof of signal), or an explicit CONDITIONAL reason.
+CHECK_IDS = [
+    "PS1-traceability",
+    "PS2-no-invention",
+    "PS3-variants",
+    "PS4-fact-inference",
+    "PS5-review",
+    "PS6-clean-run"
+]
+CONDITIONAL = {}

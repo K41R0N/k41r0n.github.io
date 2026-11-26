@@ -50,3 +50,19 @@ def check(text):
         if not re.search(r"\| rank:\s*\d+", a):
             out.append(("FAIL", "AR8-action-unranked", a[:60]))
     return out
+
+# Every check ID this module can emit. evals/coverage_check.py enforces that each
+# carries at least one fixture whose run through check() produces it (the runner's
+# found == expected rule is the proof of signal), or an explicit CONDITIONAL reason.
+CHECK_IDS = [
+    "AR0-report-missing",
+    "AR1-period-untyped",
+    "AR2-numbers-carry-interpretation",
+    "AR3-value-incomplete",
+    "AR4-threshold-cause-unlabeled",
+    "AR5-cause-without-evidence",
+    "AR6-open-decision-without-default",
+    "AR7-uncaptured-without-plan",
+    "AR8-action-unranked"
+]
+CONDITIONAL = {}

@@ -23,3 +23,17 @@ def check(text):
             if any(re.search(j, q) for j in JARGON): out.append(("FAIL", "DI4-jargon", q[:40]))
     if not re.search(r"^Unread:", text, re.M): out.append(("FAIL", "DI5-unread-line-missing", "add 'Unread: none' or list them"))
     return out
+
+# Every check ID this module can emit. evals/coverage_check.py enforces that each
+# carries at least one fixture whose run through check() produces it (the runner's
+# found == expected rule is the proof of signal), or an explicit CONDITIONAL reason.
+CHECK_IDS = [
+    "DI0-no-rounds",
+    "DI1-too-many-questions",
+    "DI2-bad-tag",
+    "DI2-ladder-skip",
+    "DI3-not-a-question",
+    "DI4-jargon",
+    "DI5-unread-line-missing"
+]
+CONDITIONAL = {}

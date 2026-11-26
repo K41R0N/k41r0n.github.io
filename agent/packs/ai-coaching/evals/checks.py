@@ -41,3 +41,16 @@ def check(text):
     if len(_items(sec.get("Next step", ""))) != 1:
         out.append(("FAIL", "AC6-not-one-next-step", "exactly one next step"))
     return out
+
+# Every check ID this module can emit. evals/coverage_check.py enforces that each
+# carries at least one fixture whose run through check() produces it (the runner's
+# found == expected rule is the proof of signal), or an explicit CONDITIONAL reason.
+CHECK_IDS = [
+    "AC1-did-not-ask-first",
+    "AC2-task-kind-missing",
+    "AC3-aid-not-a-known-kind",
+    "AC4-task-without-setup",
+    "AC5-no-part-that-stays-theirs",
+    "AC6-not-one-next-step"
+]
+CONDITIONAL = {}

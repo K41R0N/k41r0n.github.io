@@ -37,3 +37,16 @@ def check(text):
     if len(one) != 1 or len(one[0].split()) > 25:
         out.append(("FAIL", "CM6-not-one-short-sentence", "one sentence, 25 words or fewer"))
     return out
+
+# Every check ID this module can emit. evals/coverage_check.py enforces that each
+# carries at least one fixture whose run through check() produces it (the runner's
+# found == expected rule is the proof of signal), or an explicit CONDITIONAL reason.
+CHECK_IDS = [
+    "CM1-point-not-one-sentence",
+    "CM2-listener-or-doubts-missing",
+    "CM3-proof-without-source",
+    "CM4-adjective-instead-of-proof",
+    "CM5-no-this-not-that",
+    "CM6-not-one-short-sentence"
+]
+CONDITIONAL = {}

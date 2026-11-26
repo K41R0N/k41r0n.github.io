@@ -42,3 +42,25 @@ def check(text):
     if not re.search(r"Spokesperson:", snap):
         out.append(("WARN", "SC7-no-spokesperson", "name who speaks publicly for the client before positioning"))
     return out
+
+# Every check ID this module can emit. evals/coverage_check.py enforces that each
+# carries at least one fixture whose run through check() produces it (the runner's
+# found == expected rule is the proof of signal), or an explicit CONDITIONAL reason.
+CHECK_IDS = [
+    "SC1-module-missing-empathy",
+    "SC1-module-missing-icp",
+    "SC1-module-missing-lean",
+    "SC1-module-missing-narrative",
+    "SC1-module-missing-positioning",
+    "SC1-module-missing-snapshot",
+    "SC1-module-missing-statement",
+    "SC1-module-missing-valueprop",
+    "SC2-approved-without-approver",
+    "SC2-status-missing",
+    "SC3-untagged-bullet",
+    "SC4-sourced-without-source",
+    "SC5-statement-incomplete",
+    "SC6-goal-without-measurable-result",
+    "SC7-no-spokesperson"
+]
+CONDITIONAL = {}

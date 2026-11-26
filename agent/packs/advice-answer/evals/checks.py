@@ -40,3 +40,22 @@ def check(text):
     if (_hdr(text, "sent_as") or "").lower() == "him" and not re.search(r"^approved_by:\s*\S+", text, re.M):
         out.append(("FAIL", "AA8-in-his-name-without-yes", "nothing goes out in his name without his yes"))
     return out
+
+# Every check ID this module can emit. evals/coverage_check.py enforces that each
+# carries at least one fixture whose run through check() produces it (the runner's
+# found == expected rule is the proof of signal), or an explicit CONDITIONAL reason.
+CHECK_IDS = [
+    "AA1-section-missing-answer",
+    "AA1-section-missing-checked",
+    "AA1-section-missing-needs-him",
+    "AA1-section-missing-not-known",
+    "AA1-section-missing-sure",
+    "AA2-answer-too-long",
+    "AA3-too-many-questions",
+    "AA4-jargon-for-plain-asker",
+    "AA5-number-without-source",
+    "AA6-sure-without-checking",
+    "AA7-risky-topic-not-sent-to-him",
+    "AA8-in-his-name-without-yes"
+]
+CONDITIONAL = {}

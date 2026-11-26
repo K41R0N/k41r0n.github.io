@@ -41,3 +41,15 @@ def check(text):
             if re.search(rf"\b{re.escape(w)}\b", low):
                 out.append(("FAIL", "CB5-jargon-for-beginner", w)); break
     return out
+
+# Every check ID this module can emit. evals/coverage_check.py enforces that each
+# carries at least one fixture whose run through check() produces it (the runner's
+# found == expected rule is the proof of signal), or an explicit CONDITIONAL reason.
+CHECK_IDS = [
+    "CB1-not-exactly-one",
+    "CB2-no-what-we-are-not",
+    "CB3-place-without-one-job",
+    "CB4-measure-incomplete",
+    "CB5-jargon-for-beginner"
+]
+CONDITIONAL = {}

@@ -9,7 +9,9 @@
 - Source member path SHA-256: `baa57eca12c0f918525a4de3853f28cb1e4bac681bafad3ba217c682c3731baf`
 - Source file SHA-256: `736504ecd45045316e52028dd8c096859b81d136f4f32d7ad76a997636f14c18`
 - Published file: `agent/packs/copywriting-methods/sources/20-harnesses/harness-01/routines/copy/five-pass.md`
-- Published file SHA-256: `33c4f172006f39988826417e1721650b04b796623c78c24ecf0ae9ef3fc9f4aa`
+- Published file SHA-256: `33c4f172006f39988826417e1721650b04b796623c78c24ecf0ae9ef3fc9f4aa` (as published in commit 00d75d8; verified against that commit 2026-11-25)
+- Follow-on edit (commit d5f08f6, 2026-10-31): reader-language rule added; reason recorded in that commit's message
+- Current SHA-256: `520e6ec4c481b489e3fa99d7a0abb0e5f703d778d9bd079bea80326c9c2c87c2` (verified 2026-11-25)
 - Lines: 162 source; 47 published
 - Changes: Workflow generalized throughout. Retained source gathering, sequential five passes, output contract, and format adaptation. Removed brand, project file paths, examples, product data sources, named approvers, dated rulings, and client-specific source hierarchy/legal interpretation.
 - Changed ranges (source -> output; line numbers are 1-based):
@@ -42,6 +44,7 @@
 - Source file SHA-256: `3cb095ad5ae795eb6123fd73b741bb3083180c1c486a1914c1eea51193142870`
 - Published file: `agent/packs/copywriting-methods/sources/20-harnesses/harness-01/skills/copy-review/references/01-pass-1-big-idea.md`
 - Published file SHA-256: `01eb0c73f36164959dc966e54614331422e5e7f5416c38e29d31da00794ffe74`
+- Current SHA-256: `01eb0c73f36164959dc966e54614331422e5e7f5416c38e29d31da00794ffe74` (verified 2026-11-25; unchanged since publication)
 - Lines: 88 source; 41 published
 - Changes: Retained single-idea method and brief, relevance, distinctiveness, and durability checks. Replaced product/brand examples and client claims with generic illustrations.
 - Changed ranges (source -> output; line numbers are 1-based):
@@ -69,6 +72,7 @@
 - Source file SHA-256: `66988a6b7a47d6d333f7cf67cd9a61c8a78fadbbaf98352d8ed544c89bf2eea2`
 - Published file: `agent/packs/copywriting-methods/sources/20-harnesses/harness-01/skills/copy-review/references/02-pass-2-factual-anchoring.md`
 - Published file SHA-256: `245844abe02bd178a4b87e32d34d378a9b48b091aa5258512b59ebd9e7ed1814`
+- Current SHA-256: `245844abe02bd178a4b87e32d34d378a9b48b091aa5258512b59ebd9e7ed1814` (verified 2026-11-25; unchanged since publication)
 - Lines: 92 source; 38 published
 - Changes: Retained claim inventory, trace-to-source, citation, unresolved-claim, and no-invention steps. Removed client source URLs, product facts, named people, specific time limits, and client-only rules.
 - Changed ranges (source -> output; line numbers are 1-based):
@@ -93,6 +97,7 @@
 - Source file SHA-256: `4ceac57579d644f8b4253a14b97ec3de287c4f8cd1949db1fc9aee42f01d32c8`
 - Published file: `agent/packs/copywriting-methods/sources/20-harnesses/harness-01/skills/copy-review/references/03-pass-3-voice-matching.md`
 - Published file SHA-256: `ea7932c2d93d263de024022b9c7b31d68a5ec94de77f17ae1e337a081e4589aa`
+- Current SHA-256: `ea7932c2d93d263de024022b9c7b31d68a5ec94de77f17ae1e337a081e4589aa` (verified 2026-11-25; unchanged since publication)
 - Lines: 112 source; 46 published
 - Changes: Retained voice-guide reads, reader definition, tone revision, read-aloud and reader tests, and separation of voice from claim review. Removed client voice, audience assumptions, brand branches, named project examples, and unavailable source links.
 - Changed ranges (source -> output; line numbers are 1-based):
@@ -116,6 +121,7 @@
 - Source file SHA-256: `ceb5ab416ba7d8e9e0461e3638fad1e6a8520a42815b2f70c6d7323260dd7f8f`
 - Published file: `agent/packs/copywriting-methods/sources/20-harnesses/harness-01/skills/copy-review/references/04-pass-4-storytelling-structure.md`
 - Published file SHA-256: `25fabd2e68b65c2524b1582b08725eb4a4a0c80ab6f3cc7190b11520b5c4e34f`
+- Current SHA-256: `25fabd2e68b65c2524b1582b08725eb4a4a0c80ab6f3cc7190b11520b5c4e34f` (verified 2026-11-25; unchanged since publication)
 - Lines: 109 source; 34 published
 - Changes: Retained narrative arc, claim connection, causal caution, number-change verification, structural variation, and anti-filler method. Replaced client-specific product, metric, performance, and legal examples.
 - Changed ranges (source -> output; line numbers are 1-based):
@@ -138,6 +144,7 @@
 - Source file SHA-256: `6ed2121b98baf56a562b0b870a85c94fe808053cb387c6326ac8a9d5f573765f`
 - Published file: `agent/packs/copywriting-methods/sources/20-harnesses/harness-01/skills/copy-review/references/05-pass-5-compliance-gate.md`
 - Published file SHA-256: `ee72d7ebea4bf31d1734863664fdb67398c8d8738007cc0053cf4efa30b4b924`
+- Current SHA-256: `ee72d7ebea4bf31d1734863664fdb67398c8d8738007cc0053cf4efa30b4b924` (verified 2026-11-25; unchanged since publication)
 - Lines: 143 source; 52 published
 - Changes: Retained generic review mechanics for terminology, legal/expert review, substantiation, claims, quotations, numbers, and approval. Removed client-specific legal doctrine, entity relationships, named counsel/approvers, policy hierarchy, product architecture, current claims, and dated rulings.
 - Changed ranges (source -> output; line numbers are 1-based):
@@ -176,6 +183,7 @@ The two raw protocol specs remain excluded. Method text from the same harness is
 ## Review pipeline reference (added 2026-11-02)
 
 - Published file: `agent/packs/copywriting-methods/sources/copy-review-framework/review-pipeline.md`
+- Current SHA-256: `380ceea994968ebfa794f4b8218170bae229c9ffed8f27d236cae33f42e25eb4` (verified 2026-11-25)
 - Sources: his Copy Review Engine reference doc and its implementation, both in his private tooling repos. Exact repo, path and commit pointers live in the owner's private source map (Kairon Drive), not in this public repo. Both sources are his; no client material is carried.
 - Changes: method retained in full (five review passes, five creative lenses, Ogilvy's five questions, structural rulebook, tonal arc, banned phrases). Excluded: the brand-specific application section (one product's landing-copy guidance and another brand's voice words) and the extraction note naming a client workspace. A known drift is documented in the file: the deployed review prompt lists four of the five Ogilvy questions; the framework's five are canonical.
 
@@ -186,3 +194,15 @@ The two raw protocol specs remain excluded. Method text from the same harness is
 - Source member bytes: 18,604; SHA-256 `c20e4d0be0d7fd019880957d936690aac8dfcd67c0ea398634c5c579ac525a72`.
 - Process adapter: `agent/knowledge/voice/refs/anti-pattern-method.md`; SHA-256 `9216408056e5fb884fe445a812b283e5a4cb7023b099765fab875952799a06c5`.
 - Treatment: source-derived procedural summary, not a replacement original. Retains tests, preservation, modes, structural diagnosis and external attribution. Excludes client/platform examples, project-specific numeric budgets and blanket word bans. Those remain private and scoped. No original client source is newly published.
+
+## Additional preserved references (pinned 2026-11-25; earlier states not pinned)
+
+- File: `agent/packs/copywriting-methods/sources/copy-review-framework/full-creative-interpretation.md`
+  Current SHA-256: `82307427235c43ed69d6cb2e5969a277fb7bd011e3a9cb464ad727a3ccad4855`
+- File: `agent/packs/copywriting-methods/sources/ideabrowser-reverse-engineering/email-archetype-taxonomy.md`
+  Current SHA-256: `a4b730647a4b76d7e74df96caa2985711c00eaed055282138aa28f47a170bc64`
+  Provenance: IdeaBrowser "Email Wizard" reverse-engineering intake, owner ruling 2026-11-12.
+
+Note: source-side hashes in this log pin private archive material and are not
+re-verifiable from this repo; the verifier (scripts/local/source_log_check.py)
+checks the Current SHA-256 fields only.

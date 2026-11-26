@@ -39,3 +39,20 @@ def check(text):
         if l.strip().startswith("-") and not re.search(r"status:\s*proposed", l):
             out.append(("FAIL", "RI9-output-not-proposed", l[:40]))
     return out
+
+# Every check ID this module can emit. evals/coverage_check.py enforces that each
+# carries at least one fixture whose run through check() produces it (the runner's
+# found == expected rule is the proof of signal), or an explicit CONDITIONAL reason.
+CHECK_IDS = [
+    "RI1-topic-missing",
+    "RI2-bad-entry",
+    "RI2-no-entries",
+    "RI3-entry-without-source",
+    "RI4-entry-dropped",
+    "RI5-dangling-id",
+    "RI6-thread-needs-two-entries",
+    "RI7-contact-details-in-people",
+    "RI8-unread-line-missing",
+    "RI9-output-not-proposed"
+]
+CONDITIONAL = {}

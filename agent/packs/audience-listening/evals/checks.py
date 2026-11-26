@@ -30,3 +30,16 @@ def check(text):
     if "Skip" not in sec:
         out.append(("FAIL", "AL6-no-skip-list", "say what you deliberately ignore"))
     return out
+
+# Every check ID this module can emit. evals/coverage_check.py enforces that each
+# carries at least one fixture whose run through check() produces it (the runner's
+# found == expected rule is the proof of signal), or an explicit CONDITIONAL reason.
+CHECK_IDS = [
+    "AL1-claim-without-source",
+    "AL2-hit-missing-field",
+    "AL3-engagement-without-read-time",
+    "AL4-headline-without-primary-source",
+    "AL5-no-not-verified",
+    "AL6-no-skip-list"
+]
+CONDITIONAL = {}
