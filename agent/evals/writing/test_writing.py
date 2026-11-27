@@ -40,7 +40,7 @@ class LoopTests(unittest.TestCase):
             roles[role]=[str(p)]
         if scope=='client':
             cp=self.base/(d.name+'-policy.json');w.write(cp,{'schema':'writing-client-policy/v1','source_ref':'Synthetic policy fixture, no actual client authority.','rule_severities':{rid:'INFO' for rid,*_ in checks.RULES if not (legacy_policy and rid=='W08')}});roles['client_policy']=[str(cp)]
-        b={'voice_owner':'Synthetic fixture subject, not Alejandro','mode':mode,'scope':scope,'voice_target':'author','reader':'The assigned maintenance inspector','already-believes':'The supply must remain closed until inspection','action':'Record the pressure before opening supply','channel':'A synthetic maintenance instruction sheet','register':register,'objective':'Test evidence gates without producing author prose','risk-owner':'The synthetic fixture coordinator','inputs':roles,'artifact':str(a),'format':'essay','author_guideline_overlay':True,'author_overlay_reason':'Synthetic client fixture selects client-only voice policy explicitly.','review_plan':[{'topic':topic,'reason':'Synthetic topic applicability exercises source-grounded selection.','source_ref':'synthetic-original-review-selection'} for topic in ['decontaminate','creative','tone','compliance','page']]}
+        b={'voice_owner':'Synthetic fixture subject, not Alejandro','mode':mode,'scope':scope,'voice_target':'author','reader':'The assigned maintenance inspector','already-believes':'The supply must remain closed until inspection','action':'Record the pressure before opening supply','channel':'A synthetic maintenance instruction sheet','register':register,'objective':'Test evidence gates without producing author prose','risk-owner':'The synthetic fixture coordinator','inputs':roles,'artifact':str(a),'format':'essay','author_guideline_overlay':True,'author_overlay_reason':'Synthetic client fixture selects client-only voice policy explicitly.','review_plan':[{'topic':topic,'reason':'Synthetic topic applicability exercises source-grounded selection.','source_ref':'synthetic-original-review-selection'} for topic in ['decontaminate','creative','tone','compliance','structure-review']]}
         b['private_methods']={}
         for item in w.read(w.CATALOG)['sources']:
             if item.get('private_original'):
@@ -74,7 +74,7 @@ class LoopTests(unittest.TestCase):
         if step in ['creative','big-idea-review','ogilvy']:
             r['lenses']={x:'Synthetic response checks that no lens can be omitted.' for x in w.LENSES}
             r['ogilvy']={x:'Synthetic response checks all five questions are retained.' for x in w.OGILVY}
-        if step in ['structure','page','positioning','clarity','subtract','verify-final','judge']:
+        if step in ['structure','structure-review','page','positioning','clarity','subtract','verify-final','judge']:
             r['paragraph_moves']=[{'paragraph_sha256':hashlib.sha256(p.encode()).hexdigest(),'move':'Synthetic instruction advances the recorded procedure.'} for p in draft.split('\n\n')]
             r['page_rule_scope']='Landing-page conversion ratios do not govern this synthetic instruction.'
         if step in ['voice','tone','judge']:
@@ -184,10 +184,10 @@ class LoopTests(unittest.TestCase):
         self.finish(d,b)
         self.assertEqual(w.state(d)['state'],'evidence-complete-attested')
     def test_review_selection_changes_actual_sequence(self):
-        d,b=self.build();bp=self.base/'alternate.json'
-        b['review_plan']=[{'topic':topic,'reason':'Synthetic piece-specific review requirement.','source_ref':'synthetic-original-review-selection'} for topic in ['data-accuracy','legal','clarity','positioning','ogilvy']]
+        d,b=self.build();b['format']='short-post';bp=self.base/'alternate.json'
+        b['review_plan']=[{'topic':topic,'reason':'Synthetic piece-specific review requirement.','source_ref':'synthetic-original-review-selection'} for topic in ['data-accuracy','legal','clarity','page','ogilvy']]
         w.write(bp,b);other=self.base/'alternate-run';w.init(other,bp)
-        self.assertEqual(w.sequence(b),['orient','data-accuracy','legal','clarity','positioning','ogilvy','subtract','verify-final','judge'])
+        self.assertEqual(w.sequence(b),['orient','data-accuracy','legal','clarity','page','ogilvy','subtract','verify-final','judge'])
         self.finish(other,b)
         self.assertEqual(w.state(other)['state'],'evidence-complete-attested')
     def test_duplicate_review_topic_rejected(self):

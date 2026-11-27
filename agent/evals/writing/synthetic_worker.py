@@ -38,7 +38,7 @@ if s in ['facts','compliance','legal','data-accuracy','judge']:
 if s in ['creative','big-idea-review','ogilvy']:
     r['lenses']={name:'Synthetic lens field tests schema completion without quality claims.' for name in c['output_contract']['lenses']}
     r['ogilvy']={name:'Synthetic question field tests all five questions without quality claims.' for name in c['output_contract']['ogilvy']}
-if s in ['structure','page','positioning','clarity','subtract','verify-final','judge']:
+if s in ['structure','structure-review','page','positioning','clarity','subtract','verify-final','judge']:
     r['paragraph_moves']=[{'paragraph_sha256':hashlib.sha256(p.strip().encode()).hexdigest(),'move':'Synthetic procedural paragraph advances the maintenance record.'} for p in draft.split('\n\n') if p.strip()]
     r['page_rule_scope']='Landing-page ratios do not govern this synthetic instruction.'
 if s in ['voice','tone','judge']:
